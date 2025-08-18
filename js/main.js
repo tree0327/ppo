@@ -1,43 +1,61 @@
+$(function() {
+    gsap.to(window,0.2,{scrollTo:0})
 
-document.addEventListener('DOMContentLoaded', () => {
-    // 드롭다운 버튼 클릭 이벤트
-    document.querySelectorAll('.dropdown-item').forEach(item => {
-        item.addEventListener('click', function () {
-            const dropdownButton = this.closest('.dropdown')?.querySelector('.dropdown-toggle');
-            if (dropdownButton) {
-                dropdownButton.innerHTML = this.innerHTML;
-            }
-        });
+
+    var intro = gsap.timeline({
+        onComplete:function(){
+            gsap.set('body',{'overflow':'auto'})
+        }
+        
     });
 
-    const mainSwiperSlide = document.querySelector(".main-swiper").querySelectorAll(".swiper-slide");
-    new Swiper(".main-swiper", {
-        loop: mainSwiperSlide.length > 1,
-        observer: true,
-        pagination: {
-            el: '.swiper-pagination',
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
+    intro.to('.sc_intro .sc_title span:nth-child(1)',0.5,{opacity:1})
+    .to('.sc_intro .sc_title span:nth-child(1)',0.3,{opacity:0})
+    .to('.sc_intro .sc_title span:nth-child(2)',0.5,{opacity:1})
+    .to('.sc_intro .sc_title span:nth-child(2)',0.3,{opacity:0})
+    .to('.sc_intro .sc_title span:nth-child(3)',0.5,{opacity:1})
+    .to('.sc_intro .sc_title span:nth-child(3)',0.3,{opacity:0})
+    .to('.sc_intro .sc_title span:nth-child(4)',0.5,{opacity:1})
+    .to('.sc_intro .sc_title span:nth-child(4)',0.5,{'letter-spacing':'3vw'})
+    .addLabel('m1')
+    .to(window,1.5,{scrollTo:'.sc_works'},'m1')
+    .to('.sc_intro .sc_title span:nth-child(4)',1,{'filter':'blur(50px)'},'m1')
+    .set('.sc_intro .sc_title span:nth-child(4)',{'filter':'blur(0px)'},)
+
+    
+    
+    $('.nav a').click(function(e){
+        e.preventDefault();
+       var target = $(this).attr('href');
+
+        gsap.to(window, {duration: 1, scrollTo:target});
+
+        $('body').removeClass('hidden')
+        $('.nav,.menu_btn').removeClass('on')
+        $('.menu_btn').text('Menu')
+
+    })
+
+
+
+    var $grid = $('.grid').isotope({
+        itemSelector: '.cont',
+        layoutMode: 'fitRows',
+        stagger: 100
     });
 
-    new Swiper(".media-swiper", {
-        slidesPerView: 1,
-        loop: true,
-        observer: true,
-        spaceBetween: 15,
-        pagination: {
-            el: '.swiper-pagination',
-        },
+
+    $('.filter_area').on( 'click', 'button', function() {
+        var filterValue = $(this).attr('data-filter');
+        $grid.isotope({ filter: filterValue });
+
+        $(this).addClass('on').siblings().removeClass('on')
     });
 
-    new Swiper(".ser-swiper", {
-        observer: true,
-        spaceBetween: 30,
-        pagination: {
-            el: '.swiper-pagination',
-        },
-    });
-});
+
+
+
+
+
+
+})

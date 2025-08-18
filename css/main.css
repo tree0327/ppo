@@ -1,0 +1,199 @@
+@charset "UTF-8";
+/*반응형 화면 크기*/
+/*반응형, 브라우저 크기가 767px 이하일때*/
+/*반응형, 브라우저 크기가 768이상, 1023px 이하일때*/
+/*반응형, 브라우저 크기가 1024px 이상일때*/
+.sc_intro {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Couture", "Noto Sans KR", sans-serif;
+  background: #000;
+}
+.sc_intro .bg {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  opacity: 0;
+}
+.sc_intro .sc_title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  white-space: nowrap;
+  transform: translate(-50%, -50%);
+  font-size: 4vw;
+  text-align: center;
+  line-height: 1.4;
+  font-weight: 500;
+}
+.sc_intro .sc_title span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+.sc_intro .sc_title span:last-child {
+  font-size: 6vw;
+  letter-spacing: 2px;
+}
+
+.sc_about {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.sc_about .sc_title {
+  font-size: 38px;
+  line-height: 1.8;
+  font-weight: 300;
+}
+.sc_about .sc_title strong {
+  font-weight: 600;
+}
+.sc_about .desc {
+  margin: 100px 0;
+  font-size: 18px;
+  line-height: 1.7;
+}
+@media (max-width: 768px) {
+  .sc_about .sc_title {
+    font-size: 22px;
+  }
+  .sc_about .desc {
+    font-size: 16px;
+  }
+}
+
+.sc_works .filter_area {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  justify-content: flex-end;
+}
+.sc_works .filter_area button {
+  border: 0;
+  background: #000;
+  border: 2px solid #fff;
+  color: #fff;
+  padding: 11px 25px;
+  border-radius: 5px;
+  font: inherit;
+  margin: 0 5px 10px;
+  cursor: pointer;
+}
+.sc_works .filter_area button.on {
+  background: #fff;
+  color: #222;
+}
+.sc_works .sc_title {
+  font-weight: bold;
+  font-size: 5vw;
+  text-align: center;
+  padding: 100px 0;
+  letter-spacing: 1vw;
+}
+@media (max-width: 768px) {
+  .sc_works .sc_title {
+    font-size: 8vw;
+  }
+}
+.sc_works .group_list:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.sc_works .cont {
+  width: 33.33%;
+  float: left;
+  box-sizing: border-box;
+  position: relative;
+}
+@media (max-width: 1024px) {
+  .sc_works .cont {
+    width: 50%;
+  }
+}
+@media (max-width: 768px) {
+  .sc_works .cont {
+    width: 100%;
+  }
+}
+.sc_works .cont .wrap {
+  position: relative;
+  padding-bottom: 100%;
+}
+.sc_works .cont .wrap::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+}
+.sc_works .cont img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.sc_works .cont .link_wrap {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.521);
+  padding: 30px;
+  box-sizing: border-box;
+  line-height: 1.5;
+  opacity: 0;
+}
+.sc_works .cont .link_wrap em {
+  font-size: 20px;
+  color: #fff;
+}
+.sc_works .cont:hover .link_wrap {
+  transition: 0.5s;
+  opacity: 1;
+}
+.sc_works .cont h3 {
+  z-index: 1;
+  font-weight: bold;
+  color: rgb(255, 252, 251);
+  font-size: 24px;
+}
+.sc_works .cont .links {
+  box-sizing: border-box;
+  margin-top: 20px;
+}
+.sc_works .cont .links .link_more {
+  width: 100px;
+  height: 50px;
+  border-radius: 20px;
+  padding: 5px 15px;
+  background: #fff;
+  color: #000;
+}
+.sc_works .cont .links .link_more:hover {
+  background: #000;
+  color: #fff;
+  transition: 0.3s;
+}
+.sc_works .cont .links .link_notion {
+  margin-top: 10px;
+  display: block;
+  font-size: 18px;
+  line-height: 30px;
+}
