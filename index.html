@@ -5,20 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>dabin's portfolio</title>
+
+    <!-- js -->
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <script src="./js/gsap.min.js"></script>
+    <script src="./js/scrollTrigger.min.js"></script>
+    <script src="./js/ScrollToPlugin.min.js"></script>
+    <script src="./js/isotope.pkgd.min.js"></script>
+    <script src="./js/fullpage.min.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/swiper-bundle.min.js"></script>
+    <!-- css -->
     <link rel="stylesheet" href="./css/layout.css">
     <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/fullpage.css">
+    <link rel="stylesheet" href="./css/swiper.min.css">
 </head>
 <body>
-
 
     <header class="header">
         <h1 class="logo"><a href="/">DABIN.</a></h1>
         <a href="#contact" class="link_contact">CONTACT</a>
     </header>
 
-    <main class="container">
-
-        <section class="sc_intro">
+    <div id="fullpage">
+        <section class="section sc_intro" id="page01">
             <span class="bg01"></span>
             <span class="bg02"></span>
             <span class="bg03"></span>
@@ -31,164 +42,60 @@
             </h2>
         </section>
 
-      
-        <section class="sc_works" id="works">
+        <section class="section sc_works" id="works page02">
             <h2 class="sc_title">WORKS.</h2>
-            <div class="filter_area">
-                <button data-filter="*" class="on">All</button>
-                <button data-filter=".pc">pc</button>
-                <button data-filter=".mo">mobile</button>
-                <button data-filter=".res">반응형</button>
-                <button data-filter=".ren">리뉴얼 코딩</button>
-                <button data-filter=".cl">클론코딩</button>
-            </div>
-            <div class="grid group_list">
-                <div class="cont pc cl">
-                    <div class="wrap">
-                    <img src="./images/naver.png" alt="네이버 맥북목업">
-                    <div class="link_wrap">
-                        <em>PC 적응형</em>
-                        <h3>네이버</h3>
-                        <div class="hash_wrap">
-                            <span>#4일</span>
-                            <span>#적응형</span>
-                            <span>#클론코딩</span>
-                            <span>#ir</span>
-                            <span>#is</span>
-                        </div>
-                        
-                        <div class="links">
-                            <a href="https://wldnjsl.github.io/portfolio/works/02" class="link_more">링크 바로가기</a>
-                            <a href="https://aaaiii.notion.site/NAVER-3481f62dfd264c0d83521e9028edf182" class="link_notion">
-                                어떻게 작업했냐면요!
-                            </a>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-
-                <div class="cont pc cl">
-                    <div class="wrap">
-                    <img src="./images/poomgo.png" alt="품고 맥북목업">
-                    <div class="link_wrap">
-                        <em>PC 적응형</em>
-                        <h3>품고</h3>
-                        <div class="hash_wrap">
-                            <span>#3일</span>
-                            <span>#적응형</span>
-                            <span>#클론코딩</span>
-                            <span>#scss</span>
-                            <span>#gsap</span>
-                        </div>
-                        
-                        <div class="links">
-                            <a href="https://wldnjsl.github.io/portfolio/works/04" class="link_more">링크 바로가기</a>
-                            <a href="https://aaaiii.notion.site/poomgo-a83c7df3e195453e9be253f859e57001" class="link_notion">
-                                어떻게 작업했냐면요!
-                            </a>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                <div class="cont pc cl">
-                    <div class="wrap">
-                        <img src="./images/seoulcityhall.png" alt="서울시청 맥북목업">
-                        <div class="link_wrap">
-                            <em>PC 적응형</em>
-                            <h3>서울시청</h3>
-                            <div class="hash_wrap">
-                                <span>#3일</span>
-                                <span>#적응형</span>
-                                <span>#클론코딩</span>
-                                <span>#scss</span>
-                                <span>#swiper</span>
+            <div>
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="inner">
+                                <p class="main-bg-text">
+                                    Big Data와 AI를 기반으로 <br class="b-lg-none">
+                                    <span class="text-ylw">의료질과 수가제도를 리딩하는 <br class="d-lg-none"> 국내 유일의 컨설팅회사</span>
+                                </p>
                             </div>
-                            
-                            <div class="links">
-                                <a href="https://wldnjsl.github.io/portfolio/works/01" class="link_more">링크 바로가기</a>
-                                <a href="https://aaaiii.notion.site/dfe97742605c4c1f8da422d3bc0ff8ee" class="link_notion">
-                                    어떻게 작업했냐면요!
-                                </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="inner">
+                                <p class="main-bg-text">
+                                    Big Data와 AI를 기반으로 <br class="b-lg-none">
+                                    <span class="text-ylw">의료질과 수가제도를 리딩하는 <br class="d-lg-none"> 국내 유일의 컨설팅회사</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="inner">
+                                <p class="main-bg-text">
+                                    Big Data와 AI를 기반으로 <br class="b-lg-none">
+                                    <span class="text-ylw">의료질과 수가제도를 리딩하는 <br class="d-lg-none"> 국내 유일의 컨설팅회사</span>
+                                </p>
                             </div>
                         </div>
                     </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
                 </div>
-
-                <div class="cont pc mo res">
-                    <div class="wrap">
-                    <img src="./images/addmiles.png" alt="애드마일스 맥북목업">
-                    <div class="link_wrap">
-                        <em>PC, moblie반응형</em>
-                        <h3>ADDMILE+S</h3>
-                        <div class="hash_wrap">
-                            <span>#4일</span>
-                            <span>#반응형</span>
-                            <span>#리뉴얼</span>
-                            <span>#scss</span>
-                            <span>#gsap</span>
-                        </div>
-                        
-                        <div class="links">
-                            <a href="https://wldnjsl.github.io/portfolio/works/03" class="link_more">링크 바로가기</a>
-                            <a href="https://aaaiii.notion.site/ADDMILES-7a1dc7e6f778441c96ad28736d3dd7ac" class="link_notion">
-                                어떻게 작업했냐면요!
-                            </a>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-
-                <div class="cont pc ren">
-                    <div class="wrap">
-                    <img src="./images/ikea.png" alt="ikea 맥북목업">
-                    <div class="link_wrap">
-                        <em>PC 적응형</em>
-                        <h3>IKEA</h3>
-                        <div class="hash_wrap">
-                            <span>#4일</span>
-                            <span>#적응형</span>
-                            <span>#리뉴얼</span>
-                            <span>#scss</span>
-                            <span>#gsap</span>
-                        </div>
-                        
-                        <div class="links">
-                            <a href="https://wldnjsl.github.io/portfolio/works/05" class="link_more">링크 바로가기</a>
-                            <a href="https://aaaiii.notion.site/IKEA-2b1269340cc3421d8e33a80e3a7b2508" class="link_notion">
-                                어떻게 작업했냐면요!
-                            </a>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                <div class="cont pc ren">
-                    <div class="wrap">
-                    <img src="./images/nike.png" alt="나이키 맥북목업">
-                    <div class="link_wrap">
-                        <em>PC 적응형</em>
-                        <h3>나이키</h3>
-                        <div class="hash_wrap">
-                            <span>#5일</span>
-                            <span>#반응형</span>
-                            <span>#리뉴얼</span>
-                            <span>#scss</span>
-                            <span>#gsap</span>
-                        </div>
-                        
-                        <div class="links">
-                            <a href="https://wldnjsl.github.io/portfolio/works/06" class="link_more">링크 바로가기</a>
-                            <a href="https://aaaiii.notion.site/NIKE-2d5f3705106448108efbeb0f6978f554" class="link_notion"> 
-                                어떻게 작업했냐면요!
-                            </a>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-            
             </div>
-
         </section>
-    </main>
+
+        <section class="section sc_about" id="page03">
+            <h2 class="sc_title">ABOUT.</h2>
+            <div class="about_content">
+                <p>프론트엔드 개발자를 꿈꾸는 김다빈입니다.</p>
+                <p>사용자 경험을 중요시하며, 창의적이고 직관적인 웹사이트를 만드는 것을 좋아합니다.</p>
+            </div>
+        </section>
+
+        <section class="section sc_contact" id="contact page04">
+            <h2 class="sc_title">CONTACT.</h2>
+            <div class="contact_content">
+                <p>Email: dabin@example.com</p>
+                <p>Phone: 010-1234-5678</p>
+                <p>GitHub: github.com/dabin</p>
+            </div>
+        </section>
+    </div>
 
     <footer class="footer">
         <h3 class="txt">
@@ -196,13 +103,5 @@
         </h3>
         <p class="copyright">&copy; 2025. All rights reserved.</p>
     </footer>
-
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollToPlugin.min.js"></script>
-    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
-    <script src="./js/main.js"></script>
-
 </body>
 </html>
