@@ -66,7 +66,7 @@ $(function() {
         });
     }
 
-    // grow-swiper (유알스코프)
+    // 스와이퍼
     new Swiper(".swiper", {
         observer: true,
         pagination: { 
@@ -78,5 +78,23 @@ $(function() {
         },
         allowTouchMove: true,
         spaceBetween: 30,
+        slidesPerView: 1,
+        breakpoints: {
+            // 모바일 (기본값)
+            320: {
+                slidesPerView: 1,
+                spaceBetween: 20
+            },
+            // 태블릿
+            768: {
+                slidesPerView: 2,
+                spaceBetween: 25
+            },
+            // PC
+            1024: {
+                slidesPerView: 3,
+                spaceBetween: 30
+            }
+        }
     });
 });
