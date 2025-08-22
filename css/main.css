@@ -74,31 +74,11 @@
   justify-content: start !important;
 }
 
-.sc_works .filter_area {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 10px;
-  justify-content: flex-end;
-}
-.sc_works .filter_area button {
-  border: 0;
-  border: 2px solid #000;
-  color: #fff;
-  padding: 11px 25px;
-  border-radius: 5px;
-  font: inherit;
-  margin: 0 5px 10px;
-  cursor: pointer;
-}
-.sc_works .filter_area button.on {
-  background: #000;
-  color: #222;
-}
 .sc_works .sc_title {
   font-weight: bold;
   font-size: 5vw;
   text-align: center;
-  padding: 100px 0;
+  padding: 70px 0 50px;
   letter-spacing: 1vw;
 }
 @media (max-width: 768px) {
@@ -106,95 +86,77 @@
     font-size: 8vw;
   }
 }
-.sc_works .group_list:after {
-  content: "";
-  display: block;
-  clear: both;
-}
-.sc_works .cont {
-  width: 33.33%;
-  float: left;
-  box-sizing: border-box;
-  position: relative;
-}
-@media (max-width: 1024px) {
-  .sc_works .cont {
-    width: 50%;
-  }
-}
-@media (max-width: 768px) {
-  .sc_works .cont {
+.sc_works .swiper-slide{
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
+    height: 650px;
     width: 100%;
+    position: relative;
+    transition: all .5s 0s;
+    cursor: pointer;
+    background-color: white;
   }
-}
-.sc_works .cont .wrap {
-  position: relative;
-  padding-bottom: 100%;
-}
-.sc_works .cont .wrap::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(100, 100, 100, 0.3);
-}
-.sc_works .cont img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-.sc_works .cont .link_wrap {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(100, 100, 100, 0.521);
-  padding: 30px;
-  box-sizing: border-box;
-  line-height: 1.5;
-  opacity: 0;
-}
-.sc_works .cont .link_wrap em {
-  font-size: 20px;
-  color: #000;
-}
-.sc_works .cont:hover .link_wrap {
-  transition: 0.5s;
-  opacity: 1;
-}
-.sc_works .cont h3 {
-  z-index: 1;
-  font-weight: bold;
-  color: #000;
-  font-size: 24px;
-}
-.sc_works .cont .links {
-  box-sizing: border-box;
-  margin-top: 20px;
-}
-.sc_works .cont .links .link_more {
-  width: 100px;
-  height: 50px;
-  border-radius: 20px;
-  padding: 5px 15px;
-  background: #000;
-  color: #000;
-}
-.sc_works .cont .links .link_more:hover {
-  background: #fff;
-  color: #000;
-  transition: 0.3s;
-}
-.sc_works .cont .links .link_notion {
-  margin-top: 10px;
-  display: block;
-  font-size: 18px;
-  line-height: 30px;
-}
+  
+  .sc_works .swiper-slide:hover{
+      background-color: #111c;
+      background-blend-mode: multiply;
+      color: white;
+      background-position: center;
+  }
+  
+  .sc_works .swiper-slide .img {
+      width: 100%;
+      height: 100%;
+  }
+  
+  .sc_works .swiper-slide .title {
+      text-align: left;
+      padding: 20px;
+  }
+  
+  .sc_works .swiper-slide .name {
+      font-size: 18px;
+      font-weight: bold;
+      color: transparent;
+      transition: all .3s 0s;
+  }
+  
+  .sc_works .swiper-slide:hover .img .title .name {
+      color: white;
+  }
+  
+  .sc_works .swiper-slide .sub {
+      color: transparent;
+      transition: all .3s 0s;
+  }
+  
+  .sc_works .swiper-slide:hover .img .title .sub {
+      color: #bbb;
+  }
+  
+  .sc_works .swiper-slide .button {
+      position: absolute;
+      bottom: 0px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      background-color: #111;
+      line-height: 50px;
+      transition: all .3s 0s;
+      text-align: center;
+  }
+  
+  .sc_works .swiper-slide:hover .button {
+      background-color: #fff;
+      color: #000;
+  }
+  
+  .sc_works .swiper-slide:nth-child(1){ background-image: url(../images/hycu-1.png); }
+  .sc_works .swiper-slide:nth-child(2){ background-image: url(../images/urscope-1.png); }
+  .sc_works .swiper-slide:nth-child(3){ background-image: url(../images/kmr-1.png); }
+  .sc_works .swiper-slide:nth-child(4){ background-image: url(../images/corfa-1.png); }
+  .sc_works .swiper-slide:nth-child(5){ background-image: url(../images/landing-1.png); }
+  
+  .sc_works .swiper-pagination{ position: static; margin-top: 10px; }
+  .sc_works .swiper-pagination-bullet{ width: 12px; height: 12px; }
