@@ -63,6 +63,12 @@ body {
   z-index: 10;
   letter-spacing: 3px;
 }
+@media (max-width: 768px) {
+  .header {
+    padding: 10px 20px;
+  }
+}
+
 .header .logo {
   font-weight: 500;
   font-size: 30px;

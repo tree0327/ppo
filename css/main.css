@@ -71,26 +71,25 @@
 }
 .sc_works{
   background-color: #fdfd96;
-  justify-content: start !important;
 }
 
 .sc_works .sc_title {
   font-weight: bold;
-  font-size: 4rem;
+  font-size: 6rem;
   text-align: center;
-  padding: 4.375rem 0 3.125rem;
+  padding-bottom: 3.125rem;
   letter-spacing: 1vw;
 }
 @media (max-width: 768px) {
   .sc_works .sc_title {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
   }
 }
 .sc_works .swiper-slide{
     background-repeat: no-repeat;
     background-position: top;
     background-size: cover;
-    height: 70vh;
+    height: calc(100vh - 21px);
     max-height: 650px;
     width: 100%;
     position: relative;
