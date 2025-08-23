@@ -76,21 +76,22 @@
 
 .sc_works .sc_title {
   font-weight: bold;
-  font-size: 5vw;
+  font-size: 4rem;
   text-align: center;
-  padding: 70px 0 50px;
+  padding: 4.375rem 0 3.125rem;
   letter-spacing: 1vw;
 }
 @media (max-width: 768px) {
   .sc_works .sc_title {
-    font-size: 8vw;
+    font-size: 2.5rem;
   }
 }
 .sc_works .swiper-slide{
     background-repeat: no-repeat;
     background-position: top;
     background-size: cover;
-    height: 650px;
+    height: 70vh;
+    max-height: 650px;
     width: 100%;
     position: relative;
     transition: all .5s 0s;
@@ -155,8 +156,11 @@
   .sc_works .swiper-slide:nth-child(1){ background-image: url(../images/hycu-1.png); }
   .sc_works .swiper-slide:nth-child(2){ background-image: url(../images/urscope-1.png); }
   .sc_works .swiper-slide:nth-child(3){ background-image: url(../images/kmr-1.png); }
-  .sc_works .swiper-slide:nth-child(4){ background-image: url(../images/corfa-1.png); }
-  .sc_works .swiper-slide:nth-child(5){ background-image: url(../images/landing-1.png); }
+  .sc_works .swiper-slide:nth-child(4){ background-image: url(../images/corfa1.jpg); }
+  .sc_works .swiper-slide:nth-child(5){ background-image: url(../images/landing1.jpg); }
+  .sc_works .swiper-slide:nth-child(6){ background-image: url(../images/smartppt1.jpg)}
+  .sc_works .swiper-slide:nth-child(7){ background-image: url(../images/aidt1.jpg)}
+  .sc_works .swiper-slide:nth-child(8){ background-image: url(../images/iscream1.jpg)}
   
   .sc_works .swiper-pagination{ position: static; margin-top: 10px; }
   .sc_works .swiper-pagination-bullet{ width: 12px; height: 12px; }
