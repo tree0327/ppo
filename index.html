@@ -13,7 +13,7 @@
     <script src="./js/ScrollToPlugin.min.js"></script>
     <script src="./js/isotope.pkgd.min.js"></script>
     <script src="./js/fullpage.min.js"></script>
-    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
     <script src="./js/swiper-bundle.min.js"></script>
     <script src="./js/main.js"></script>
     <!-- css -->
@@ -60,8 +60,8 @@
                                             <div class="sub">hycu(한양사이버대학교 졸업전시회)</div>
                                         </div>
                                     </div>
-                                    <div class="button">이동하기</div>
                                 </a>
+                                <button class="button" type="button" data-toggle="modal" data-target="#modal">자세히 보기</button>
                             </div>
                             <div class="swiper-slide">
                                 <a href="https://www.urscope.co.kr/" target="_blank">
@@ -185,5 +185,28 @@
         <p class="copyright">&copy; 2025. All rights reserved.</p>
     </footer>
     <!-- /footer -->
+
+    <div id="modal" class="modal modal-inter fade w1500" aria-modal="true" >
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <button type="button" class="icon icon-modal-close" data-dismiss="modal" data-audio="common/media/btn_click.mp3">닫기</button>
+                <div class="modal-body scrolled">
+                    <div class="modal-text-wrap">
+                        <span class="math-tx">$$\frac{x}{420}$$</span><span class="math-tx">$$＝$$</span><!--
+                     --><span class="math-tx pb-3" style="margin-top: 17px;">$$\frac{x}{2^2×3×5×7}$$</span><!--
+                     -->이고, 유한소수로 나타낼 수 있으므로 기약분수로 나타냈을 때 분모의 소인수가 <span class="math-tx">$$2$$</span> 또는 <span class="math-tx">$$5$$</span>뿐이어야 한다. 즉 <span class="math-tx">$$x$$</span>는 <span class="math-tx">$$21$$</span>의 배수이어야 한다.<br>
+                        또 <span class="math-tx">$$\frac{x}{420}$$</span><!--
+                     -->를 기약분수로 나타내면
+                        <span class="math-tx">$$\frac{3}{y}$$</span><!--
+                     -->이므로 <span class="math-tx">$$x$$</span>는 <span class="math-tx">$$63$$</span>의 배수가 되어야 한다.<br>
+                        <span class="math-tx">$$x$$</span>는 두 자리 자연수이므로 <br>
+                        &nbsp; &nbsp; &nbsp; &nbsp; <span class="math-tx">$$x＝63$$</span><br>
+                        <span class="math-tx">$$\frac{x}{420}$$</span><span class="math-tx">$$＝$$</span><span class="math-tx">$$\frac{63}{420}$$</span><span class="math-tx">$$＝$$</span><span class="math-tx">$$\frac{3}{20}$$</span>이므로 <br>
+                        &nbsp; &nbsp; &nbsp; &nbsp; <span class="math-tx">$$y＝20$$</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

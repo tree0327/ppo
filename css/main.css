@@ -96,6 +96,8 @@
     transition: all .5s 0s;
     cursor: pointer;
     background-color: white;
+    border-radius: 30px;
+    overflow: hidden;
   }
   
   .sc_works .swiper-slide:hover{
