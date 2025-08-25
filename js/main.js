@@ -70,7 +70,8 @@ $(function() {
     new Swiper(".swiper", {
         observer: true,
         pagination: { 
-            el: '.swiper-pagination' 
+            el: '.swiper-pagination',
+            clickable: true,
         },
         navigation: { 
             nextEl: '.swiper-button-next', 
