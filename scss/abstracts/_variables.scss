@@ -1,32 +1,32 @@
 // ===== SCSS VARIABLES =====
 
 // ===== COLORS =====
-// Primary Colors
-$primary-color: #D4B996;
-$primary-light: #E6D4B8;
-$primary-dark: #B89A7A;
+// Primary Colors - 더 어두운 네이비 기반
+$primary-color: #020617;      // 거의 검은색 네이비
+$primary-light: #0f172a;      // 매우 어두운 네이비
+$primary-dark: #000000;       // 완전한 검은색
 
 // Secondary Colors
-$secondary-color: #A67B5B;
-$secondary-light: #C4A085;
-$secondary-dark: #8B6B4E;
+$secondary-color: #334155;     // 어두운 슬레이트
+$secondary-light: #475569;     // 중간 슬레이트
+$secondary-dark: #1e293b;     // 매우 어두운 슬레이트
 
 // Accent Colors
-$accent-color: #F4E4D6;
-$accent-light: #F8EDE4;
-$accent-dark: #E8D4C2;
+$accent-color: #0369a1;       // 어두운 스카이 블루
+$accent-light: #0ea5e9;       // 밝은 스카이
+$accent-dark: #075985;        // 매우 어두운 스카이
 
 // Neutral Colors
-$bg-color: #FAFAFA;
-$bg-light: #FFFFFF;
-$bg-lighter: #F5F5F5;
-$bg-dark: #F0F0F0;
+$bg-color: #020617;           // 메인 네이비와 동일 (더 어두운)
+$bg-light: #0f172a;           // 밝은 네이비
+$bg-lighter: #1e293b;         // 중간 슬레이트
+$bg-dark: #000000;            // 가장 어두운 네이비
 
 // Text Colors
-$text-color: #2C2C2C;
-$text-light: #6B6B6B;
-$text-muted: #9E9E9E;
-$text-dark: #1A1A1A;
+$text-color: #f8fafc;         // 매우 밝은 슬레이트 (흰색에 가까움)
+$text-light: #e2e8f0;         // 밝은 슬레이트
+$text-muted: #cbd5e1;         // 중간 슬레이트
+$text-dark: #94a3b8;          // 어두운 슬레이트
 
 // Border Colors
 $border-color: #E0E0E0;
@@ -34,46 +34,41 @@ $border-light: #F0F0F0;
 $border-dark: #D0D0D0;
 
 // Status Colors
-$success-color: #4CAF50;
-$warning-color: #FF9800;
-$error-color: #F44336;
-$info-color: #2196F3;
+$success-color: #059669;       // 어두운 그린
+$warning-color: #d97706;       // 어두운 오렌지
+$error-color: #dc2626;         // 어두운 레드
+$info-color: #0369a1;          // 어두운 블루
 
-// Glass Effect Colors
-$glass-bg: rgba(255, 255, 255, 0.1);
-$glass-border: rgba(255, 255, 255, 0.2);
+// Glass Effects
+$glass-bg: rgba(15, 23, 42, 0.8);    // 네이비 기반 글래스
+$glass-border: rgba(30, 41, 59, 0.3); // 네이비 기반 테두리
+$glass-shadow: rgba(2, 6, 23, 0.1);   // 네이비 기반 그림자
 
 // ===== TYPOGRAPHY =====
-// Font Families
-$font-family-primary: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-$font-family-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', 'Monaco', 'Courier New', monospace;
+$font-family-primary: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$font-family-secondary: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$font-family-mono: "JetBrains Mono", "Fira Code", "Consolas", "Monaco", "Courier New", monospace;
 
-// Font Sizes
-$font-size-xs: 0.75rem;    // 12px
-$font-size-sm: 0.875rem;   // 14px
-$font-size-base: 1rem;     // 16px
-$font-size-lg: 1.125rem;   // 18px
-$font-size-xl: 1.25rem;    // 20px
-$font-size-2xl: 1.5rem;    // 24px
-$font-size-3xl: 1.875rem;  // 30px
-$font-size-4xl: 2.25rem;   // 36px
+$font-size-base: 1rem;
+$font-size-sm: 0.875rem;
+$font-size-lg: 1.125rem;
+$font-size-xl: 1.25rem;
+$font-size-2xl: 1.5rem;
+$font-size-3xl: 1.875rem;
+$font-size-4xl: 2.25rem;
 $font-size-5xl: 3rem;      // 48px
 $font-size-6xl: 3.75rem;   // 60px
 
-// Font Weights
 $font-weight-light: 300;
 $font-weight-normal: 400;
 $font-weight-medium: 500;
 $font-weight-semibold: 600;
 $font-weight-bold: 700;
-$font-weight-extrabold: 800;
 
-// Line Heights
 $line-height-tight: 1.25;
 $line-height-snug: 1.375;
 $line-height-normal: 1.5;
-$line-height-relaxed: 1.625;
-$line-height-loose: 2;
+$line-height-relaxed: 1.75;
 
 // ===== SPACING =====
 $spacing-xs: 0.25rem;    // 4px
@@ -90,22 +85,21 @@ $spacing-5xl: 8rem;      // 128px
 $section-padding: $spacing-4xl;
 
 // ===== BORDERS =====
-$border-radius-sm: 0.25rem;    // 4px
-$border-radius-md: 0.5rem;     // 8px
-$border-radius-lg: 0.75rem;    // 12px
-$border-radius-xl: 1rem;       // 16px
-$border-radius-2xl: 1.5rem;    // 24px
-$border-radius-full: 9999px;   // Full rounded
+$border-radius-sm: 0.25rem;   // 4px
+$border-radius-md: 0.5rem;    // 8px
+$border-radius-lg: 0.75rem;   // 12px
+$border-radius-xl: 1rem;      // 16px
+$border-radius-full: 9999px;  // 원형
 
-$border-width-sm: 1px;
-$border-width-md: 2px;
-$border-width-lg: 3px;
+$border-width-thin: 1px;
+$border-width-normal: 2px;
+$border-width-thick: 3px;
 
 // ===== SHADOWS =====
-$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-$shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+$shadow-sm: 0 1px 2px 0 rgba(2, 6, 23, 0.05);
+$shadow-md: 0 4px 6px -1px rgba(2, 6, 23, 0.1), 0 2px 4px -1px rgba(2, 6, 23, 0.06);
+$shadow-lg: 0 10px 15px -3px rgba(2, 6, 23, 0.1), 0 4px 6px -2px rgba(2, 6, 23, 0.05);
+$shadow-xl: 0 20px 25px -5px rgba(2, 6, 23, 0.1), 0 10px 10px -5px rgba(2, 6, 23, 0.04);
 $shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 
 // ===== TRANSITIONS =====

@@ -29,7 +29,8 @@
     "status",
     "alert",
     "polite",
-    "contentinfo"
+    "contentinfo",
+    "Pretendard"
   ],
   "ignorePaths": [
     "node_modules/**",

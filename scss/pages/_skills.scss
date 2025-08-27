@@ -13,16 +13,16 @@
     }
     
     .skill-category {
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba($bg-light, 0.05);
       border-radius: 20px;
       padding: 2rem;
-      border: 1px solid rgba(212, 185, 150, 0.2);
+      border: 1px solid rgba($primary-color, 0.2);
       backdrop-filter: blur(10px);
       transition: all 0.3s ease;
       
       &:hover {
         transform: translateY(-5px);
-        box-shadow: 0 15px 40px rgba(212, 185, 150, 0.1);
+        box-shadow: 0 15px 40px rgba($primary-color, 0.2);
       }
       
       .category-header {
@@ -64,9 +64,9 @@
           justify-content: space-between;
           margin-bottom: 1.5rem;
           padding: 1rem;
-          background: rgba(255, 255, 255, 0.03);
+          background: rgba($bg-light, 0.03);
           border-radius: 12px;
-          border: 1px solid rgba(212, 185, 150, 0.1);
+          border: 1px solid rgba($primary-color, 0.1);
           
           .skill-info {
             .skill-name {
@@ -92,12 +92,13 @@
               height: 60px;
               
               circle {
-                stroke: $primary-light;
-                stroke-width: 4;
+                stroke: $accent-color;
+                stroke-width: 6;
                 fill: transparent;
                 stroke-dasharray: 220;
                 stroke-dashoffset: 220;
                 animation: progressRing 2s ease-out forwards;
+                filter: drop-shadow(0 2px 4px rgba($accent-color, 0.3));
               }
             }
             

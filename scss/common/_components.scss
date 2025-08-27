@@ -9,7 +9,7 @@
   z-index: 1000;
   
   // 가시성 강화를 위한 배경
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba($bg-light, 0.1);
   backdrop-filter: blur(10px);
   border-radius: 25px;
   padding: 1rem 0.5rem;
@@ -32,11 +32,11 @@
     position: relative;
     width: 18px;  // 크기 증가
     height: 18px; // 크기 증가
-    background: rgba($primary-color, 0.5); // 배경색 강화
+    background: rgba($accent-color, 0.6); // 배경색 강화
     border-radius: 50%;
     transition: all 0.3s ease;
     cursor: pointer;
-    border: 2px solid rgba($primary-light, 0.3); // 테두리 추가
+    border: 2px solid rgba($accent-light, 0.4); // 테두리 추가
     padding: 0;
     text-decoration: none;
     display: block; // 명시적으로 표시
@@ -64,13 +64,14 @@
     
     &:hover,
     &.active {
-      background: rgba($primary-color, 0.8);
-      border-color: $primary-light;
-      transform: scale(1.1); // 호버 시 확대 효과
+      background: rgba($accent-color, 0.9);
+      border-color: $accent-light;
+      transform: scale(1.2); // 호버 시 확대 효과
+      box-shadow: 0 4px 12px rgba($accent-color, 0.4);
       
       &::before {
-        width: 10px; // 중심점 크기 증가
-        height: 10px; // 중심점 크기 증가
+        width: 12px; // 중심점 크기 증가
+        height: 12px; // 중심점 크기 증가
       }
     }
     
@@ -79,7 +80,7 @@
       right: 2rem;
       top: 50%;
       transform: translateY(-50%);
-      background: rgba(255, 255, 255, 0.95);
+      background: rgba($bg-light, 0.95);
       color: $text-color;
       padding: 0.5rem 1rem;
       border-radius: 20px;
@@ -99,7 +100,7 @@
         top: 50%;
         transform: translateY(-50%);
         border: 5px solid transparent;
-        border-left-color: rgba(255, 255, 255, 0.95);
+        border-left-color: rgba($bg-light, 0.95);
       }
     }
     
@@ -124,44 +125,44 @@
 
 .section-header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: $spacing-4xl;
   
-      .section-number {
-      display: inline-block;
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: $primary-color;
-      background: rgba($primary-color, 0.1);
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      margin-bottom: 1rem;
-      border: 1px solid rgba($primary-color, 0.2);
-    }
+  .section-number {
+    display: inline-block;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    color: $primary-color !important;
+    background: rgba($primary-color, 0.1);
+    padding: $spacing-sm $spacing-md;
+    border-radius: $border-radius-full;
+    margin-bottom: $spacing-md;
+    border: 1px solid rgba($primary-color, 0.2);
+  }
+  
+  .section-title {
+    font-size: clamp($font-size-2xl, 4vw, $font-size-3xl);
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-md;
+    color: $text-color !important;
     
-    .section-title {
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 700;
-      margin-bottom: 1rem;
-      color: $text-color;
-      
-      &::after {
-        content: '';
-        display: block;
-        width: 80px;
-        height: 4px;
-        background: linear-gradient(135deg, $primary-light, $primary-color);
-        margin: 1rem auto 0;
-        border-radius: 2px;
-      }
+    &::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(135deg, $primary-light, $primary-color);
+      margin: $spacing-md auto 0;
+      border-radius: $border-radius-sm;
     }
-    
-    .section-subtitle {
-      font-size: 1.125rem;
-      color: $text-muted;
-      line-height: 1.6;
-      max-width: 600px;
-      margin: 0 auto;
-    }
+  }
+  
+  .section-subtitle {
+    font-size: $font-size-lg;
+    color: $text-muted !important;
+    line-height: $line-height-relaxed;
+    max-width: 600px;
+    margin: 0 auto;
+  }
 }
 
 // ===== GRID LAYOUT COMPONENTS =====
@@ -194,13 +195,17 @@
   @include button-base;
   
   &--primary {
-    background: $primary-color;
-    color: $text-color;
+    background: $accent-color;
+    color: $bg-light;
+    border: 2px solid $accent-color;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     
     &:hover {
-      background: $primary-light;
+      background: $accent-light;
+      border-color: $accent-light;
       transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba($primary-color, 0.3);
+      box-shadow: 0 8px 25px rgba($accent-color, 0.4);
     }
     
     &:active {
@@ -209,13 +214,16 @@
   }
   
   &--secondary {
-    background: $secondary-color;
-    color: $text-color;
+    background: $primary-light;
+    color: $bg-light;
+    border: 2px solid $primary-light;
+    font-weight: 600;
     
     &:hover {
-      background: $secondary-light;
+      background: $primary-color;
+      border-color: $primary-color;
       transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba($secondary-color, 0.3);
+      box-shadow: 0 8px 25px rgba($primary-light, 0.4);
     }
     
     &:active {
@@ -341,9 +349,9 @@
 .card {
   border: none;
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba($bg-light, 0.1);
   backdrop-filter: blur(20px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 32px rgba($primary-color, 0.1);
   transition: all 0.3s ease;
   
   &:hover {
@@ -393,8 +401,8 @@
     width: 100%;
     padding: 0.75rem 1rem;
     border-radius: 12px;
-    border: 2px solid rgba(212, 185, 150, 0.3);
-    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba($primary-color, 0.3);
+    background: rgba($bg-light, 0.1);
     backdrop-filter: blur(10px);
     transition: all 0.3s ease;
     color: $text-color;
@@ -403,7 +411,7 @@
       outline: none;
       border-color: $primary-light;
       box-shadow: 0 0 0 0.2rem rgba(212, 185, 150, 0.25);
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba($bg-light, 0.15);
     }
     
     &::placeholder {
@@ -479,22 +487,28 @@
   transition: all 0.3s ease;
   
   &-tech {
-    background: linear-gradient(135deg, $primary-color, $primary-color);
-    color: white;
+    background: linear-gradient(135deg, $accent-color, $accent-dark);
+    color: $bg-light;
+    font-weight: 600;
+    border: 1px solid rgba($accent-color, 0.3);
     
     &:hover {
       transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(74, 60, 44, 0.2);
+      box-shadow: 0 5px 15px rgba($accent-color, 0.3);
+      background: linear-gradient(135deg, $accent-light, $accent-color);
     }
   }
   
   &-level {
     background: linear-gradient(135deg, $primary-light, $primary-color);
-    color: $text-color;
+    color: $bg-light;
+    font-weight: 600;
+    border: 1px solid rgba($primary-light, 0.3);
     
     &:hover {
       transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(212, 185, 150, 0.2);
+      box-shadow: 0 5px 15px rgba($primary-light, 0.3);
+      background: linear-gradient(135deg, $primary-color, $primary-light);
     }
   }
 }
@@ -580,8 +594,8 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 20% 80%, rgba(212, 185, 150, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(166, 123, 91, 0.1) 0%, transparent 50%);
+    background: radial-gradient(circle at 20% 80%, rgba($primary-color, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba($accent-color, 0.1) 0%, transparent 50%);
   }
   
   .hero__header {
@@ -657,9 +671,9 @@
       .stat-item {
         text-align: center;
         padding: 1.5rem;
-        background: rgba(255, 255, 255, 0.05);
+        background: rgba($bg-light, 0.05);
         border-radius: 16px;
-        border: 1px solid rgba(212, 185, 150, 0.2);
+        border: 1px solid rgba($primary-color, 0.2);
         backdrop-filter: blur(10px);
         
         .stat-number {
@@ -696,7 +710,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(135deg, rgba(212, 185, 150, 0.1), rgba(166, 123, 91, 0.1));
+        background: linear-gradient(135deg, rgba($primary-color, 0.1), rgba($accent-color, 0.1));
         border-radius: 20px;
         opacity: 0;
         transition: opacity 0.3s ease;
@@ -1101,8 +1115,8 @@
       justify-content: center;
       width: 50px;
       height: 50px;
-      background: rgba(212, 185, 150, 0.1);
-      border: 2px solid rgba(212, 185, 150, 0.3);
+      background: rgba($primary-color, 0.1);
+      border: 2px solid rgba($primary-color, 0.3);
       border-radius: 50%;
       color: $text-muted;
       text-decoration: none;
@@ -1112,7 +1126,7 @@
         background: $primary-light;
         color: $text-color;
         transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(212, 185, 150, 0.3);
+        box-shadow: 0 8px 25px rgba($primary-color, 0.3);
       }
     }
   }
@@ -1217,7 +1231,7 @@
   .footer-bottom {
     text-align: center;
     padding-top: 2rem;
-    border-top: 1px solid rgba(212, 185, 150, 0.2);
+    border-top: 1px solid rgba($primary-color, 0.2);
     
     .footer-copyright {
       margin-bottom: 0.5rem;

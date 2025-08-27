@@ -34,18 +34,24 @@
       line-height: 1.1;
       margin-bottom: 1.5rem;
       color: $text-color;
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
       
       .title-line {
-        display: block;
+        display: inline;
         color: $primary-color;
-        margin-bottom: 0.5rem;
         text-shadow: 0 2px 4px rgba($primary-color, 0.1);
+        
+        &:first-child {
+          margin-right: 0.5rem;
+        }
       }
     }
     
     .hero-subtitle {
       font-size: 1.25rem;
-      color: $text-light;
+      color: $text-muted;
       line-height: 1.6;
       margin-bottom: 2rem;
       font-weight: 400;
