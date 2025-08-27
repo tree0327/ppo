@@ -1,0 +1,125 @@
+// ===== SKILLS SECTION STYLES =====
+
+.skills-section {
+  padding: 6rem 0;
+  
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    
+    @media (max-width: 767px) {
+      grid-template-columns: 1fr;
+    }
+    
+    .skill-category {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 2rem;
+      border: 1px solid rgba(212, 185, 150, 0.2);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(212, 185, 150, 0.1);
+      }
+      
+      .category-header {
+        text-align: center;
+        margin-bottom: 2rem;
+        
+        .category-icon {
+          font-size: 3rem;
+          margin-bottom: 1rem;
+          color: $primary-color;
+        }
+        
+        .category-title {
+          font-size: 1.5rem;
+          font-weight: 600;
+          margin-bottom: 0.5rem;
+          color: $text-color;
+          
+          &::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(135deg, $primary-light, $primary-color);
+            margin: 0.5rem auto 0;
+          }
+        }
+        
+        .category-desc {
+          color: $text-muted;
+          line-height: 1.5;
+        }
+      }
+      
+      .category-skills {
+        .skill-item {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: 1.5rem;
+          padding: 1rem;
+          background: rgba(255, 255, 255, 0.03);
+          border-radius: 12px;
+          border: 1px solid rgba(212, 185, 150, 0.1);
+          
+          .skill-info {
+            .skill-name {
+              font-weight: 500;
+              color: $text-color;
+              margin-bottom: 0.25rem;
+            }
+            
+            .skill-level {
+              font-size: 0.875rem;
+              color: $text-muted;
+            }
+          }
+          
+          .skill-progress {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            
+            .progress-ring {
+              width: 60px;
+              height: 60px;
+              
+              circle {
+                stroke: $primary-light;
+                stroke-width: 4;
+                fill: transparent;
+                stroke-dasharray: 220;
+                stroke-dashoffset: 220;
+                animation: progressRing 2s ease-out forwards;
+              }
+            }
+            
+            .progress-text {
+              font-weight: 600;
+              color: $text-light;
+              font-size: 0.875rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// ===== RESPONSIVE ADJUSTMENTS =====
+@media (max-width: 767px) {
+  .skills-section {
+    padding: 4rem 0;
+    
+    .skills-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}

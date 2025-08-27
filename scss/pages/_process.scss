@@ -1,0 +1,168 @@
+// ===== PROCESS SECTION STYLES =====
+
+.process-section {
+  padding: 6rem 0;
+  background: rgba(255, 255, 255, 0.02);
+  
+  .process-timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, $primary-light, $primary-color);
+      transform: translateX(-50%);
+      
+      @media (max-width: 767px) {
+        left: 30px;
+      }
+    }
+    
+    .timeline-item {
+      position: relative;
+      margin-bottom: 3rem;
+      
+      &:nth-child(odd) {
+        .timeline-content {
+          margin-left: 0;
+          margin-right: 60px;
+          text-align: right;
+          
+          @media (max-width: 767px) {
+            margin-left: 60px !important;
+            margin-right: 0 !important;
+            text-align: left !important;
+          }
+        }
+        
+        .timeline-marker {
+          left: 50%;
+          transform: translateX(-50%);
+          
+          @media (max-width: 767px) {
+            left: 30px !important;
+            transform: none !important;
+          }
+        }
+      }
+      
+      &:nth-child(even) {
+        .timeline-content {
+          margin-left: 60px;
+          margin-right: 0;
+          text-align: left;
+          
+          @media (max-width: 767px) {
+            margin-left: 60px !important;
+            margin-right: 0 !important;
+            text-align: left !important;
+          }
+        }
+        
+        .timeline-marker {
+          left: 50%;
+          transform: translateX(-50%);
+          
+          @media (max-width: 767px) {
+            left: 30px !important;
+            transform: none !important;
+          }
+        }
+      }
+      
+      .timeline-marker {
+        position: absolute;
+        top: 0;
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, $primary-light, $primary-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 8px 25px rgba(212, 185, 150, 0.3);
+        z-index: 2;
+        
+        .marker-icon {
+          font-size: 1.5rem;
+          color: white;
+        }
+        
+        .marker-line {
+          position: absolute;
+          bottom: -30px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 2px;
+          height: 30px;
+          background: $primary-light;
+        }
+      }
+      
+      .timeline-content {
+        position: relative;
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 20px;
+        border: 1px solid rgba(212, 185, 150, 0.2);
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+        
+        &:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 15px 40px rgba(212, 185, 150, 0.1);
+        }
+        
+        .timeline-title {
+          font-size: 1.5rem;
+          font-weight: 600;
+          margin-bottom: 1rem;
+          color: $text-color;
+          
+          &::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(135deg, $primary-light, $primary-color);
+            margin-top: 0.5rem;
+          }
+        }
+        
+        .timeline-desc {
+          color: $text-light;
+          line-height: 1.6;
+          margin-bottom: 1.5rem;
+        }
+        
+        .timeline-details {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+          
+          .detail-item {
+            padding: 0.5rem 1rem;
+            background: rgba(212, 185, 150, 0.1);
+            border-radius: 20px;
+            color: $text-muted;
+            font-size: 0.875rem;
+            border: 1px solid rgba(212, 185, 150, 0.2);
+          }
+        }
+      }
+    }
+  }
+}
+
+// ===== RESPONSIVE ADJUSTMENTS =====
+@media (max-width: 767px) {
+  .process-section {
+    padding: 4rem 0;
+  }
+}

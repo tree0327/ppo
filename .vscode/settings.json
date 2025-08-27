@@ -1,3 +1,30 @@
 {
-    "liveServer.settings.port": 5501
+  "cSpell.enabled": true,
+  "cSpell.ignorePaths": [
+    "package-lock.json",
+    "node_modules/**",
+    ".git/**",
+    "css/**/*.map",
+    "**/*.css.map",
+    "**/*.min.css",
+    "**/*.min.js"
+  ],
+  "cSpell.ignoreWords": [
+    "scss",
+    "gsap",
+    "aos",
+    "beige",
+    "backdrop",
+    "webkit",
+    "moz",
+    "ms"
+  ],
+  "files.exclude": {
+    "**/.sass-cache": true,
+    "**/*.css.map": true
+  },
+  "search.exclude": {
+    "**/.sass-cache": true,
+    "**/*.css.map": true
+  }
 }

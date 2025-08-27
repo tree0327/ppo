@@ -2,569 +2,827 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dabin's portfolio</title>
-
-    <!-- js -->
-    <script src="./js/jquery-3.7.1.min.js"></script>
-    <script src="./js/gsap.min.js"></script>
-    <script src="./js/scrollTrigger.min.js"></script>
-    <script src="./js/ScrollToPlugin.min.js"></script>
-    <script src="./js/isotope.pkgd.min.js"></script>
-    <script src="./js/fullpage.min.js"></script>
-    <script src="./js/bootstrap.min.js"></script>
-    <script src="./js/swiper-bundle.min.js"></script>
-    <script src="./js/main.js"></script>
-    <!-- css -->
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/fullpage.css">
-    <link rel="stylesheet" href="./css/swiper.min.css">
-    <link rel="stylesheet" href="./css/main.css">
-    <link rel="stylesheet" href="./css/layout.css">
+    <title>Creative Developer - 창의성을 구현하는 개발자</title>
+    <meta name="description" content="창의성과 기술의 만남으로 새로운 경험을 만드는 프론트엔드 개발자 포트폴리오">
+    <meta name="keywords" content="포트폴리오, 웹개발자, 프론트엔드, React, SCSS, JavaScript">
+    <meta name="author" content="Creative Developer">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Creative Developer - 창의성을 구현하는 개발자">
+    <meta property="og:description" content="창의성과 기술의 만남으로 새로운 경험을 만드는 프론트엔드 개발자 포트폴리오">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-domain.com">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 </head>
 <body>
-    <!-- header -->
-    <header class="header">
-        <h1 class="logo"><a href="/">DABIN.</a></h1>
-        <a href="#contact" class="link_contact">CONTACT</a>
-    </header>
-    <!-- /header -->
-
-    <!-- main -->
-     <main class="ct" id="ct">
-        <div id="fullpage">
-            <section class="section sc_intro" id="page01">
-                <span class="bg01"></span>
-                <span class="bg02"></span>
-                <span class="bg03"></span>
-                <span class="bg04"></span>
-                <h2 class="sc_title">
-                    <span>안녕하세요.</span>
-                    <span>지독한 ISTP</span>
-                    <span>저는 웹 퍼블리셔 김다빈입니다.</span>
-                    <span>방문해주셔서 감사합니다.</span>
-                </h2>
-            </section>
-
-            <section class="section sc_works" id="works page02">
-                <div class="inner">
-                    <h2 class="sc_title">WORKS.</h2>
-                    <div class="swiper">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <a href="https://www.hycu.ac.kr/content/GrdExhibition/19_5th/NewMedia.html" target="_blank">
-                                    <div class="img">
-                                        <img src="./images/hycu-1.png" alt="HYCU 졸업전시회 프로젝트">
-                                        <div class="title">
-                                            <div class="name">Project</div>
-                                            <div class="sub">hycu(한양사이버대학교 졸업전시회)</div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <button class="button" type="button" data-toggle="modal" data-target="#modal-hycu">자세히 보기</button>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="https://www.urscope.co.kr/" target="_blank">
-                                    <div class="img">
-                                        <img src="./images/urscope-1.png" alt="URSCOPE 프로젝트">
-                                        <div class="title">
-                                            <div class="name">Project</div>
-                                            <div class="sub">URSCOPE</div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <button class="button" type="button" data-toggle="modal" data-target="#modal-urscope">자세히 보기</button>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="https://www.ikmr.co.kr/" target="_blank">
-                                    <div class="img">
-                                        <img src="./images/kmr-1.png" alt="KMR 프로젝트">
-                                        <div class="title">
-                                            <div class="name">Project</div>
-                                            <div class="sub">KMR(한국경영인증원)</div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <button class="button" type="button" data-toggle="modal" data-target="#modal-kmr">자세히 보기</button>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="https://corfa.or.kr/main/?load_popup=1&filter=on" target="_blank">
-                                    <div class="img">
-                                        <img src="./images/corfa1.jpg" alt="Corfa 프로젝트">
-                                        <div class="title">
-                                            <div class="name">Project</div>
-                                            <div class="sub">Corfa(연구관리혁신협의회)</div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <button class="button" type="button" data-toggle="modal" data-target="#modal-corfa">자세히 보기</button>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="https://tree0327.github.io/landing/index.html" target="_blank">
-                                    <div class="img">
-                                        <img src="./images/landing1.jpg" alt="랜딩페이지 프로젝트">
-                                        <div class="title">
-                                            <div class="name">portfolio</div>
-                                            <div class="sub">랜딩페이지 제작</div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <button class="button" type="button" data-toggle="modal" data-target="#modal-landing">자세히 보기</button>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="#none">
-                                    <div class="img">
-                                        <img src="./images/smartppt1.jpg" alt="SmartPPT 프로젝트">
-                                        <div class="title">
-                                            <div class="name">Project</div>
-                                            <div class="sub">SmartPPT2024</div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <button class="button" type="button" data-toggle="modal" data-target="#modal-smartppt">자세히 보기</button>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="#none">
-                                    <div class="img">
-                                        <img src="./images/aidt1.jpg" alt="AIDT 초등수학 프로젝트">
-                                        <div class="title">
-                                            <div class="name">Project</div>
-                                            <div class="sub">AIDT 초등수학</div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <button class="button" type="button" data-toggle="modal" data-target="#modal-aidt">자세히 보기</button>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="#none">
-                                    <div class="img">
-                                        <img src="./images/iscream1.jpg" alt="i-scream 프로젝트">
-                                        <div class="title">
-                                            <div class="name">Project</div>
-                                            <div class="sub">i-scream 전자저작물</div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <button class="button" type="button" data-toggle="modal" data-target="#modal-iscream">자세히 보기</button>
-                            </div>                            
-                            <div class="swiper-slide">
-                                <a href="#none">
-                                    <div class="img">
-                                        <img src="./images/mmath1.jpg" alt="능률 중등수학 프로젝트">
-                                        <div class="title">
-                                            <div class="name">Project</div>
-                                            <div class="sub">능률 중등 수학</div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <button class="button" type="button" data-toggle="modal" data-target="#modal-mmath">자세히 보기</button>
-                            </div>
-                        </div>
-                        <div class="swiper-pagination"></div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="section sc_about" id="page03">
-                <h2 class="sc_title">ABOUT.</h2>
-                <div class="about_content">
-                    <p>프론트엔드 개발자를 꿈꾸는 김다빈입니다.</p>
-                    <p>사용자 경험을 중요시하며, 창의적이고 직관적인 웹사이트를 만드는 것을 좋아합니다.</p>
-                </div>
-            </section>
-
-            <section class="section sc_contact" id="contact page04">
-                <h2 class="sc_title">CONTACT.</h2>
-                <div class="contact_content">
-                    <p>Email: dabin@example.com</p>
-                    <p>Phone: 010-1234-5678</p>
-                    <p>GitHub: github.com/dabin</p>
-                </div>
-            </section>
-        </div>
-    </main>
-    <!-- /main -->
-
-    <!-- footer -->
-    <footer class="footer">
-        <h3 class="txt">
-            Thank you.<br>
-        </h3>
-        <p class="copyright">&copy; 2025. All rights reserved.</p>
-    </footer>
-    <!-- /footer -->
-
-    <!-- Project Modals -->
+    <!-- Skip to main content link -->
+    <a href="#main-content" class="skip-link">메인 콘텐츠로 건너뛰기</a>
     
-    <!-- HYCU 졸업전시회 모달 -->
-    <div id="modal-hycu" class="modal modal-inter fade w1500" aria-modal="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <button type="button" class="icon icon-modal-close" data-dismiss="modal">×</button>
-                <div class="modal-body scrolled">
-                    <div class="modal-text-wrap">
-                        <h3>HYCU 졸업전시회 프로젝트</h3>
-                        <div class="project-info">
-                            <div class="project-image">
-                                <img src="./images/hycu-1.png" alt="HYCU 졸업전시회">
+    <!-- SVG Gradients -->
+    <img src="img/svg-gradients.svg" alt="" class="svg-gradients" aria-hidden="true">
+    
+    <!-- Floating Navigation -->
+    <nav class="floating-nav" aria-label="페이지 내비게이션">
+        <ul class="nav-list">
+            <li><a href="#hero" class="nav-dot active" data-section="hero" aria-label="홈 섹션으로 이동">
+                <span class="dot-label">Home</span>
+            </a></li>
+            <li><a href="#about" class="nav-dot" data-section="about" aria-label="소개 섹션으로 이동">
+                <span class="dot-label">About</span>
+            </a></li>
+            <li><a href="#projects" class="nav-dot" data-section="projects" aria-label="프로젝트 섹션으로 이동">
+                <span class="dot-label">Projects</span>
+            </a></li>
+            <li><a href="#process" class="nav-dot" data-section="process" aria-label="프로세스 섹션으로 이동">
+                <span class="dot-label">Process</span>
+            </a></li>
+            <li><a href="#skills" class="nav-dot" data-section="skills" aria-label="기술 섹션으로 이동">
+                <span class="dot-label">Skills</span>
+            </a></li>
+            <li><a href="#contact" class="nav-dot" data-section="contact" aria-label="연락처 섹션으로 이동">
+                <span class="dot-label">Contact</span>
+            </a></li>
+        </ul>
+    </nav>
+    
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section" aria-labelledby="hero-title">
+            <div class="hero-background">
+                <div class="hero-particles" aria-hidden="true"></div>
+            </div>
+            
+            <div class="section-container">
+                <div class="grid-2-cols align-items-center min-vh-100">
+                    <div class="grid-item" data-aos="fade-up">
+                        <header class="hero-header">
+                            <h1 id="hero-title" class="hero-title">
+                                <span class="title-line">창의적인</span>
+                                <span class="title-line">웹 개발자</span>
+                            </h1>
+                            <p class="hero-subtitle">
+                                혁신적인 디자인과 사용자 경험을 만드는<br>
+                                프론트엔드 개발자입니다
+                            </p>
+                        </header>
+                        
+                        <div class="hero-actions">
+                            <a href="#projects" class="btn btn-primary" aria-label="프로젝트 섹션으로 이동">
+                                <span class="btn-text">프로젝트 보기</span>
+                                <span class="btn-icon" aria-hidden="true">→</span>
+                            </a>
+                            <a href="#contact" class="btn btn-outline" aria-label="연락처 섹션으로 이동">
+                                <span class="btn-text">연락하기</span>
+                                <span class="btn-icon" aria-hidden="true">✉</span>
+                            </a>
+                        </div>
+                        
+                        <div class="hero-scroll-indicator" aria-hidden="true">
+                            <div class="scroll-arrow"></div>
+                            <span class="scroll-text">스크롤하여 더 알아보기</span>
+                        </div>
+                    </div>
+                    
+                    <div class="grid-item" data-aos="fade-left" data-aos-delay="300">
+                        <div class="code-window" role="img" aria-label="포트폴리오 코드 예시">
+                            <div class="code-header">
+                                <div class="code-buttons" aria-hidden="true">
+                                    <span class="code-btn code-btn-red"></span>
+                                    <span class="code-btn code-btn-yellow"></span>
+                                    <span class="code-btn code-btn-green"></span>
+                                </div>
+                                <div class="code-title">portfolio.js</div>
                             </div>
-                            <div class="project-details">
-                                <h4>프로젝트 개요</h4>
-                                <p>한양사이버대학교 19기 5차 졸업전시회 웹사이트 제작</p>
-                                
-                                <h4>주요 기능</h4>
-                                <ul>
-                                    <li>반응형 웹 디자인</li>
-                                    <li>졸업작품 갤러리</li>
-                                    <li>전시회 일정 및 안내</li>
-                                    <li>참가자 정보 관리</li>
-                                </ul>
-                                
-                                <h4>사용 기술</h4>
-                                <ul>
-                                    <li>HTML5, CSS3, JavaScript</li>
-                                    <li>반응형 웹 디자인</li>
-                                    <li>웹 접근성 고려</li>
-                                </ul>
-                                
-                                <h4>프로젝트 기간</h4>
-                                <p>2024년 3월 ~ 5월 (3개월)</p>
+                            <div class="code-content">
+                                <pre>
+                                    <code>
+                                        <span class="keyword">class</span> <span class="class">Portfolio</span> {
+                                        <span class="keyword">constructor</span>() {
+                                            <span class="keyword">this</span>.<span class="property">name</span> = <span class="string">'창의적인 개발자'</span>;
+                                            <span class="keyword">this</span>.<span class="property">skills</span> = [<span class="string">'React'</span>, <span class="string">'SCSS'</span>, <span class="string">'GSAP'</span>];
+                                        }
+                                        
+                                        <span class="method">create</span>() {
+                                            <span class="keyword">return</span> <span class="string">'혁신적인 웹사이트'</span>;
+                                        }
+                                        }
+                                    </code>
+                                </pre>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <!-- URSCOPE 모달 -->
-    <div id="modal-urscope" class="modal modal-inter fade w1500" aria-modal="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <button type="button" class="icon icon-modal-close" data-dismiss="modal">×</button>
-                <div class="modal-body scrolled">
-                    <div class="modal-text-wrap">
-                        <h3>URSCOPE 프로젝트</h3>
-                        <div class="project-info">
-                            <div class="project-image">
-                                <img src="./images/urscope-1.png" alt="URSCOPE">
+        <!-- About Section -->
+        <section id="about" class="about-section" aria-labelledby="about-title">
+            <div class="section-container">
+                <header class="section-header" data-aos="fade-up">
+                    <span class="section-number">02</span>
+                    <h2 id="about-title" class="section-title">About Me</h2>
+                    <p class="section-subtitle">창의적인 아이디어를 현실로 구현하는 개발자</p>
+                </header>
+                
+                <div class="grid-2-cols align-items-center">
+                    <div class="grid-item" data-aos="fade-right">
+                        <div class="about-description">
+                            <div class="about-text">
+                                <p>안녕하세요! 저는 사용자 경험을 최우선으로 생각하는 프론트엔드 개발자입니다. 아름다운 디자인과 부드러운 애니메이션을 통해 사용자들이 즐거워할 수 있는 웹사이트를 만드는 것을 좋아합니다.</p>
+                                <p>React, Vue.js, SCSS 등 최신 기술을 활용하여 반응형이고 접근성이 좋은 웹 애플리케이션을 개발하고 있습니다. 항상 새로운 기술을 배우고 적용하는 것에 열정을 가지고 있습니다.</p>
                             </div>
-                            <div class="project-details">
-                                <h4>프로젝트 개요</h4>
-                                <p>URSCOPE 기업 웹사이트 리뉴얼 및 개발</p>
-                                
-                                <h4>주요 기능</h4>
-                                <ul>
-                                    <li>기업 소개 및 비전</li>
-                                    <li>서비스 소개</li>
-                                    <li>고객 문의 및 상담</li>
-                                    <li>뉴스 및 공지사항</li>
-                                </ul>
-                                
-                                <h4>사용 기술</h4>
-                                <ul>
-                                    <li>HTML5, CSS3, JavaScript</li>
-                                    <li>Bootstrap 프레임워크</li>
-                                    <li>SEO 최적화</li>
-                                </ul>
-                                
-                                <h4>프로젝트 기간</h4>
-                                <p>2024년 1월 ~ 3월 (3개월)</p>
+                            
+                            <div class="about-stats">
+                                <div class="stat-item">
+                                    <div class="stat-number">3+</div>
+                                    <div class="stat-label">년 경력</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number">20+</div>
+                                    <div class="stat-label">프로젝트</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number">100%</div>
+                                    <div class="stat-label">만족도</div>
+                                </div>
                             </div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid-item" data-aos="fade-left">
+                        <div class="about-image-container">
+                            <div class="profile-image">
+                                <img src="img/profile.jpg" alt="프로필 사진" width="400" height="400" loading="lazy">
+                                <div class="image-overlay" aria-hidden="true"></div>
+                            </div>
+                            <div class="card-decoration card-decoration-circle" aria-hidden="true"></div>
+                            <div class="card-decoration card-decoration-square" aria-hidden="true"></div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <!-- KMR 모달 -->
-    <div id="modal-kmr" class="modal modal-inter fade w1500" aria-modal="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <button type="button" class="icon icon-modal-close" data-dismiss="modal">×</button>
-                <div class="modal-body scrolled">
-                    <div class="modal-text-wrap">
-                        <h3>KMR(한국경영인증원) 프로젝트</h3>
-                        <div class="project-info">
-                            <div class="project-image">
-                                <img src="./images/kmr-1.png" alt="KMR">
+        <!-- Projects Section -->
+        <section id="projects" class="projects-section" aria-labelledby="projects-title">
+            <div class="section-container">
+                <header class="section-header" data-aos="fade-up">
+                    <span class="section-number">03</span>
+                    <h2 id="projects-title" class="section-title">Projects</h2>
+                    <p class="section-subtitle">창의적인 아이디어로 만든 프로젝트들을 소개합니다</p>
+                </header>
+                
+                <div class="projects-layout">
+                    <!-- Project Buttons at Top -->
+                    <div class="projects-buttons-container" data-aos="fade-up">
+                        <div class="project-buttons-container" role="tablist" aria-label="프로젝트 선택">
+                            <div class="project-buttons-list">
+                                <button class="btn btn-outline active" data-project="0" role="tab" aria-selected="true" aria-controls="project-panel-0" id="project-btn-0">
+                                    <span class="btn-icon" aria-hidden="true">🎓</span>
+                                    <span class="btn-text">HYCU 졸업전시회</span>
+                                </button>
+                                <button class="btn btn-outline" data-project="1" role="tab" aria-selected="false" aria-controls="project-panel-1" id="project-btn-1">
+                                    <span class="btn-icon" aria-hidden="true">🏢</span>
+                                    <span class="btn-text">URSCOPE</span>
+                                </button>
+                                <button class="btn btn-outline" data-project="2" role="tab" aria-selected="false" aria-controls="project-panel-2" id="project-btn-2">
+                                    <span class="btn-icon" aria-hidden="true">🏛️</span>
+                                    <span class="btn-text">KMR</span>
+                                </button>
+                                <button class="btn btn-outline" data-project="3" role="tab" aria-selected="false" aria-controls="project-panel-3" id="project-btn-3">
+                                    <span class="btn-icon" aria-hidden="true">🔬</span>
+                                    <span class="btn-text">Corfa</span>
+                                </button>
+                                <button class="btn btn-outline" data-project="4" role="tab" aria-selected="false" aria-controls="project-panel-4" id="project-btn-4">
+                                    <span class="btn-icon" aria-hidden="true">🚀</span>
+                                    <span class="btn-text">랜딩페이지</span>
+                                </button>
+                                <button class="btn btn-outline" data-project="5" role="tab" aria-selected="false" aria-controls="project-panel-5" id="project-btn-5">
+                                    <span class="btn-icon" aria-hidden="true">📊</span>
+                                    <span class="btn-text">SmartPPT2024</span>
+                                </button>
+                                <button class="btn btn-outline" data-project="6" role="tab" aria-selected="false" aria-controls="project-panel-6" id="project-btn-6">
+                                    <span class="btn-icon" aria-hidden="true">🧮</span>
+                                    <span class="btn-text">AIDT 초등수학</span>
+                                </button>
+                                <button class="btn btn-outline" data-project="7" role="tab" aria-selected="false" aria-controls="project-panel-7" id="project-btn-7">
+                                    <span class="btn-icon" aria-hidden="true">🍦</span>
+                                    <span class="btn-text">i-scream</span>
+                                </button>
+                                <button class="btn btn-outline" data-project="8" role="tab" aria-selected="false" aria-controls="project-panel-8" id="project-btn-8">
+                                    <span class="btn-icon" aria-hidden="true">📚</span>
+                                    <span class="btn-text">능률 중등수학</span>
+                                </button>
                             </div>
-                            <div class="project-details">
-                                <h4>프로젝트 개요</h4>
-                                <p>한국경영인증원 공식 웹사이트 제작</p>
-                                
-                                <h4>주요 기능</h4>
-                                <ul>
-                                    <li>인증 서비스 안내</li>
-                                    <li>신청 및 절차 안내</li>
-                                    <li>인증 현황 조회</li>
-                                    <li>고객 지원 시스템</li>
-                                </ul>
-                                
-                                <h4>사용 기술</h4>
-                                <ul>
-                                    <li>HTML5, CSS3, JavaScript</li>
-                                    <li>jQuery 및 플러그인 활용</li>
-                                    <li>웹 표준 준수</li>
-                                </ul>
-                                
-                                <h4>프로젝트 기간</h4>
-                                <p>2023년 11월 ~ 2024년 1월 (3개월)</p>
+                            <!-- Custom Progress Bar -->
+                            <div class="buttons-progress-bar">
+                                <div class="buttons-progress-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project Content: Info + iPad -->
+                    <div class="projects-content">
+                        <div class="projects-sidebar" data-aos="fade-right">
+                            <div class="project-info" role="tabpanel" id="project-panel-0" aria-labelledby="project-btn-0">
+                                <h3 class="project-title">HYCU 졸업전시회 프로젝트</h3>
+                                <p class="project-desc">한양사이버대학교 19기 5차 졸업전시회 웹사이트 제작</p>
+                                <div class="project-tags" aria-label="사용된 기술">
+                                    <span class="badge badge-tech">HTML5</span>
+                                    <span class="badge badge-tech">CSS3</span>
+                                    <span class="badge badge-tech">JavaScript</span>
+                                    <span class="badge badge-tech">반응형 웹</span>
+                                </div>
+                                <div class="project-actions">
+                                    <a href="#" class="btn btn-primary" aria-label="프로젝트 보기">
+                                        <span class="btn-icon" aria-hidden="true">👁️</span>
+                                        <span class="btn-text">프로젝트 보기</span>
+                                    </a>
+                                    <a href="#" class="btn btn-secondary" aria-label="GitHub 저장소">
+                                        <span class="btn-icon" aria-hidden="true">📁</span>
+                                        <span class="btn-text">GitHub</span>
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="project-info" role="tabpanel" id="project-panel-1" aria-labelledby="project-btn-1" style="display: none;">
+                                <h3 class="project-title">URSCOPE 프로젝트</h3>
+                                <p class="project-desc">URSCOPE 기업 웹사이트 리뉴얼 및 개발</p>
+                                <div class="project-tags" aria-label="사용된 기술">
+                                    <span class="badge badge-tech">HTML5</span>
+                                    <span class="badge badge-tech">CSS3</span>
+                                    <span class="badge badge-tech">JavaScript</span>
+                                    <span class="badge badge-tech">Bootstrap</span>
+                                </div>
+                                <div class="project-actions">
+                                    <a href="#" class="btn btn-primary" aria-label="프로젝트 보기">
+                                        <span class="btn-icon" aria-hidden="true">👁️</span>
+                                        <span class="btn-text">프로젝트 보기</span>
+                                    </a>
+                                    <a href="#" class="btn btn-secondary" aria-label="GitHub 저장소">
+                                        <span class="btn-icon" aria-hidden="true">📁</span>
+                                        <span class="btn-text">GitHub</span>
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="project-info" role="tabpanel" id="project-panel-2" aria-labelledby="project-btn-2" style="display: none;">
+                                <h3 class="project-title">KMR(한국경영인증원) 프로젝트</h3>
+                                <p class="project-desc">한국경영인증원 공식 웹사이트 제작</p>
+                                <div class="project-tags" aria-label="사용된 기술">
+                                    <span class="badge badge-tech">HTML5</span>
+                                    <span class="badge badge-tech">CSS3</span>
+                                    <span class="badge badge-tech">JavaScript</span>
+                                    <span class="badge badge-tech">jQuery</span>
+                                </div>
+                                <div class="project-actions">
+                                    <a href="#" class="btn btn-primary" aria-label="프로젝트 보기">
+                                        <span class="btn-icon" aria-hidden="true">👁️</span>
+                                        <span class="btn-text">프로젝트 보기</span>
+                                    </a>
+                                    <a href="#" class="btn btn-secondary" aria-label="GitHub 저장소">
+                                        <span class="btn-icon" aria-hidden="true">📁</span>
+                                        <span class="btn-text">GitHub</span>
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="project-info" role="tabpanel" id="project-panel-3" aria-labelledby="project-btn-3" style="display: none;">
+                                <h3 class="project-title">Corfa(연구관리혁신협의회) 프로젝트</h3>
+                                <p class="project-desc">연구관리혁신협의회 웹사이트 제작</p>
+                                <div class="project-tags" aria-label="사용된 기술">
+                                    <span class="badge badge-tech">HTML5</span>
+                                    <span class="badge badge-tech">CSS3</span>
+                                    <span class="badge badge-tech">JavaScript</span>
+                                    <span class="badge badge-tech">반응형 웹</span>
+                                </div>
+                                <div class="project-actions">
+                                    <a href="#" class="btn btn-primary" aria-label="프로젝트 보기">
+                                        <span class="btn-icon" aria-hidden="true">👁️</span>
+                                        <span class="btn-text">프로젝트 보기</span>
+                                    </a>
+                                    <a href="#" class="btn btn-secondary" aria-label="GitHub 저장소">
+                                        <span class="btn-icon" aria-hidden="true">📁</span>
+                                        <span class="btn-text">GitHub</span>
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="project-info" role="tabpanel" id="project-panel-4" aria-labelledby="project-btn-4" style="display: none;">
+                                <h3 class="project-title">랜딩페이지 제작 프로젝트</h3>
+                                <p class="project-desc">포트폴리오용 랜딩페이지 제작</p>
+                                <div class="project-tags" aria-label="사용된 기술">
+                                    <span class="badge badge-tech">HTML5</span>
+                                    <span class="badge badge-tech">CSS3</span>
+                                    <span class="badge badge-tech">JavaScript</span>
+                                    <span class="badge badge-tech">GSAP</span>
+                                </div>
+                                <div class="project-actions">
+                                    <a href="#" class="btn btn-primary" aria-label="프로젝트 보기">
+                                        <span class="btn-icon" aria-hidden="true">👁️</span>
+                                        <span class="btn-text">프로젝트 보기</span>
+                                    </a>
+                                    <a href="#" class="btn btn-secondary" aria-label="GitHub 저장소">
+                                        <span class="btn-icon" aria-hidden="true">📁</span>
+                                        <span class="btn-text">GitHub</span>
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="project-info" role="tabpanel" id="project-panel-5" aria-labelledby="project-btn-5" style="display: none;">
+                                <h3 class="project-title">SmartPPT2024 프로젝트</h3>
+                                <p class="project-desc">SmartPPT2024 교육 콘텐츠 제작</p>
+                                <div class="project-tags" aria-label="사용된 기술">
+                                    <span class="badge badge-tech">HTML5</span>
+                                    <span class="badge badge-tech">CSS3</span>
+                                    <span class="badge badge-tech">JavaScript</span>
+                                    <span class="badge badge-tech">교육 콘텐츠</span>
+                                </div>
+                                <div class="project-actions">
+                                    <a href="#" class="btn btn-primary" aria-label="프로젝트 보기">
+                                        <span class="btn-icon" aria-hidden="true">👁️</span>
+                                        <span class="btn-text">프로젝트 보기</span>
+                                    </a>
+                                    <a href="#" class="btn btn-secondary" aria-label="GitHub 저장소">
+                                        <span class="btn-icon" aria-hidden="true">📁</span>
+                                        <span class="btn-text">GitHub</span>
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="project-info" role="tabpanel" id="project-panel-6" aria-labelledby="project-btn-6" style="display: none;">
+                                <h3 class="project-title">AIDT 초등수학 프로젝트</h3>
+                                <p class="project-desc">초등학생을 위한 수학 교육 콘텐츠 제작</p>
+                                <div class="project-tags" aria-label="사용된 기술">
+                                    <span class="badge badge-tech">HTML5</span>
+                                    <span class="badge badge-tech">CSS3</span>
+                                    <span class="badge badge-tech">JavaScript</span>
+                                    <span class="badge badge-tech">교육 게임</span>
+                                </div>
+                                <div class="project-actions">
+                                    <a href="#" class="btn btn-primary" aria-label="프로젝트 보기">
+                                        <span class="btn-icon" aria-hidden="true">👁️</span>
+                                        <span class="btn-text">프로젝트 보기</span>
+                                    </a>
+                                    <a href="#" class="btn btn-secondary" aria-label="GitHub 저장소">
+                                        <span class="btn-icon" aria-hidden="true">📁</span>
+                                        <span class="btn-text">GitHub</span>
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="project-info" role="tabpanel" id="project-panel-7" aria-labelledby="project-btn-7" style="display: none;">
+                                <h3 class="project-title">i-scream 전자저작물 프로젝트</h3>
+                                <p class="project-desc">i-scream 전자저작물 콘텐츠 제작</p>
+                                <div class="project-tags" aria-label="사용된 기술">
+                                    <span class="badge badge-tech">HTML5</span>
+                                    <span class="badge badge-tech">CSS3</span>
+                                    <span class="badge badge-tech">JavaScript</span>
+                                    <span class="badge badge-tech">멀티미디어</span>
+                                </div>
+                                <div class="project-actions">
+                                    <a href="#" class="btn btn-primary" aria-label="프로젝트 보기">
+                                        <span class="btn-icon" aria-hidden="true">👁️</span>
+                                        <span class="btn-text">프로젝트 보기</span>
+                                    </a>
+                                    <a href="#" class="btn btn-secondary" aria-label="GitHub 저장소">
+                                        <span class="btn-icon" aria-hidden="true">📁</span>
+                                        <span class="btn-text">GitHub</span>
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="project-info" role="tabpanel" id="project-panel-8" aria-labelledby="project-btn-8" style="display: none;">
+                                <h3 class="project-title">능률 중등수학 프로젝트</h3>
+                                <p class="project-desc">능률교육 중등수학 교재 콘텐츠 제작</p>
+                                <div class="project-tags" aria-label="사용된 기술">
+                                    <span class="badge badge-tech">HTML5</span>
+                                    <span class="badge badge-tech">CSS3</span>
+                                    <span class="badge badge-tech">JavaScript</span>
+                                    <span class="badge badge-tech">교육 콘텐츠</span>
+                                </div>
+                                <div class="project-actions">
+                                    <a href="#" class="btn btn-primary" aria-label="프로젝트 보기">
+                                        <span class="btn-icon" aria-hidden="true">👁️</span>
+                                        <span class="btn-text">프로젝트 보기</span>
+                                    </a>
+                                    <a href="#" class="btn btn-secondary" aria-label="GitHub 저장소">
+                                        <span class="btn-icon" aria-hidden="true">📁</span>
+                                        <span class="btn-text">GitHub</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="projects-ipad-container" data-aos="fade-left">
+                            <div class="ipad-frame" role="img" aria-label="프로젝트 미리보기 아이패드">
+                                <div class="ipad-screen">
+                                    <div class="ipad-content">
+                                        <div class="project-image-container" tabindex="0" role="img" aria-label="프로젝트 이미지" aria-grabbed="false">
+                                            <img src="img/hycu-1.png" alt="HYCU 졸업전시회 프로젝트 미리보기" class="project-image" loading="lazy">
+                                        </div>
+                                    </div>
+                                    <!-- iPad Progress Bar -->
+                                    <div class="ipad-progress-bar">
+                                        <div class="progress-track">
+                                            <div class="progress-fill"></div>
+                                        </div>
+                                        <div class="progress-text">0%</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <!-- Corfa 모달 -->
-    <div id="modal-corfa" class="modal modal-inter fade w1500" aria-modal="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <button type="button" class="icon icon-modal-close" data-dismiss="modal">×</button>
-                <div class="modal-body scrolled">
-                    <div class="modal-text-wrap">
-                        <h3>Corfa(연구관리혁신협의회) 프로젝트</h3>
-                        <div class="project-info">
-                            <div class="project-image">
-                                <img src="./images/corfa1.jpg" alt="Corfa">
+        <!-- Process Section -->
+        <section id="process" class="process-section" aria-labelledby="process-title">
+            <div class="section-container">
+                <header class="section-header" data-aos="fade-up">
+                    <span class="section-number">04</span>
+                    <h2 id="process-title" class="section-title">Creative Process</h2>
+                    <p class="section-subtitle">창작의 여정을 따라가보세요</p>
+                </header>
+                <div class="process-timeline" role="list" aria-label="창작 프로세스 타임라인">
+                    <div class="timeline-item" data-aos="fade-right" role="listitem">
+                        <div class="timeline-marker">
+                            <div class="marker-icon" aria-hidden="true">💡</div>
+                            <div class="marker-line" aria-hidden="true"></div>
+                        </div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Inspiration</h3>
+                            <p class="timeline-desc">세상의 모든 것에서 영감을 찾아 새로운 아이디어를 구상합니다</p>
+                            <div class="timeline-details" role="list" aria-label="영감 단계 세부사항">
+                                <span class="detail-item" role="listitem">브레인스토밍</span>
+                                <span class="detail-item" role="listitem">리서치</span>
+                                <span class="detail-item" role="listitem">스케치</span>
                             </div>
-                            <div class="project-details">
-                                <h4>프로젝트 개요</h4>
-                                <p>연구관리혁신협의회 웹사이트 제작</p>
-                                
-                                <h4>주요 기능</h4>
-                                <ul>
-                                    <li>협의회 소개 및 구성원</li>
-                                    <li>연구 과제 및 성과</li>
-                                    <li>회의록 및 자료실</li>
-                                    <li>공지사항 및 소식</li>
-                                </ul>
-                                
-                                <h4>사용 기술</h4>
-                                <ul>
-                                    <li>HTML5, CSS3, JavaScript</li>
-                                    <li>반응형 웹 디자인</li>
-                                    <li>웹 접근성 고려</li>
-                                </ul>
-                                
-                                <h4>프로젝트 기간</h4>
-                                <p>2023년 9월 ~ 11월 (3개월)</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item" data-aos="fade-left" data-aos-delay="200" role="listitem">
+                        <div class="timeline-marker">
+                            <div class="marker-icon" aria-hidden="true">🎨</div>
+                            <div class="marker-line" aria-hidden="true"></div>
+                        </div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Design</h3>
+                            <p class="timeline-desc">사용자 경험을 중심으로 직관적이고 아름다운 디자인을 만듭니다</p>
+                            <div class="timeline-details" role="list" aria-label="디자인 단계 세부사항">
+                                <span class="detail-item" role="listitem">와이어프레임</span>
+                                <span class="detail-item" role="listitem">프로토타입</span>
+                                <span class="detail-item" role="listitem">UI/UX</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item" data-aos="fade-right" data-aos-delay="400" role="listitem">
+                        <div class="timeline-marker">
+                            <div class="marker-icon" aria-hidden="true">⚡</div>
+                            <div class="marker-line" aria-hidden="true"></div>
+                        </div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Development</h3>
+                            <p class="timeline-desc">최신 기술을 활용하여 안정적이고 확장 가능한 코드를 작성합니다</p>
+                            <div class="timeline-details" role="list" aria-label="개발 단계 세부사항">
+                                <span class="detail-item" role="listitem">코딩</span>
+                                <span class="detail-item" role="listitem">테스트</span>
+                                <span class="detail-item" role="listitem">최적화</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item" data-aos="fade-left" data-aos-delay="600" role="listitem">
+                        <div class="timeline-marker">
+                            <div class="marker-icon" aria-hidden="true">🚀</div>
+                            <div class="marker-line" aria-hidden="true"></div>
+                        </div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Launch</h3>
+                            <p class="timeline-desc">완성된 프로젝트를 세상에 공개하고 지속적인 개선을 이어갑니다</p>
+                            <div class="timeline-details" role="list" aria-label="런칭 단계 세부사항">
+                                <span class="detail-item" role="listitem">배포</span>
+                                <span class="detail-item" role="listitem">모니터링</span>
+                                <span class="detail-item" role="listitem">업데이트</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <!-- 랜딩페이지 모달 -->
-    <div id="modal-landing" class="modal modal-inter fade w1500" aria-modal="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <button type="button" class="icon icon-modal-close" data-dismiss="modal">×</button>
-                <div class="modal-body scrolled">
-                    <div class="modal-text-wrap">
-                        <h3>랜딩페이지 제작 프로젝트</h3>
-                        <div class="project-info">
-                            <div class="project-image">
-                                <img src="./images/landing1.jpg" alt="랜딩페이지">
+        <!-- Skills Section -->
+        <section id="skills" class="skills-section" aria-labelledby="skills-title">
+            <div class="section-container">
+                <header class="section-header" data-aos="fade-up">
+                    <span class="section-number">05</span>
+                    <h2 id="skills-title" class="section-title">Technical Skills</h2>
+                    <p class="section-subtitle">창의성을 구현하는 기술력</p>
+                </header>
+                <div class="skills-grid" role="list" aria-label="기술 스킬 카테고리">
+                    <article class="skill-category skill-category-frontend" data-aos="fade-up" role="listitem">
+                        <header class="category-header">
+                            <div class="category-icon" aria-hidden="true">🎨</div>
+                            <h3 class="category-title">Frontend</h3>
+                            <p class="category-desc">사용자 경험을 만드는 프론트엔드 기술</p>
+                        </header>
+                        <div class="category-skills" role="list" aria-label="프론트엔드 기술 목록">
+                            <div class="skill-item" role="listitem">
+                                <div class="skill-info">
+                                    <div class="skill-name">React</div>
+                                    <div class="skill-level">Advanced</div>
+                                </div>
+                                <div class="skill-progress" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" aria-label="React 숙련도 95%">
+                                    <img src="img/progress-ring.svg" alt="" class="progress-ring" aria-hidden="true">
+                                    <div class="progress-text">95%</div>
+                                </div>
                             </div>
-                            <div class="project-details">
-                                <h4>프로젝트 개요</h4>
-                                <p>포트폴리오용 랜딩페이지 제작</p>
-                                
-                                <h4>주요 기능</h4>
-                                <ul>
-                                    <li>원페이지 스크롤 디자인</li>
-                                    <li>애니메이션 효과</li>
-                                    <li>반응형 레이아웃</li>
-                                    <li>모던한 UI/UX</li>
-                                </ul>
-                                
-                                <h4>사용 기술</h4>
-                                <ul>
-                                    <li>HTML5, CSS3, JavaScript</li>
-                                    <li>GSAP 애니메이션</li>
-                                    <li>FullPage.js</li>
-                                    <li>CSS Grid & Flexbox</li>
-                                </ul>
-                                
-                                <h4>프로젝트 기간</h4>
-                                <p>2023년 7월 ~ 8월 (2개월)</p>
+                            <div class="skill-item" role="listitem">
+                                <div class="skill-info">
+                                    <div class="skill-name">Vue.js</div>
+                                    <div class="skill-level">Intermediate</div>
+                                </div>
+                                <div class="skill-progress" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" aria-label="Vue.js 숙련도 85%">
+                                    <img src="img/progress-ring.svg" alt="" class="progress-ring" aria-hidden="true">
+                                    <div class="progress-text">85%</div>
+                                </div>
+                            </div>
+                            <div class="skill-item" role="listitem">
+                                <div class="skill-info">
+                                    <div class="skill-name">CSS/SCSS</div>
+                                    <div class="skill-level">Expert</div>
+                                </div>
+                                <div class="skill-progress" role="progressbar" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100" aria-label="CSS/SCSS 숙련도 98%">
+                                    <img src="img/progress-ring.svg" alt="" class="progress-ring" aria-hidden="true">
+                                    <div class="progress-text">98%</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </article>
+                    
+                    <article class="skill-category skill-category-backend" data-aos="fade-up" data-aos-delay="200" role="listitem">
+                        <header class="category-header">
+                            <div class="category-icon" aria-hidden="true">⚙️</div>
+                            <h3 class="category-title">Backend</h3>
+                            <p class="category-desc">서버와 데이터를 관리하는 백엔드 기술</p>
+                        </header>
+                        <div class="category-skills" role="list" aria-label="백엔드 기술 목록">
+                            <div class="skill-item" role="listitem">
+                                <div class="skill-info">
+                                    <div class="skill-name">Node.js</div>
+                                    <div class="skill-level">Intermediate</div>
+                                </div>
+                                <div class="skill-progress" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" aria-label="Node.js 숙련도 80%">
+                                    <img src="img/progress-ring.svg" alt="" class="progress-ring" aria-hidden="true">
+                                    <div class="progress-text">80%</div>
+                                </div>
+                            </div>
+                            <div class="skill-item" role="listitem">
+                                <div class="skill-info">
+                                    <div class="skill-name">Firebase</div>
+                                    <div class="skill-level">Advanced</div>
+                                </div>
+                                <div class="skill-progress" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="Firebase 숙련도 90%">
+                                    <img src="img/progress-ring.svg" alt="" class="progress-ring" aria-hidden="true">
+                                    <div class="progress-text">90%</div>
+                                </div>
+                            </div>
+                            <div class="skill-item" role="listitem">
+                                <div class="skill-info">
+                                    <div class="skill-name">MongoDB</div>
+                                    <div class="skill-level">Intermediate</div>
+                                </div>
+                                <div class="skill-progress" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" aria-label="MongoDB 숙련도 75%">
+                                    <img src="img/progress-ring.svg" alt="" class="progress-ring" aria-hidden="true">
+                                    <div class="progress-text">75%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <article class="skill-category skill-category-tools" data-aos="fade-up" data-aos-delay="400" role="listitem">
+                        <header class="category-header">
+                            <div class="category-icon" aria-hidden="true">🛠️</div>
+                            <h3 class="category-title">Tools & Others</h3>
+                            <p class="category-desc">개발을 더욱 효율적으로 만드는 도구들</p>
+                        </header>
+                        <div class="category-skills" role="list" aria-label="개발 도구 목록">
+                            <div class="skill-item" role="listitem">
+                                <div class="skill-info">
+                                    <div class="skill-name">Git</div>
+                                    <div class="skill-level">Advanced</div>
+                                </div>
+                                <div class="skill-progress" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" aria-label="Git 숙련도 92%">
+                                    <img src="img/progress-ring.svg" alt="" class="progress-ring" aria-hidden="true">
+                                    <div class="progress-text">92%</div>
+                                </div>
+                            </div>
+                            <div class="skill-item" role="listitem">
+                                <div class="skill-info">
+                                    <div class="skill-name">Figma</div>
+                                    <div class="skill-level">Intermediate</div>
+                                </div>
+                                <div class="skill-progress" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100" aria-label="Figma 숙련도 78%">
+                                    <img src="img/progress-ring.svg" alt="" class="progress-ring" aria-hidden="true">
+                                    <div class="progress-text">78%</div>
+                                </div>
+                            </div>
+                            <div class="skill-item" role="listitem">
+                                <div class="skill-info">
+                                    <div class="skill-name">Docker</div>
+                                    <div class="skill-level">Basic</div>
+                                </div>
+                                <div class="skill-progress" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" aria-label="Docker 숙련도 65%">
+                                    <img src="img/progress-ring.svg" alt="" class="progress-ring" aria-hidden="true">
+                                    <div class="progress-text">65%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <!-- SmartPPT 모달 -->
-    <div id="modal-smartppt" class="modal modal-inter fade w1500" aria-modal="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <button type="button" class="icon icon-modal-close" data-dismiss="modal">×</button>
-                <div class="modal-body scrolled">
-                    <div class="modal-text-wrap">
-                        <h3>SmartPPT2024 프로젝트</h3>
-                        <div class="project-info">
-                            <div class="project-image">
-                                <img src="./images/smartppt1.jpg" alt="SmartPPT">
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section" aria-labelledby="contact-title">
+            <div class="section-container">
+                <header class="section-header" data-aos="fade-up">
+                    <span class="section-number">06</span>
+                    <h2 id="contact-title" class="section-title">Get In Touch</h2>
+                    <p class="section-subtitle">함께 창의적인 프로젝트를 만들어보세요</p>
+                </header>
+                <div class="grid-2-cols">
+                    <div class="grid-item">
+                        <div class="card card-info">
+                            <div class="card-body">
+                                <h3 class="card-title">연락처 정보</h3>
+                                <div class="info-list" role="list" aria-label="연락처 정보 목록">
+                                    <div class="info-item" role="listitem">
+                                        <div class="info-icon" aria-hidden="true">📧</div>
+                                        <div class="info-content">
+                                            <div class="info-label">Email</div>
+                                            <div class="info-value">hello@creative.dev</div>
+                                        </div>
+                                    </div>
+                                    <div class="info-item" role="listitem">
+                                        <div class="info-icon" aria-hidden="true">📱</div>
+                                        <div class="info-content">
+                                            <div class="info-label">Phone</div>
+                                            <div class="info-value">+82 10-1234-5678</div>
+                                        </div>
+                                    </div>
+                                    <div class="info-item" role="listitem">
+                                        <div class="info-icon" aria-hidden="true">📍</div>
+                                        <div class="info-content">
+                                            <div class="info-label">Location</div>
+                                            <div class="info-value">Seoul, South Korea</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="social-links" role="list" aria-label="소셜 미디어 링크">
+                                    <a href="#" class="social-link" role="listitem" aria-label="LinkedIn 프로필">
+                                        <span aria-hidden="true">📘</span>
+                                    </a>
+                                    <a href="#" class="social-link" role="listitem" aria-label="GitHub 프로필">
+                                        <span aria-hidden="true">🐙</span>
+                                    </a>
+                                    <a href="#" class="social-link" role="listitem" aria-label="포트폴리오">
+                                        <span aria-hidden="true">💼</span>
+                                    </a>
+                                    <a href="#" class="social-link" role="listitem" aria-label="블로그">
+                                        <span aria-hidden="true">📝</span>
+                                    </a>
+                                </div>
                             </div>
-                            <div class="project-details">
-                                <h4>프로젝트 개요</h4>
-                                <p>SmartPPT2024 교육 콘텐츠 제작</p>
-                                
-                                <h4>주요 기능</h4>
-                                <ul>
-                                    <li>교육 콘텐츠 제작</li>
-                                    <li>인터랙티브 요소</li>
-                                    <li>사용자 친화적 인터페이스</li>
-                                    <li>다양한 템플릿 제공</li>
-                                </ul>
-                                
-                                <h4>사용 기술</h4>
-                                <ul>
-                                    <li>HTML5, CSS3, JavaScript</li>
-                                    <li>교육용 콘텐츠 제작</li>
-                                    <li>사용자 경험 최적화</li>
-                                </ul>
-                                
-                                <h4>프로젝트 기간</h4>
-                                <p>2024년 2월 ~ 4월 (3개월)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid-item">
+                        <div class="card card-form">
+                            <div class="card-body">
+                                <h3 class="card-title">메시지 보내기</h3>
+                                <form id="contactForm" class="contact-form" novalidate aria-labelledby="contact-form-title">
+                                    <div class="form-group">
+                                        <label for="name" class="form-label">이름 <span class="required" aria-label="필수 입력 항목">*</span></label>
+                                        <input type="text" id="name" name="name" class="form-input" placeholder="홍길동" required aria-describedby="name-error" aria-required="true">
+                                        <div id="name-error" class="error-message" role="alert" aria-live="polite"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email" class="form-label">이메일 <span class="required" aria-label="필수 입력 항목">*</span></label>
+                                        <input type="email" id="email" name="email" class="form-input" placeholder="hello@example.com" required aria-describedby="email-error" aria-required="true">
+                                        <div id="email-error" class="error-message" role="alert" aria-live="polite"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="subject" class="form-label">제목 <span class="required" aria-label="필수 입력 항목">*</span></label>
+                                        <input type="text" id="subject" name="subject" class="form-input" placeholder="프로젝트 문의" required aria-describedby="subject-error" aria-required="true">
+                                        <div id="subject-error" class="error-message" role="alert" aria-live="polite"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="message" class="form-label">메시지 <span class="required" aria-label="필수 입력 항목">*</span></label>
+                                        <textarea id="message" name="message" class="form-textarea" placeholder="프로젝트에 대해 자세히 설명해주세요..." required aria-describedby="message-error" aria-required="true" rows="5"></textarea>
+                                        <div id="message-error" class="error-message" role="alert" aria-live="polite"></div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary" aria-describedby="submit-status">
+                                        <span class="btn-text">메시지 보내기</span>
+                                        <span class="btn-icon" aria-hidden="true">📤</span>
+                                    </button>
+                                    <div id="submit-status" class="submit-status" role="status" aria-live="polite"></div>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
+    </main>
 
-    <!-- AIDT 초등수학 모달 -->
-    <div id="modal-aidt" class="modal modal-inter fade w1500" aria-modal="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <button type="button" class="icon icon-modal-close" data-dismiss="modal">×</button>
-                <div class="modal-body scrolled">
-                    <div class="modal-text-wrap">
-                        <h3>AIDT 초등수학 프로젝트</h3>
-                        <div class="project-info">
-                            <div class="project-image">
-                                <img src="./images/aidt1.jpg" alt="AIDT 초등수학">
-                            </div>
-                            <div class="project-details">
-                                <h4>프로젝트 개요</h4>
-                                <p>초등학생을 위한 수학 교육 콘텐츠 제작</p>
-                                
-                                <h4>주요 기능</h4>
-                                <ul>
-                                    <li>수학 문제 풀이</li>
-                                    <li>단계별 학습 진행</li>
-                                    <li>즉시 피드백 시스템</li>
-                                    <li>학습 진도 추적</li>
-                                </ul>
-                                
-                                <h4>사용 기술</h4>
-                                <ul>
-                                    <li>HTML5, CSS3, JavaScript</li>
-                                    <li>교육용 게임 요소</li>
-                                    <li>반응형 디자인</li>
-                                </ul>
-                                
-                                <h4>프로젝트 기간</h4>
-                                <p>2023년 12월 ~ 2024년 2월 (3개월)</p>
-                            </div>
-                        </div>
-                    </div>
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo-icon" aria-hidden="true">🎨</div>
+                    <div class="logo-text">Creative Dev</div>
                 </div>
+                <p class="footer-tagline">창의성과 기술의 만남으로 새로운 경험을 만들어갑니다</p>
+                <p class="footer-description">프론트엔드 개발자로서 사용자에게 잊을 수 없는 디지털 경험을 선사하는 것을 목표로 합니다.</p>
+            </div>
+            
+            <nav class="footer-links" aria-label="푸터 내비게이션">
+                <div class="footer-column">
+                    <h3 class="column-title">Navigation</h3>
+                    <ul class="column-links">
+                        <li><a href="#hero" class="footer-link">Home</a></li>
+                        <li><a href="#about" class="footer-link">About</a></li>
+                        <li><a href="#projects" class="footer-link">Projects</a></li>
+                        <li><a href="#process" class="footer-link">Process</a></li>
+                        <li><a href="#skills" class="footer-link">Skills</a></li>
+                        <li><a href="#contact" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3 class="column-title">Services</h3>
+                    <ul class="column-links">
+                        <li><a href="#" class="footer-link">Web Development</a></li>
+                        <li><a href="#" class="footer-link">UI/UX Design</a></li>
+                        <li><a href="#" class="footer-link">Frontend Solutions</a></li>
+                        <li><a href="#" class="footer-link">Creative Consulting</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3 class="column-title">Connect</h3>
+                    <ul class="column-links">
+                        <li><a href="#" class="footer-link">LinkedIn</a></li>
+                        <li><a href="#" class="footer-link">GitHub</a></li>
+                        <li><a href="#" class="footer-link">Portfolio</a></li>
+                        <li><a href="#" class="footer-link">Blog</a></li>
+                    </ul>
+                </div>
+            </nav>
+            
+            <div class="footer-bottom">
+                <p class="footer-copyright">
+                    © 2024 <span class="highlight">Creative Dev</span>. All rights reserved.
+                </p>
+                <p class="footer-credits">
+                    Made with ❤️ by <a href="#" class="credit-link">Creative Developer</a>
+                </p>
             </div>
         </div>
-    </div>
+    </footer>
 
-    <!-- i-scream 모달 -->
-    <div id="modal-iscream" class="modal modal-inter fade w1500" aria-modal="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <button type="button" class="icon icon-modal-close" data-dismiss="modal">×</button>
-                <div class="modal-body scrolled">
-                    <div class="modal-text-wrap">
-                        <h3>i-scream 전자저작물 프로젝트</h3>
-                        <div class="project-info">
-                            <div class="project-image">
-                                <img src="./images/iscream1.jpg" alt="i-scream">
-                            </div>
-                            <div class="project-details">
-                                <h4>프로젝트 개요</h4>
-                                <p>i-scream 전자저작물 콘텐츠 제작</p>
-                                
-                                <h4>주요 기능</h4>
-                                <ul>
-                                    <li>전자저작물 제작</li>
-                                    <li>멀티미디어 콘텐츠</li>
-                                    <li>사용자 인터랙션</li>
-                                    <li>콘텐츠 관리 시스템</li>
-                                </ul>
-                                
-                                <h4>사용 기술</h4>
-                                <ul>
-                                    <li>HTML5, CSS3, JavaScript</li>
-                                    <li>멀티미디어 요소</li>
-                                    <li>사용자 경험 설계</li>
-                                </ul>
-                                
-                                <h4>프로젝트 기간</h4>
-                                <p>2023년 10월 ~ 12월 (3개월)</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 능률 중등수학 모달 -->
-    <div id="modal-mmath" class="modal modal-inter fade w1500" aria-modal="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <button type="button" class="icon icon-modal-close" data-dismiss="modal">×</button>
-                <div class="modal-body scrolled">
-                    <div class="modal-text-wrap">
-                        <h3>능률 중등수학 프로젝트</h3>
-                        <div class="project-info">
-                            <div class="project-image">
-                                <img src="./images/mmath1.jpg" alt="능률 중등수학">
-                            </div>
-                            <div class="project-details">
-                                <h4>프로젝트 개요</h4>
-                                <p>능률교육 중등수학 교재 콘텐츠 제작</p>
-                                
-                                <h4>주요 기능</h4>
-                                <ul>
-                                    <li>수학 교재 콘텐츠</li>
-                                    <li>문제 풀이 가이드</li>
-                                    <li>학습 자료 제공</li>
-                                    <li>교사용 매뉴얼</li>
-                                </ul>
-                                
-                                <h4>사용 기술</h4>
-                                <ul>
-                                    <li>HTML5, CSS3, JavaScript</li>
-                                    <li>교육 콘텐츠 제작</li>
-                                    <li>사용자 인터페이스 설계</li>
-                                </ul>
-                                
-                                <h4>프로젝트 기간</h4>
-                                <p>2023년 8월 ~ 10월 (3개월)</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- JavaScript -->
+    <script type="module" src="js/main.js"></script>
+    
+    <!-- Fallback for browsers that don't support modules -->
+    <script nomodule src="js/main-legacy.js"></script>
 </body>
 </html>

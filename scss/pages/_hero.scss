@@ -1,0 +1,203 @@
+// ===== HERO SECTION STYLES =====
+
+.hero-section {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+  
+  .hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    
+    .hero-particles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 80%, rgba(212, 185, 150, 0.1) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 20%, rgba(166, 123, 91, 0.1) 0%, transparent 50%);
+    }
+  }
+  
+  .hero-header {
+    margin-bottom: 3rem;
+    
+    .hero-title {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      color: $text-color;
+      
+      .title-line {
+        display: block;
+        color: $primary-color;
+        margin-bottom: 0.5rem;
+        text-shadow: 0 2px 4px rgba($primary-color, 0.1);
+      }
+    }
+    
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: $text-light;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      font-weight: 400;
+    }
+  }
+  
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+    
+    @media (max-width: 767px) {
+      flex-direction: column;
+      align-items: stretch;
+      
+      .btn {
+        text-align: center;
+      }
+    }
+  }
+  
+  .hero-scroll-indicator {
+    text-align: center;
+    color: $text-muted;
+    
+    .scroll-arrow {
+      width: 2px;
+      height: 30px;
+      background: $primary-color;
+      margin: 0 auto 0.5rem;
+      animation: scrollBounce 2s infinite;
+    }
+    
+    .scroll-text {
+      font-size: 0.875rem;
+    }
+  }
+  
+  .code-window {
+    position: relative;
+    background: linear-gradient(135deg, #1a1a1a, #2c2c2c);
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(212, 185, 150, 0.2);
+    transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: perspective(1000px) rotateY(-2deg) rotateX(2deg);
+    }
+    
+    .code-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+      
+      .code-buttons {
+        display: flex;
+        gap: 0.5rem;
+        margin-right: 1rem;
+        
+        .code-btn {
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          
+          &-red {
+            background: #ff5f56;
+          }
+          
+          &-yellow {
+            background: #ffbd2e;
+          }
+          
+          &-green {
+            background: #27ca3f;
+          }
+        }
+      }
+      
+      .code-title {
+        color: $primary-light;
+        font-size: 0.875rem;
+        font-family: 'Monaco', 'Menlo', monospace;
+      }
+    }
+    
+    .code-content {
+      pre {
+        margin: 0;
+        background: none;
+        border: none;
+        padding: 0;
+        
+        code {
+          font-family: 'Monaco', 'Menlo', monospace;
+          font-size: 0.875rem;
+          line-height: 1.5;
+          color: $accent-color;
+          
+          .keyword {
+            color: #ff6b6b;
+          }
+          
+          .class {
+            color: #4ecdc4;
+          }
+          
+          .property {
+            color: #45b7d1;
+          }
+          
+          .string {
+            color: #feca57;
+          }
+          
+          .method {
+            color: #ff9ff3;
+          }
+        }
+      }
+    }
+  }
+}
+
+// ===== RESPONSIVE ADJUSTMENTS =====
+@media (max-width: 767px) {
+  .hero-section {
+    .hero-title {
+      font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.125rem;
+    }
+    
+    .code-window {
+      transform: none;
+      
+      &:hover {
+        transform: none;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero-section {
+    .hero-title {
+      font-size: 3rem;
+    }
+  }
+}
