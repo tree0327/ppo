@@ -1,58 +1,58 @@
 // ===== SKILLS SECTION STYLES =====
 
 .skills-section {
-  padding: 6rem 0;
+  padding: rem(96) 0;
   
   .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(rem(300), 1fr));
+    gap: rem(32);
     
-    @media (max-width: 767px) {
+    @include media-max("md") {
       grid-template-columns: 1fr;
     }
     
     .skill-category {
-      background: rgba($bg-light, 0.05);
-      border-radius: 20px;
-      padding: 2rem;
-      border: 1px solid rgba($primary-color, 0.2);
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: rem(20);
+      padding: rem(32);
+      border: 1px solid rgba(219, 0, 50, 0.2);
       backdrop-filter: blur(10px);
-      transition: all 0.3s ease;
+      transition: all 0.3s $animation-timing;
       
       &:hover {
         transform: translateY(-5px);
-        box-shadow: 0 15px 40px rgba($primary-color, 0.2);
+        box-shadow: 0 rem(15) rem(40) rgba(219, 0, 50, 0.2);
       }
       
       .category-header {
         text-align: center;
-        margin-bottom: 2rem;
+        margin-bottom: rem(32);
         
         .category-icon {
-          font-size: 3rem;
-          margin-bottom: 1rem;
-          color: $primary-color;
+          font-size: rem(48);
+          margin-bottom: rem(16);
+          color: var(--primary);
         }
         
         .category-title {
-          font-size: 1.5rem;
+          font-size: rem(24);
           font-weight: 600;
-          margin-bottom: 0.5rem;
-          color: $text-color;
+          margin-bottom: rem(8);
+          color: $color-white;
           
           &::after {
             content: '';
             display: block;
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(135deg, $primary-light, $primary-color);
-            margin: 0.5rem auto 0;
+            width: rem(60);
+            height: rem(3);
+            background: linear-gradient(135deg, $color-secondary, var(--primary));
+            margin: rem(8) auto 0;
           }
         }
         
         .category-desc {
-          color: $text-muted;
+          color: $color-gray;
           line-height: 1.5;
         }
       }
@@ -62,22 +62,22 @@
           display: flex;
           align-items: center;
           justify-content: space-between;
-          margin-bottom: 1.5rem;
-          padding: 1rem;
-          background: rgba($bg-light, 0.03);
-          border-radius: 12px;
-          border: 1px solid rgba($primary-color, 0.1);
+          margin-bottom: rem(24);
+          padding: rem(16);
+          background: rgba(255, 255, 255, 0.03);
+          border-radius: rem(12);
+          border: 1px solid rgba(219, 0, 50, 0.1);
           
           .skill-info {
             .skill-name {
               font-weight: 500;
-              color: $text-color;
-              margin-bottom: 0.25rem;
+              color: $color-white;
+              margin-bottom: rem(4);
             }
             
             .skill-level {
-              font-size: 0.875rem;
-              color: $text-muted;
+              font-size: rem(14);
+              color: $color-gray;
             }
           }
           
@@ -85,27 +85,27 @@
             position: relative;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: rem(8);
             
             .progress-ring {
-              width: 60px;
-              height: 60px;
+              width: rem(60);
+              height: rem(60);
               
               circle {
-                stroke: $accent-color;
+                stroke: $color-secondary;
                 stroke-width: 6;
                 fill: transparent;
                 stroke-dasharray: 220;
                 stroke-dashoffset: 220;
                 animation: progressRing 2s ease-out forwards;
-                filter: drop-shadow(0 2px 4px rgba($accent-color, 0.3));
+                filter: drop-shadow(0 rem(2) rem(4) rgba($color-secondary, 0.3));
               }
             }
             
             .progress-text {
               font-weight: 600;
-              color: $text-light;
-              font-size: 0.875rem;
+              color: $color-gray;
+              font-size: rem(14);
             }
           }
         }
@@ -115,12 +115,38 @@
 }
 
 // ===== RESPONSIVE ADJUSTMENTS =====
-@media (max-width: 767px) {
+@include media-max("md") {
   .skills-section {
-    padding: 4rem 0;
+    padding: rem(64) 0;
     
     .skills-grid {
       grid-template-columns: 1fr;
     }
+  }
+}
+
+// ===== RESPONSIVE DISPLAY =====
+.pc {
+  display: block;
+}
+
+.mo {
+  display: none;
+}
+
+@include media-max("xl") {
+  .pc {
+    display: none;
+  }
+  
+  .mo {
+    display: block;
+    height: rem(40);
+  }
+}
+
+@include media-max("md") {
+  .mo {
+    height: rem(24);
   }
 }

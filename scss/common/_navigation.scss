@@ -1,0 +1,100 @@
+// ===== NAVIGATION STYLES =====
+
+// ===== FLOATING NAVIGATION =====
+.floating-nav {
+  position: fixed;
+  right: rem(32);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: $z-fixed;
+  
+  @include media-max(md) {
+    right: rem(16);
+  }
+  
+  .nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: rem(16);
+  }
+  
+  .nav-dot {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: rem(12);
+    height: rem(12);
+    background: rgba($color-secondary, 0.3);
+    border-radius: 50%;
+    transition: all 0.3s $animation-timing;
+    cursor: pointer;
+    
+    &:hover {
+      background: var(--accent);
+      transform: scale(1.2);
+      
+      .dot-label {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    &.active {
+      background: var(--accent);
+      box-shadow: 0 0 rem(20) rgba($color-accent, 0.5);
+    }
+    
+    .dot-label {
+      position: absolute;
+      right: rem(20);
+      background: rgba($color-background, 0.9);
+      color: var(--text-primary);
+      padding: rem(8) rem(12);
+      border-radius: $radius-sm;
+      font-size: rem(12);
+      font-weight: $font-weight-medium;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateX(rem(10));
+      transition: all 0.3s $animation-timing;
+      pointer-events: none;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba($color-secondary, 0.2);
+      
+      &::after {
+        content: '';
+        position: absolute;
+        right: rem(-6);
+        top: 50%;
+        transform: translateY(-50%);
+        width: 0;
+        height: 0;
+        border-left: rem(6) solid rgba($color-background, 0.9);
+        border-top: rem(6) solid transparent;
+        border-bottom: rem(6) solid transparent;
+      }
+    }
+  }
+}
+
+// ===== SKIP LINK =====
+.skip-link {
+  position: absolute;
+  top: rem(-40);
+  left: rem(6);
+  background: var(--accent);
+  color: $color-white;
+  padding: rem(8) rem(16);
+  text-decoration: none;
+  border-radius: $radius;
+  z-index: 10000;
+  transition: top 0.3s;
+  
+  &:focus {
+    top: rem(6);
+  }
+}

@@ -1,12 +1,12 @@
 // ===== PROCESS SECTION STYLES =====
 
 .process-section {
-  padding: 6rem 0;
-  background: rgba($bg-light, 0.02);
+  padding: rem(96) 0;
+  background: rgba(255, 255, 255, 0.02);
   
   .process-timeline {
     position: relative;
-    max-width: 800px;
+    max-width: rem(800);
     margin: 0 auto;
     
     &::before {
@@ -15,27 +15,27 @@
       left: 50%;
       top: 0;
       bottom: 0;
-      width: 2px;
-      background: linear-gradient(to bottom, $primary-light, $primary-color);
+      width: rem(2);
+      background: linear-gradient(to bottom, $color-secondary, var(--primary));
       transform: translateX(-50%);
       
-      @media (max-width: 767px) {
-        left: 30px;
+      @include media-max("md") {
+        left: rem(30);
       }
     }
     
     .timeline-item {
       position: relative;
-      margin-bottom: 3rem;
+      margin-bottom: rem(48);
       
       &:nth-child(odd) {
         .timeline-content {
           margin-left: 0;
-          margin-right: 60px;
+          margin-right: rem(60);
           text-align: right;
           
-          @media (max-width: 767px) {
-            margin-left: 60px !important;
+          @include media-max("md") {
+            margin-left: rem(60) !important;
             margin-right: 0 !important;
             text-align: left !important;
           }
@@ -45,8 +45,8 @@
           left: 50%;
           transform: translateX(-50%);
           
-          @media (max-width: 767px) {
-            left: 30px !important;
+          @include media-max("md") {
+            left: rem(30) !important;
             transform: none !important;
           }
         }
@@ -54,12 +54,12 @@
       
       &:nth-child(even) {
         .timeline-content {
-          margin-left: 60px;
+          margin-left: rem(60);
           margin-right: 0;
           text-align: left;
           
-          @media (max-width: 767px) {
-            margin-left: 60px !important;
+          @include media-max("md") {
+            margin-left: rem(60) !important;
             margin-right: 0 !important;
             text-align: left !important;
           }
@@ -69,8 +69,8 @@
           left: 50%;
           transform: translateX(-50%);
           
-          @media (max-width: 767px) {
-            left: 30px !important;
+          @include media-max("md") {
+            left: rem(30) !important;
             transform: none !important;
           }
         }
@@ -79,80 +79,80 @@
       .timeline-marker {
         position: absolute;
         top: 0;
-        width: 60px;
-        height: 60px;
-        background: linear-gradient(135deg, $primary-light, $primary-color);
+        width: rem(60);
+        height: rem(60);
+        background: linear-gradient(135deg, $color-secondary, var(--primary));
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        box-shadow: 0 8px 25px rgba($primary-color, 0.3);
+        box-shadow: 0 rem(8) rem(25) rgba(219, 0, 50, 0.3);
         z-index: 2;
         
         .marker-icon {
-          font-size: 1.5rem;
+          font-size: rem(24);
           color: white;
         }
         
         .marker-line {
           position: absolute;
-          bottom: -30px;
+          bottom: rem(-30);
           left: 50%;
           transform: translateX(-50%);
-          width: 2px;
-          height: 30px;
-          background: $primary-light;
+          width: rem(2);
+          height: rem(30);
+          background: $color-secondary;
         }
       }
       
       .timeline-content {
         position: relative;
-        padding: 2rem;
-        background: rgba($bg-light, 0.05);
-        border-radius: 20px;
-        border: 1px solid rgba($primary-color, 0.2);
+        padding: rem(32);
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: rem(20);
+        border: 1px solid rgba(219, 0, 50, 0.2);
         backdrop-filter: blur(10px);
-        transition: all 0.3s ease;
+        transition: all 0.3s $animation-timing;
         
         &:hover {
           transform: translateY(-5px);
-          box-shadow: 0 15px 40px rgba($primary-color, 0.2);
+          box-shadow: 0 rem(15) rem(40) rgba(219, 0, 50, 0.2);
         }
         
         .timeline-title {
-          font-size: 1.5rem;
+          font-size: rem(24);
           font-weight: 600;
-          margin-bottom: 1rem;
-          color: $text-color;
+          margin-bottom: rem(16);
+          color: $color-white;
           
           &::after {
             content: '';
             display: block;
-            width: 50px;
-            height: 3px;
-            background: linear-gradient(135deg, $primary-light, $primary-color);
-            margin-top: 0.5rem;
+            width: rem(50);
+            height: rem(3);
+            background: linear-gradient(135deg, $color-secondary, var(--primary));
+            margin-top: rem(8);
           }
         }
         
         .timeline-desc {
-          color: $text-light;
+          color: $color-gray;
           line-height: 1.6;
-          margin-bottom: 1.5rem;
+          margin-bottom: rem(24);
         }
         
         .timeline-details {
           display: flex;
           flex-wrap: wrap;
-          gap: 0.5rem;
+          gap: rem(8);
           
           .detail-item {
-            padding: 0.5rem 1rem;
-            background: rgba($primary-color, 0.1);
-            border-radius: 20px;
-            color: $text-muted;
-            font-size: 0.875rem;
-            border: 1px solid rgba($primary-color, 0.2);
+            padding: rem(8) rem(16);
+            background: rgba(219, 0, 50, 0.1);
+            border-radius: rem(20);
+            color: $color-gray;
+            font-size: rem(14);
+            border: 1px solid rgba(219, 0, 50, 0.2);
           }
         }
       }
@@ -161,8 +161,34 @@
 }
 
 // ===== RESPONSIVE ADJUSTMENTS =====
-@media (max-width: 767px) {
+@include media-max("md") {
   .process-section {
-    padding: 4rem 0;
+    padding: rem(64) 0;
+  }
+}
+
+// ===== RESPONSIVE DISPLAY =====
+.pc {
+  display: block;
+}
+
+.mo {
+  display: none;
+}
+
+@include media-max("xl") {
+  .pc {
+    display: none;
+  }
+  
+  .mo {
+    display: block;
+    height: rem(40);
+  }
+}
+
+@include media-max("md") {
+  .mo {
+    height: rem(24);
   }
 }

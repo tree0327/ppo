@@ -1,0 +1,61 @@
+@use "sass:math";
+@use "sass:map";
+
+// ===== UNIT CONVERSION FUNCTIONS =====
+@function rem($px, $base: $base-rem) {
+    @return (remove-unit(math.div($px, $base))) * 1rem;
+}
+
+@function remove-unit($value) {
+    @return math.div($value, $value * 0 + 1);
+}
+
+@function em($px, $base: $base-rem) {
+    @return (remove-unit(math.div($px, $base))) * 1em;
+}
+
+@function vw($px, $base: 1920) {
+    @return (remove-unit(math.div($px, $base))) * 1vw;
+}
+
+@function vh($px, $base: 1080) {
+    @return (remove-unit(math.div($px, $base))) * 1vh;
+}
+
+// ===== MAP ACCESS FUNCTIONS =====
+@function color($key) {
+    @return map.get($colors, $key);
+}
+
+@function spacing($key) {
+    @return map.get($spacing, $key);
+}
+
+@function radius($key) {
+    @return map.get($radius, $key);
+}
+
+@function shadow($key) {
+    @return map.get($shadows, $key);
+}
+
+@function animation($key) {
+    @return map.get($animations, $key);
+}
+
+@function z($key) {
+    @return map.get($z-index, $key);
+}
+
+@function font-weight($key) {
+    @return map.get($font-weights, $key);
+}
+
+// ===== UTILITY FUNCTIONS =====
+@function get-breakpoint($key) {
+    @return map.get($breakpoints, $key);
+}
+
+@function get-typography($key) {
+    @return map.get($typography, $key);
+}

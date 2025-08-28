@@ -1,151 +1,177 @@
-// ===== SCSS VARIABLES =====
+// ===== SCSS MAPS & ADVANCED VARIABLES =====
 
-// ===== COLORS =====
-// Primary Colors - 더 어두운 네이비 기반
-$primary-color: #020617;      // 거의 검은색 네이비
-$primary-light: #0f172a;      // 매우 어두운 네이비
-$primary-dark: #000000;       // 완전한 검은색
+// Color Map
+$colors: (
+  primary: #1a365d,
+  primary-light: #2d5a87,
+  secondary: #e2e8f0,
+  accent: #ed8936,
+  ylw: #f6e05e,
+  white: #ffffff,
+  black: #000000,
+  gray: #718096,
+  light: #a0aec0,
+  background: #1a365d
+);
 
-// Secondary Colors
-$secondary-color: #334155;     // 어두운 슬레이트
-$secondary-light: #475569;     // 중간 슬레이트
-$secondary-dark: #1e293b;     // 매우 어두운 슬레이트
+// Typography Map
+$typography: (
+  sans: ('Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif),
+  mont: 'Montserrat',
+  suit: 'SUIT'
+);
 
-// Accent Colors
-$accent-color: #0369a1;       // 어두운 스카이 블루
-$accent-light: #0ea5e9;       // 밝은 스카이
-$accent-dark: #075985;        // 매우 어두운 스카이
+// Font Weight Map
+$font-weights: (
+  light: 300,
+  normal: 400,
+  medium: 500,
+  semibold: 600,
+  bold: 700,
+  extrabold: 800
+);
 
-// Neutral Colors
-$bg-color: #020617;           // 메인 네이비와 동일 (더 어두운)
-$bg-light: #0f172a;           // 밝은 네이비
-$bg-lighter: #1e293b;         // 중간 슬레이트
-$bg-dark: #000000;            // 가장 어두운 네이비
+// Spacing Map
+$spacing: (
+  xs: 0.25rem,   // 4px
+  sm: 0.5rem,    // 8px
+  md: 1rem,      // 16px
+  lg: 1.5rem,    // 24px
+  xl: 2rem,      // 32px
+  2xl: 3rem,     // 48px
+  3xl: 4rem      // 64px
+);
 
-// Text Colors
-$text-color: #f8fafc;         // 매우 밝은 슬레이트 (흰색에 가까움)
-$text-light: #e2e8f0;         // 밝은 슬레이트
-$text-muted: #cbd5e1;         // 중간 슬레이트
-$text-dark: #94a3b8;          // 어두운 슬레이트
+// Border Radius Map
+$radius: (
+  sm: 0.25rem,   // 4px
+  md: 0.5rem,    // 8px
+  lg: 0.75rem,   // 12px
+  xl: 1rem,      // 16px
+  full: 9999px   // 완전한 원형
+);
 
-// Border Colors
-$border-color: #E0E0E0;
-$border-light: #F0F0F0;
-$border-dark: #D0D0D0;
+// Shadow Map
+$shadows: (
+  sm: (0 1px 2px 0 rgba(0, 0, 0, 0.05)),
+  md: (0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)),
+  lg: (0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)),
+  xl: (0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04))
+);
 
-// Status Colors
-$success-color: #059669;       // 어두운 그린
-$warning-color: #d97706;       // 어두운 오렌지
-$error-color: #dc2626;         // 어두운 레드
-$info-color: #0369a1;          // 어두운 블루
+// Animation Map
+$animations: (
+  fast: 0.15s,
+  normal: 0.3s,
+  slow: 0.5s,
+  timing: cubic-bezier(0.4, 0, 0.2, 1)
+);
 
-// Glass Effects
-$glass-bg: rgba(15, 23, 42, 0.8);    // 네이비 기반 글래스
-$glass-border: rgba(30, 41, 59, 0.3); // 네이비 기반 테두리
-$glass-shadow: rgba(2, 6, 23, 0.1);   // 네이비 기반 그림자
+// Breakpoints Map
+$breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
 
-// ===== TYPOGRAPHY =====
-$font-family-primary: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-$font-family-secondary: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-$font-family-mono: "JetBrains Mono", "Fira Code", "Consolas", "Monaco", "Courier New", monospace;
+// Z-Index Map
+$z-index: (
+  dropdown: 1000,
+  sticky: 1020,
+  fixed: 1030,
+  modal-backdrop: 1040,
+  modal: 1050,
+  popover: 1060
+);
 
-$font-size-base: 1rem;
-$font-size-sm: 0.875rem;
-$font-size-lg: 1.125rem;
-$font-size-xl: 1.25rem;
-$font-size-2xl: 1.5rem;
-$font-size-3xl: 1.875rem;
-$font-size-4xl: 2.25rem;
-$font-size-5xl: 3rem;      // 48px
-$font-size-6xl: 3.75rem;   // 60px
+// ===== LEGACY VARIABLES (Backward Compatibility) =====
+$color-primary: #1a365d;
+$color-primary-light: #2d5a87;
+$color-secondary: #e2e8f0;
+$color-accent: #ed8936;
+$color-ylw: #f6e05e;
+$color-white: #ffffff;
+$color-black: #000000;
+$color-gray: #718096;
+$color-light: #a0aec0;
+$color-background: #1a365d;
+$color-body: #333333;
+$color-surface: #f7fafc;
+$color-line: #e2e8f0;
+
+$font-sans: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+$font-mont: 'Montserrat', sans-serif;
+$font-suit: 'SUIT', sans-serif;
 
 $font-weight-light: 300;
 $font-weight-normal: 400;
 $font-weight-medium: 500;
 $font-weight-semibold: 600;
 $font-weight-bold: 700;
+$font-weight-extrabold: 800;
 
-$line-height-tight: 1.25;
-$line-height-snug: 1.375;
-$line-height-normal: 1.5;
-$line-height-relaxed: 1.75;
+$spacing-xs: 0.25rem;
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.5rem;
+$spacing-xl: 2rem;
+$spacing-2xl: 3rem;
+$spacing-3xl: 4rem;
 
-// ===== SPACING =====
-$spacing-xs: 0.25rem;    // 4px
-$spacing-sm: 0.5rem;     // 8px
-$spacing-md: 1rem;       // 16px
-$spacing-lg: 1.5rem;     // 24px
-$spacing-xl: 2rem;       // 32px
-$spacing-2xl: 3rem;      // 48px
-$spacing-3xl: 4rem;      // 64px
-$spacing-4xl: 6rem;      // 96px
-$spacing-5xl: 8rem;      // 128px
+$radius-sm: 0.25rem;
+$radius-md: 0.5rem;
+$radius-lg: 0.75rem;
+$radius-xl: 1rem;
+$radius-full: 9999px;
+$radius: 20px;
 
-// Section Padding
-$section-padding: $spacing-4xl;
+$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+$shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 
-// ===== BORDERS =====
-$border-radius-sm: 0.25rem;   // 4px
-$border-radius-md: 0.5rem;    // 8px
-$border-radius-lg: 0.75rem;   // 12px
-$border-radius-xl: 1rem;      // 16px
-$border-radius-full: 9999px;  // 원형
+$animation-timing: cubic-bezier(0.4, 0, 0.2, 1);
+$animation-duration-fast: 0.15s;
+$animation-duration-normal: 0.3s;
+$animation-duration-slow: 0.5s;
 
-$border-width-thin: 1px;
-$border-width-normal: 2px;
-$border-width-thick: 3px;
+$grid-breakpoints: $breakpoints;
 
-// ===== SHADOWS =====
-$shadow-sm: 0 1px 2px 0 rgba(2, 6, 23, 0.05);
-$shadow-md: 0 4px 6px -1px rgba(2, 6, 23, 0.1), 0 2px 4px -1px rgba(2, 6, 23, 0.06);
-$shadow-lg: 0 10px 15px -3px rgba(2, 6, 23, 0.1), 0 4px 6px -2px rgba(2, 6, 23, 0.05);
-$shadow-xl: 0 20px 25px -5px rgba(2, 6, 23, 0.1), 0 10px 10px -5px rgba(2, 6, 23, 0.04);
-$shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-
-// ===== TRANSITIONS =====
-$transition-fast: 150ms ease;
-$transition-normal: 300ms ease;
-$transition-slow: 500ms ease;
-$transition-bounce: 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
-
-// ===== ANIMATIONS =====
-$animation-easing: cubic-bezier(0.4, 0, 0.2, 1);
-$animation-easing-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
-$animation-duration-fast: 200ms;
-$animation-duration-normal: 400ms;
-$animation-duration-slow: 600ms;
-
-// ===== LAYOUT =====
-// Container
-$container-max-width: 1200px;
-$container-padding: 2rem;
-
-// Breakpoints
-$breakpoint-sm: 640px;
-$breakpoint-md: 768px;
-$breakpoint-lg: 1024px;
-$breakpoint-xl: 1280px;
-$breakpoint-2xl: 1536px;
-
-// Z-Index Scale
 $z-dropdown: 1000;
 $z-sticky: 1020;
 $z-fixed: 1030;
 $z-modal-backdrop: 1040;
 $z-modal: 1050;
 $z-popover: 1060;
-$z-tooltip: 1070;
 
-// ===== EFFECTS =====
-$blur-backdrop: blur(10px);
-$blur-sm: blur(4px);
-$blur-md: blur(8px);
-$blur-lg: blur(16px);
+// ===== BASE VALUES =====
+$base-rem: 16px;
+$base-rem-mobile: 14px;
+$line-height-base: 1.6;
+$line-height-heading: 1.2;
 
-// ===== GRADIENTS =====
-$gradient-primary: linear-gradient(135deg, $primary-color, $secondary-color);
-$gradient-secondary: linear-gradient(135deg, $secondary-color, $accent-color);
-$gradient-accent: linear-gradient(135deg, $accent-color, $primary-color);
-$gradient-hero: linear-gradient(135deg, rgba($primary-color, 0.1), rgba($secondary-color, 0.1));
+// ===== CSS VARIABLES =====
+:root {
+  // 브랜드 색상
+  --primary: #{$color-primary};
+  --primary-light: #{$color-primary-light};
+  --secondary: #{$color-secondary};
+  --accent: #{$color-accent};
+  --ylw: #{$color-ylw};
+  
+  // 배경색
+  --background: #{$color-background};
+  
+  // 텍스트 색상
+  --text-primary: #{$color-white};
+  --text-secondary: #{$color-secondary};
+  --text-light: #{$color-light};
+  
+  // 구분선
+  --border: #{$color-secondary};
+}
 
 

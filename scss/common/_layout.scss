@@ -1,200 +1,110 @@
-// Layout Styles - Creative & Innovative Design
+// ===== OPTIMIZED LAYOUT STYLES =====
 
 // ===== CONTAINER & GRID SYSTEM =====
 .container {
-  @include container;
+  width: 100%;
+  max-width: rem(1200);
+  margin: 0 auto;
+  @include container-padding($spacing-xl, $spacing-xl);
 }
 
 .container-fluid {
   width: 100%;
-  padding-left: $container-padding;
-  padding-right: $container-padding;
+  @include container-padding($spacing-xl, $spacing-xl);
 }
 
 .container-narrow {
-  @include container;
-  max-width: 800px;
+  width: 100%;
+  max-width: rem(800);
+  margin: 0 auto;
+  @include container-padding($spacing-xl, $spacing-xl);
 }
 
 .container-wide {
-  @include container;
-  max-width: 1400px;
+  width: 100%;
+  max-width: rem(1400);
+  margin: 0 auto;
+  @include container-padding($spacing-xl, $spacing-xl);
 }
 
-// ===== GRID SYSTEM =====
-.grid {
-  display: grid;
-  gap: $spacing-lg;
+// ===== SECTION CONTAINER =====
+.section-container {
+  width: 100%;
+  max-width: rem(1200);
+  margin: 0 auto;
+  padding: 0 $spacing-xl;
+  
+  @include media-max(md) {
+    padding: 0 $spacing-md;
+  }
 }
-
-.grid-cols-1 { grid-template-columns: repeat(1, 1fr); }
-.grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
-.grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
-.grid-cols-4 { grid-template-columns: repeat(4, fr); }
-.grid-cols-5 { grid-template-columns: repeat(5, 1fr); }
-.grid-cols-6 { grid-template-columns: repeat(6, 1fr); }
-.grid-cols-12 { grid-template-columns: repeat(12, 1fr); }
-
-.grid-auto-fit {
-  @include grid-auto-fit;
-}
-
-.grid-masonry {
-  @include masonry-grid;
-}
-
-// ===== FLEXBOX LAYOUT =====
-.flex {
-  display: flex;
-}
-
-.flex-row {
-  flex-direction: row;
-}
-
-.flex-col {
-  flex-direction: column;
-}
-
-.flex-wrap {
-  flex-wrap: wrap;
-}
-
-.flex-nowrap {
-  flex-wrap: nowrap;
-}
-
-.flex-1 {
-  flex: 1 1 0%;
-}
-
-.flex-auto {
-  flex: 1 1 auto;
-}
-
-.flex-initial {
-  flex: 0 1 auto;
-}
-
-.flex-none {
-  flex: none;
-}
-
-// Flexbox Alignment
-.justify-start { justify-content: flex-start; }
-.justify-end { justify-content: flex-end; }
-.justify-center { justify-content: center; }
-.justify-between { justify-content: space-between; }
-.justify-around { justify-content: space-around; }
-.justify-evenly { justify-content: space-evenly; }
-
-.items-start { align-items: flex-start; }
-.items-end { align-items: flex-end; }
-.items-center { align-items: center; }
-.items-baseline { align-items: baseline; }
-.items-stretch { align-items: stretch; }
-
-.self-start { align-self: flex-start; }
-.self-end { align-self: flex-end; }
-.self-center { align-self: center; }
-.self-baseline { align-self: baseline; }
-.self-stretch { align-self: stretch; }
-
-// ===== SPACING UTILITIES =====
-.gap-0 { gap: 0; }
-.gap-1 { gap: $spacing-xs; }
-.gap-2 { gap: $spacing-sm; }
-.gap-3 { gap: $spacing-md; }
-.gap-4 { gap: $spacing-lg; }
-.gap-5 { gap: $spacing-xl; }
-.gap-6 { gap: $spacing-2xl; }
-.gap-7 { gap: $spacing-3xl; }
-.gap-8 { gap: $spacing-4xl; }
 
 // ===== SECTION LAYOUT =====
 .section {
-  @include section-base;
+  @include section-padding($spacing-2xl, $spacing-2xl);
 }
 
 .section--hero {
   min-height: 100vh;
-  display: flex;
-  align-items: center;
+  @include center-vertical;
   padding: 0;
 }
 
 .section--compact {
-  padding: $spacing-3xl 0;
+  @include section-padding($spacing-2xl, $spacing-2xl);
 }
 
 .section--spacious {
-  padding: $spacing-5xl 0;
+  @include section-padding($spacing-3xl, $spacing-3xl);
 }
 
-// ===== RESPONSIVE LAYOUT =====
-@media (max-width: 640px) {
-  .container {
-    padding-left: $spacing-md;
-    padding-right: $spacing-md;
+// ===== SECTION HEADER =====
+.section-header {
+  margin-bottom: $spacing-2xl;
+  text-align: center;
+  
+  .section-number {
+    display: inline-block;
+    font-size: rem(14);
+    font-weight: $font-weight-medium;
+    color: var(--accent);
+    margin-bottom: $spacing-sm;
+    padding: $spacing-xs $spacing-sm;
+    background: rgba($color-accent, 0.1);
+    border-radius: $radius-sm;
   }
   
-  .section {
-    padding: $spacing-3xl 0;
+  .section-title {
+    @include heading('xl', 'bold');
+    margin-bottom: $spacing-md;
+    
+    &::after {
+      content: '';
+      display: block;
+      width: rem(80);
+      height: rem(4);
+      background: linear-gradient(135deg, var(--secondary), var(--primary));
+      margin: $spacing-md auto 0;
+      border-radius: $radius-sm;
+    }
   }
   
-  .section--hero {
-    padding: $spacing-2xl 0;
-  }
-  
-  .section-header {
-    margin-bottom: $spacing-3xl;
-  }
-  
-  .section-header .section-title {
-    font-size: $font-size-2xl;
-    color: $text-color;
-  }
-  
-  .grid-cols-2,
-  .grid-cols-3,
-  .grid-cols-4,
-  .grid-cols-5,
-  .grid-cols-6 {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (min-width: 640px) and (max-width: 1024px) {
-  .container {
-    padding-left: $spacing-lg;
-    padding-right: $spacing-lg;
-  }
-  
-  .section {
-    padding: $spacing-4xl 0;
-  }
-  
-  .grid-cols-4,
-  .grid-cols-5,
-  .grid-cols-6 {
-    grid-template-columns: repeat(2, 1fr);
+  .section-subtitle {
+    font-size: rem(18);
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: rem(600);
+    margin: 0 auto;
   }
 }
 
-@media (min-width: 1024px) {
-  .container {
-    padding-left: $spacing-2xl;
-    padding-right: $spacing-2xl;
-  }
-  
-  .section {
-    padding: $spacing-5xl 0;
-  }
-}
+// ===== RESPONSIVE DISPLAY =====
+@include responsive-display;
 
+// ===== PRINT STYLES =====
 @media print {
   .section {
-    padding: $spacing-lg 0;
+    padding: $spacing-md 0;
   }
   
   .container {
