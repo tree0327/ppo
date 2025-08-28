@@ -738,6 +738,10 @@ input, textarea, select, button {
     height: 1.5rem;
   }
 }
+#wrap {
+  overflow-x: clip;
+}
+
 .container {
   width: 100%;
   max-width: 75rem;
