@@ -2,16 +2,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/static/woff2/SUIT.css");
 :root {
-  --primary: #1a365d;
+  --basic: #333;
+  --primary: #DB0032;
+  --gray: #EFEFEF;
+  --secondary: #F9F2ED;
   --primary-light: #2d5a87;
-  --secondary: #e2e8f0;
   --accent: #ed8936;
-  --ylw: #f6e05e;
-  --background: #1a365d;
-  --text-primary: #ffffff;
-  --text-secondary: #e2e8f0;
-  --text-light: #a0aec0;
-  --border: #e2e8f0;
+  --ylw: #FFC908;
+  --background: #ffffff;
+  --text-primary: #333333;
+  --text-secondary: #666;
+  --text-light: #999;
+  --border: #e5e7eb;
 }
 
 @keyframes fadeIn {
@@ -26,16 +28,16 @@
   }
 }
 :root {
-  --basic: #333333;
-  --primary: #1a365d;
-  --gray: #718096;
-  --secondary: #e2e8f0;
+  --basic: #333;
+  --primary: #DB0032;
+  --gray: #EFEFEF;
+  --secondary: #F9F2ED;
   --accent: #ed8936;
-  --background: #1a365d;
-  --surface: #f7fafc;
-  --text-primary: #ffffff;
-  --text-secondary: #e2e8f0;
-  --border: #e2e8f0;
+  --background: #ffffff;
+  --surface: #ffffff;
+  --text-primary: #333333;
+  --text-secondary: #666;
+  --border: #e5e7eb;
 }
 
 *,
@@ -58,8 +60,8 @@ body {
   font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", sans-serif;
   font-size: 1rem;
   line-height: 1.6;
-  color: #ffffff;
-  background: #1a365d;
+  color: #333333;
+  background: #ffffff;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
@@ -68,11 +70,11 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat";
   font-weight: 700;
   line-height: 1.2;
   margin: 0 0 1rem 0;
-  color: #ffffff;
+  color: #333333;
 }
 
 h1 {
@@ -92,7 +94,7 @@ h3 {
 
 p {
   margin: 0 0 1rem 0;
-  color: #e2e8f0;
+  color: #666;
   line-height: 1.7;
 }
 
@@ -102,12 +104,12 @@ a {
   transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 a:hover {
-  color: #f6e05e;
+  color: #FFC908;
 }
 
 strong, b {
   font-weight: 600;
-  color: #ffffff;
+  color: #333333;
 }
 
 em, i {
@@ -115,8 +117,8 @@ em, i {
 }
 
 code {
-  font-family: "Montserrat", sans-serif;
-  background: rgba(226, 232, 240, 0.1);
+  font-family: "Montserrat";
+  background: rgba(90, 55, 30, 0.06);
   padding: 0.125rem 0.375rem;
   border-radius: 0.25rem;
   font-size: 0.9em;
@@ -124,11 +126,11 @@ code {
 }
 
 pre {
-  background: #f7fafc;
+  background: #ffffff;
   padding: 1rem;
   border-radius: 20px;
   overflow-x: auto;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #e5e7eb;
 }
 pre code {
   background: none;
@@ -141,7 +143,7 @@ blockquote {
   padding-left: 1rem;
   margin: 1.5rem 0;
   font-style: italic;
-  color: #a0aec0;
+  color: #999;
 }
 
 ul, ol {
@@ -161,12 +163,12 @@ table {
 table th, table td {
   padding: 0.75rem;
   text-align: left;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e5e7eb;
 }
 table th {
-  background: rgba(226, 232, 240, 0.1);
+  background: rgba(90, 55, 30, 0.06);
   font-weight: 600;
-  color: #ffffff;
+  color: #333333;
 }
 table td {
   color: #333333;
@@ -229,7 +231,7 @@ input, textarea, select, button {
     content: " (" attr(title) ")";
   }
   pre, blockquote {
-    border: 1px solid #718096;
+    border: 1px solid #666;
     page-break-inside: avoid;
   }
   thead {
@@ -292,7 +294,7 @@ input, textarea, select, button {
   justify-content: center;
   width: 0.75rem;
   height: 0.75rem;
-  background: rgba(226, 232, 240, 0.3);
+  background: rgba(90, 55, 30, 0.3);
   border-radius: 50%;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
@@ -312,8 +314,8 @@ input, textarea, select, button {
 .floating-nav .nav-dot .dot-label {
   position: absolute;
   right: 1.25rem;
-  background: rgba(26, 54, 93, 0.9);
-  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.95);
+  color: #333333;
   padding: 0.5rem 0.75rem;
   border-radius: 0.25rem;
   font-size: 0.75rem;
@@ -325,7 +327,7 @@ input, textarea, select, button {
   pointer-events: none;
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
-  border: 1px solid rgba(226, 232, 240, 0.2);
+  border: 1px solid rgba(90, 55, 30, 0.2);
 }
 @media (max-width: 767.98px) {
   .floating-nav .nav-dot .dot-label {
@@ -349,7 +351,7 @@ input, textarea, select, button {
   transform: translateY(-50%);
   width: 0;
   height: 0;
-  border-left: 0.375rem solid rgba(26, 54, 93, 0.9);
+  border-left: 0.375rem solid rgba(255, 255, 255, 0.95);
   border-top: 0.375rem solid transparent;
   border-bottom: 0.375rem solid transparent;
 }
@@ -569,7 +571,7 @@ input, textarea, select, button {
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 .card .card-title {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat";
   font-weight: 600;
   line-height: 1.2;
   margin: 0 0 1rem 0;
@@ -600,7 +602,7 @@ input, textarea, select, button {
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(226, 232, 240, 0.2);
+  border: 1px solid rgba(90, 55, 30, 0.2);
 }
 .card--info:hover {
   transform: translateY(-5px);
@@ -615,7 +617,7 @@ input, textarea, select, button {
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(226, 232, 240, 0.2);
+  border: 1px solid rgba(90, 55, 30, 0.2);
 }
 .card--form:hover {
   transform: translateY(-5px);
@@ -627,7 +629,7 @@ input, textarea, select, button {
 }
 
 .form-label {
-  color: var(--text-secondary);
+  color: #666;
   font-weight: 500;
   margin-bottom: 0.5rem;
   display: block;
@@ -642,26 +644,26 @@ input, textarea, select, button {
   width: 100%;
   padding: 1rem 1rem;
   border-radius: 0.5rem;
-  border: 2px solid rgba(226, 232, 240, 0.3);
-  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(90, 55, 30, 0.3);
+  background: rgba(90, 55, 30, 0.05);
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  color: var(--text-primary);
+  color: #333333;
 }
 .form-input:focus,
 .form-textarea:focus {
   outline: none;
-  border-color: #e2e8f0;
-  box-shadow: 0 0 0 0.2rem rgba(226, 232, 240, 0.25);
-  background: rgba(255, 255, 255, 0.15);
+  border-color: #5A371E;
+  box-shadow: 0 0 0 0.2rem rgba(90, 55, 30, 0.25);
+  background: rgba(90, 55, 30, 0.1);
 }
 .form-input::-moz-placeholder, .form-textarea::-moz-placeholder {
-  color: rgba(226, 232, 240, 0.6);
+  color: rgba(90, 55, 30, 0.6);
 }
 .form-input::placeholder,
 .form-textarea::placeholder {
-  color: rgba(226, 232, 240, 0.6);
+  color: rgba(90, 55, 30, 0.6);
 }
 
 .form-textarea {
@@ -704,14 +706,14 @@ input, textarea, select, button {
   border: 1px solid rgba(237, 137, 54, 0.2);
 }
 .badge--tech {
-  background: rgba(26, 54, 93, 0.1);
-  color: #1a365d;
-  border-color: rgba(26, 54, 93, 0.2);
+  background: rgba(219, 0, 50, 0.1);
+  color: #DB0032;
+  border-color: rgba(219, 0, 50, 0.2);
 }
 .badge--skill {
-  background: rgba(226, 232, 240, 0.1);
-  color: #e2e8f0;
-  border-color: rgba(226, 232, 240, 0.2);
+  background: rgba(90, 55, 30, 0.1);
+  color: #5A371E;
+  border-color: rgba(90, 55, 30, 0.2);
 }
 
 .pc {
@@ -881,7 +883,7 @@ input, textarea, select, button {
   border-radius: 0.25rem;
 }
 .section-header .section-title {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat";
   font-weight: 700;
   line-height: 1.2;
   margin: 0 0 1rem 0;
@@ -961,7 +963,7 @@ input, textarea, select, button {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at 20% 80%, rgba(226, 232, 240, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(226, 232, 240, 0.1) 0%, transparent 50%);
+  background: radial-gradient(circle at 20% 80%, rgba(90, 55, 30, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(90, 55, 30, 0.1) 0%, transparent 50%);
 }
 
 .hero-layout {
@@ -1013,7 +1015,7 @@ input, textarea, select, button {
   font-weight: 800;
   line-height: 1.1;
   margin-bottom: 1.5rem;
-  color: var(--text-primary);
+  color: #333333;
 }
 @media (max-width: 767.98px) {
   .hero-header .hero-title {
@@ -1023,14 +1025,14 @@ input, textarea, select, button {
 }
 .hero-header .hero-title .title-line {
   display: block;
-  background: linear-gradient(135deg, var(--text-primary), var(--accent));
+  background: linear-gradient(135deg, #333333, var(--primary-light));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 .hero-header .hero-subtitle {
   font-size: 1.25rem;
-  color: var(--text-secondary);
+  color: #666;
   line-height: 1.6;
   margin-bottom: 0;
 }
@@ -1079,7 +1081,7 @@ input, textarea, select, button {
 }
 .hero-scroll-indicator .scroll-text {
   font-size: 0.875rem;
-  color: #a0aec0;
+  color: #666;
   font-weight: 500;
 }
 
@@ -1100,35 +1102,36 @@ input, textarea, select, button {
   align-items: center;
   gap: 0.5rem;
   padding: 1rem;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(90, 55, 30, 0.05);
   border-radius: 20px;
-  border: 1px solid rgba(226, 232, 240, 0.2);
+  border: 1px solid rgba(90, 55, 30, 0.2);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .hero-features .feature-item:hover {
   transform: translateY(-4px);
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(90, 55, 30, 0.1);
   border-color: var(--accent);
 }
 .hero-features .feature-item .feature-icon {
   font-size: 1.5rem;
+  color: #333333;
 }
 .hero-features .feature-item .feature-text {
   font-size: 0.875rem;
-  color: #a0aec0;
+  color: #666;
   font-weight: 500;
   text-align: center;
 }
 
 .code-window {
-  background: #f7fafc;
+  background: #ffffff;
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  border: 1px solid #e2e8f0;
+  border: 1px solid #e5e7eb;
 }
 .code-window .code-header {
-  background: #1a365d;
+  background: #DB0032;
   padding: 1rem;
   display: flex;
   align-items: center;
@@ -1153,7 +1156,7 @@ input, textarea, select, button {
   background: #48bb78;
 }
 .code-window .code-header .code-title {
-  color: #a0aec0;
+  color: #ffffff;
   font-size: 0.875rem;
   font-weight: 500;
 }
@@ -1222,7 +1225,7 @@ input, textarea, select, button {
 }
 .about-section {
   padding: 6rem 0;
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(90, 55, 30, 0.02);
 }
 
 .about-layout {
@@ -1262,7 +1265,7 @@ input, textarea, select, button {
 .about-description .about-text p {
   font-size: 1.125rem;
   line-height: 1.7;
-  color: #ffffff;
+  color: #333333;
   margin-bottom: 1rem;
 }
 .about-description .about-stats {
@@ -1278,16 +1281,16 @@ input, textarea, select, button {
 .about-description .about-stats .stat-item {
   text-align: center;
   padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(90, 55, 30, 0.05);
   border-radius: 1rem;
-  border: 1px solid rgba(226, 232, 240, 0.2);
+  border: 1px solid rgba(90, 55, 30, 0.2);
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .about-description .about-stats .stat-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0.9375rem 2.5rem rgba(226, 232, 240, 0.1);
+  box-shadow: 0 0.9375rem 2.5rem rgba(90, 55, 30, 0.1);
 }
 .about-description .about-stats .stat-item .stat-number {
   font-size: 2.5rem;
@@ -1296,7 +1299,7 @@ input, textarea, select, button {
   margin-bottom: 0.5rem;
 }
 .about-description .about-stats .stat-item .stat-label {
-  color: #718096;
+  color: #666;
   font-size: 0.875rem;
 }
 
@@ -1310,7 +1313,7 @@ input, textarea, select, button {
 }
 .about-image-container .profile-image img {
   border-radius: 1.25rem;
-  box-shadow: 0 1.25rem 3.75rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1.25rem 3.75rem rgba(0, 0, 0, 0.1);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .about-image-container .profile-image img:hover {
@@ -1322,7 +1325,7 @@ input, textarea, select, button {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(226, 232, 240, 0.1), rgba(226, 232, 240, 0.1));
+  background: linear-gradient(135deg, rgba(90, 55, 30, 0.1), rgba(90, 55, 30, 0.1));
   border-radius: 1.25rem;
   opacity: 0;
   transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1333,7 +1336,7 @@ input, textarea, select, button {
 .about-image-container .card-decoration {
   position: absolute;
   border-radius: 50%;
-  background: linear-gradient(135deg, #e2e8f0, var(--primary));
+  background: linear-gradient(135deg, #5A371E, var(--primary));
   animation: float 6s ease-in-out infinite;
 }
 .about-image-container .card-decoration--circle {
@@ -1386,9 +1389,9 @@ input, textarea, select, button {
   width: 100%;
   position: relative;
   overflow: visible;
-  padding: 2rem 1rem 1rem 1rem;
+  padding: 1rem;
   margin: 0 -1rem;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(90, 55, 30, 0.03);
   border-radius: 0.75rem;
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
@@ -1398,12 +1401,14 @@ input, textarea, select, button {
   flex-wrap: nowrap;
   gap: 1rem;
   overflow-x: auto;
-  overflow-y: visible;
+  overflow-y: hidden;
   padding-bottom: 0.5rem;
   scroll-behavior: smooth;
   width: 100%;
+  max-width: 100%;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
 }
 .projects-section .project-tabs .project-tabs-container::-webkit-scrollbar {
   display: none;
@@ -1417,16 +1422,17 @@ input, textarea, select, button {
   min-width: max-content;
   position: relative;
   padding: 1rem 1.75rem;
-  background: rgba(255, 255, 255, 0.08);
-  border: 2px solid rgba(226, 232, 240, 0.3);
+  margin-top: 2px;
+  background: rgba(90, 55, 30, 0.08);
+  border: 2px solid rgba(90, 55, 30, 0.3);
   border-radius: 9999px;
-  color: var(--text-secondary);
+  color: #666;
   font-weight: 500;
   font-size: 0.9375rem;
   display: flex;
   align-items: center;
   gap: 0.625rem;
-  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
 }
 .projects-section .project-tabs .project-tabs-container .btn .btn-icon {
   font-size: 1.125rem;
@@ -1439,10 +1445,9 @@ input, textarea, select, button {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .projects-section .project-tabs .project-tabs-container .btn:hover {
-  transform: scale(1.05);
   background: rgba(237, 137, 54, 0.15);
   border-color: #ed8936;
-  color: var(--text-primary);
+  color: #333333;
   box-shadow: 0 0.5rem 1.5625rem rgba(237, 137, 54, 0.25);
 }
 .projects-section .project-tabs .project-tabs-container .btn:hover .btn-icon {
@@ -1450,11 +1455,11 @@ input, textarea, select, button {
   transform: scale(1.1);
 }
 .projects-section .project-tabs .project-tabs-container .btn:hover .btn-text {
-  color: var(--text-primary);
+  color: #333333;
 }
 .projects-section .project-tabs .project-tabs-container .btn.active {
   background: rgba(237, 137, 54, 0.2);
-  color: var(--text-primary);
+  color: #333333;
   border-color: #ed8936;
   box-shadow: 0 0.5rem 1.5625rem rgba(237, 137, 54, 0.3);
   transform: scale(1.02);
@@ -1464,7 +1469,7 @@ input, textarea, select, button {
   transform: scale(1.1);
 }
 .projects-section .project-tabs .project-tabs-container .btn.active .btn-text {
-  color: var(--text-primary);
+  color: #333333;
   font-weight: 600;
 }
 .projects-section .project-tabs .project-tabs-container .btn.active::before {
@@ -1504,7 +1509,7 @@ input, textarea, select, button {
   }
 }
 .projects-section .projects-sidebar .project-info {
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(90, 55, 30, 0.02);
   border: 1px solid rgba(219, 0, 50, 0.1);
   border-radius: 0.75rem;
   padding: 2rem;
@@ -1513,18 +1518,18 @@ input, textarea, select, button {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .projects-section .projects-sidebar .project-info:hover {
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(90, 55, 30, 0.04);
   border-color: rgba(219, 0, 50, 0.2);
 }
 .projects-section .projects-sidebar .project-info .project-title {
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: #ffffff;
+  color: #333333;
   line-height: 1.3;
 }
 .projects-section .projects-sidebar .project-info .project-desc {
-  color: #718096;
+  color: #666;
   margin-bottom: 1.5rem;
   line-height: 1.6;
   font-size: 1rem;
@@ -1591,10 +1596,12 @@ input, textarea, select, button {
   background: linear-gradient(135deg, #2c2c2c, #1a1a1a);
   border-radius: 1.875rem;
   padding: 1.25rem;
-  box-shadow: 0 1.25rem 3.75rem rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(219, 0, 50, 0.1);
+  box-shadow: 0 1.25rem 3.75rem rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(219, 0, 50, 0.1);
   border: 1px solid rgba(219, 0, 50, 0.2);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  transform-style: preserve-3d;
+  transform-origin: center center;
+  backface-visibility: hidden;
+  will-change: auto;
 }
 @media (max-width: 767.98px) {
   .projects-section .projects-ipad-container .ipad-frame {
@@ -1602,14 +1609,6 @@ input, textarea, select, button {
     height: 21.875rem;
     padding: 0.9375rem;
     border-radius: 1.5625rem;
-  }
-}
-.projects-section .projects-ipad-container .ipad-frame:hover {
-  transform: translateY(-8px) rotateX(3deg) rotateY(-3deg);
-}
-@media (max-width: 767.98px) {
-  .projects-section .projects-ipad-container .ipad-frame:hover {
-    transform: none;
   }
 }
 .projects-section .projects-ipad-container .ipad-frame .ipad-screen {
@@ -1639,10 +1638,6 @@ input, textarea, select, button {
   height: 100%;
   cursor: default;
   overflow: hidden;
-  transform: none;
-}
-.projects-section .projects-ipad-container .ipad-frame .ipad-screen .ipad-content .project-image-container:hover {
-  transform: none;
 }
 .projects-section .projects-ipad-container .ipad-frame .ipad-screen .ipad-content .project-image-container .project-image {
   width: 100%;
@@ -1655,10 +1650,6 @@ input, textarea, select, button {
   transition: object-position 0.2s cubic-bezier(0.4, 0, 0.2, 1), -o-object-position 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   display: block;
   filter: brightness(1.1) contrast(1.05);
-  transform: none;
-}
-.projects-section .projects-ipad-container .ipad-frame .ipad-screen .ipad-content .project-image-container .project-image:hover {
-  transform: none;
 }
 
 .pc {
@@ -1720,7 +1711,7 @@ input, textarea, select, button {
 }
 .process-section {
   padding: 6rem 0;
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(90, 55, 30, 0.02);
 }
 .process-section .process-timeline {
   position: relative;
@@ -1734,7 +1725,7 @@ input, textarea, select, button {
   top: 0;
   bottom: 0;
   width: 0.125rem;
-  background: linear-gradient(to bottom, #e2e8f0, var(--primary));
+  background: linear-gradient(to bottom, #5A371E, var(--primary));
   transform: translateX(-50%);
 }
 @media (max-width: 767.98px) {
@@ -1795,7 +1786,7 @@ input, textarea, select, button {
   top: 0;
   width: 3.75rem;
   height: 3.75rem;
-  background: linear-gradient(135deg, #e2e8f0, var(--primary));
+  background: linear-gradient(135deg, #5A371E, var(--primary));
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -1814,12 +1805,12 @@ input, textarea, select, button {
   transform: translateX(-50%);
   width: 0.125rem;
   height: 1.875rem;
-  background: #e2e8f0;
+  background: #5A371E;
 }
 .process-section .process-timeline .timeline-item .timeline-content {
   position: relative;
   padding: 2rem;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(90, 55, 30, 0.05);
   border-radius: 1.25rem;
   border: 1px solid rgba(219, 0, 50, 0.2);
   -webkit-backdrop-filter: blur(10px);
@@ -1834,18 +1825,18 @@ input, textarea, select, button {
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: #ffffff;
+  color: #333333;
 }
 .process-section .process-timeline .timeline-item .timeline-content .timeline-title::after {
   content: "";
   display: block;
   width: 3.125rem;
   height: 0.1875rem;
-  background: linear-gradient(135deg, #e2e8f0, var(--primary));
+  background: linear-gradient(135deg, #5A371E, var(--primary));
   margin-top: 0.5rem;
 }
 .process-section .process-timeline .timeline-item .timeline-content .timeline-desc {
-  color: #718096;
+  color: #666;
   line-height: 1.6;
   margin-bottom: 1.5rem;
 }
@@ -1858,7 +1849,7 @@ input, textarea, select, button {
   padding: 0.5rem 1rem;
   background: rgba(219, 0, 50, 0.1);
   border-radius: 1.25rem;
-  color: #718096;
+  color: #666;
   font-size: 0.875rem;
   border: 1px solid rgba(219, 0, 50, 0.2);
 }
@@ -1904,7 +1895,7 @@ input, textarea, select, button {
   }
 }
 .skills-section .skills-grid .skill-category {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(90, 55, 30, 0.05);
   border-radius: 1.25rem;
   padding: 2rem;
   border: 1px solid rgba(219, 0, 50, 0.2);
@@ -1929,18 +1920,18 @@ input, textarea, select, button {
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
-  color: #ffffff;
+  color: #333333;
 }
 .skills-section .skills-grid .skill-category .category-header .category-title::after {
   content: "";
   display: block;
   width: 3.75rem;
   height: 0.1875rem;
-  background: linear-gradient(135deg, #e2e8f0, var(--primary));
+  background: linear-gradient(135deg, #5A371E, var(--primary));
   margin: 0.5rem auto 0;
 }
 .skills-section .skills-grid .skill-category .category-header .category-desc {
-  color: #718096;
+  color: #666;
   line-height: 1.5;
 }
 .skills-section .skills-grid .skill-category .category-skills .skill-item {
@@ -1949,18 +1940,18 @@ input, textarea, select, button {
   justify-content: space-between;
   margin-bottom: 1.5rem;
   padding: 1rem;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(90, 55, 30, 0.03);
   border-radius: 0.75rem;
   border: 1px solid rgba(219, 0, 50, 0.1);
 }
 .skills-section .skills-grid .skill-category .category-skills .skill-item .skill-info .skill-name {
   font-weight: 500;
-  color: #ffffff;
+  color: #333333;
   margin-bottom: 0.25rem;
 }
 .skills-section .skills-grid .skill-category .category-skills .skill-item .skill-info .skill-level {
   font-size: 0.875rem;
-  color: #718096;
+  color: #666;
 }
 .skills-section .skills-grid .skill-category .category-skills .skill-item .skill-progress {
   position: relative;
@@ -1973,17 +1964,17 @@ input, textarea, select, button {
   height: 3.75rem;
 }
 .skills-section .skills-grid .skill-category .category-skills .skill-item .skill-progress .progress-ring circle {
-  stroke: #e2e8f0;
+  stroke: #5A371E;
   stroke-width: 6;
   fill: transparent;
   stroke-dasharray: 220;
   stroke-dashoffset: 220;
   animation: progressRing 2s ease-out forwards;
-  filter: drop-shadow(0 0.125rem 0.25rem rgba(226, 232, 240, 0.3));
+  filter: drop-shadow(0 0.125rem 0.25rem rgba(90, 55, 30, 0.3));
 }
 .skills-section .skills-grid .skill-category .category-skills .skill-item .skill-progress .progress-text {
   font-weight: 600;
-  color: #718096;
+  color: #666;
   font-size: 0.875rem;
 }
 
@@ -2019,7 +2010,7 @@ input, textarea, select, button {
 }
 .contact-section {
   padding: 6rem 0;
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(90, 55, 30, 0.02);
 }
 .contact-section .info-list .info-item {
   display: flex;
@@ -2035,12 +2026,12 @@ input, textarea, select, button {
 }
 .contact-section .info-list .info-item .info-content .info-label {
   font-weight: 600;
-  color: #718096;
+  color: #666;
   margin-bottom: 0.25rem;
   font-size: 0.875rem;
 }
 .contact-section .info-list .info-item .info-content .info-value {
-  color: #ffffff;
+  color: #333333;
   font-size: 1rem;
 }
 .contact-section .social-links {
@@ -2054,25 +2045,25 @@ input, textarea, select, button {
   justify-content: center;
   width: 3.125rem;
   height: 3.125rem;
-  background: rgba(226, 232, 240, 0.1);
-  border: 2px solid rgba(226, 232, 240, 0.3);
+  background: rgba(90, 55, 30, 0.1);
+  border: 2px solid rgba(90, 55, 30, 0.3);
   border-radius: 50%;
-  color: #718096;
+  color: #666;
   text-decoration: none;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .contact-section .social-links .social-link:hover {
-  background: #e2e8f0;
+  background: #5A371E;
   color: #ffffff;
   transform: translateY(-3px);
-  box-shadow: 0 0.5rem 1.5625rem rgba(226, 232, 240, 0.3);
+  box-shadow: 0 0.5rem 1.5625rem rgba(90, 55, 30, 0.3);
 }
 
 .contact-form .form-group {
   margin-bottom: 1.5rem;
 }
 .contact-form .form-label {
-  color: #718096;
+  color: #666;
   font-weight: 500;
   margin-bottom: 0.5rem;
   display: block;
@@ -2086,26 +2077,26 @@ input, textarea, select, button {
   width: 100%;
   padding: 0.75rem 1rem;
   border-radius: 0.75rem;
-  border: 2px solid rgba(226, 232, 240, 0.3);
-  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(90, 55, 30, 0.3);
+  background: rgba(90, 55, 30, 0.05);
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  color: #ffffff;
+  color: #333333;
 }
 .contact-form .form-input:focus,
 .contact-form .form-textarea:focus {
   outline: none;
-  border-color: #e2e8f0;
-  box-shadow: 0 0 0 0.2rem rgba(226, 232, 240, 0.25);
-  background: rgba(255, 255, 255, 0.15);
+  border-color: #5A371E;
+  box-shadow: 0 0 0 0.2rem rgba(90, 55, 30, 0.25);
+  background: rgba(90, 55, 30, 0.1);
 }
 .contact-form .form-input::-moz-placeholder, .contact-form .form-textarea::-moz-placeholder {
-  color: rgba(226, 232, 240, 0.6);
+  color: rgba(90, 55, 30, 0.6);
 }
 .contact-form .form-input::placeholder,
 .contact-form .form-textarea::placeholder {
-  color: rgba(226, 232, 240, 0.6);
+  color: rgba(90, 55, 30, 0.6);
 }
 .contact-form .form-textarea {
   resize: vertical;
@@ -2161,7 +2152,7 @@ input, textarea, select, button {
   }
 }
 .footer {
-  background: linear-gradient(135deg, #000, #000);
+  background: linear-gradient(135deg, #5A371E, #5A371E);
   color: #ffffff;
   padding: 4rem 0 2rem;
 }
@@ -2188,28 +2179,28 @@ input, textarea, select, button {
 }
 .footer .footer-content .footer-logo .logo-icon {
   font-size: 2rem;
-  color: #e2e8f0;
+  color: #FFC908;
 }
 .footer .footer-content .footer-logo .logo-text {
   font-size: 1.5rem;
   font-weight: 700;
-  background: linear-gradient(135deg, #f6e05e, #e2e8f0);
+  background: linear-gradient(135deg, #FFC908, #5A371E);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 @supports not (-webkit-background-clip: text) {
   .footer .footer-content .footer-logo .logo-text {
-    color: #e2e8f0;
+    color: #FFC908;
   }
 }
 .footer .footer-content .footer-tagline {
   font-size: 1.25rem;
   margin-bottom: 1rem;
-  color: #f6e05e;
+  color: #FFC908;
 }
 .footer .footer-content .footer-description {
-  color: #e2e8f0;
+  color: #ffffff;
   line-height: 1.6;
   max-width: 37.5rem;
   margin: 0 auto;
@@ -2230,7 +2221,7 @@ input, textarea, select, button {
   font-size: 1.125rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: #f6e05e;
+  color: #FFC908;
 }
 .footer .footer-links .footer-column .column-title::after {
   content: "";
@@ -2249,24 +2240,24 @@ input, textarea, select, button {
   margin-bottom: 0.5rem;
 }
 .footer .footer-links .footer-column .column-links li .footer-link {
-  color: #e2e8f0;
+  color: #ffffff;
   text-decoration: none;
   transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .footer .footer-links .footer-column .column-links li .footer-link:hover {
-  color: #f6e05e;
+  color: #FFC908;
 }
 .footer .footer-bottom {
   text-align: center;
   padding-top: 2rem;
-  border-top: 1px solid rgba(226, 232, 240, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 .footer .footer-bottom .footer-copyright {
   margin-bottom: 0.5rem;
-  color: #e2e8f0;
+  color: #ffffff;
 }
 .footer .footer-bottom .footer-copyright .highlight {
-  color: #f6e05e;
+  color: #FFC908;
   font-weight: 600;
 }
 .footer .footer-bottom .footer-credits {
@@ -2274,11 +2265,11 @@ input, textarea, select, button {
   font-size: 0.875rem;
 }
 .footer .footer-bottom .footer-credits .credit-link {
-  color: #e2e8f0;
+  color: #ffffff;
   text-decoration: none;
 }
 .footer .footer-bottom .footer-credits .credit-link:hover {
-  color: #f6e05e;
+  color: #FFC908;
 }
 
 @media (max-width: 767.98px) {

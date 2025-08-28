@@ -8,15 +8,15 @@
 
 // ===== CSS VARIABLES =====
 :root {
-  --basic: #{$color-body};
-  --primary: #{$color-primary};
-  --gray: #{$color-gray};
-  --secondary: #{$color-secondary};
+  --basic: #333;
+  --primary: #DB0032;
+  --gray: #EFEFEF;
+  --secondary: #F9F2ED;
   --accent: #{$color-accent};
   --background: #{$color-background};
   --surface: #{$color-surface};
-  --text-primary: #{$color-white};
-  --text-secondary: #{$color-secondary};
+  --text-primary: #{$color-body};
+  --text-secondary: #{$color-gray};
   --border: #{$color-line};
 }
 
@@ -40,8 +40,8 @@ body {
   font-family: $font-sans;
   font-size: rem(16);
   line-height: $line-height-base;
-  color: $color-white;           // 흰색 텍스트
-  background: $color-background; // 네이비 배경
+  color: $color-body;
+  background: $color-background;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
@@ -55,7 +55,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: $font-weight-bold;
   line-height: $line-height-heading;
   margin: 0 0 rem(16) 0;
-  color: $color-white;           // 흰색 제목
+  color: $color-body;
 }
 
 h1 {
@@ -75,23 +75,23 @@ h3 {
 
 p {
   margin: 0 0 rem(16) 0;
-  color: $color-secondary;       // 밝은 그레이 본문
+  color: $color-gray;
   line-height: 1.7;
 }
 
 a {
-  color: var(--accent);          // 오렌지 링크
+  color: var(--accent);
   text-decoration: none;
   transition: color 0.3s $animation-timing;
   
   &:hover {
-    color: $color-ylw;           // 노란색 호버
+    color: $color-ylw;
   }
 }
 
 strong, b {
   font-weight: $font-weight-semibold;
-  color: $color-white;           // 흰색 강조
+  color: $color-body;
 }
 
 em, i {
@@ -100,7 +100,7 @@ em, i {
 
 code {
   font-family: $font-mont;
-  background: rgba($color-secondary, 0.1);
+  background: rgba($color-secondary, 0.06);
   padding: rem(2) rem(6);
   border-radius: $radius-sm;
   font-size: 0.9em;
@@ -153,9 +153,9 @@ table {
   }
   
   th {
-    background: rgba($color-secondary, 0.1);
+    background: rgba($color-secondary, 0.06);
     font-weight: $font-weight-semibold;
-    color: $color-white;
+    color: $color-body;
   }
   
   td {

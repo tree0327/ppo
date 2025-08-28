@@ -2,16 +2,16 @@
 
 // Color Map
 $colors: (
-  primary: #1a365d,
+  primary: #DB0032,
   primary-light: #2d5a87,
-  secondary: #e2e8f0,
+  secondary: #5A371E,
   accent: #ed8936,
-  ylw: #f6e05e,
+  ylw: #FFC908,
   white: #ffffff,
   black: #000000,
-  gray: #718096,
-  light: #a0aec0,
-  background: #1a365d
+  gray: #666,
+  light: #999,
+  background: #ffffff
 );
 
 // Typography Map
@@ -88,64 +88,64 @@ $z-index: (
 );
 
 // ===== LEGACY VARIABLES (Backward Compatibility) =====
-$color-primary: #1a365d;
-$color-primary-light: #2d5a87;
-$color-secondary: #e2e8f0;
-$color-accent: #ed8936;
-$color-ylw: #f6e05e;
-$color-white: #ffffff;
-$color-black: #000000;
-$color-gray: #718096;
-$color-light: #a0aec0;
-$color-background: #1a365d;
+$color-primary: map-get($colors, primary);
+$color-primary-light: map-get($colors, primary-light);
+$color-secondary: map-get($colors, secondary);
+$color-accent: map-get($colors, accent);
+$color-ylw: map-get($colors, ylw);
+$color-white: map-get($colors, white);
+$color-black: map-get($colors, black);
+$color-gray: map-get($colors, gray);
+$color-light: map-get($colors, light);
+$color-background: map-get($colors, background);
 $color-body: #333333;
-$color-surface: #f7fafc;
-$color-line: #e2e8f0;
+$color-surface: #ffffff;
+$color-line: #e5e7eb;
 
-$font-sans: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
-$font-mont: 'Montserrat', sans-serif;
-$font-suit: 'SUIT', sans-serif;
+$font-sans: map-get($typography, sans);
+$font-mont: map-get($typography, mont);
+$font-suit: map-get($typography, suit);
 
-$font-weight-light: 300;
-$font-weight-normal: 400;
-$font-weight-medium: 500;
-$font-weight-semibold: 600;
-$font-weight-bold: 700;
-$font-weight-extrabold: 800;
+$font-weight-light: map-get($font-weights, light);
+$font-weight-normal: map-get($font-weights, normal);
+$font-weight-medium: map-get($font-weights, medium);
+$font-weight-semibold: map-get($font-weights, semibold);
+$font-weight-bold: map-get($font-weights, bold);
+$font-weight-extrabold: map-get($font-weights, extrabold);
 
-$spacing-xs: 0.25rem;
-$spacing-sm: 0.5rem;
-$spacing-md: 1rem;
-$spacing-lg: 1.5rem;
-$spacing-xl: 2rem;
-$spacing-2xl: 3rem;
-$spacing-3xl: 4rem;
+$spacing-xs: map-get($spacing, xs);
+$spacing-sm: map-get($spacing, sm);
+$spacing-md: map-get($spacing, md);
+$spacing-lg: map-get($spacing, lg);
+$spacing-xl: map-get($spacing, xl);
+$spacing-2xl: map-get($spacing, 2xl);
+$spacing-3xl: map-get($spacing, 3xl);
 
-$radius-sm: 0.25rem;
-$radius-md: 0.5rem;
-$radius-lg: 0.75rem;
-$radius-xl: 1rem;
-$radius-full: 9999px;
+$radius-sm: map-get($radius, sm);
+$radius-md: map-get($radius, md);
+$radius-lg: map-get($radius, lg);
+$radius-xl: map-get($radius, xl);
+$radius-full: map-get($radius, full);
 $radius: 20px;
 
-$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-$shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+$shadow-sm: map-get($shadows, sm);
+$shadow-md: map-get($shadows, md);
+$shadow-lg: map-get($shadows, lg);
+$shadow-xl: map-get($shadows, xl);
 
-$animation-timing: cubic-bezier(0.4, 0, 0.2, 1);
-$animation-duration-fast: 0.15s;
-$animation-duration-normal: 0.3s;
-$animation-duration-slow: 0.5s;
+$animation-timing: map-get($animations, timing);
+$animation-duration-fast: map-get($animations, fast);
+$animation-duration-normal: map-get($animations, normal);
+$animation-duration-slow: map-get($animations, slow);
 
 $grid-breakpoints: $breakpoints;
 
-$z-dropdown: 1000;
-$z-sticky: 1020;
-$z-fixed: 1030;
-$z-modal-backdrop: 1040;
-$z-modal: 1050;
-$z-popover: 1060;
+$z-dropdown: map-get($z-index, dropdown);
+$z-sticky: map-get($z-index, sticky);
+$z-fixed: map-get($z-index, fixed);
+$z-modal-backdrop: map-get($z-index, modal-backdrop);
+$z-modal: map-get($z-index, modal);
+$z-popover: map-get($z-index, popover);
 
 // ===== BASE VALUES =====
 $base-rem: 16px;
@@ -155,23 +155,25 @@ $line-height-heading: 1.2;
 
 // ===== CSS VARIABLES =====
 :root {
+  // 기본 색상 (tokens)
+  --basic: #333;
+  --primary: #DB0032;
+  --gray: #EFEFEF;
+  --secondary: #F9F2ED;
+  
   // 브랜드 색상
-  --primary: #{$color-primary};
   --primary-light: #{$color-primary-light};
-  --secondary: #{$color-secondary};
   --accent: #{$color-accent};
   --ylw: #{$color-ylw};
   
-  // 배경색
+  // 배경/텍스트
   --background: #{$color-background};
-  
-  // 텍스트 색상
-  --text-primary: #{$color-white};
-  --text-secondary: #{$color-secondary};
+  --text-primary: #{$color-body};
+  --text-secondary: #{$color-gray};
   --text-light: #{$color-light};
   
   // 구분선
-  --border: #{$color-secondary};
+  --border: #{$color-line};
 }
 
 

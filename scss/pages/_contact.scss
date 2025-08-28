@@ -2,7 +2,7 @@
 
 .contact-section {
   padding: rem(96) 0;
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba($color-secondary, 0.02);
   
   .info-list {
     .info-item {
@@ -27,7 +27,7 @@
         }
         
         .info-value {
-          color: $color-white;
+          color: $color-body;
           font-size: rem(16);
         }
       }
@@ -52,12 +52,12 @@
       text-decoration: none;
       transition: all 0.3s $animation-timing;
       
-              &:hover {
-          background: $color-secondary;
-          color: $color-white;
-          transform: translateY(-3px);
-          box-shadow: 0 rem(8) rem(25) rgba($color-secondary, 0.3);
-        }
+      &:hover {
+        background: $color-secondary;
+        color: $color-white;
+        transform: translateY(-3px);
+        box-shadow: 0 rem(8) rem(25) rgba($color-secondary, 0.3);
+      }
     }
   }
 }
@@ -86,16 +86,16 @@
     padding: rem(12) rem(16);
     border-radius: rem(12);
     border: 2px solid rgba($color-secondary, 0.3);
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba($color-secondary, 0.05);
     backdrop-filter: blur(10px);
     transition: all 0.3s $animation-timing;
-    color: $color-white;
+    color: $color-body;
     
     &:focus {
       outline: none;
       border-color: $color-secondary;
       box-shadow: 0 0 0 0.2rem rgba($color-secondary, 0.25);
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba($color-secondary, 0.1);
     }
     
     &::placeholder {

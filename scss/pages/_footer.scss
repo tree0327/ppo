@@ -1,7 +1,7 @@
 // ===== FOOTER SECTION STYLES =====
 
 .footer {
-  background: linear-gradient(135deg, #000, #000);
+  background: linear-gradient(135deg, $color-secondary, $color-secondary);
   color: $color-white;
   padding: rem(64) 0 rem(32);
   
@@ -28,7 +28,7 @@
       
       .logo-icon {
         font-size: rem(32);
-        color: $color-secondary;
+        color: $color-ylw;
       }
       
       .logo-text {
@@ -40,7 +40,7 @@
         background-clip: text;
         
         @supports not (-webkit-background-clip: text) {
-          color: $color-secondary;
+          color: $color-ylw;
         }
       }
     }
@@ -52,7 +52,7 @@
     }
     
     .footer-description {
-      color: $color-secondary;
+      color: $color-white;
       line-height: 1.6;
       max-width: rem(600);
       margin: 0 auto;
@@ -96,7 +96,7 @@
           margin-bottom: rem(8);
           
           .footer-link {
-            color: $color-secondary;
+            color: $color-white;
             text-decoration: none;
             transition: color 0.3s $animation-timing;
             
@@ -112,11 +112,11 @@
   .footer-bottom {
     text-align: center;
     padding-top: rem(32);
-    border-top: 1px solid rgba($color-secondary, 0.2);
+    border-top: 1px solid rgba($color-white, 0.2);
     
     .footer-copyright {
       margin-bottom: rem(8);
-      color: $color-secondary;
+      color: $color-white;
       
       .highlight {
         color: $color-ylw;
@@ -129,7 +129,7 @@
       font-size: rem(14);
       
       .credit-link {
-        color: $color-secondary;
+        color: $color-white;
         text-decoration: none;
         
         &:hover {

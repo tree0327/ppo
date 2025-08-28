@@ -75,7 +75,7 @@
     font-weight: 800;
     line-height: 1.1;
     margin-bottom: rem(24);
-    color: var(--text-primary);
+    color: $color-body;
     
     @include media-max(md) {
       font-size: clamp(rem(24), 8vw, rem(40));
@@ -84,7 +84,7 @@
     
     .title-line {
       display: block;
-      background: linear-gradient(135deg, var(--text-primary), var(--accent));
+      background: linear-gradient(135deg, $color-body, var(--primary-light));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -93,7 +93,7 @@
   
   .hero-subtitle {
     font-size: rem(20);
-    color: var(--text-secondary);
+    color: $color-gray;
     line-height: 1.6;
     margin-bottom: 0;
     
@@ -144,7 +144,7 @@
   
   .scroll-text {
     font-size: rem(14);
-    color: $color-light;
+    color: $color-gray;
     font-weight: 500;
   }
 }
@@ -166,24 +166,25 @@
     align-items: center;
     gap: rem(8);
     padding: rem(16);
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba($color-secondary, 0.05);
     border-radius: $radius;
     border: 1px solid rgba($color-secondary, 0.2);
     transition: all 0.3s $animation-timing;
     
     &:hover {
       transform: translateY(-4px);
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba($color-secondary, 0.1);
       border-color: var(--accent);
     }
     
     .feature-icon {
       font-size: rem(24);
+      color: $color-body;
     }
     
     .feature-text {
       font-size: rem(14);
-      color: $color-light;
+      color: $color-gray;
       font-weight: 500;
       text-align: center;
     }
@@ -221,7 +222,7 @@
     }
     
     .code-title {
-      color: $color-light;
+      color: $color-white;
       font-size: rem(14);
       font-weight: 500;
     }

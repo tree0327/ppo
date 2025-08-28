@@ -13,16 +13,16 @@
     }
     
     .skill-category {
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba($color-secondary, 0.05);
       border-radius: rem(20);
       padding: rem(32);
-      border: 1px solid rgba(219, 0, 50, 0.2);
+      border: 1px solid rgba($color-primary, 0.2);
       backdrop-filter: blur(10px);
       transition: all 0.3s $animation-timing;
       
       &:hover {
         transform: translateY(-5px);
-        box-shadow: 0 rem(15) rem(40) rgba(219, 0, 50, 0.2);
+        box-shadow: 0 rem(15) rem(40) rgba($color-primary, 0.2);
       }
       
       .category-header {
@@ -39,7 +39,7 @@
           font-size: rem(24);
           font-weight: 600;
           margin-bottom: rem(8);
-          color: $color-white;
+          color: $color-body;
           
           &::after {
             content: '';
@@ -64,14 +64,14 @@
           justify-content: space-between;
           margin-bottom: rem(24);
           padding: rem(16);
-          background: rgba(255, 255, 255, 0.03);
+          background: rgba($color-secondary, 0.03);
           border-radius: rem(12);
-          border: 1px solid rgba(219, 0, 50, 0.1);
+          border: 1px solid rgba($color-primary, 0.1);
           
           .skill-info {
             .skill-name {
               font-weight: 500;
-              color: $color-white;
+              color: $color-body;
               margin-bottom: rem(4);
             }
             

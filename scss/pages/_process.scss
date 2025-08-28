@@ -2,7 +2,7 @@
 
 .process-section {
   padding: rem(96) 0;
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba($color-secondary, 0.02);
   
   .process-timeline {
     position: relative;
@@ -86,7 +86,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        box-shadow: 0 rem(8) rem(25) rgba(219, 0, 50, 0.3);
+        box-shadow: 0 rem(8) rem(25) rgba($color-primary, 0.3);
         z-index: 2;
         
         .marker-icon {
@@ -108,22 +108,22 @@
       .timeline-content {
         position: relative;
         padding: rem(32);
-        background: rgba(255, 255, 255, 0.05);
+        background: rgba($color-secondary, 0.05);
         border-radius: rem(20);
-        border: 1px solid rgba(219, 0, 50, 0.2);
+        border: 1px solid rgba($color-primary, 0.2);
         backdrop-filter: blur(10px);
         transition: all 0.3s $animation-timing;
         
         &:hover {
           transform: translateY(-5px);
-          box-shadow: 0 rem(15) rem(40) rgba(219, 0, 50, 0.2);
+          box-shadow: 0 rem(15) rem(40) rgba($color-primary, 0.2);
         }
         
         .timeline-title {
           font-size: rem(24);
           font-weight: 600;
           margin-bottom: rem(16);
-          color: $color-white;
+          color: $color-body;
           
           &::after {
             content: '';
@@ -148,11 +148,11 @@
           
           .detail-item {
             padding: rem(8) rem(16);
-            background: rgba(219, 0, 50, 0.1);
+            background: rgba($color-primary, 0.1);
             border-radius: rem(20);
             color: $color-gray;
             font-size: rem(14);
-            border: 1px solid rgba(219, 0, 50, 0.2);
+            border: 1px solid rgba($color-primary, 0.2);
           }
         }
       }

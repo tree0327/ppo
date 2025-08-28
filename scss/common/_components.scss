@@ -98,7 +98,7 @@
 }
 
 .form-label {
-  color: var(--text-secondary);
+  color: $color-gray;
   font-weight: $font-weight-medium;
   margin-bottom: $spacing-sm;
   display: block;
@@ -115,16 +115,16 @@
   padding: $spacing-md $spacing-md;
   border-radius: $radius-md;
   border: 2px solid rgba($color-secondary, 0.3);
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba($color-secondary, 0.05);
   backdrop-filter: blur(10px);
   transition: all $animation-duration-normal $animation-timing;
-  color: var(--text-primary);
+  color: $color-body;
   
   &:focus {
     outline: none;
     border-color: $color-secondary;
     box-shadow: 0 0 0 0.2rem rgba($color-secondary, 0.25);
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba($color-secondary, 0.1);
   }
   
   &::placeholder {

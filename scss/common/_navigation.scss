@@ -66,8 +66,8 @@
     .dot-label {
       position: absolute;
       right: rem(20);
-      background: rgba($color-background, 0.9);
-      color: var(--text-primary);
+      background: rgba($color-background, 0.95);
+      color: $color-body;
       padding: rem(8) rem(12);
       border-radius: $radius-sm;
       font-size: rem(12);
@@ -100,7 +100,7 @@
         transform: translateY(-50%);
         width: 0;
         height: 0;
-        border-left: rem(6) solid rgba($color-background, 0.9);
+        border-left: rem(6) solid rgba($color-background, 0.95);
         border-top: rem(6) solid transparent;
         border-bottom: rem(6) solid transparent;
       }

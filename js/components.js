@@ -146,23 +146,33 @@ export function initFloatingNavigation() {
 
 // ===== PROJECTS =====
 export function initProjects() {
-    const projectButtons = document.querySelectorAll('.project-buttons-list .btn');
+    const projectButtons = document.querySelectorAll('.project-tabs-container .btn');
     const projectInfos = document.querySelectorAll('.project-info');
+    
+    console.log('Project buttons found:', projectButtons.length);
+    console.log('Project infos found:', projectInfos.length);
     
     if (projectButtons.length === 0) return;
     
     projectButtons.forEach((button, index) => {
         button.addEventListener('click', () => {
+            console.log('Project button clicked:', index);
+            
             // Update button states
             projectButtons.forEach((btn, i) => {
                 btn.classList.toggle('active', i === index);
-                btn.setAttribute('aria-pressed', i === index);
+                btn.setAttribute('aria-selected', i === index);
             });
             
             // Update project info visibility
             projectInfos.forEach((info, i) => {
-                info.classList.toggle('active', i === index);
-                info.setAttribute('aria-hidden', i !== index);
+                if (i === index) {
+                    info.style.display = 'block';
+                    info.setAttribute('aria-hidden', 'false');
+                } else {
+                    info.style.display = 'none';
+                    info.setAttribute('aria-hidden', 'true');
+                }
             });
             
             // Update project display
@@ -205,17 +215,19 @@ export function initProjects() {
 
 // ===== PROJECT BUTTONS HORIZONTAL SCROLL =====
 export function initProjectButtonsScroll() {
-    const scrollContainer = document.querySelector('.project-buttons-list');
-    const progressBar = document.querySelector('.buttons-progress-bar');
-    const progressFill = document.querySelector('.buttons-progress-fill');
+    const scrollContainer = document.querySelector('.project-tabs-container');
+    const progressBar = document.querySelector('.tab-progress-bar');
+    const progressFill = document.querySelector('.tab-progress-fill');
     
-    if (!scrollContainer || !progressBar || !progressFill) {
-        console.warn('Project buttons scroll elements not found');
+    if (!scrollContainer) {
+        console.warn('Project tabs container not found');
         return;
     }
 
     // 프로그레스바 업데이트 함수
     function updateProgressBar() {
+        if (!progressBar || !progressFill) return;
+        
         const scrollLeft = scrollContainer.scrollLeft;
         const scrollWidth = scrollContainer.scrollWidth - scrollContainer.clientWidth;
         const progress = scrollWidth > 0 ? (scrollLeft / scrollWidth) * 100 : 0;
@@ -288,19 +300,21 @@ export function initProjectButtonsScroll() {
     }, { passive: true });
 
     // 프로그레스바 클릭으로 이동
-    progressBar.addEventListener('click', (e) => {
-        const rect = progressBar.getBoundingClientRect();
-        const clickX = e.clientX - rect.left;
-        const percentage = Math.max(0, Math.min(1, clickX / rect.width));
-        const scrollWidth = scrollContainer.scrollWidth - scrollContainer.clientWidth;
-        
-        if (scrollWidth > 0) {
-            scrollContainer.scrollTo({
-                left: scrollWidth * percentage,
-                behavior: 'smooth'
-            });
-        }
-    });
+    if (progressBar) {
+        progressBar.addEventListener('click', (e) => {
+            const rect = progressBar.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            const percentage = Math.max(0, Math.min(1, clickX / rect.width));
+            const scrollWidth = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+            
+            if (scrollWidth > 0) {
+                scrollContainer.scrollTo({
+                    left: scrollWidth * percentage,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    }
 
     // 초기 프로그레스바 설정 및 리사이즈 이벤트
     updateProgressBar();
@@ -393,17 +407,7 @@ export function initIpadScroll() {
         isMouseOverIpad = true;
         console.log('Mouse entered iPad');
         
-        // Disable page scroll
-        document.body.style.overflow = 'hidden';
-        
-        // Visual feedback
-        ipadContainer.style.transform = 'translateY(-8px) rotateX(3deg) rotateY(-3deg)';
-        ipadContainer.style.boxShadow = `
-            0 40px 100px rgba(0, 0, 0, 0.5),
-            0 15px 40px rgba(0, 0, 0, 0.3),
-            0 0 0 1px rgba(212, 185, 150, 0.3),
-            inset 0 1px 0 rgba(255, 255, 255, 0.2)
-        `;
+        // 레이아웃 이동 방지: overflow 변경하지 않음
     }
     
     // Simple mouse leave handler
@@ -411,12 +415,7 @@ export function initIpadScroll() {
         isMouseOverIpad = false;
         console.log('Mouse left iPad');
         
-        // Re-enable page scroll
-        document.body.style.overflow = '';
-        
-        // Remove visual feedback
-        ipadContainer.style.transform = '';
-        ipadContainer.style.boxShadow = '';
+        // 아무것도 변경하지 않음
     }
     
     // Simplified touch events
