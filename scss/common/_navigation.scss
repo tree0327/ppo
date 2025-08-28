@@ -9,7 +9,22 @@
   z-index: $z-fixed;
   
   @include media-max(md) {
-    right: rem(16);
+    right: rem(8); // 16에서 8로 줄임
+  }
+  
+  @include media-max(sm) {
+    right: rem(4); // 더 작은 화면에서는 4로 줄임
+  }
+  
+  // 매우 작은 화면에서는 숨김
+  @media (max-width: 480px) {
+    display: none;
+  }
+  
+  // 모바일에서 우측 넘침 방지를 위한 추가 안전장치
+  @include media-max(md) {
+    max-width: calc(100vw - 1rem);
+    overflow: hidden;
   }
   
   .nav-list {
@@ -64,6 +79,18 @@
       pointer-events: none;
       backdrop-filter: blur(10px);
       border: 1px solid rgba($color-secondary, 0.2);
+      
+      @include media-max(md) {
+        right: rem(16); // 모바일에서 더 가깝게
+        font-size: rem(11); // 폰트 크기 줄임
+        padding: rem(6) rem(10); // 패딩 줄임
+      }
+      
+      @include media-max(sm) {
+        right: rem(12); // 더 작은 화면에서 더 가깝게
+        font-size: rem(10); // 폰트 크기 더 줄임
+        padding: rem(4) rem(8); // 패딩 더 줄임
+      }
       
       &::after {
         content: '';
