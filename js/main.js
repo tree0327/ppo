@@ -16,6 +16,246 @@ import {
     initContactForm 
 } from './components.js';
 
+// ===== LOADING ANIMATION & CUSTOM SCROLLBAR =====
+function initLoadingAnimation() {
+    const loadingAnimation = document.getElementById('loading-animation');
+    const loadingLogo = document.querySelector('.loading-logo');
+    const loadingMessages = document.querySelectorAll('.loading-message');
+    const loadingBar = document.querySelector('.loading-bar');
+    const mainContent = document.querySelector('main');
+    const body = document.body;
+    
+    if (loadingAnimation && gsap) {
+        console.log('🎬 Initializing loading animation...');
+        
+        // 페이지 로드 시 body에 loading 클래스 추가
+        body.classList.add('loading');
+        
+        // 초기 상태 설정
+        gsap.set([loadingLogo, ...loadingMessages], { 
+            opacity: 0, 
+            y: 30 
+        });
+        gsap.set(loadingBar, { width: 0 });
+        
+        // 로딩 애니메이션 타임라인 생성
+        const loadingTL = gsap.timeline({
+            onComplete: () => {
+                console.log('✅ Loading animation completed');
+                completeLoading();
+            }
+        });
+        
+        // 로고 애니메이션
+        loadingTL.to(loadingLogo, {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power2.out"
+        }, 0.2);
+        
+        // 메시지 순환 애니메이션
+        loadingMessages.forEach((message, index) => {
+            const startTime = 0.8 + (index * 0.6);
+            
+            // 메시지 fade-in
+            loadingTL.to(message, {
+                opacity: 1,
+                y: 0,
+                duration: 0.4,
+                ease: "power2.out"
+            }, startTime);
+            
+            // 메시지 fade-out (다음 메시지가 나타나기 전)
+            loadingTL.to(message, {
+                opacity: 0,
+                y: -20,
+                duration: 0.3,
+                ease: "power2.in"
+            }, startTime + 0.4);
+        });
+        
+        // 프로그레스 바 애니메이션
+        loadingTL.to(loadingBar, {
+            width: "100%",
+            duration: 2.4, // 4개 메시지 × 0.6초
+            ease: "power2.inOut"
+        }, 0.8);
+        
+        // 전체 로딩 애니메이션 fade-out (더 부드럽게)
+        loadingTL.to(loadingAnimation, {
+            opacity: 0,
+            scale: 1.05,
+            duration: 1.2,
+            ease: "power2.inOut"
+        }, 3.2);
+        
+        // 로딩 애니메이션이 fade-out되는 동안 페이지 콘텐츠를 미리 준비
+        if (mainContent) {
+            loadingTL.to(mainContent, {
+                opacity: 1,
+                y: 0,
+                duration: 1.2,
+                ease: "power2.out"
+            }, 3.3); // 로딩 애니메이션과 겹치도록
+        }
+    } else {
+        console.warn('⚠️ Loading animation elements or GSAP not found');
+        // 로딩 애니메이션이 없으면 바로 페이지 표시
+        if (mainContent) {
+            gsap.set(mainContent, { opacity: 1, y: 0 });
+        }
+        body.classList.add('loaded');
+    }
+}
+
+function completeLoading() {
+    const body = document.body;
+    const loadingAnimation = document.getElementById('loading-animation');
+    
+    // body에서 loading 클래스 제거하고 loaded 클래스 추가
+    body.classList.remove('loading');
+    body.classList.add('loaded');
+    
+    // 로딩 애니메이션 완전히 숨김 (더 자연스럽게)
+    gsap.to(loadingAnimation, {
+        visibility: "hidden",
+        duration: 0.1,
+        delay: 1.2
+    });
+    
+    // 페이지 스크롤 활성화
+    document.documentElement.style.overflow = 'auto';
+    document.body.style.overflow = 'auto';
+    
+    console.log('🎉 Loading completed, page ready');
+}
+
+function initCustomScrollbar() {
+    const customScrollbar = document.getElementById('custom-scrollbar');
+    const scrollbarThumb = document.querySelector('.scrollbar-thumb');
+    const body = document.body;
+    
+    if (customScrollbar && scrollbarThumb) {
+        console.log('🎯 Initializing custom scrollbar...');
+        
+        let isDragging = false;
+        let startY = 0;
+        let startScrollTop = 0;
+        
+        // 스크롤바 표시/숨김
+        function toggleScrollbar() {
+            const scrollHeight = document.documentElement.scrollHeight;
+            const clientHeight = document.documentElement.clientHeight;
+            
+            if (scrollHeight > clientHeight) {
+                customScrollbar.classList.add('visible');
+                body.classList.add('has-custom-scrollbar');
+            } else {
+                customScrollbar.classList.remove('visible');
+                body.classList.remove('has-custom-scrollbar');
+            }
+        }
+        
+        // 스크롤바 위치 업데이트
+        function updateScrollbarPosition() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight;
+            const clientHeight = document.documentElement.clientHeight;
+            
+            if (scrollHeight > clientHeight) {
+                const scrollPercentage = scrollTop / (scrollHeight - clientHeight);
+                const maxTop = window.innerHeight - scrollbarThumb.offsetHeight;
+                const newTop = scrollPercentage * maxTop;
+                
+                gsap.to(scrollbarThumb, {
+                    top: newTop,
+                    duration: 0.1,
+                    ease: "none"
+                });
+            }
+        }
+        
+        // 스크롤바 드래그 시작
+        function startDragging(e) {
+            isDragging = true;
+            startY = e.clientY;
+            startScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            customScrollbar.classList.add('dragging');
+            document.body.style.userSelect = 'none';
+            
+            document.addEventListener('mousemove', handleDragging);
+            document.addEventListener('mouseup', stopDragging);
+        }
+        
+        // 스크롤바 드래그 중
+        function handleDragging(e) {
+            if (!isDragging) return;
+            
+            const deltaY = e.clientY - startY;
+            const scrollHeight = document.documentElement.scrollHeight;
+            const clientHeight = document.documentElement.clientHeight;
+            const maxScroll = scrollHeight - clientHeight;
+            
+            const scrollPercentage = deltaY / (window.innerHeight - scrollbarThumb.offsetHeight);
+            const newScrollTop = startScrollTop + (scrollPercentage * maxScroll);
+            
+            window.scrollTo(0, Math.max(0, Math.min(newScrollTop, maxScroll)));
+        }
+        
+        // 스크롤바 드래그 종료
+        function stopDragging() {
+            isDragging = false;
+            customScrollbar.classList.remove('dragging');
+            document.body.style.userSelect = '';
+            
+            document.removeEventListener('mousemove', handleDragging);
+            document.removeEventListener('mouseup', stopDragging);
+        }
+        
+        // 이벤트 리스너 등록
+        scrollbarThumb.addEventListener('mousedown', startDragging);
+        
+        // 스크롤 이벤트
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            updateScrollbarPosition();
+            
+            // 스크롤 중일 때만 스크롤바 표시
+            customScrollbar.classList.add('visible');
+            
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                // 스크롤이 멈춘 후 2초 뒤에 스크롤바 숨김
+                if (!isDragging) {
+                    customScrollbar.classList.remove('visible');
+                }
+            }, 2000);
+        });
+        
+        // 리사이즈 이벤트
+        window.addEventListener('resize', () => {
+            toggleScrollbar();
+            updateScrollbarPosition();
+        });
+        
+        // 초기 설정
+        toggleScrollbar();
+        updateScrollbarPosition();
+        
+        // 로딩 완료 후 스크롤바 활성화
+        setTimeout(() => {
+            toggleScrollbar();
+            updateScrollbarPosition();
+        }, 4000);
+        
+        console.log('✅ Custom scrollbar initialized');
+    } else {
+        console.warn('⚠️ Custom scrollbar elements not found');
+    }
+}
+
 // ===== MAIN INITIALIZATION =====
 document.addEventListener('DOMContentLoaded', function() {
     console.log('🚀 Initializing application...');
@@ -38,6 +278,10 @@ document.addEventListener('DOMContentLoaded', function() {
             initGSAP();
             initAccessibility();
             initPerformanceOptimizations();
+            
+            // Loading animation and custom scrollbar
+            initLoadingAnimation();
+            initCustomScrollbar();
             
             console.log('✅ Application initialized successfully');
             

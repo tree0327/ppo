@@ -1,0 +1,167 @@
+// ===== CUSTOM SCROLLBAR STYLES =====
+
+// 기본 스크롤바 숨기기
+html {
+  scrollbar-width: none; // Firefox
+  -ms-overflow-style: none; // IE/Edge
+  
+  &::-webkit-scrollbar {
+    display: none; // Chrome/Safari/Opera
+  }
+}
+
+body {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+// 커스텀 스크롤바
+.custom-scrollbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: rem(8);
+  height: 100vh;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  
+  // 스크롤 가능할 때만 표시
+  &.visible {
+    opacity: 1;
+  }
+  
+  // 모바일에서는 숨김
+  @include media-max(md) {
+    display: none;
+  }
+  
+  .scrollbar-track {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: rem(2);
+      height: 100%;
+      background: rgba(var(--primary-rgb), 0.1);
+      border-radius: rem(1);
+    }
+  }
+  
+  .scrollbar-thumb {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: rem(6);
+    height: rem(60);
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-radius: rem(3);
+    cursor: pointer;
+    pointer-events: auto;
+    transition: all 0.2s ease;
+    box-shadow: 0 rem(2) rem(8) rgba(0, 0, 0, 0.1);
+    
+    &:hover {
+      width: rem(8);
+      background: linear-gradient(135deg, var(--accent), var(--primary));
+      box-shadow: 0 rem(4) rem(12) rgba(0, 0, 0, 0.2);
+    }
+    
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+}
+
+// 스크롤바 드래그 중일 때 스타일
+.custom-scrollbar.dragging {
+  .scrollbar-thumb {
+    background: linear-gradient(135deg, var(--accent), var(--primary));
+    box-shadow: 0 rem(4) rem(12) rgba(0, 0, 0, 0.3);
+  }
+}
+
+// 스크롤바 숨김 애니메이션
+.custom-scrollbar.fade-out {
+  opacity: 0;
+}
+
+// 스크롤바 표시 애니메이션
+.custom-scrollbar.fade-in {
+  opacity: 1;
+}
+
+// 스크롤바 위치 계산을 위한 CSS 변수
+:root {
+  --scrollbar-width: #{rem(8)};
+  --scrollbar-thumb-height: #{rem(60)};
+}
+
+// 스크롤바가 있을 때 body에 패딩 추가
+body.has-custom-scrollbar {
+  padding-right: var(--scrollbar-width);
+  
+  @include media-max(md) {
+    padding-right: 0;
+  }
+}
+
+// 스크롤바가 있을 때 고정 요소들 조정
+.floating-nav {
+  right: calc(#{rem(32)} + var(--scrollbar-width));
+  
+  @include media-max(md) {
+    right: rem(32);
+  }
+}
+
+// 스크롤바가 있을 때 모달이나 팝업 조정
+.modal,
+.popup,
+.sticky-nav {
+  padding-right: var(--scrollbar-width);
+  
+  @include media-max(md) {
+    padding-right: 0;
+  }
+}
+
+// 스크롤바 반응형 조정
+@include media-max(lg) {
+  .custom-scrollbar {
+    width: rem(6);
+    
+    .scrollbar-thumb {
+      width: rem(4);
+      
+      &:hover {
+        width: rem(6);
+      }
+    }
+  }
+  
+  :root {
+    --scrollbar-width: #{rem(6)};
+  }
+}
+
+@include media-max(md) {
+  .custom-scrollbar {
+    display: none;
+  }
+  
+  :root {
+    --scrollbar-width: 0;
+  }
+}
