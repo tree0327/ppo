@@ -1,6 +1,199 @@
 // ===== NAVIGATION STYLES =====
 
-// ===== FLOATING NAVIGATION =====
+// ===== SKIP LINK =====
+.skip-link {
+  position: absolute;
+  top: rem(-40);
+  left: rem(6);
+  background: var(--accent);
+  color: var(--surface);
+  padding: rem(8) rem(16);
+  text-decoration: none;
+  border-radius: $radius;
+  z-index: 10000;
+  transition: top 0.3s;
+  
+  @include media-max(sm) {
+    left: rem(4);
+    padding: rem(6) rem(12);
+    font-size: rem(14);
+  }
+  
+  &:focus {
+    top: rem(6);
+    
+    @include media-max(sm) {
+      top: rem(4);
+    }
+  }
+}
+
+// ===== STICKY TOP NAVIGATION (MOBILE) =====
+.sticky-nav {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  z-index: $z-sticky;
+  padding: rem(12) 0;
+  
+  @include media-max(md) {
+    display: block;
+  }
+  
+  .sticky-nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: rem(1200);
+    margin: 0 auto;
+    padding: 0 $spacing-md;
+    
+    @include media-max(sm) {
+      padding: 0 $spacing-sm;
+    }
+    
+    .sticky-nav-logo {
+      font-weight: $font-weight-bold;
+      color: var(--accent);
+      font-size: rem(18);
+    }
+    
+    .sticky-nav-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: rem(40);
+      height: rem(40);
+      background: transparent;
+      border: 2px solid var(--accent);
+      border-radius: $radius-sm;
+      color: var(--accent);
+      cursor: pointer;
+      transition: all 0.3s $animation-timing;
+      
+      &:hover {
+        background: var(--accent);
+        color: var(--surface);
+        transform: scale(1.05);
+        box-shadow: 0 rem(4) rem(12) rgba($color-accent, 0.3);
+      }
+      
+      &:active {
+        transform: scale(0.95);
+        box-shadow: 0 rem(2) rem(8) rgba($color-accent, 0.2);
+      }
+      
+      .hamburger-icon {
+        width: rem(20);
+        height: rem(2);
+        background: currentColor;
+        position: relative;
+        transition: all 0.3s $animation-timing;
+        
+        &::before,
+        &::after {
+          content: '';
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background: currentColor;
+          transition: all 0.3s $animation-timing;
+        }
+        
+        &::before {
+          top: rem(-6);
+        }
+        
+        &::after {
+          bottom: rem(-6);
+        }
+      }
+      
+      &.active .hamburger-icon {
+        background: transparent;
+        
+        &::before {
+          transform: rotate(45deg);
+          top: 0;
+        }
+        
+        &::after {
+          transform: rotate(-45deg);
+          bottom: 0;
+        }
+      }
+      
+      &.active:hover {
+        background: var(--accent);
+        color: var(--surface);
+        transform: scale(1.05);
+        box-shadow: 0 rem(4) rem(12) rgba($color-accent, 0.3);
+      }
+    }
+  }
+  
+  .sticky-nav-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: rem(16) 0;
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s $animation-timing;
+    
+    &.active {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .sticky-nav-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: rem(8);
+      
+      li {
+        a {
+          display: block;
+          padding: rem(12) $spacing-md;
+          color: var(--text-primary);
+          text-decoration: none;
+          font-weight: $font-weight-medium;
+          transition: color 0.3s $animation-timing;
+          
+          @include media-max(sm) {
+            padding: rem(10) $spacing-sm;
+          }
+          
+          &:hover {
+            color: var(--accent);
+            background: rgba($color-accent, 0.05);
+          }
+          
+          &.active {
+            color: var(--accent);
+            background: rgba($color-accent, 0.1);
+          }
+        }
+      }
+    }
+  }
+}
+
+// ===== FLOATING NAVIGATION (DESKTOP) =====
 .floating-nav {
   position: fixed;
   right: rem(32);
@@ -9,22 +202,7 @@
   z-index: $z-fixed;
   
   @include media-max(md) {
-    right: rem(8); // 16에서 8로 줄임
-  }
-  
-  @include media-max(sm) {
-    right: rem(4); // 더 작은 화면에서는 4로 줄임
-  }
-  
-  // 매우 작은 화면에서는 숨김
-  @media (max-width: 480px) {
-    display: none;
-  }
-  
-  // 모바일에서 우측 넘침 방지를 위한 추가 안전장치
-  @include media-max(md) {
-    max-width: calc(100vw - 1rem);
-    overflow: hidden;
+    display: none; // 모바일에서는 숨김
   }
   
   .nav-list {
@@ -66,8 +244,8 @@
     .dot-label {
       position: absolute;
       right: rem(20);
-      background: rgba($color-background, 0.95);
-      color: $color-body;
+      background: var(--surface);
+      color: var(--text-primary);
       padding: rem(8) rem(12);
       border-radius: $radius-sm;
       font-size: rem(12);
@@ -78,19 +256,7 @@
       transition: all 0.3s $animation-timing;
       pointer-events: none;
       backdrop-filter: blur(10px);
-      border: 1px solid rgba($color-secondary, 0.2);
-      
-      @include media-max(md) {
-        right: rem(16); // 모바일에서 더 가깝게
-        font-size: rem(11); // 폰트 크기 줄임
-        padding: rem(6) rem(10); // 패딩 줄임
-      }
-      
-      @include media-max(sm) {
-        right: rem(12); // 더 작은 화면에서 더 가깝게
-        font-size: rem(10); // 폰트 크기 더 줄임
-        padding: rem(4) rem(8); // 패딩 더 줄임
-      }
+      border: 1px solid var(--border);
       
       &::after {
         content: '';
@@ -100,28 +266,10 @@
         transform: translateY(-50%);
         width: 0;
         height: 0;
-        border-left: rem(6) solid rgba($color-background, 0.95);
+        border-left: rem(6) solid var(--surface);
         border-top: rem(6) solid transparent;
         border-bottom: rem(6) solid transparent;
       }
     }
-  }
-}
-
-// ===== SKIP LINK =====
-.skip-link {
-  position: absolute;
-  top: rem(-40);
-  left: rem(6);
-  background: var(--accent);
-  color: $color-white;
-  padding: rem(8) rem(16);
-  text-decoration: none;
-  border-radius: $radius;
-  z-index: 10000;
-  transition: top 0.3s;
-  
-  &:focus {
-    top: rem(6);
   }
 }

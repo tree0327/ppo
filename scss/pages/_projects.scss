@@ -5,21 +5,49 @@
   position: relative;
   overflow: hidden;
   
+  @include media-max(md) {
+    padding: rem(64) 0;
+  }
+  
+  @include media-max(sm) {
+    padding: rem(48) 0;
+  }
+  
   .projects-layout {
     display: flex;
     flex-direction: column;
     gap: rem(48);
+    
+    @include media-max(md) {
+      gap: rem(32);
+    }
+    
+    @include media-max(sm) {
+      gap: rem(24);
+    }
   }
   
   .project-tabs {
-    width: 100%;
+    width: calc(100% + 64px); // section-container의 padding-xl * 2만큼 width 증가
     position: relative;
     overflow: visible;
     padding: rem(16);
-    margin: 0 rem(-16);
+    margin: 0 rem(-32); // section-container의 padding-xl과 정확히 일치
     background: rgba($color-secondary, 0.03);
-    border-radius: $radius-lg;
+    border-radius: 0; // border-radius 삭제
     backdrop-filter: blur(10px);
+    
+    @include media-max(md) {
+      width: calc(100% + 32px); // section-container의 padding-md * 2만큼 width 증가
+      padding: rem(20) rem(12);
+      margin: 0 rem(-16); // section-container의 padding-md와 정확히 일치
+    }
+    
+    @include media-max(sm) {
+      width: calc(100% + 16px); // section-container의 padding-sm * 2만큼 width 증가
+      padding: rem(16) rem(8);
+      margin: 0 rem(-8); // section-container의 padding-sm과 정확히 일치
+    }
     
     .project-tabs-container {
       display: flex;
@@ -31,6 +59,14 @@
       scroll-behavior: smooth;
       width: 100%;
       max-width: 100%;
+      
+      @include media-max(md) {
+        gap: rem(12);
+      }
+      
+      @include media-max(sm) {
+        gap: rem(8);
+      }
       
       // 스크롤바 숨기기
       scrollbar-width: none;
@@ -54,9 +90,9 @@
         padding: rem(16) rem(28);
         margin-top: 2px;
         background: rgba($color-secondary, 0.08);
-        border: 2px solid rgba($color-secondary, 0.3);
+        border: 2px solid var(--border);
         border-radius: $radius-full;
-        color: $color-gray;
+        color: var(--text-secondary);
         font-weight: $font-weight-medium;
         font-size: rem(15);
         display: flex;
@@ -64,24 +100,62 @@
         gap: rem(10);
         box-shadow: 0 rem(2) rem(8) rgba(0, 0, 0, 0.1);
         
+        @include media-max(md) {
+          padding: rem(14) rem(20);
+          font-size: rem(14);
+          gap: rem(8);
+        }
+        
+        @include media-max(sm) {
+          padding: rem(12) rem(16);
+          font-size: rem(13);
+          gap: rem(6);
+          min-width: rem(120); // 최소 너비 설정
+        }
+        
         .btn-icon {
           font-size: rem(18);
           opacity: 0.9;
           transition: all 0.3s $animation-timing;
+          
+          @include media-max(md) {
+            font-size: rem(16);
+          }
+          
+          @include media-max(sm) {
+            font-size: rem(14);
+          }
         }
         
         .btn-text {
           font-size: rem(15);
           font-weight: $font-weight-medium;
           transition: all 0.3s $animation-timing;
+          
+          @include media-max(md) {
+            font-size: rem(14);
+          }
+          
+          @include media-max(sm) {
+            font-size: rem(13);
+            display: inline !important; // 모바일에서도 텍스트 표시
+          }
         }
         
         &:hover {
           // transform: scale(1.05);
           background: rgba($color-accent, 0.15);
-          border-color: $color-accent;
-          color: $color-body;
+          border-color: var(--accent);
+          color: var(--text-primary);
           box-shadow: 0 rem(8) rem(25) rgba($color-accent, 0.25);
+          
+          @include media-max(md) {
+            transform: translateY(-2px);
+          }
+          
+          @include media-max(sm) {
+            transform: translateY(-1px);
+          }
           
           .btn-icon {
             opacity: 1;
@@ -89,16 +163,24 @@
           }
           
           .btn-text {
-            color: $color-body;
+            color: var(--text-primary);
           }
         }
         
         &.active {
           background: rgba($color-accent, 0.2);
-          color: $color-body;
-          border-color: $color-accent;
+          color: var(--text-primary);
+          border-color: var(--accent);
           box-shadow: 0 rem(8) rem(25) rgba($color-accent, 0.3);
           transform: scale(1.02);
+          
+          @include media-max(md) {
+            transform: translateY(-1px);
+          }
+          
+          @include media-max(sm) {
+            transform: none;
+          }
           
           .btn-icon {
             opacity: 1;
@@ -106,7 +188,7 @@
           }
           
           .btn-text {
-            color: $color-body;
+            color: var(--text-primary);
             font-weight: $font-weight-semibold;
           }
           
@@ -142,6 +224,10 @@
       grid-template-columns: 1fr;
       gap: rem(32);
     }
+    
+    @include media-max("sm") {
+      gap: rem(24);
+    }
   }
   
   .projects-sidebar {
@@ -159,6 +245,16 @@
       backdrop-filter: blur(10px);
       transition: all 0.3s $animation-timing;
       
+      @include media-max(md) {
+        padding: rem(24);
+        border-radius: rem(8);
+      }
+      
+      @include media-max(sm) {
+        padding: rem(20);
+        border-radius: rem(6);
+      }
+      
       &:hover {
         background: rgba($color-secondary, 0.04);
         border-color: rgba($color-primary, 0.2);
@@ -168,15 +264,35 @@
         font-size: rem(24);
         font-weight: 600;
         margin-bottom: rem(16);
-        color: $color-body;
+        color: var(--text-primary);
         line-height: 1.3;
+        
+        @include media-max(md) {
+          font-size: rem(20);
+          margin-bottom: rem(12);
+        }
+        
+        @include media-max(sm) {
+          font-size: rem(18);
+          margin-bottom: rem(10);
+        }
       }
       
       .project-desc {
-        color: $color-gray;
+        color: var(--text-secondary);
         margin-bottom: rem(24);
         line-height: 1.6;
         font-size: rem(16);
+        
+        @include media-max(md) {
+          margin-bottom: rem(20);
+          font-size: rem(15);
+        }
+        
+        @include media-max(sm) {
+          margin-bottom: rem(16);
+          font-size: rem(14);
+        }
       }
       
       .project-tags {
@@ -184,6 +300,16 @@
         flex-wrap: wrap;
         gap: rem(8);
         margin-bottom: rem(32);
+        
+        @include media-max(md) {
+          margin-bottom: rem(24);
+          gap: rem(6);
+        }
+        
+        @include media-max(sm) {
+          margin-bottom: rem(20);
+          gap: rem(4);
+        }
         
         .badge {
           background: rgba($color-primary, 0.15);
@@ -195,9 +321,19 @@
           border: 1px solid rgba($color-primary, 0.2);
           transition: all 0.2s $animation-timing;
           
+          @include media-max(sm) {
+            padding: rem(4) rem(10);
+            font-size: rem(12);
+            border-radius: rem(16);
+          }
+          
           &:hover {
             background: rgba($color-primary, 0.25);
             transform: translateY(-1px);
+            
+            @include media-max(sm) {
+              transform: none;
+            }
           }
         }
       }
@@ -208,6 +344,11 @@
         
         @include media-max("md") {
           flex-direction: column;
+          gap: rem(12);
+        }
+        
+        @include media-max("sm") {
+          gap: rem(8);
         }
         
         .btn {
@@ -221,6 +362,12 @@
           
           @include media-max("md") {
             min-width: auto;
+            padding: rem(10) rem(20);
+          }
+          
+          @include media-max("sm") {
+            padding: rem(8) rem(16);
+            font-size: rem(14);
           }
         }
       }
@@ -263,6 +410,12 @@
         border-radius: rem(25);
       }
       
+      @include media-max("sm") {
+        height: rem(300);
+        padding: rem(12);
+        border-radius: rem(20);
+      }
+      
       .ipad-screen {
         width: 100%;
         height: 100%;
@@ -274,6 +427,10 @@
         
         @include media-max("md") {
           border-radius: rem(15);
+        }
+        
+        @include media-max("sm") {
+          border-radius: rem(12);
         }
         
         .ipad-content {
@@ -373,6 +530,48 @@
       
       .project-title {
         font-size: rem(20);
+      }
+    }
+  }
+}
+
+@include media-max("sm") {
+  .projects-section {
+    padding: rem(48) 0;
+    
+    .projects-layout {
+      gap: rem(24);
+    }
+    
+    .project-tabs {
+      padding: rem(16) rem(8);
+      margin: 0 rem(-8);
+      
+      .project-tabs-container {
+        gap: rem(8);
+        
+        .btn {
+          padding: rem(12) rem(16);
+          font-size: rem(13);
+          min-width: rem(120);
+          
+          .btn-icon {
+            font-size: rem(14);
+          }
+          
+          .btn-text {
+            font-size: rem(13);
+            display: inline !important;
+          }
+        }
+      }
+    }
+    
+    .projects-sidebar .project-info {
+      padding: rem(20);
+      
+      .project-title {
+        font-size: rem(18);
       }
     }
   }

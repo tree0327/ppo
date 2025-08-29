@@ -8,16 +8,9 @@
 
 // ===== CSS VARIABLES =====
 :root {
-  --basic: #333;
-  --primary: #DB0032;
-  --gray: #EFEFEF;
-  --secondary: #F9F2ED;
-  --accent: #{$color-accent};
-  --background: #{$color-background};
-  --surface: #{$color-surface};
-  --text-primary: #{$color-body};
-  --text-secondary: #{$color-gray};
-  --border: #{$color-line};
+  @each $name, $color in $colors {
+    --#{$name}: #{$color};
+  }
 }
 
 // ===== RESET & BASE =====
@@ -34,19 +27,68 @@ html {
   @include media-max(md) {
     font-size: $base-rem-mobile;
   }
+  
+  @include media-max(sm) {
+    font-size: $base-rem-mobile;
+  }
 }
 
 body {
   font-family: $font-sans;
   font-size: rem(16);
   line-height: $line-height-base;
-  color: $color-body;
-  background: $color-background;
+  color: var(--text-primary);
+  background: var(--background);
   margin: 0;
   padding: 0;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
+  @include media-max(md) {
+    font-size: rem(15);
+  }
+  
+  @include media-max(sm) {
+    font-size: rem(14);
+  }
+}
+
+// ===== MAIN CONTENT ADJUSTMENT =====
+main {
+  @include media-max(md) {
+    margin-top: rem(64); // sticky nav 높이만큼 margin-top 추가
+  }
+  
+  @include media-max(sm) {
+    margin-top: rem(56); // 작은 화면에서는 더 작은 margin
+  }
+}
+
+// ===== MOBILE OPTIMIZATIONS =====
+@include media-max(sm) {
+  // 터치 타겟 최소 크기
+  button, a, input, textarea, select {
+    min-height: rem(44);
+    min-width: rem(44);
+  }
+  
+  // 터치 스크롤 개선
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  // 텍스트 선택 개선
+  ::selection {
+    background: rgba($color-accent, 0.3);
+    color: var(--text-primary);
+  }
+  
+  // 포커스 표시 개선
+  :focus {
+    outline: 2px solid var(--accent);
+    outline-offset: rem(2);
+  }
 }
 
 // ===== TYPOGRAPHY =====
@@ -55,28 +97,70 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: $font-weight-bold;
   line-height: $line-height-heading;
   margin: 0 0 rem(16) 0;
-  color: $color-body;
+  color: var(--text-primary);
+  
+  @include media-max(md) {
+    margin: 0 0 rem(12) 0;
+  }
+  
+  @include media-max(sm) {
+    margin: 0 0 rem(10) 0;
+  }
 }
 
 h1 {
   font-size: clamp(rem(24), 5vw, rem(48));
   font-weight: $font-weight-extrabold;
+  
+  @include media-max(md) {
+    font-size: clamp(rem(20), 6vw, rem(36));
+  }
+  
+  @include media-max(sm) {
+    font-size: clamp(rem(18), 7vw, rem(28));
+  }
 }
 
 h2 {
   font-size: clamp(rem(20), 4vw, rem(36));
   font-weight: $font-weight-bold;
+  
+  @include media-max(md) {
+    font-size: clamp(rem(18), 5vw, rem(28));
+  }
+  
+  @include media-max(sm) {
+    font-size: clamp(rem(16), 6vw, rem(24));
+  }
 }
 
 h3 {
   font-size: clamp(rem(18), 3vw, rem(28));
   font-weight: $font-weight-semibold;
+  
+  @include media-max(md) {
+    font-size: clamp(rem(16), 4vw, rem(24));
+  }
+  
+  @include media-max(sm) {
+    font-size: clamp(rem(14), 5vw, rem(20));
+  }
 }
 
 p {
   margin: 0 0 rem(16) 0;
-  color: $color-gray;
+  color: var(--text-secondary);
   line-height: 1.7;
+  
+  @include media-max(md) {
+    margin: 0 0 rem(12) 0;
+    line-height: 1.6;
+  }
+  
+  @include media-max(sm) {
+    margin: 0 0 rem(10) 0;
+    line-height: 1.5;
+  }
 }
 
 a {
@@ -85,13 +169,13 @@ a {
   transition: color 0.3s $animation-timing;
   
   &:hover {
-    color: $color-ylw;
+    color: var(--secondary);
   }
 }
 
 strong, b {
   font-weight: $font-weight-semibold;
-  color: $color-body;
+  color: var(--text-primary);
 }
 
 em, i {
@@ -105,19 +189,33 @@ code {
   border-radius: $radius-sm;
   font-size: 0.9em;
   color: var(--accent);
+  
+  @include media-max(sm) {
+    padding: rem(1) rem(4);
+    font-size: 0.85em;
+  }
 }
 
 pre {
-  background: $color-surface;
+  background: var(--surface);
   padding: rem(16);
   border-radius: $radius;
   overflow-x: auto;
-  border: 1px solid $color-line;
+  border: 1px solid var(--border);
+  
+  @include media-max(md) {
+    padding: rem(12);
+  }
+  
+  @include media-max(sm) {
+    padding: rem(8);
+    font-size: rem(13);
+  }
   
   code {
     background: none;
     padding: 0;
-    color: $color-body;
+    color: var(--text-primary);
   }
 }
 
@@ -126,7 +224,17 @@ blockquote {
   padding-left: rem(16);
   margin: rem(24) 0;
   font-style: italic;
-  color: $color-light;
+  color: var(--text-secondary);
+  
+  @include media-max(md) {
+    padding-left: rem(12);
+    margin: rem(20) 0;
+  }
+  
+  @include media-max(sm) {
+    padding-left: rem(8);
+    margin: rem(16) 0;
+  }
 }
 
 // ===== LISTS =====
@@ -134,9 +242,23 @@ ul, ol {
   margin: 0 0 rem(16) 0;
   padding-left: rem(24);
   
+  @include media-max(md) {
+    padding-left: rem(20);
+    margin: 0 0 rem(12) 0;
+  }
+  
+  @include media-max(sm) {
+    padding-left: rem(16);
+    margin: 0 0 rem(10) 0;
+  }
+  
   li {
     margin-bottom: rem(8);
-    color: $color-body;
+    color: var(--text-primary);
+    
+    @include media-max(sm) {
+      margin-bottom: rem(6);
+    }
   }
 }
 
@@ -146,20 +268,37 @@ table {
   border-collapse: collapse;
   margin: rem(24) 0;
   
+  @include media-max(md) {
+    margin: rem(20) 0;
+  }
+  
+  @include media-max(sm) {
+    margin: rem(16) 0;
+    font-size: rem(14);
+  }
+  
   th, td {
     padding: rem(12);
     text-align: left;
-    border-bottom: 1px solid $color-line;
+    border-bottom: 1px solid var(--border);
+    
+    @include media-max(md) {
+      padding: rem(10);
+    }
+    
+    @include media-max(sm) {
+      padding: rem(8);
+    }
   }
   
   th {
     background: rgba($color-secondary, 0.06);
     font-weight: $font-weight-semibold;
-    color: $color-body;
+    color: var(--text-primary);
   }
   
   td {
-    color: $color-body;
+    color: var(--text-primary);
   }
 }
 
@@ -202,8 +341,18 @@ input, textarea, select, button {
   z-index: 10000;
   transition: top 0.3s;
   
+  @include media-max(sm) {
+    left: rem(4);
+    padding: rem(6) rem(12);
+    font-size: rem(14);
+  }
+  
   &:focus {
     top: rem(6);
+    
+    @include media-max(sm) {
+      top: rem(4);
+    }
   }
 }
 
@@ -211,7 +360,7 @@ input, textarea, select, button {
 @media print {
   * {
     background: transparent !important;
-    color: $color-black !important;
+    color: var(--text-primary) !important;
     box-shadow: none !important;
     text-shadow: none !important;
   }
@@ -229,7 +378,7 @@ input, textarea, select, button {
   }
   
   pre, blockquote {
-    border: 1px solid $color-gray;
+    border: 1px solid var(--border);
     page-break-inside: avoid;
   }
   

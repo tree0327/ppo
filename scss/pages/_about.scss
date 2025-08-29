@@ -3,6 +3,14 @@
 .about-section {
   padding: rem(96) 0;
   background: rgba($color-secondary, 0.02);
+  
+  @include media-max(md) {
+    padding: rem(64) 0;
+  }
+  
+  @include media-max(sm) {
+    padding: rem(48) 0;
+  }
 }
 
 // ===== ABOUT LAYOUT =====
@@ -19,12 +27,21 @@
   
   @include media-max(md) {
     gap: rem(32);
+    grid-template-columns: 1fr;
+  }
+  
+  @include media-max(sm) {
+    gap: rem(24);
   }
 }
 
 // ===== ABOUT CONTENT =====
 .about-content {
   width: 100%;
+  
+  @include media-max(md) {
+    order: 2;
+  }
 }
 
 // ===== ABOUT IMAGE =====
@@ -34,17 +51,46 @@
   @include media-max(lg) {
     order: -1;
   }
+  
+  @include media-max(md) {
+    order: 1;
+    margin-bottom: rem(24);
+  }
+  
+  @include media-max(sm) {
+    margin-bottom: rem(16);
+  }
 }
 
 .about-description {
   .about-text {
     margin-bottom: rem(32);
     
+    @include media-max(md) {
+      margin-bottom: rem(24);
+    }
+    
+    @include media-max(sm) {
+      margin-bottom: rem(20);
+    }
+    
     p {
       font-size: rem(18);
       line-height: 1.7;
-      color: $color-body;
+      color: var(--text-primary);
       margin-bottom: rem(16);
+      
+      @include media-max(md) {
+        font-size: rem(16);
+        line-height: 1.6;
+        margin-bottom: rem(12);
+      }
+      
+      @include media-max(sm) {
+        font-size: rem(14);
+        line-height: 1.5;
+        margin-bottom: rem(10);
+      }
     }
   }
   
@@ -54,7 +100,13 @@
     gap: rem(16);
     
     @include media-max(md) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: rem(12);
+    }
+    
+    @include media-max(sm) {
       grid-template-columns: 1fr;
+      gap: rem(8);
     }
     
     .stat-item {
@@ -62,13 +114,31 @@
       padding: rem(24);
       background: rgba($color-secondary, 0.05);
       border-radius: rem(16);
-      border: 1px solid rgba($color-secondary, 0.2);
+      border: 1px solid var(--border);
       backdrop-filter: blur(10px);
       transition: all 0.3s $animation-timing;
+      
+      @include media-max(md) {
+        padding: rem(20);
+        border-radius: rem(12);
+      }
+      
+      @include media-max(sm) {
+        padding: rem(16);
+        border-radius: rem(8);
+      }
       
       &:hover {
         transform: translateY(-5px);
         box-shadow: 0 rem(15) rem(40) rgba($color-secondary, 0.1);
+        
+        @include media-max(md) {
+          transform: translateY(-3px);
+        }
+        
+        @include media-max(sm) {
+          transform: translateY(-2px);
+        }
       }
       
       .stat-number {
@@ -76,11 +146,25 @@
         font-weight: 700;
         color: var(--primary);
         margin-bottom: rem(8);
+        
+        @include media-max(md) {
+          font-size: rem(32);
+          margin-bottom: rem(6);
+        }
+        
+        @include media-max(sm) {
+          font-size: rem(28);
+          margin-bottom: rem(4);
+        }
       }
       
       .stat-label {
-        color: $color-gray;
+        color: var(--text-secondary);
         font-size: rem(14);
+        
+        @include media-max(sm) {
+          font-size: rem(12);
+        }
       }
     }
   }
@@ -90,6 +174,15 @@
   position: relative;
   text-align: center;
   
+  @include media-max(md) {
+    max-width: rem(300);
+    margin: 0 auto;
+  }
+  
+  @include media-max(sm) {
+    max-width: rem(250);
+  }
+  
   .profile-image {
     position: relative;
     display: inline-block;
@@ -98,9 +191,30 @@
       border-radius: rem(20);
       box-shadow: 0 rem(20) rem(60) rgba(0, 0, 0, 0.1);
       transition: transform 0.3s $animation-timing;
+      width: 100%;
+      height: auto;
+      max-width: rem(400);
+      
+      @include media-max(md) {
+        max-width: rem(300);
+        border-radius: rem(16);
+      }
+      
+      @include media-max(sm) {
+        max-width: rem(250);
+        border-radius: rem(12);
+      }
       
       &:hover {
         transform: scale(1.05);
+        
+        @include media-max(md) {
+          transform: scale(1.02);
+        }
+        
+        @include media-max(sm) {
+          transform: none;
+        }
       }
     }
     
@@ -114,10 +228,22 @@
       border-radius: rem(20);
       opacity: 0;
       transition: opacity 0.3s $animation-timing;
+      
+      @include media-max(md) {
+        border-radius: rem(16);
+      }
+      
+      @include media-max(sm) {
+        border-radius: rem(12);
+      }
     }
     
     &:hover .image-overlay {
       opacity: 1;
+      
+      @include media-max(sm) {
+        opacity: 0;
+      }
     }
   }
   
@@ -126,6 +252,10 @@
     border-radius: 50%;
     background: linear-gradient(135deg, $color-secondary, var(--primary));
     animation: float 6s ease-in-out infinite;
+    
+    @include media-max(md) {
+      display: none; // 모바일에서는 장식 요소 숨김
+    }
     
     &--circle {
       width: rem(60);
@@ -151,7 +281,33 @@
     padding: rem(64) 0;
     
     .about-stats {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  .about-layout {
+    .about-image {
+      order: 1;
+    }
+    
+    .about-content {
+      order: 2;
+    }
+  }
+}
+
+@include media-max(sm) {
+  .about-section {
+    padding: rem(48) 0;
+    
+    .about-stats {
       grid-template-columns: 1fr;
+    }
+  }
+  
+  .about-image-container {
+    .card-decoration {
+      display: none;
     }
   }
 }

@@ -71,6 +71,11 @@
         padding-left: $spacing-md;
         padding-right: $spacing-md;
     }
+    
+    @include media-max(sm) {
+        padding-left: $spacing-sm;
+        padding-right: $spacing-sm;
+    }
 }
 
 // ===== TYPOGRAPHY MIXINS =====
@@ -120,10 +125,34 @@
     @if $size == 'xl' {
         font-size: clamp(rem(24), 5vw, rem(48));
         font-weight: $font-weight-extrabold;
+        
+        @include media-max(md) {
+            font-size: clamp(rem(20), 6vw, rem(36));
+        }
+        
+        @include media-max(sm) {
+            font-size: clamp(rem(18), 7vw, rem(28));
+        }
     } @else if $size == 'lg' {
         font-size: clamp(rem(20), 4vw, rem(36));
+        
+        @include media-max(md) {
+            font-size: clamp(rem(18), 5vw, rem(28));
+        }
+        
+        @include media-max(sm) {
+            font-size: clamp(rem(16), 6vw, rem(24));
+        }
     } @else if $size == 'md' {
         font-size: clamp(rem(18), 3vw, rem(28));
+        
+        @include media-max(md) {
+            font-size: clamp(rem(16), 4vw, rem(24));
+        }
+        
+        @include media-max(sm) {
+            font-size: clamp(rem(14), 5vw, rem(20));
+        }
     }
 }
 
@@ -143,6 +172,17 @@
     transition: all $animation-duration-normal $animation-timing;
     white-space: nowrap;
     
+    @include media-max(md) {
+        padding: $spacing-sm $spacing-lg;
+        font-size: rem(15);
+    }
+    
+    @include media-max(sm) {
+        padding: $spacing-sm $spacing-md;
+        font-size: rem(14);
+        gap: $spacing-xs;
+    }
+    
     @if $variant == 'primary' {
         background: var(--accent);
         color: var(--text-primary);
@@ -160,9 +200,17 @@
     &:hover {
         transform: translateY(-2px);
         
+        @include media-max(md) {
+            transform: translateY(-1px);
+        }
+        
+        @include media-max(sm) {
+            transform: none;
+        }
+        
         @if $variant == 'primary' {
-            background: var(--primary-light);
-            border-color: var(--primary-light);
+            background: var(--primary);
+            border-color: var(--primary);
         } @else if $variant == 'secondary' {
             background: var(--text-primary);
             border-color: var(--text-primary);
@@ -175,6 +223,10 @@
     &:focus {
         outline: 2px solid var(--accent);
         outline-offset: $spacing-sm;
+        
+        @include media-max(sm) {
+            outline-offset: $spacing-xs;
+        }
     }
     
     &:disabled {
@@ -192,17 +244,33 @@
     box-shadow: $shadow-lg;
     transition: all $animation-duration-normal $animation-timing;
     
+    @include media-max(md) {
+        border-radius: $radius-lg;
+    }
+    
+    @include media-max(sm) {
+        border-radius: $radius-md;
+    }
+    
     @if $variant == 'info' {
         background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba($color-secondary, 0.2);
+        border: 1px solid var(--border);
     } @else if $variant == 'form' {
         background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba($color-secondary, 0.2);
+        border: 1px solid var(--border);
     }
     
     &:hover {
         transform: translateY(-5px);
         box-shadow: $shadow-xl;
+        
+        @include media-max(md) {
+            transform: translateY(-3px);
+        }
+        
+        @include media-max(sm) {
+            transform: translateY(-2px);
+        }
     }
 }
 
@@ -230,6 +298,12 @@
     @include media-max(md) {
         .mo {
             height: rem(24);
+        }
+    }
+    
+    @include media-max(sm) {
+        .mo {
+            height: rem(20);
         }
     }
 }

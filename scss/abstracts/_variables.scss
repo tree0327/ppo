@@ -2,16 +2,14 @@
 
 // Color Map
 $colors: (
-  primary: #DB0032,
-  primary-light: #2d5a87,
-  secondary: #5A371E,
-  accent: #ed8936,
-  ylw: #FFC908,
-  white: #ffffff,
-  black: #000000,
-  gray: #666,
-  light: #999,
-  background: #ffffff
+  primary: #2563EB,
+  secondary: #9333EA,
+  accent: #F97316,
+  background: #F9FAFB,
+  surface: #FFFFFF,
+  text-primary: #111827,
+  text-secondary: #6B7280,
+  border: #E5E7EB
 );
 
 // Typography Map
@@ -89,18 +87,22 @@ $z-index: (
 
 // ===== LEGACY VARIABLES (Backward Compatibility) =====
 $color-primary: map-get($colors, primary);
-$color-primary-light: map-get($colors, primary-light);
 $color-secondary: map-get($colors, secondary);
 $color-accent: map-get($colors, accent);
-$color-ylw: map-get($colors, ylw);
-$color-white: map-get($colors, white);
-$color-black: map-get($colors, black);
-$color-gray: map-get($colors, gray);
-$color-light: map-get($colors, light);
 $color-background: map-get($colors, background);
-$color-body: #333333;
-$color-surface: #ffffff;
-$color-line: #e5e7eb;
+$color-surface: map-get($colors, surface);
+$color-text-primary: map-get($colors, text-primary);
+$color-text-secondary: map-get($colors, text-secondary);
+$color-border: map-get($colors, border);
+
+// 기존 변수들과의 호환성을 위한 별칭
+$color-body: $color-text-primary;
+$color-gray: $color-text-secondary;
+$color-line: $color-border;
+$color-white: $color-surface;
+$color-black: $color-text-primary;
+$color-ylw: $color-accent;
+$color-light: $color-text-secondary;
 
 $font-sans: map-get($typography, sans);
 $font-mont: map-get($typography, mont);
@@ -155,25 +157,9 @@ $line-height-heading: 1.2;
 
 // ===== CSS VARIABLES =====
 :root {
-  // 기본 색상 (tokens)
-  --basic: #333;
-  --primary: #DB0032;
-  --gray: #EFEFEF;
-  --secondary: #F9F2ED;
-  
-  // 브랜드 색상
-  --primary-light: #{$color-primary-light};
-  --accent: #{$color-accent};
-  --ylw: #{$color-ylw};
-  
-  // 배경/텍스트
-  --background: #{$color-background};
-  --text-primary: #{$color-body};
-  --text-secondary: #{$color-gray};
-  --text-light: #{$color-light};
-  
-  // 구분선
-  --border: #{$color-line};
+  @each $name, $color in $colors {
+    --#{$name}: #{$color};
+  }
 }
 
 
