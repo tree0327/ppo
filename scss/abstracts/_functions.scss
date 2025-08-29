@@ -2,7 +2,7 @@
 @use "sass:map";
 
 // ===== UNIT CONVERSION FUNCTIONS =====
-@function rem($px, $base: $base-rem) {
+@function rem($px, $base: 16px) {
     @return (remove-unit(math.div($px, $base))) * 1rem;
 }
 

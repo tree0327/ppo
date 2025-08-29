@@ -78,6 +78,31 @@
       
       // 스크롤 가능하도록 설정
       -webkit-overflow-scrolling: touch;
+    }
+    
+    // 탭 프로그레스 바
+    .tab-progress-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: rem(3);
+      background: rgba($color-secondary, 0.1);
+      border-radius: $radius-full;
+      overflow: hidden;
+      
+              .tab-progress-fill {
+          height: 100%;
+          background: linear-gradient(90deg, $color-primary, $color-secondary);
+          border-radius: $radius-full;
+          transform: translateX(-100%);
+          transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          box-shadow: 0 0 rem(20) rgba($color-primary, 0.3);
+          will-change: transform;
+        }
+    }
+      
+
       
       .btn {
         flex: 0 0 auto;
@@ -458,10 +483,96 @@
             }
           }
         }
+        
+        // iPad 프로그레스 바
+        .ipad-progress-bar {
+          position: absolute;
+          bottom: rem(20);
+          left: rem(20);
+          right: rem(20);
+          height: rem(6);
+          background: rgba(0, 0, 0, 0.7);
+          border-radius: $radius-full;
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          overflow: hidden;
+          z-index: 10;
+          
+          @include media-max("md") {
+            bottom: rem(15);
+            left: rem(15);
+            right: rem(15);
+            height: rem(5);
+          }
+          
+          @include media-max("sm") {
+            bottom: rem(12);
+            left: rem(12);
+            right: rem(12);
+            height: rem(4);
+          }
+          
+          .progress-track {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: $radius-full;
+            overflow: hidden;
+            
+                         .progress-fill {
+               position: absolute;
+               top: 0;
+               left: 0;
+               height: 100%;
+               width: 0%;
+               background: linear-gradient(90deg, $color-primary, $color-secondary, $color-accent);
+               border-radius: $radius-full;
+               transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+               box-shadow: 0 0 rem(15) rgba($color-primary, 0.5);
+               will-change: width, background;
+              
+              &::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: rem(20);
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3));
+                border-radius: $radius-full;
+              }
+            }
+          }
+          
+          .progress-text {
+            position: absolute;
+            top: rem(-30);
+            right: 0;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: rem(12);
+            font-weight: $font-weight-medium;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.6);
+            padding: rem(4) rem(8);
+            border-radius: $radius-sm;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            
+            @include media-max("md") {
+              font-size: rem(11);
+              top: rem(-25);
+            }
+            
+            @include media-max("sm") {
+              font-size: rem(10);
+              top: rem(-22);
+            }
+          }
+        }
       }
     }
   }
-}
+
 
 // ===== RESPONSIVE DISPLAY =====
 .pc {

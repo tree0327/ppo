@@ -210,7 +210,54 @@ export function initProjects() {
         projectButtons[0].click();
     }
     
+    // 탭 프로그레스 바 초기화
+    initTabProgressBar();
+    
     console.log('Projects initialized');
+}
+
+// ===== TAB PROGRESS BAR =====
+function initTabProgressBar() {
+    const progressFill = document.querySelector('.tab-progress-fill');
+    
+    if (!progressFill) {
+        console.warn('Tab progress fill not found');
+        return;
+    }
+    
+    // 탭 변경 시 프로그레스 바 애니메이션
+    function animateTabProgress(activeIndex, totalTabs) {
+        const progress = ((activeIndex + 1) / totalTabs) * 100;
+        
+        // 더 부드러운 애니메이션을 위한 개선된 설정
+        gsap.to(progressFill, {
+            transform: `translateX(${progress - 100}%)`,
+            duration: 0.8,
+            ease: "power3.out",
+            overwrite: "auto"
+        });
+        
+        // 프로그레스 바에 부드러운 색상 전환 효과 추가
+        gsap.to(progressFill, {
+            background: `linear-gradient(90deg, 
+                rgba(37, 99, 235, 0.9), 
+                rgba(147, 51, 234, 0.9)
+            )`,
+            duration: 0.6,
+            ease: "power2.out"
+        });
+    }
+    
+    // 프로젝트 버튼 클릭 시 프로그레스 바 업데이트
+    const projectButtons = document.querySelectorAll('.project-tabs-container .btn');
+    projectButtons.forEach((button, index) => {
+        button.addEventListener('click', () => {
+            animateTabProgress(index, projectButtons.length);
+        });
+    });
+    
+    // 초기 프로그레스 바 상태 설정
+    animateTabProgress(0, projectButtons.length);
 }
 
 // ===== PROJECT BUTTONS HORIZONTAL SCROLL =====
@@ -224,7 +271,7 @@ export function initProjectButtonsScroll() {
         return;
     }
 
-    // 프로그레스바 업데이트 함수
+    // 프로그레스바 업데이트 함수 (부드러운 애니메이션 적용)
     function updateProgressBar() {
         if (!progressBar || !progressFill) return;
         
@@ -232,11 +279,25 @@ export function initProjectButtonsScroll() {
         const scrollWidth = scrollContainer.scrollWidth - scrollContainer.clientWidth;
         const progress = scrollWidth > 0 ? (scrollLeft / scrollWidth) * 100 : 0;
         
-        progressFill.style.width = `${Math.max(0, Math.min(100, progress))}%`;
+        // GSAP를 사용한 부드러운 너비 애니메이션
+        gsap.to(progressFill, {
+            width: `${Math.max(0, Math.min(100, progress))}%`,
+            duration: 0.4,
+            ease: "power2.out",
+            overwrite: "auto"
+        });
     }
 
-    // 스크롤 이벤트 리스너
-    scrollContainer.addEventListener('scroll', updateProgressBar);
+    // 스크롤 이벤트 리스너 (throttling 적용으로 부드러운 애니메이션)
+    let scrollTimeout;
+    scrollContainer.addEventListener('scroll', () => {
+        if (scrollTimeout) return;
+        
+        scrollTimeout = setTimeout(() => {
+            updateProgressBar();
+            scrollTimeout = null;
+        }, 16); // 60fps에 맞춘 최적화
+    });
 
     // 마우스 휠 이벤트 (가로 스크롤)
     scrollContainer.addEventListener('wheel', (e) => {
@@ -358,21 +419,46 @@ export function initIpadScroll() {
         const progressText = document.querySelector('.progress-text');
         
         if (progressFill) {
-            progressFill.style.width = `${scrollPosition}%`;
-            if (scrollPosition <= 10 || scrollPosition >= 90) {
-                progressFill.style.background = 'linear-gradient(90deg, #ff6b6b, #feca57)';
-            } else {
-                progressFill.style.background = 'linear-gradient(90deg, #D4B996, #A67B5B)';
-            }
+            // GSAP를 사용한 더 부드러운 애니메이션
+            gsap.to(progressFill, {
+                width: `${scrollPosition}%`,
+                duration: 0.5,
+                ease: "power3.out",
+                overwrite: "auto"
+            });
+            
+            // 프로그레스 바 색상 변경 (부드러운 전환)
+            const targetGradient = scrollPosition <= 10 || scrollPosition >= 90 
+                ? 'linear-gradient(90deg, #ff6b6b, #feca57)'
+                : 'linear-gradient(90deg, #2563EB, #9333EA, #F97316)';
+            
+            gsap.to(progressFill, {
+                background: targetGradient,
+                duration: 0.4,
+                ease: "power2.out"
+            });
         }
         
         if (progressText) {
-            progressText.textContent = `${Math.round(scrollPosition)}%`;
-            if (scrollPosition <= 10 || scrollPosition >= 90) {
-                progressText.style.color = '#ff6b6b';
-            } else {
-                progressText.style.color = '#D4B996';
-            }
+            // 텍스트 애니메이션 (더 부드럽게)
+            gsap.to(progressText, {
+                textContent: `${Math.round(scrollPosition)}%`,
+                duration: 0.4,
+                ease: "power2.out",
+                snap: { textContent: 1 },
+                overwrite: "auto"
+            });
+            
+            // 텍스트 색상 변경 (부드러운 전환)
+            const targetColor = scrollPosition <= 10 || scrollPosition >= 90 
+                ? '#ff6b6b' 
+                : '#ffffff';
+            
+            gsap.to(progressText, {
+                color: targetColor,
+                duration: 0.3,
+                ease: "power2.out"
+            });
         }
         
         // ARIA updates

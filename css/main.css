@@ -1,533 +1,117 @@
-#fullpage > .section {
-  height: 100vh;
-}
+/*
+Error: Invalid CSS after "...emove-unit(math": expected ")", was ".div($px, $base..."
+        on line 6 of scss/abstracts/_functions.scss
+        from line 5 of scss/style.scss
 
-.sc_intro {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: "Couture", "Noto Sans KR", sans-serif;
-}
-.sc_intro .bg {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  opacity: 0;
-}
-.sc_intro .sc_title {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  white-space: nowrap;
-  font-size: 4vw;
-  text-align: center;
-  line-height: 1.4;
-  font-weight: 500;
-}
-@media (max-width: 1023px) {
-  .sc_intro .sc_title {
-    font-size: 5vw;
-  }
-}
-@media (max-width: 768px) {
-  .sc_intro .sc_title {
-    font-size: 6vw;
-  }
-}
-.sc_intro .sc_title span {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 0;
-}
-.sc_intro .sc_title span:last-child {
-  font-size: 6vw;
-  letter-spacing: 2px;
-}
+1: @use "sass:math";
+2: @use "sass:map";
+3: 
+4: // ===== UNIT CONVERSION FUNCTIONS =====
+5: @function rem($px, $base: $base-rem) {
+6:     @return (remove-unit(math.div($px, $base))) * 1rem;
+7: }
+8: 
+9: @function remove-unit($value) {
+10:     @return math.div($value, $value * 0 + 1);
+11: }
 
-.sc_about {
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-.sc_about .sc_title {
-  font-size: 38px;
-  line-height: 1.8;
-  font-weight: 300;
-}
-@media (max-width: 1023px) {
-  .sc_about .sc_title {
-    font-size: 32px;
-  }
-}
-@media (max-width: 768px) {
-  .sc_about .sc_title {
-    font-size: 22px;
-  }
-}
-.sc_about .sc_title strong {
-  font-weight: 600;
-}
-.sc_about .desc {
-  margin: 100px 0;
-  font-size: 18px;
-  line-height: 1.7;
-}
-@media (max-width: 1023px) {
-  .sc_about .desc {
-    font-size: 17px;
-  }
-}
-@media (max-width: 768px) {
-  .sc_about .desc {
-    font-size: 16px;
-  }
-}
-
-.sc_works {
-  background-color: #fdfd96;
-}
-.sc_works .sc_title {
-  font-weight: bold;
-  font-size: 6rem;
-  text-align: center;
-  padding: 0 0 3.125rem;
-  letter-spacing: 1vw;
-}
-@media (max-width: 1023px) {
-  .sc_works .sc_title {
-    font-size: 5rem;
-  }
-}
-@media (max-width: 768px) {
-  .sc_works .sc_title {
-    font-size: 3.5rem;
-  }
-}
-@media (max-width: 1023px) {
-  .sc_works .sc_title {
-    padding: 0 0 2.5rem;
-  }
-}
-@media (max-width: 768px) {
-  .sc_works .sc_title {
-    padding: 0 0 2rem;
-  }
-}
-.sc_works .swiper {
-  width: 100%;
-}
-.sc_works .swiper-wrapper {
-  display: flex;
-  align-items: stretch;
-}
-.sc_works .swiper-slide {
-  background-repeat: no-repeat;
-  background-position: top;
-  background-size: cover;
-  height: calc(70vh - 21px);
-  max-height: 650px;
-  width: 100%;
-  position: relative;
-  transition: all 0.5s 0s;
-  cursor: pointer;
-  background-color: #fff;
-  border-radius: 30px;
-  overflow: hidden;
-  flex: 0 0 auto;
-}
-.sc_works .swiper-slide:hover {
-  background-color: rgba(17, 17, 17, 0.7);
-  background-blend-mode: multiply;
-  color: #fff;
-  background-position: center;
-}
-.sc_works .swiper-slide .img {
-  width: 100%;
-  height: 100%;
-}
-.sc_works .swiper-slide .title {
-  text-align: left;
-  padding: 20px;
-}
-.sc_works .swiper-slide .name {
-  font-size: 18px;
-  font-weight: bold;
-  color: transparent;
-  transition: all 0.3s 0s;
-}
-.sc_works .swiper-slide:hover .img .title .name {
-  color: #fff;
-}
-.sc_works .swiper-slide .sub {
-  color: transparent;
-  transition: all 0.3s 0s;
-}
-.sc_works .swiper-slide:hover .img .title .sub {
-  color: #bbb;
-}
-.sc_works .swiper-slide .button {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  background-color: #111;
-  line-height: 50px;
-  transition: all 0.3s 0s;
-  text-align: center;
-}
-.sc_works .swiper-slide:hover .button {
-  background-color: #fff;
-  color: #111;
-}
-.sc_works .swiper-slide:nth-child(1) {
-  background-image: url(../images/hycu-1.png);
-}
-.sc_works .swiper-slide:nth-child(2) {
-  background-image: url(../images/urscope-1.png);
-}
-.sc_works .swiper-slide:nth-child(3) {
-  background-image: url(../images/kmr-1.png);
-}
-.sc_works .swiper-slide:nth-child(4) {
-  background-image: url(../images/corfa1.jpg);
-}
-.sc_works .swiper-slide:nth-child(5) {
-  background-image: url(../images/landing1.jpg);
-}
-.sc_works .swiper-slide:nth-child(6) {
-  background-image: url(../images/smartppt1.jpg);
-}
-.sc_works .swiper-slide:nth-child(7) {
-  background-image: url(../images/aidt1.jpg);
-}
-.sc_works .swiper-slide:nth-child(8) {
-  background-image: url(../images/iscream1.jpg);
-}
-.sc_works .swiper-slide:nth-child(9) {
-  background-image: url(../images/mmath1.jpg);
-}
-.sc_works .swiper-pagination {
-  position: static;
-  margin-top: 10px;
-}
-.sc_works .swiper-pagination-bullet {
-  width: 12px;
-  height: 12px;
-}
-
-/* Modal Styles */
-.modal {
-  background-color: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-}
-
-.modal-dialog {
-  max-width: 1100px;
-  margin: 1.75rem auto;
-}
-
-.modal-content {
-  background: linear-gradient(135deg, 
-    rgba(255, 255, 255, 0.95) 0%, 
-    rgba(245, 241, 235, 0.9) 50%,
-    rgba(232, 220, 192, 0.95) 100%);
-  border: 1px solid rgba(212, 196, 167, 0.3);
-  border-radius: 30px;
-  box-shadow: 
-    0 25px 50px rgba(0, 0, 0, 0.3),
-    0 0 0 1px rgba(212, 196, 167, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
-  overflow: hidden;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  position: relative;
-}
-
-.modal-content::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, 
-    rgba(212, 196, 167, 0.1) 0%, 
-    rgba(232, 220, 192, 0.1) 50%, 
-    rgba(245, 241, 235, 0.1) 100%);
-  border-radius: 30px;
-  z-index: -1;
-}
-
-.modal-header {
-  border-bottom: none;
-  padding: 0;
-}
-
-.modal-body {
-  padding: 0;
-}
-
-.icon-modal-close {
-  position: absolute;
-  top: 25px;
-  right: 25px;
-  background: rgba(139, 115, 85, 0.2);
-  border: 1px solid rgba(139, 115, 85, 0.4);
-  color: #8b7355;
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  font-size: 20px;
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  z-index: 10;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-
-.icon-modal-close:hover {
-  background: rgba(139, 115, 85, 0.4);
-  transform: scale(1.1) rotate(90deg);
-  box-shadow: 0 0 20px rgba(139, 115, 85, 0.3);
-}
-
-.modal-text-wrap {
-  padding: 50px;
-  color: #2c2c2c;
-  position: relative;
-}
-
-.modal-text-wrap h3 {
-  font-size: 3rem;
-  font-weight: 800;
-  margin-bottom: 40px;
-  text-align: center;
-  background: linear-gradient(45deg, #8b7355, #a08b6b, #b8a08c, #8b7355);
-  background-size: 300% 300%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: gradientShift 3s ease-in-out infinite;
-  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  letter-spacing: -1px;
-}
-
-@keyframes gradientShift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-
-.project-info {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 50px;
-  align-items: start;
-}
-
-.project-image {
-  text-align: center;
-  position: relative;
-}
-
-.project-image::before {
-  content: '';
-  position: absolute;
-  top: -10px;
-  left: -10px;
-  right: -10px;
-  bottom: -10px;
-  background: linear-gradient(45deg, #8b7355, #a08b6b, #b8a08c, #8b7355);
-  border-radius: 20px;
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.project-image:hover::before {
-  opacity: 1;
-}
-
-.project-image img {
-  width: 100%;
-  max-width: 450px;
-  height: auto;
-  border-radius: 20px;
-  box-shadow: 
-    0 20px 40px rgba(0, 0, 0, 0.2),
-    0 0 0 1px rgba(212, 196, 167, 0.3);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  filter: brightness(0.95) contrast(1.05);
-}
-
-.project-image img:hover {
-  transform: scale(1.05) translateY(-10px);
-  filter: brightness(1) contrast(1.1);
-  box-shadow: 
-    0 30px 60px rgba(0, 0, 0, 0.3),
-    0 0 0 1px rgba(212, 196, 167, 0.5);
-}
-
-.project-details h4 {
-  font-size: 1.4rem;
-  font-weight: 700;
-  margin: 30px 0 20px 0;
-  color: #2c2c2c;
-  border-bottom: 2px solid rgba(139, 115, 85, 0.3);
-  padding-bottom: 12px;
-  position: relative;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-}
-
-.project-details h4::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 50px;
-  height: 2px;
-  background: linear-gradient(90deg, #8b7355, #a08b6b);
-  border-radius: 1px;
-}
-
-.project-details p {
-  font-size: 1.05rem;
-  line-height: 1.7;
-  margin-bottom: 18px;
-  color: #4a4a4a;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-}
-
-.project-details ul {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 25px 0;
-}
-
-.project-details li {
-  font-size: 1rem;
-  line-height: 1.6;
-  margin-bottom: 12px;
-  color: #5a5a5a;
-  position: relative;
-  padding-left: 25px;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
-}
-
-.project-details li:hover {
-  color: #2c2c2c;
-  transform: translateX(5px);
-}
-
-.project-details li:before {
-  content: "✦";
-  position: absolute;
-  left: 0;
-  color: #8b7355;
-  font-weight: bold;
-  font-size: 1.2rem;
-  animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.2); }
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .modal-dialog {
-    max-width: 95%;
-    margin: 1rem auto;
-  }
-  
-  .modal-text-wrap {
-    padding: 40px 25px;
-  }
-  
-  .modal-text-wrap h3 {
-    font-size: 2.2rem;
-    margin-bottom: 30px;
-  }
-  
-  .project-info {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-  
-  .project-image img {
-    max-width: 100%;
-  }
-  
-  .project-details h4 {
-    font-size: 1.3rem;
-    margin: 25px 0 15px 0;
-  }
-  
-  .project-details p,
-  .project-details li {
-    font-size: 0.95rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .modal-text-wrap {
-    padding: 30px 20px;
-  }
-  
-  .modal-text-wrap h3 {
-    font-size: 1.9rem;
-    margin-bottom: 25px;
-  }
-  
-  .project-info {
-    gap: 30px;
-  }
-  
-  .project-details h4 {
-    font-size: 1.2rem;
-    margin: 20px 0 12px 0;
-  }
-}
-
-/* Animation for modal */
-.modal.fade .modal-dialog {
-  transform: scale(0.7) translateY(-50px);
-  opacity: 0;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.modal.show .modal-dialog {
-  transform: scale(1) translateY(0);
-  opacity: 1;
-}
-
-/* Custom scrollbar for modal */
-.modal-body.scrolled::-webkit-scrollbar {
-  width: 8px;
-}
-
-.modal-body.scrolled::-webkit-scrollbar-track {
-  background: rgba(139, 115, 85, 0.1);
-  border-radius: 4px;
-}
-
-.modal-body.scrolled::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #8b7355, #a08b6b);
-  border-radius: 4px;
-}
-
-.modal-body.scrolled::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #b8a08c, #8b7355);
-}/*# sourceMappingURL=main.css.map */
+Backtrace:
+scss/abstracts/_functions.scss:6
+scss/style.scss:5
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:1308:in `expected'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/script/lexer.rb:240:in `expected!'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/script/parser.rb:862:in `assert_tok'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/script/parser.rb:644:in `funcall'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/script/parser.rb:531:in `css_min_max'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/script/parser.rb:507:in `ident'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/script/parser.rb:295:in `unary_not'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/script/parser.rb:295:in `unary_div'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/script/parser.rb:295:in `unary_minus'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/script/parser.rb:295:in `unary_plus'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/script/parser.rb:272:in `times_div_or_mod'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/script/parser.rb:272:in `plus_or_minus'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/script/parser.rb:272:in `relational'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/script/parser.rb:272:in `eq_or_neq'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/script/parser.rb:272:in `and_expr'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/script/parser.rb:272:in `or_expr'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/script/parser.rb:481:in `space'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/script/parser.rb:422:in `interpolation'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/script/parser.rb:320:in `map'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/script/parser.rb:794:in `block in paren'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/script/parser.rb:904:in `without_stop_at'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/script/parser.rb:792:in `paren'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/script/parser.rb:746:in `square_list'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/script/parser.rb:733:in `special_fun'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/script/parser.rb:727:in `raw'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/script/parser.rb:642:in `funcall'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/script/parser.rb:531:in `css_min_max'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/script/parser.rb:507:in `ident'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/script/parser.rb:295:in `unary_not'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/script/parser.rb:295:in `unary_div'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/script/parser.rb:295:in `unary_minus'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/script/parser.rb:295:in `unary_plus'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/script/parser.rb:272:in `times_div_or_mod'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/script/parser.rb:272:in `plus_or_minus'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/script/parser.rb:272:in `relational'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/script/parser.rb:272:in `eq_or_neq'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/script/parser.rb:272:in `and_expr'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/script/parser.rb:272:in `or_expr'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/script/parser.rb:481:in `space'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/script/parser.rb:422:in `interpolation'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/script/parser.rb:343:in `expr'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/script/parser.rb:853:in `assert_expr'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/script/parser.rb:68:in `parse'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:1164:in `sass_script'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:276:in `return_directive'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:234:in `special_directive'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:209:in `directive'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:706:in `block_child'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:697:in `block_contents'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:689:in `block'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:272:in `function_directive'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:234:in `special_directive'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:209:in `directive'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:707:in `block_child'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:700:in `block_contents'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:137:in `stylesheet'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:41:in `parse'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/engine.rb:414:in `_to_tree'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/engine.rb:321:in `to_tree'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:323:in `block in visit_import'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/stack.rb:88:in `block in with_import'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/stack.rb:135:in `with_frame'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/stack.rb:88:in `with_import'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:322:in `visit_import'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/stack.rb:79:in `block in with_base'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/stack.rb:135:in `with_frame'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/stack.rb:79:in `with_base'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `visit'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:52:in `map'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:157:in `visit'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:10:in `visit'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/tree/root_node.rb:36:in `css_tree'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/engine.rb:389:in `_render_with_sourcemap'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/engine.rb:307:in `render_with_sourcemap'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/exec/sass_scss.rb:387:in `run'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/exec/sass_scss.rb:63:in `process_result'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/exec/base.rb:50:in `parse'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/lib/sass/exec/base.rb:18:in `parse!'
+C:/Users/ilsangeasy03/.local/share/gem/ruby/3.3.0/gems/sass-3.7.4/bin/sass:13:in `<top (required)>'
+C:/Users/ilsangeasy03/AppData/Local/Microsoft/WindowsApps/sass:32:in `load'
+C:/Users/ilsangeasy03/AppData/Local/Microsoft/WindowsApps/sass:32:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid CSS after \"...emove-unit(math\": expected \")\", was \".div($px, $base...\"\A         on line 6 of scss/abstracts/_functions.scss\A         from line 5 of scss/style.scss\A \A 1: @use \"sass:math\";\A 2: @use \"sass:map\";\A 3: \A 4: // ===== UNIT CONVERSION FUNCTIONS =====\A 5: @function rem($px, $base: $base-rem) {\A 6:     @return (remove-unit(math.div($px, $base))) * 1rem;\A 7: }\A 8: \A 9: @function remove-unit($value) {\A 10:     @return math.div($value, $value * 0 + 1);\A 11: }"; }
