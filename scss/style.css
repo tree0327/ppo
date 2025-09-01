@@ -2,9 +2,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/static/woff2/SUIT.css");
 :root {
-  --primary: #2563EB;
-  --secondary: #9333EA;
-  --accent: #F97316;
+  --primary: #059669;
+  --secondary: #10B981;
+  --accent: #34D399;
   --background: #F9FAFB;
   --surface: #FFFFFF;
   --text-primary: #111827;
@@ -24,9 +24,9 @@
   }
 }
 :root {
-  --primary: #2563EB;
-  --secondary: #9333EA;
-  --accent: #F97316;
+  --primary: #059669;
+  --secondary: #10B981;
+  --accent: #34D399;
   --background: #F9FAFB;
   --surface: #FFFFFF;
   --text-primary: #111827;
@@ -98,11 +98,11 @@ body {
     -webkit-overflow-scrolling: touch;
   }
   ::-moz-selection {
-    background: rgba(249, 115, 22, 0.3);
+    background: rgba(52, 211, 153, 0.3);
     color: var(--text-primary);
   }
   ::selection {
-    background: rgba(249, 115, 22, 0.3);
+    background: rgba(52, 211, 153, 0.3);
     color: var(--text-primary);
   }
   :focus {
@@ -211,7 +211,7 @@ em, i {
 
 code {
   font-family: "Montserrat";
-  background: rgba(147, 51, 234, 0.06);
+  background: rgba(16, 185, 129, 0.06);
   padding: 0.125rem 0.375rem;
   border-radius: 0.25rem;
   font-size: 0.9em;
@@ -326,7 +326,7 @@ table th, table td {
   }
 }
 table th {
-  background: rgba(147, 51, 234, 0.06);
+  background: rgba(16, 185, 129, 0.06);
   font-weight: 600;
   color: var(--text-primary);
 }
@@ -768,11 +768,11 @@ body.has-custom-scrollbar {
   background: var(--accent);
   color: var(--surface);
   transform: scale(1.05);
-  box-shadow: 0 0.25rem 0.75rem rgba(249, 115, 22, 0.3);
+  box-shadow: 0 0.25rem 0.75rem rgba(52, 211, 153, 0.3);
 }
 .sticky-nav .sticky-nav-container .sticky-nav-toggle:active {
   transform: scale(0.95);
-  box-shadow: 0 0.125rem 0.5rem rgba(249, 115, 22, 0.2);
+  box-shadow: 0 0.125rem 0.5rem rgba(52, 211, 153, 0.2);
 }
 .sticky-nav .sticky-nav-container .sticky-nav-toggle .hamburger-icon {
   width: 1.25rem;
@@ -810,7 +810,7 @@ body.has-custom-scrollbar {
   background: var(--accent);
   color: var(--surface);
   transform: scale(1.05);
-  box-shadow: 0 0.25rem 0.75rem rgba(249, 115, 22, 0.3);
+  box-shadow: 0 0.25rem 0.75rem rgba(52, 211, 153, 0.3);
 }
 .sticky-nav .sticky-nav-menu {
   position: absolute;
@@ -855,11 +855,11 @@ body.has-custom-scrollbar {
 }
 .sticky-nav .sticky-nav-menu .sticky-nav-list li a:hover {
   color: var(--accent);
-  background: rgba(249, 115, 22, 0.05);
+  background: rgba(52, 211, 153, 0.05);
 }
 .sticky-nav .sticky-nav-menu .sticky-nav-list li a.active {
   color: var(--accent);
-  background: rgba(249, 115, 22, 0.1);
+  background: rgba(52, 211, 153, 0.1);
 }
 
 .floating-nav {
@@ -889,7 +889,7 @@ body.has-custom-scrollbar {
   justify-content: center;
   width: 0.75rem;
   height: 0.75rem;
-  background: rgba(147, 51, 234, 0.3);
+  background: rgba(16, 185, 129, 0.3);
   border-radius: 50%;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
@@ -904,7 +904,7 @@ body.has-custom-scrollbar {
 }
 .floating-nav .nav-dot.active {
   background: var(--accent);
-  box-shadow: 0 0 1.25rem rgba(249, 115, 22, 0.5);
+  box-shadow: 0 0 1.25rem rgba(52, 211, 153, 0.5);
 }
 .floating-nav .nav-dot .dot-label {
   position: absolute;
@@ -1453,7 +1453,7 @@ body.has-custom-scrollbar {
   padding: 1rem 1rem;
   border-radius: 0.5rem;
   border: 2px solid var(--border);
-  background: rgba(147, 51, 234, 0.05);
+  background: rgba(16, 185, 129, 0.05);
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1470,15 +1470,15 @@ body.has-custom-scrollbar {
 .form-textarea:focus {
   outline: none;
   border-color: var(--secondary);
-  box-shadow: 0 0 0 0.2rem rgba(147, 51, 234, 0.25);
-  background: rgba(147, 51, 234, 0.1);
+  box-shadow: 0 0 0 0.2rem rgba(16, 185, 129, 0.25);
+  background: rgba(16, 185, 129, 0.1);
 }
 .form-input::-moz-placeholder, .form-textarea::-moz-placeholder {
-  color: rgba(147, 51, 234, 0.6);
+  color: rgba(16, 185, 129, 0.6);
 }
 .form-input::placeholder,
 .form-textarea::placeholder {
-  color: rgba(147, 51, 234, 0.6);
+  color: rgba(16, 185, 129, 0.6);
 }
 
 .form-textarea {
@@ -1533,9 +1533,9 @@ body.has-custom-scrollbar {
   font-size: 0.75rem;
   font-weight: 500;
   border-radius: 9999px;
-  background: rgba(249, 115, 22, 0.1);
+  background: rgba(52, 211, 153, 0.1);
   color: var(--accent);
-  border: 1px solid rgba(249, 115, 22, 0.2);
+  border: 1px solid rgba(52, 211, 153, 0.2);
 }
 @media (max-width: 575.98px) {
   .badge {
@@ -1544,14 +1544,14 @@ body.has-custom-scrollbar {
   }
 }
 .badge--tech {
-  background: rgba(37, 99, 235, 0.1);
+  background: rgba(5, 150, 105, 0.1);
   color: var(--primary);
-  border-color: rgba(37, 99, 235, 0.2);
+  border-color: rgba(5, 150, 105, 0.2);
 }
 .badge--skill {
-  background: rgba(147, 51, 234, 0.1);
+  background: rgba(16, 185, 129, 0.1);
   color: var(--secondary);
-  border-color: rgba(147, 51, 234, 0.2);
+  border-color: rgba(16, 185, 129, 0.2);
 }
 
 .hero-title .title-line {
@@ -2133,7 +2133,7 @@ body.has-custom-scrollbar {
   color: var(--accent);
   margin-bottom: 0.5rem;
   padding: 0.25rem 0.5rem;
-  background: rgba(249, 115, 22, 0.1);
+  background: rgba(52, 211, 153, 0.1);
   border-radius: 0.25rem;
 }
 @media (max-width: 575.98px) {
@@ -2425,7 +2425,7 @@ body.has-custom-scrollbar {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at 20% 80%, rgba(147, 51, 234, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(147, 51, 234, 0.1) 0%, transparent 50%);
+  background: radial-gradient(circle at 20% 80%, rgba(16, 185, 129, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
 }
 
 .hero-layout {
@@ -2618,7 +2618,7 @@ body.has-custom-scrollbar {
   align-items: center;
   gap: 0.5rem;
   padding: 1rem;
-  background: rgba(147, 51, 234, 0.05);
+  background: rgba(16, 185, 129, 0.05);
   border-radius: 20px;
   border: 1px solid var(--border);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -2635,7 +2635,7 @@ body.has-custom-scrollbar {
 }
 .hero-features .feature-item:hover {
   transform: translateY(-4px);
-  background: rgba(147, 51, 234, 0.1);
+  background: rgba(16, 185, 129, 0.1);
   border-color: var(--accent);
 }
 @media (max-width: 767.98px) {
@@ -2840,7 +2840,7 @@ body.has-custom-scrollbar {
 }
 .about-section {
   padding: 6rem 0;
-  background: rgba(147, 51, 234, 0.02);
+  background: rgba(16, 185, 129, 0.02);
 }
 @media (max-width: 767.98px) {
   .about-section {
@@ -2959,7 +2959,7 @@ body.has-custom-scrollbar {
 .about-description .about-stats .stat-item {
   text-align: center;
   padding: 1.5rem;
-  background: rgba(147, 51, 234, 0.05);
+  background: rgba(16, 185, 129, 0.05);
   border-radius: 1rem;
   border: 1px solid var(--border);
   -webkit-backdrop-filter: blur(10px);
@@ -2980,7 +2980,7 @@ body.has-custom-scrollbar {
 }
 .about-description .about-stats .stat-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0.9375rem 2.5rem rgba(147, 51, 234, 0.1);
+  box-shadow: 0 0.9375rem 2.5rem rgba(16, 185, 129, 0.1);
 }
 @media (max-width: 767.98px) {
   .about-description .about-stats .stat-item:hover {
@@ -3078,7 +3078,7 @@ body.has-custom-scrollbar {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(147, 51, 234, 0.1), rgba(147, 51, 234, 0.1));
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.1));
   border-radius: 1.25rem;
   opacity: 0;
   transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -3104,7 +3104,7 @@ body.has-custom-scrollbar {
 .about-image-container .card-decoration {
   position: absolute;
   border-radius: 50%;
-  background: linear-gradient(135deg, #9333EA, var(--primary));
+  background: linear-gradient(135deg, #10B981, var(--primary));
   animation: float 6s ease-in-out infinite;
 }
 @media (max-width: 767.98px) {
@@ -3201,7 +3201,7 @@ body.has-custom-scrollbar {
   overflow: visible;
   padding: 1rem;
   margin: 0 -2rem;
-  background: rgba(147, 51, 234, 0.03);
+  background: rgba(16, 185, 129, 0.03);
   border-radius: 0;
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
@@ -3253,17 +3253,17 @@ body.has-custom-scrollbar {
   left: 0;
   width: 100%;
   height: 0.1875rem;
-  background: rgba(147, 51, 234, 0.1);
+  background: rgba(16, 185, 129, 0.1);
   border-radius: 9999px;
   overflow: hidden;
 }
 .projects-section .project-tabs .tab-progress-bar .tab-progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, #2563EB, #9333EA);
+  background: linear-gradient(90deg, #059669, #10B981);
   border-radius: 9999px;
   transform: translateX(-100%);
   transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  box-shadow: 0 0 1.25rem rgba(37, 99, 235, 0.3);
+  box-shadow: 0 0 1.25rem rgba(5, 150, 105, 0.3);
   will-change: transform;
 }
 .projects-section .project-tabs .btn {
@@ -3276,7 +3276,7 @@ body.has-custom-scrollbar {
   position: relative;
   padding: 1rem 1.75rem;
   margin-top: 2px;
-  background: rgba(147, 51, 234, 0.08);
+  background: rgba(16, 185, 129, 0.08);
   border: 2px solid var(--border);
   border-radius: 9999px;
   color: var(--text-secondary);
@@ -3334,10 +3334,10 @@ body.has-custom-scrollbar {
   }
 }
 .projects-section .project-tabs .btn:hover {
-  background: rgba(249, 115, 22, 0.15);
+  background: rgba(52, 211, 153, 0.15);
   border-color: var(--accent);
   color: var(--text-primary);
-  box-shadow: 0 0.5rem 1.5625rem rgba(249, 115, 22, 0.25);
+  box-shadow: 0 0.5rem 1.5625rem rgba(52, 211, 153, 0.25);
 }
 @media (max-width: 767.98px) {
   .projects-section .project-tabs .btn:hover {
@@ -3357,10 +3357,10 @@ body.has-custom-scrollbar {
   color: var(--text-primary);
 }
 .projects-section .project-tabs .btn.active {
-  background: rgba(249, 115, 22, 0.2);
+  background: rgba(52, 211, 153, 0.2);
   color: var(--text-primary);
   border-color: var(--accent);
-  box-shadow: 0 0.5rem 1.5625rem rgba(249, 115, 22, 0.3);
+  box-shadow: 0 0.5rem 1.5625rem rgba(52, 211, 153, 0.3);
   transform: scale(1.02);
 }
 @media (max-width: 767.98px) {
@@ -3388,14 +3388,14 @@ body.has-custom-scrollbar {
   left: -0.125rem;
   right: -0.125rem;
   bottom: -0.125rem;
-  background: linear-gradient(135deg, #F97316, rgba(249, 115, 22, 0.5));
+  background: linear-gradient(135deg, #34D399, rgba(52, 211, 153, 0.5));
   border-radius: 9999px;
   z-index: -1;
   opacity: 0.3;
 }
 .projects-section .project-tabs .btn:focus {
   outline: none;
-  box-shadow: 0 0 0 0.1875rem rgba(249, 115, 22, 0.3);
+  box-shadow: 0 0 0 0.1875rem rgba(52, 211, 153, 0.3);
 }
 
 .projects-content {
@@ -3425,8 +3425,8 @@ body.has-custom-scrollbar {
   }
 }
 .projects-sidebar .project-info {
-  background: rgba(147, 51, 234, 0.02);
-  border: 1px solid rgba(37, 99, 235, 0.1);
+  background: rgba(16, 185, 129, 0.02);
+  border: 1px solid rgba(5, 150, 105, 0.1);
   border-radius: 0.75rem;
   padding: 2rem;
   -webkit-backdrop-filter: blur(10px);
@@ -3446,8 +3446,8 @@ body.has-custom-scrollbar {
   }
 }
 .projects-sidebar .project-info:hover {
-  background: rgba(147, 51, 234, 0.04);
-  border-color: rgba(37, 99, 235, 0.2);
+  background: rgba(16, 185, 129, 0.04);
+  border-color: rgba(5, 150, 105, 0.2);
 }
 .projects-sidebar .project-info .project-title {
   font-size: 1.5rem;
@@ -3505,13 +3505,13 @@ body.has-custom-scrollbar {
   }
 }
 .projects-sidebar .project-info .project-tags .badge {
-  background: rgba(37, 99, 235, 0.15);
+  background: rgba(5, 150, 105, 0.15);
   color: var(--primary);
   padding: 0.375rem 0.875rem;
   border-radius: 1.25rem;
   font-size: 0.875rem;
   font-weight: 500;
-  border: 1px solid rgba(37, 99, 235, 0.2);
+  border: 1px solid rgba(5, 150, 105, 0.2);
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 @media (max-width: 575.98px) {
@@ -3522,7 +3522,7 @@ body.has-custom-scrollbar {
   }
 }
 .projects-sidebar .project-info .project-tags .badge:hover {
-  background: rgba(37, 99, 235, 0.25);
+  background: rgba(5, 150, 105, 0.25);
   transform: translateY(-1px);
 }
 @media (max-width: 575.98px) {
@@ -3586,8 +3586,8 @@ body.has-custom-scrollbar {
   background: linear-gradient(135deg, #2c2c2c, #1a1a1a);
   border-radius: 1.875rem;
   padding: 1.25rem;
-  box-shadow: 0 1.25rem 3.75rem rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(37, 99, 235, 0.1);
-  border: 1px solid rgba(37, 99, 235, 0.2);
+  box-shadow: 0 1.25rem 3.75rem rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(5, 150, 105, 0.1);
+  border: 1px solid rgba(5, 150, 105, 0.2);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   transform-origin: center center;
   backface-visibility: hidden;
@@ -3696,10 +3696,10 @@ body.has-custom-scrollbar {
   left: 0;
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, #2563EB, #9333EA, #F97316);
+  background: linear-gradient(90deg, #059669, #10B981, #34D399);
   border-radius: 9999px;
   transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  box-shadow: 0 0 0.9375rem rgba(37, 99, 235, 0.5);
+  box-shadow: 0 0 0.9375rem rgba(5, 150, 105, 0.5);
   will-change: width, background;
 }
 .projects-ipad-container .ipad-frame .ipad-screen .ipad-progress-bar .progress-track .progress-fill::after {
@@ -3832,7 +3832,7 @@ body.has-custom-scrollbar {
 }
 .process-section {
   padding: 6rem 0;
-  background: rgba(147, 51, 234, 0.02);
+  background: rgba(16, 185, 129, 0.02);
 }
 .process-section .process-timeline {
   position: relative;
@@ -3846,7 +3846,7 @@ body.has-custom-scrollbar {
   top: 0;
   bottom: 0;
   width: 0.125rem;
-  background: linear-gradient(to bottom, #9333EA, var(--primary));
+  background: linear-gradient(to bottom, #10B981, var(--primary));
   transform: translateX(-50%);
 }
 @media (max-width: 767.98px) {
@@ -3907,12 +3907,12 @@ body.has-custom-scrollbar {
   top: 0;
   width: 3.75rem;
   height: 3.75rem;
-  background: linear-gradient(135deg, #9333EA, var(--primary));
+  background: linear-gradient(135deg, #10B981, var(--primary));
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0.5rem 1.5625rem rgba(37, 99, 235, 0.3);
+  box-shadow: 0 0.5rem 1.5625rem rgba(5, 150, 105, 0.3);
   z-index: 2;
 }
 .process-section .process-timeline .timeline-item .timeline-marker .marker-icon {
@@ -3926,21 +3926,21 @@ body.has-custom-scrollbar {
   transform: translateX(-50%);
   width: 0.125rem;
   height: 1.875rem;
-  background: #9333EA;
+  background: #10B981;
 }
 .process-section .process-timeline .timeline-item .timeline-content {
   position: relative;
   padding: 2rem;
-  background: rgba(147, 51, 234, 0.05);
+  background: rgba(16, 185, 129, 0.05);
   border-radius: 1.25rem;
-  border: 1px solid rgba(37, 99, 235, 0.2);
+  border: 1px solid rgba(5, 150, 105, 0.2);
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .process-section .process-timeline .timeline-item .timeline-content:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0.9375rem 2.5rem rgba(37, 99, 235, 0.2);
+  box-shadow: 0 0.9375rem 2.5rem rgba(5, 150, 105, 0.2);
 }
 .process-section .process-timeline .timeline-item .timeline-content .timeline-title {
   font-size: 1.5rem;
@@ -3953,7 +3953,7 @@ body.has-custom-scrollbar {
   display: block;
   width: 3.125rem;
   height: 0.1875rem;
-  background: linear-gradient(135deg, #9333EA, var(--primary));
+  background: linear-gradient(135deg, #10B981, var(--primary));
   margin-top: 0.5rem;
 }
 .process-section .process-timeline .timeline-item .timeline-content .timeline-desc {
@@ -3968,11 +3968,11 @@ body.has-custom-scrollbar {
 }
 .process-section .process-timeline .timeline-item .timeline-content .timeline-details .detail-item {
   padding: 0.5rem 1rem;
-  background: rgba(37, 99, 235, 0.1);
+  background: rgba(5, 150, 105, 0.1);
   border-radius: 1.25rem;
   color: #6B7280;
   font-size: 0.875rem;
-  border: 1px solid rgba(37, 99, 235, 0.2);
+  border: 1px solid rgba(5, 150, 105, 0.2);
 }
 
 @media (max-width: 767.98px) {
@@ -4016,17 +4016,17 @@ body.has-custom-scrollbar {
   }
 }
 .skills-section .skills-grid .skill-category {
-  background: rgba(147, 51, 234, 0.05);
+  background: rgba(16, 185, 129, 0.05);
   border-radius: 1.25rem;
   padding: 2rem;
-  border: 1px solid rgba(37, 99, 235, 0.2);
+  border: 1px solid rgba(5, 150, 105, 0.2);
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .skills-section .skills-grid .skill-category:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0.9375rem 2.5rem rgba(37, 99, 235, 0.2);
+  box-shadow: 0 0.9375rem 2.5rem rgba(5, 150, 105, 0.2);
 }
 .skills-section .skills-grid .skill-category .category-header {
   text-align: center;
@@ -4048,7 +4048,7 @@ body.has-custom-scrollbar {
   display: block;
   width: 3.75rem;
   height: 0.1875rem;
-  background: linear-gradient(135deg, #9333EA, var(--primary));
+  background: linear-gradient(135deg, #10B981, var(--primary));
   margin: 0.5rem auto 0;
 }
 .skills-section .skills-grid .skill-category .category-header .category-desc {
@@ -4061,9 +4061,9 @@ body.has-custom-scrollbar {
   justify-content: space-between;
   margin-bottom: 1.5rem;
   padding: 1rem;
-  background: rgba(147, 51, 234, 0.03);
+  background: rgba(16, 185, 129, 0.03);
   border-radius: 0.75rem;
-  border: 1px solid rgba(37, 99, 235, 0.1);
+  border: 1px solid rgba(5, 150, 105, 0.1);
 }
 .skills-section .skills-grid .skill-category .category-skills .skill-item .skill-info .skill-name {
   font-weight: 500;
@@ -4085,13 +4085,13 @@ body.has-custom-scrollbar {
   height: 3.75rem;
 }
 .skills-section .skills-grid .skill-category .category-skills .skill-item .skill-progress .progress-ring circle {
-  stroke: #9333EA;
+  stroke: #10B981;
   stroke-width: 6;
   fill: transparent;
   stroke-dasharray: 220;
   stroke-dashoffset: 220;
   animation: progressRing 2s ease-out forwards;
-  filter: drop-shadow(0 0.125rem 0.25rem rgba(147, 51, 234, 0.3));
+  filter: drop-shadow(0 0.125rem 0.25rem rgba(16, 185, 129, 0.3));
 }
 .skills-section .skills-grid .skill-category .category-skills .skill-item .skill-progress .progress-text {
   font-weight: 600;
@@ -4131,7 +4131,7 @@ body.has-custom-scrollbar {
 }
 .contact-section {
   padding: 6rem 0;
-  background: rgba(147, 51, 234, 0.02);
+  background: rgba(16, 185, 129, 0.02);
 }
 .contact-section .info-list .info-item {
   display: flex;
@@ -4166,18 +4166,18 @@ body.has-custom-scrollbar {
   justify-content: center;
   width: 3.125rem;
   height: 3.125rem;
-  background: rgba(147, 51, 234, 0.1);
-  border: 2px solid rgba(147, 51, 234, 0.3);
+  background: rgba(16, 185, 129, 0.1);
+  border: 2px solid rgba(16, 185, 129, 0.3);
   border-radius: 50%;
   color: #6B7280;
   text-decoration: none;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .contact-section .social-links .social-link:hover {
-  background: #9333EA;
+  background: #10B981;
   color: #FFFFFF;
   transform: translateY(-3px);
-  box-shadow: 0 0.5rem 1.5625rem rgba(147, 51, 234, 0.3);
+  box-shadow: 0 0.5rem 1.5625rem rgba(16, 185, 129, 0.3);
 }
 
 .contact-form .form-group {
@@ -4198,8 +4198,8 @@ body.has-custom-scrollbar {
   width: 100%;
   padding: 0.75rem 1rem;
   border-radius: 0.75rem;
-  border: 2px solid rgba(147, 51, 234, 0.3);
-  background: rgba(147, 51, 234, 0.05);
+  border: 2px solid rgba(16, 185, 129, 0.3);
+  background: rgba(16, 185, 129, 0.05);
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -4208,16 +4208,16 @@ body.has-custom-scrollbar {
 .contact-form .form-input:focus,
 .contact-form .form-textarea:focus {
   outline: none;
-  border-color: #9333EA;
-  box-shadow: 0 0 0 0.2rem rgba(147, 51, 234, 0.25);
-  background: rgba(147, 51, 234, 0.1);
+  border-color: #10B981;
+  box-shadow: 0 0 0 0.2rem rgba(16, 185, 129, 0.25);
+  background: rgba(16, 185, 129, 0.1);
 }
 .contact-form .form-input::-moz-placeholder, .contact-form .form-textarea::-moz-placeholder {
-  color: rgba(147, 51, 234, 0.6);
+  color: rgba(16, 185, 129, 0.6);
 }
 .contact-form .form-input::placeholder,
 .contact-form .form-textarea::placeholder {
-  color: rgba(147, 51, 234, 0.6);
+  color: rgba(16, 185, 129, 0.6);
 }
 .contact-form .form-textarea {
   resize: vertical;
@@ -4273,7 +4273,7 @@ body.has-custom-scrollbar {
   }
 }
 .footer {
-  background: linear-gradient(135deg, #9333EA, #9333EA);
+  background: linear-gradient(135deg, #10B981, #10B981);
   color: #FFFFFF;
   padding: 4rem 0 2rem;
 }
@@ -4300,25 +4300,25 @@ body.has-custom-scrollbar {
 }
 .footer .footer-content .footer-logo .logo-icon {
   font-size: 2rem;
-  color: #F97316;
+  color: #34D399;
 }
 .footer .footer-content .footer-logo .logo-text {
   font-size: 1.5rem;
   font-weight: 700;
-  background: linear-gradient(135deg, #F97316, #9333EA);
+  background: linear-gradient(135deg, #34D399, #10B981);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 @supports not (-webkit-background-clip: text) {
   .footer .footer-content .footer-logo .logo-text {
-    color: #F97316;
+    color: #34D399;
   }
 }
 .footer .footer-content .footer-tagline {
   font-size: 1.25rem;
   margin-bottom: 1rem;
-  color: #F97316;
+  color: #34D399;
 }
 .footer .footer-content .footer-description {
   color: #FFFFFF;
@@ -4342,7 +4342,7 @@ body.has-custom-scrollbar {
   font-size: 1.125rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: #F97316;
+  color: #34D399;
 }
 .footer .footer-links .footer-column .column-title::after {
   content: "";
@@ -4366,7 +4366,7 @@ body.has-custom-scrollbar {
   transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .footer .footer-links .footer-column .column-links li .footer-link:hover {
-  color: #F97316;
+  color: #34D399;
 }
 .footer .footer-bottom {
   text-align: center;
@@ -4378,7 +4378,7 @@ body.has-custom-scrollbar {
   color: #FFFFFF;
 }
 .footer .footer-bottom .footer-copyright .highlight {
-  color: #F97316;
+  color: #34D399;
   font-weight: 600;
 }
 .footer .footer-bottom .footer-credits {
@@ -4390,7 +4390,7 @@ body.has-custom-scrollbar {
   text-decoration: none;
 }
 .footer .footer-bottom .footer-credits .credit-link:hover {
-  color: #F97316;
+  color: #34D399;
 }
 
 @media (max-width: 767.98px) {

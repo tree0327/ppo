@@ -1,37 +1,29 @@
-// ===== UTILITIES - ALL HELPER FUNCTIONS =====
+// ===== UTILITIES - OPTIMIZED HELPER FUNCTIONS =====
 
 // ===== PERFORMANCE UTILITIES =====
 export const debounce = (func, wait) => {
     let timeout;
     return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
         clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
+        timeout = setTimeout(() => func(...args), wait);
     };
 };
 
 export const throttle = (func, limit) => {
     let inThrottle;
-    return function() {
-        const args = arguments;
-        const context = this;
+    return function(...args) {
         if (!inThrottle) {
-            func.apply(context, args);
+            func.apply(this, args);
             inThrottle = true;
             setTimeout(() => inThrottle = false, limit);
         }
     };
 };
 
+// ===== DOM CACHE =====
 export const DOM_CACHE = {
     body: document.body,
-    floatingNav: null,
-    projectButtons: null,
-    ipadContainer: null,
-    contactForm: null,
+    elements: new Map(),
     
     init() {
         this.floatingNav = document.querySelector('.floating-nav');
@@ -41,11 +33,14 @@ export const DOM_CACHE = {
     },
     
     get(selector) {
-        const key = selector.replace(/[^a-zA-Z0-9]/g, '');
-        if (!this[key]) {
-            this[key] = document.querySelector(selector);
+        if (!this.elements.has(selector)) {
+            this.elements.set(selector, document.querySelector(selector));
         }
-        return this[key];
+        return this.elements.get(selector);
+    },
+    
+    clear() {
+        this.elements.clear();
     }
 };
 
@@ -63,44 +58,39 @@ export function initAOS() {
 }
 
 export function initGSAP() {
-    if (typeof gsap !== 'undefined') {
-        if (typeof ScrollTrigger !== 'undefined') {
-            gsap.registerPlugin(ScrollTrigger);
-        }
-        
-        const heroTitleLines = document.querySelectorAll('.hero-title .title-line');
-        if (heroTitleLines.length > 0) {
-            gsap.fromTo(heroTitleLines, 
-                {
-                    y: 100,
-                    opacity: 0
-                },
-                {
-                    y: 0,
-                    opacity: 1,
-                    duration: 1.2,
-                    stagger: 0.2,
-                    ease: "power3.out"
-                }
-            );
-        }
-        
-        const heroSubtitle = document.querySelector('.hero-subtitle');
-        if (heroSubtitle) {
-            gsap.fromTo(heroSubtitle,
-                {
-                    y: 50,
-                    opacity: 0
-                },
-                {
-                    y: 0,
-                    opacity: 1,
-                    duration: 1,
-                    delay: 0.5,
-                    ease: "power2.out"
-                }
-            );
-        }
+    if (typeof gsap === 'undefined') return;
+    
+    if (typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+    }
+    
+    // Hero animations
+    const heroTitleLines = document.querySelectorAll('.hero-title .title-line');
+    if (heroTitleLines.length > 0) {
+        gsap.fromTo(heroTitleLines, 
+            { y: 100, opacity: 0 },
+            {
+                y: 0,
+                opacity: 1,
+                duration: 1.2,
+                stagger: 0.2,
+                ease: "power3.out"
+            }
+        );
+    }
+    
+    const heroSubtitle = document.querySelector('.hero-subtitle');
+    if (heroSubtitle) {
+        gsap.fromTo(heroSubtitle,
+            { y: 50, opacity: 0 },
+            {
+                y: 0,
+                opacity: 1,
+                duration: 1,
+                delay: 0.5,
+                ease: "power2.out"
+            }
+        );
     }
 }
 
@@ -148,7 +138,7 @@ export function initAccessibility() {
     // Respect motion preferences
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     
-    function handleMotionPreference(mediaQuery) {
+    const handleMotionPreference = (mediaQuery) => {
         if (mediaQuery.matches) {
             document.body.classList.add('reduce-motion');
             if (typeof AOS !== 'undefined') {
@@ -157,7 +147,7 @@ export function initAccessibility() {
         } else {
             document.body.classList.remove('reduce-motion');
         }
-    }
+    };
     
     handleMotionPreference(prefersReducedMotion);
     prefersReducedMotion.addEventListener('change', handleMotionPreference);
@@ -213,21 +203,227 @@ export function initPerformanceOptimizations() {
     // Optimize scroll performance
     let ticking = false;
     
-    function updateScrollElements() {
+    const updateScrollElements = () => {
         const scrollY = window.pageYOffset;
         const nav = document.querySelector('.floating-nav');
         if (nav) {
             nav.classList.toggle('visible', scrollY > window.innerHeight * 0.3);
         }
         ticking = false;
-    }
+    };
     
-    function requestTick() {
+    const requestTick = () => {
         if (!ticking) {
             requestAnimationFrame(updateScrollElements);
             ticking = true;
         }
-    }
+    };
     
     window.addEventListener('scroll', requestTick, { passive: true });
 }
+
+// ===== UTILITY FUNCTIONS =====
+export const createElement = (tag, className, attributes = {}) => {
+    const element = document.createElement(tag);
+    if (className) element.className = className;
+    Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, value));
+    return element;
+};
+
+export const updateElement = (element, updates = {}) => {
+    if (!element) return;
+    Object.entries(updates).forEach(([key, value]) => {
+        if (key === 'textContent' || key === 'innerHTML') {
+            element[key] = value;
+        } else if (key === 'style') {
+            Object.assign(element.style, value);
+        } else {
+            element.setAttribute(key, value);
+        }
+    });
+};
+
+export const waitForElement = (selector, timeout = 5000) => {
+    return new Promise((resolve, reject) => {
+        const element = document.querySelector(selector);
+        if (element) {
+            resolve(element);
+            return;
+        }
+        
+        const observer = new MutationObserver(() => {
+            const element = document.querySelector(selector);
+            if (element) {
+                observer.disconnect();
+                resolve(element);
+            }
+        });
+        
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+        
+        setTimeout(() => {
+            observer.disconnect();
+            reject(new Error(`Element ${selector} not found within ${timeout}ms`));
+        }, timeout);
+    });
+};
+
+export const isElementInViewport = (element) => {
+    const rect = element.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+};
+
+export const getScrollPosition = () => {
+    return window.pageYOffset || document.documentElement.scrollTop;
+};
+
+export const setScrollPosition = (position) => {
+    window.scrollTo(0, position);
+};
+
+export const addClass = (element, className) => {
+    if (element && element.classList) {
+        element.classList.add(className);
+    }
+};
+
+export const removeClass = (element, className) => {
+    if (element && element.classList) {
+        element.classList.remove(className);
+    }
+};
+
+export const toggleClass = (element, className) => {
+    if (element && element.classList) {
+        element.classList.toggle(className);
+    }
+};
+
+export const hasClass = (element, className) => {
+    return element && element.classList && element.classList.contains(className);
+};
+
+export const getComputedStyle = (element, property) => {
+    return window.getComputedStyle(element).getPropertyValue(property);
+};
+
+export const setStyle = (element, property, value) => {
+    if (element && element.style) {
+        element.style[property] = value;
+    }
+};
+
+export const getElementRect = (element) => {
+    return element ? element.getBoundingClientRect() : null;
+};
+
+export const getElementOffset = (element) => {
+    if (!element) return { top: 0, left: 0 };
+    
+    const rect = element.getBoundingClientRect();
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+    
+    return {
+        top: rect.top + scrollTop,
+        left: rect.left + scrollLeft
+    };
+};
+
+export const getElementSize = (element) => {
+    if (!element) return { width: 0, height: 0 };
+    
+    const rect = element.getBoundingClientRect();
+    return {
+        width: rect.width,
+        height: rect.height
+    };
+};
+
+export const isMobile = () => {
+    return window.innerWidth <= 768;
+};
+
+export const isTablet = () => {
+    return window.innerWidth > 768 && window.innerWidth <= 1024;
+};
+
+export const isDesktop = () => {
+    return window.innerWidth > 1024;
+};
+
+export const getDeviceType = () => {
+    if (isMobile()) return 'mobile';
+    if (isTablet()) return 'tablet';
+    return 'desktop';
+};
+
+export const addEventListeners = (element, events) => {
+    if (!element) return;
+    
+    Object.entries(events).forEach(([event, handler]) => {
+        element.addEventListener(event, handler);
+    });
+};
+
+export const removeEventListeners = (element, events) => {
+    if (!element) return;
+    
+    Object.entries(events).forEach(([event, handler]) => {
+        element.removeEventListener(event, handler);
+    });
+};
+
+export const preventDefault = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+};
+
+export const getRandomId = (prefix = 'id') => {
+    return `${prefix}_${Math.random().toString(36).substr(2, 9)}`;
+};
+
+export const formatNumber = (num, decimals = 0) => {
+    return new Intl.NumberFormat('ko-KR', {
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals
+    }).format(num);
+};
+
+export const formatDate = (date, options = {}) => {
+    const defaultOptions = {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    };
+    
+    return new Intl.DateTimeFormat('ko-KR', { ...defaultOptions, ...options }).format(date);
+};
+
+export const debounceRAF = (func) => {
+    let rafId;
+    return function(...args) {
+        cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(() => func.apply(this, args));
+    };
+};
+
+export const throttleRAF = (func) => {
+    let rafId;
+    return function(...args) {
+        if (rafId) return;
+        
+        rafId = requestAnimationFrame(() => {
+            func.apply(this, args);
+            rafId = null;
+        });
+    };
+};

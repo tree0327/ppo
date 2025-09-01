@@ -5,7 +5,22 @@ import {
     initAOS, 
     initGSAP, 
     initAccessibility, 
-    initPerformanceOptimizations 
+    initPerformanceOptimizations,
+    createElement,
+    updateElement,
+    addClass,
+    removeClass,
+    toggleClass,
+    getScrollPosition,
+    setScrollPosition,
+    isMobile,
+    isDesktop,
+    getDeviceType,
+    addEventListeners,
+    removeEventListeners,
+    preventDefault,
+    debounceRAF,
+    throttleRAF
 } from './utils.js';
 
 import { 
@@ -16,7 +31,7 @@ import {
     initContactForm 
 } from './components.js';
 
-// ===== LOADING ANIMATION & CUSTOM SCROLLBAR =====
+// ===== LOADING ANIMATION =====
 function initLoadingAnimation() {
     const loadingAnimation = document.getElementById('loading-animation');
     const loadingLogo = document.querySelector('.loading-logo');
@@ -25,87 +40,74 @@ function initLoadingAnimation() {
     const mainContent = document.querySelector('main');
     const body = document.body;
     
-    if (loadingAnimation && gsap) {
-        console.log('🎬 Initializing loading animation...');
-        
-        // 페이지 로드 시 body에 loading 클래스 추가
-        body.classList.add('loading');
-        
-        // 초기 상태 설정
-        gsap.set([loadingLogo, ...loadingMessages], { 
-            opacity: 0, 
-            y: 30 
-        });
-        gsap.set(loadingBar, { width: 0 });
-        
-        // 로딩 애니메이션 타임라인 생성
-        const loadingTL = gsap.timeline({
-            onComplete: () => {
-                console.log('✅ Loading animation completed');
-                completeLoading();
-            }
-        });
-        
-        // 로고 애니메이션
-        loadingTL.to(loadingLogo, {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            ease: "power2.out"
-        }, 0.2);
-        
-        // 메시지 순환 애니메이션
-        loadingMessages.forEach((message, index) => {
-            const startTime = 0.8 + (index * 0.6);
-            
-            // 메시지 fade-in
-            loadingTL.to(message, {
-                opacity: 1,
-                y: 0,
-                duration: 0.4,
-                ease: "power2.out"
-            }, startTime);
-            
-            // 메시지 fade-out (다음 메시지가 나타나기 전)
-            loadingTL.to(message, {
-                opacity: 0,
-                y: -20,
-                duration: 0.3,
-                ease: "power2.in"
-            }, startTime + 0.4);
-        });
-        
-        // 프로그레스 바 애니메이션
-        loadingTL.to(loadingBar, {
-            width: "100%",
-            duration: 2.4, // 4개 메시지 × 0.6초
-            ease: "power2.inOut"
-        }, 0.8);
-        
-        // 전체 로딩 애니메이션 fade-out (더 부드럽게)
-        loadingTL.to(loadingAnimation, {
-            opacity: 0,
-            scale: 1.05,
-            duration: 1.2,
-            ease: "power2.inOut"
-        }, 3.2);
-        
-        // 로딩 애니메이션이 fade-out되는 동안 페이지 콘텐츠를 미리 준비
-        if (mainContent) {
-            loadingTL.to(mainContent, {
-                opacity: 1,
-                y: 0,
-                duration: 1.2,
-                ease: "power2.out"
-            }, 3.3); // 로딩 애니메이션과 겹치도록
-        }
-    } else {
-        console.warn('⚠️ Loading animation elements or GSAP not found');
-        // 로딩 애니메이션이 없으면 바로 페이지 표시
+    if (!loadingAnimation || !gsap) {
         if (mainContent) {
             gsap.set(mainContent, { opacity: 1, y: 0 });
         }
-        body.classList.add('loaded');
+        addClass(body, 'loaded');
+        return;
+    }
+    
+    // Initial state
+    addClass(body, 'loading');
+    gsap.set([loadingLogo, ...loadingMessages], { opacity: 0, y: 30 });
+    gsap.set(loadingBar, { width: 0 });
+    
+    // Loading animation timeline
+    const loadingTL = gsap.timeline({
+        onComplete: () => completeLoading()
+    });
+    
+    // Logo animation
+    loadingTL.to(loadingLogo, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.out"
+    }, 0.2);
+    
+    // Message cycle animation
+    loadingMessages.forEach((message, index) => {
+        const startTime = 0.8 + (index * 0.6);
+        
+        loadingTL.to(message, {
+            opacity: 1,
+            y: 0,
+            duration: 0.4,
+            ease: "power2.out"
+        }, startTime);
+        
+        loadingTL.to(message, {
+            opacity: 0,
+            y: -20,
+            duration: 0.3,
+            ease: "power2.in"
+        }, startTime + 0.4);
+    });
+    
+    // Progress bar animation
+    loadingTL.to(loadingBar, {
+        width: "100%",
+        duration: 2.4,
+        ease: "power2.inOut"
+    }, 0.8);
+    
+    // Loading animation fade-out
+    loadingTL.to(loadingAnimation, {
+        opacity: 0,
+        scale: 1.05,
+        duration: 1.2,
+        ease: "power2.inOut"
+    }, 3.2);
+    
+    // Main content preparation
+    if (mainContent) {
+        loadingTL.to(mainContent, {
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
+            ease: "power2.out"
+        }, 3.3);
     }
 }
 
@@ -113,153 +115,402 @@ function completeLoading() {
     const body = document.body;
     const loadingAnimation = document.getElementById('loading-animation');
     
-    // body에서 loading 클래스 제거하고 loaded 클래스 추가
-    body.classList.remove('loading');
-    body.classList.add('loaded');
+    removeClass(body, 'loading');
+    addClass(body, 'loaded');
     
-    // 로딩 애니메이션 완전히 숨김 (더 자연스럽게)
     gsap.to(loadingAnimation, {
         visibility: "hidden",
         duration: 0.1,
         delay: 1.2
     });
     
-    // 페이지 스크롤 활성화
     document.documentElement.style.overflow = 'auto';
     document.body.style.overflow = 'auto';
-    
-    console.log('🎉 Loading completed, page ready');
 }
 
+// ===== CUSTOM SCROLLBAR =====
 function initCustomScrollbar() {
     const customScrollbar = document.getElementById('custom-scrollbar');
     const scrollbarThumb = document.querySelector('.scrollbar-thumb');
     const body = document.body;
     
-    if (customScrollbar && scrollbarThumb) {
-        console.log('🎯 Initializing custom scrollbar...');
+    if (!customScrollbar || !scrollbarThumb) return;
+    
+    let isDragging = false;
+    let startY = 0;
+    let startScrollTop = 0;
+    
+    const toggleScrollbar = () => {
+        const scrollHeight = document.documentElement.scrollHeight;
+        const clientHeight = document.documentElement.clientHeight;
         
-        let isDragging = false;
-        let startY = 0;
-        let startScrollTop = 0;
-        
-        // 스크롤바 표시/숨김
-        function toggleScrollbar() {
-            const scrollHeight = document.documentElement.scrollHeight;
-            const clientHeight = document.documentElement.clientHeight;
-            
-            if (scrollHeight > clientHeight) {
-                customScrollbar.classList.add('visible');
-                body.classList.add('has-custom-scrollbar');
-            } else {
-                customScrollbar.classList.remove('visible');
-                body.classList.remove('has-custom-scrollbar');
-            }
+        if (scrollHeight > clientHeight) {
+            addClass(customScrollbar, 'visible');
+            addClass(body, 'has-custom-scrollbar');
+        } else {
+            removeClass(customScrollbar, 'visible');
+            removeClass(body, 'has-custom-scrollbar');
         }
+    };
+    
+    const updateScrollbarPosition = () => {
+        const scrollTop = getScrollPosition();
+        const scrollHeight = document.documentElement.scrollHeight;
+        const clientHeight = document.documentElement.clientHeight;
         
-        // 스크롤바 위치 업데이트
-        function updateScrollbarPosition() {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            const scrollHeight = document.documentElement.scrollHeight;
-            const clientHeight = document.documentElement.clientHeight;
+        if (scrollHeight > clientHeight) {
+            const scrollPercentage = scrollTop / (scrollHeight - clientHeight);
+            const maxTop = window.innerHeight - scrollbarThumb.offsetHeight;
+            const newTop = scrollPercentage * maxTop;
             
-            if (scrollHeight > clientHeight) {
-                const scrollPercentage = scrollTop / (scrollHeight - clientHeight);
-                const maxTop = window.innerHeight - scrollbarThumb.offsetHeight;
-                const newTop = scrollPercentage * maxTop;
-                
-                gsap.to(scrollbarThumb, {
-                    top: newTop,
-                    duration: 0.1,
-                    ease: "none"
-                });
-            }
+            gsap.to(scrollbarThumb, {
+                top: newTop,
+                duration: 0.1,
+                ease: "none"
+            });
         }
+    };
+    
+    const startDragging = (e) => {
+        isDragging = true;
+        startY = e.clientY;
+        startScrollTop = getScrollPosition();
         
-        // 스크롤바 드래그 시작
-        function startDragging(e) {
-            isDragging = true;
-            startY = e.clientY;
-            startScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            customScrollbar.classList.add('dragging');
-            document.body.style.userSelect = 'none';
-            
-            document.addEventListener('mousemove', handleDragging);
-            document.addEventListener('mouseup', stopDragging);
-        }
+        addClass(customScrollbar, 'dragging');
+        document.body.style.userSelect = 'none';
         
-        // 스크롤바 드래그 중
-        function handleDragging(e) {
-            if (!isDragging) return;
-            
-            const deltaY = e.clientY - startY;
-            const scrollHeight = document.documentElement.scrollHeight;
-            const clientHeight = document.documentElement.clientHeight;
-            const maxScroll = scrollHeight - clientHeight;
-            
-            const scrollPercentage = deltaY / (window.innerHeight - scrollbarThumb.offsetHeight);
-            const newScrollTop = startScrollTop + (scrollPercentage * maxScroll);
-            
-            window.scrollTo(0, Math.max(0, Math.min(newScrollTop, maxScroll)));
-        }
-        
-        // 스크롤바 드래그 종료
-        function stopDragging() {
-            isDragging = false;
-            customScrollbar.classList.remove('dragging');
-            document.body.style.userSelect = '';
-            
-            document.removeEventListener('mousemove', handleDragging);
-            document.removeEventListener('mouseup', stopDragging);
-        }
-        
-        // 이벤트 리스너 등록
-        scrollbarThumb.addEventListener('mousedown', startDragging);
-        
-        // 스크롤 이벤트
-        let scrollTimeout;
-        window.addEventListener('scroll', () => {
-            updateScrollbarPosition();
-            
-            // 스크롤 중일 때만 스크롤바 표시
-            customScrollbar.classList.add('visible');
-            
-            clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(() => {
-                // 스크롤이 멈춘 후 2초 뒤에 스크롤바 숨김
-                if (!isDragging) {
-                    customScrollbar.classList.remove('visible');
-                }
-            }, 2000);
+        addEventListeners(document, {
+            mousemove: handleDragging,
+            mouseup: stopDragging
         });
+    };
+    
+    const handleDragging = (e) => {
+        if (!isDragging) return;
         
-        // 리사이즈 이벤트
-        window.addEventListener('resize', () => {
+        const deltaY = e.clientY - startY;
+        const scrollHeight = document.documentElement.scrollHeight;
+        const clientHeight = document.documentElement.clientHeight;
+        const maxScroll = scrollHeight - clientHeight;
+        
+        const scrollPercentage = deltaY / (window.innerHeight - scrollbarThumb.offsetHeight);
+        const newScrollTop = startScrollTop + (scrollPercentage * maxScroll);
+        
+        setScrollPosition(Math.max(0, Math.min(newScrollTop, maxScroll)));
+    };
+    
+    const stopDragging = () => {
+        if (!isDragging) return;
+        
+        isDragging = false;
+        removeClass(customScrollbar, 'dragging');
+        document.body.style.userSelect = '';
+        
+        removeEventListeners(document, {
+            mousemove: handleDragging,
+            mouseup: stopDragging
+        });
+    };
+    
+    // Event listeners
+    addEventListeners(scrollbarThumb, {
+        mousedown: startDragging
+    });
+    
+    let scrollTimeout;
+    const handleScroll = () => {
+        updateScrollbarPosition();
+        addClass(customScrollbar, 'visible');
+        
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+            if (!isDragging) {
+                removeClass(customScrollbar, 'visible');
+            }
+        }, 2000);
+    };
+    
+    addEventListeners(window, {
+        scroll: handleScroll,
+        resize: () => {
             toggleScrollbar();
             updateScrollbarPosition();
-        });
-        
-        // 초기 설정
+        }
+    });
+    
+    // Initialize
+    toggleScrollbar();
+    updateScrollbarPosition();
+    
+    setTimeout(() => {
         toggleScrollbar();
         updateScrollbarPosition();
+    }, 4000);
+}
+
+// ===== STICKY NAVIGATION =====
+function initStickyNavigation() {
+    const stickyNavToggle = document.querySelector('.sticky-nav-toggle');
+    const stickyNavMenu = document.querySelector('.sticky-nav-menu');
+    const stickyNavLinks = document.querySelectorAll('.sticky-nav-link');
+    
+    if (!stickyNavToggle || !stickyNavMenu) return;
+    
+    const toggleMenu = () => {
+        const isExpanded = stickyNavToggle.getAttribute('aria-expanded') === 'true';
+        updateElement(stickyNavToggle, {
+            'aria-expanded': !isExpanded
+        });
+        toggleClass(stickyNavToggle, 'active');
+        toggleClass(stickyNavMenu, 'active');
+    };
+    
+    const closeMenu = () => {
+        updateElement(stickyNavToggle, {
+            'aria-expanded': 'false'
+        });
+        removeClass(stickyNavToggle, 'active');
+        removeClass(stickyNavMenu, 'active');
+    };
+    
+    const handleOutsideClick = (event) => {
+        if (!stickyNavToggle.contains(event.target) && !stickyNavMenu.contains(event.target)) {
+            closeMenu();
+        }
+    };
+    
+    // Event listeners
+    addEventListeners(stickyNavToggle, {
+        click: toggleMenu
+    });
+    
+    stickyNavLinks.forEach(link => {
+        addEventListeners(link, {
+            click: closeMenu
+        });
+    });
+    
+    addEventListeners(document, {
+        click: handleOutsideClick
+    });
+}
+
+// ===== FLOATING NAVIGATION =====
+function initFloatingNavigationHandler() {
+    const navDots = document.querySelectorAll('.nav-dot');
+    const sections = document.querySelectorAll('section[id]');
+    
+    const updateActiveNav = throttleRAF(() => {
+        const scrollPos = getScrollPosition() + 100;
         
-        // 로딩 완료 후 스크롤바 활성화
-        setTimeout(() => {
-            toggleScrollbar();
-            updateScrollbarPosition();
-        }, 4000);
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+            
+            if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                navDots.forEach(dot => {
+                    removeClass(dot, 'active');
+                    if (dot.getAttribute('href') === `#${sectionId}`) {
+                        addClass(dot, 'active');
+                    }
+                });
+                
+                const stickyNavLink = document.querySelector(`.sticky-nav-link[href="#${sectionId}"]`);
+                if (stickyNavLink) {
+                    document.querySelectorAll('.sticky-nav-link').forEach(link => {
+                        removeClass(link, 'active');
+                    });
+                    addClass(stickyNavLink, 'active');
+                }
+            }
+        });
+    });
+    
+    addEventListeners(window, {
+        scroll: updateActiveNav
+    });
+    
+    updateActiveNav();
+}
+
+// ===== PROJECT TABS =====
+function initProjectTabs() {
+    const projectButtons = document.querySelectorAll('[data-project]');
+    const projectPanels = document.querySelectorAll('.project-info');
+    const projectImages = document.querySelector('.project-image');
+    
+    if (projectButtons.length === 0) return;
+    
+    const projectImagesList = [
+        'img/hycu-1.png',
+        'img/urscope-1.png',
+        'img/kmr-1.png',
+        'img/corfa-1.png',
+        'img/landing-1.png',
+        'img/smartppt-1.png',
+        'img/aidt-1.png',
+        'img/iscream-1.png',
+        'img/neungryul-1.png'
+    ];
+    
+    const handleProjectClick = (button) => {
+        const projectIndex = button.getAttribute('data-project');
         
-        console.log('✅ Custom scrollbar initialized');
-    } else {
-        console.warn('⚠️ Custom scrollbar elements not found');
-    }
+        // Update buttons
+        projectButtons.forEach(btn => removeClass(btn, 'active'));
+        addClass(button, 'active');
+        
+        // Update panels
+        projectPanels.forEach(panel => {
+            panel.style.display = 'none';
+        });
+        
+        const targetPanel = document.getElementById(`project-panel-${projectIndex}`);
+        if (targetPanel) {
+            targetPanel.style.display = 'block';
+        }
+        
+        // Update project image
+        if (projectImages && projectImagesList[projectIndex]) {
+            updateElement(projectImages, {
+                src: projectImagesList[projectIndex],
+                alt: `프로젝트 ${parseInt(projectIndex) + 1} 미리보기`
+            });
+        }
+    };
+    
+    projectButtons.forEach(button => {
+        addEventListeners(button, {
+            click: () => handleProjectClick(button)
+        });
+    });
+}
+
+// ===== SMOOTH SCROLLING =====
+function initSmoothScrolling() {
+    const links = document.querySelectorAll('a[href^="#"]');
+    
+    const handleLinkClick = (e) => {
+        preventDefault(e);
+        
+        const targetId = e.currentTarget.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        
+        if (targetSection) {
+            const offsetTop = targetSection.offsetTop - 80;
+            
+            window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    };
+    
+    links.forEach(link => {
+        addEventListeners(link, {
+            click: handleLinkClick
+        });
+    });
+}
+
+// ===== FORM VALIDATION =====
+function initFormValidation() {
+    const contactForm = document.getElementById('contactForm');
+    
+    if (!contactForm) return;
+    
+    const validationRules = {
+        email: (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value),
+        required: (value) => value.trim().length > 0
+    };
+    
+    const validateField = (field) => {
+        const value = field.value.trim();
+        const fieldName = field.name;
+        
+        if (field.hasAttribute('required') && !validationRules.required(value)) {
+            return false;
+        }
+        
+        if (fieldName === 'email' && value && !validationRules.email(value)) {
+            return false;
+        }
+        
+        return true;
+    };
+    
+    const showSubmitStatus = (message, type) => {
+        const statusElement = document.getElementById('submit-status');
+        if (statusElement) {
+            statusElement.textContent = message;
+            statusElement.className = `submit-status ${type}`;
+            
+            setTimeout(() => {
+                statusElement.textContent = '';
+                statusElement.className = 'submit-status';
+            }, 5000);
+        }
+    };
+    
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
+        
+        const fields = ['name', 'email', 'subject', 'message'];
+        const formData = {};
+        
+        fields.forEach(fieldName => {
+            const field = document.getElementById(fieldName);
+            if (field) {
+                formData[fieldName] = field.value.trim();
+            }
+        });
+        
+        // Validation
+        const requiredFields = ['name', 'email', 'subject', 'message'];
+        const missingFields = requiredFields.filter(field => !formData[field]);
+        
+        if (missingFields.length > 0) {
+            showSubmitStatus('모든 필드를 입력해주세요.', 'error');
+            return;
+        }
+        
+        if (!validationRules.email(formData.email)) {
+            showSubmitStatus('올바른 이메일 주소를 입력해주세요.', 'error');
+            return;
+        }
+        
+        // Success simulation
+        showSubmitStatus('메시지가 성공적으로 전송되었습니다!', 'success');
+        contactForm.reset();
+    };
+    
+    addEventListeners(contactForm, {
+        submit: handleFormSubmit
+    });
+}
+
+// ===== SCROLL INDICATOR =====
+function initScrollIndicator() {
+    const scrollIndicator = document.querySelector('.hero-scroll-indicator');
+    
+    if (!scrollIndicator) return;
+    
+    const handleScroll = throttleRAF(() => {
+        if (getScrollPosition() > 100) {
+            scrollIndicator.style.opacity = '0';
+        } else {
+            scrollIndicator.style.opacity = '1';
+        }
+    });
+    
+    addEventListeners(window, {
+        scroll: handleScroll
+    });
 }
 
 // ===== MAIN INITIALIZATION =====
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('🚀 Initializing application...');
-    
     // Initialize DOM cache first
     DOM_CACHE.init();
     
@@ -279,11 +530,15 @@ document.addEventListener('DOMContentLoaded', function() {
             initAccessibility();
             initPerformanceOptimizations();
             
-            // Loading animation and custom scrollbar
+            // UI components
             initLoadingAnimation();
             initCustomScrollbar();
-            
-            console.log('✅ Application initialized successfully');
+            initStickyNavigation();
+            initFloatingNavigationHandler();
+            initProjectTabs();
+            initSmoothScrolling();
+            initFormValidation();
+            initScrollIndicator();
             
             // Performance logging
             if ('performance' in window) {
@@ -296,9 +551,8 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('❌ Initialization error:', error);
             
             // Show user-friendly error message
-            const errorDiv = document.createElement('div');
-            errorDiv.innerHTML = `
-                <div style="
+            const errorDiv = createElement('div', '', {
+                style: `
                     position: fixed; 
                     top: 20px; 
                     right: 20px; 
@@ -308,22 +562,24 @@ document.addEventListener('DOMContentLoaded', function() {
                     border-radius: 5px; 
                     z-index: 9999;
                     font-family: sans-serif;
-                ">
-                    일부 기능을 로드하는 중 문제가 발생했습니다.
-                    <button onclick="location.reload()" style="
-                        background: white; 
-                        color: #f44336; 
-                        border: none; 
-                        padding: 5px 10px; 
-                        margin-left: 10px; 
-                        border-radius: 3px; 
-                        cursor: pointer;
-                    ">새로고침</button>
-                </div>
+                `
+            });
+            
+            errorDiv.innerHTML = `
+                일부 기능을 로드하는 중 문제가 발생했습니다.
+                <button onclick="location.reload()" style="
+                    background: white; 
+                    color: #f44336; 
+                    border: none; 
+                    padding: 5px 10px; 
+                    margin-left: 10px; 
+                    border-radius: 3px; 
+                    cursor: pointer;
+                ">새로고침</button>
             `;
+            
             document.body.appendChild(errorDiv);
             
-            // Auto-remove after 10 seconds
             setTimeout(() => {
                 if (errorDiv.parentNode) {
                     errorDiv.remove();
@@ -346,9 +602,7 @@ window.addEventListener('unhandledrejection', (e) => {
 if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
     window.debugApp = {
         DOM_CACHE,
-        reinitialize: () => {
-            location.reload();
-        },
+        reinitialize: () => location.reload(),
         performance: () => {
             if ('performance' in window) {
                 const navigation = performance.getEntriesByType('navigation')[0];
@@ -356,238 +610,19 @@ if (window.location.hostname === 'localhost' || window.location.hostname === '12
                 console.table({
                     'DOM Content Loaded': `${Math.round(navigation.domContentLoadedEventEnd)}ms`,
                     'Page Load Complete': `${Math.round(navigation.loadEventEnd)}ms`,
-                    'Resources Loaded': resources.length
+                    'Resources Loaded': resources.length,
+                    'Device Type': getDeviceType(),
+                    'Screen Size': `${window.innerWidth}x${window.innerHeight}`
                 });
             }
-        }
+        },
+        getDeviceInfo: () => ({
+            type: getDeviceType(),
+            width: window.innerWidth,
+            height: window.innerHeight,
+            userAgent: navigator.userAgent
+        })
     };
     
     console.log('🛠️ Development mode enabled. Use window.debugApp for debugging.');
 }
-
-// ===== MAIN JAVASCRIPT FILE =====
-
-// ===== STICKY NAVIGATION =====
-document.addEventListener('DOMContentLoaded', function() {
-    const stickyNavToggle = document.querySelector('.sticky-nav-toggle');
-    const stickyNavMenu = document.querySelector('.sticky-nav-menu');
-    const stickyNavLinks = document.querySelectorAll('.sticky-nav-link');
-    
-    if (stickyNavToggle && stickyNavMenu) {
-        // 햄버거 메뉴 토글
-        stickyNavToggle.addEventListener('click', function() {
-            const isExpanded = this.getAttribute('aria-expanded') === 'true';
-            this.setAttribute('aria-expanded', !isExpanded);
-            this.classList.toggle('active');
-            stickyNavMenu.classList.toggle('active');
-        });
-        
-        // 메뉴 링크 클릭 시 메뉴 닫기
-        stickyNavLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                stickyNavToggle.setAttribute('aria-expanded', 'false');
-                stickyNavToggle.classList.remove('active');
-                stickyNavMenu.classList.remove('active');
-            });
-        });
-        
-        // 메뉴 외부 클릭 시 메뉴 닫기
-        document.addEventListener('click', function(event) {
-            if (!stickyNavToggle.contains(event.target) && !stickyNavMenu.contains(event.target)) {
-                stickyNavToggle.setAttribute('aria-expanded', 'false');
-                stickyNavToggle.classList.remove('active');
-                stickyNavMenu.classList.remove('active');
-            }
-        });
-    }
-});
-
-// ===== FLOATING NAVIGATION =====
-document.addEventListener('DOMContentLoaded', function() {
-    const navDots = document.querySelectorAll('.nav-dot');
-    const sections = document.querySelectorAll('section[id]');
-    
-    // 스크롤 시 현재 섹션 감지
-    function updateActiveNav() {
-        const scrollPos = window.scrollY + 100;
-        
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            const sectionId = section.getAttribute('id');
-            
-            if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-                // 현재 활성 네비게이션 업데이트
-                navDots.forEach(dot => {
-                    dot.classList.remove('active');
-                    if (dot.getAttribute('href') === `#${sectionId}`) {
-                        dot.classList.add('active');
-                    }
-                });
-                
-                // sticky 네비게이션도 업데이트
-                const stickyNavLink = document.querySelector(`.sticky-nav-link[href="#${sectionId}"]`);
-                if (stickyNavLink) {
-                    document.querySelectorAll('.sticky-nav-link').forEach(link => {
-                        link.classList.remove('active');
-                    });
-                    stickyNavLink.classList.add('active');
-                }
-            }
-        });
-    }
-    
-    // 스크롤 이벤트 리스너
-    window.addEventListener('scroll', updateActiveNav);
-    
-    // 초기 활성 상태 설정
-    updateActiveNav();
-});
-
-// ===== PROJECT TABS =====
-document.addEventListener('DOMContentLoaded', function() {
-    const projectButtons = document.querySelectorAll('[data-project]');
-    const projectPanels = document.querySelectorAll('.project-info');
-    const projectImages = document.querySelector('.project-image');
-    
-    if (projectButtons.length > 0) {
-        projectButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const projectIndex = this.getAttribute('data-project');
-                
-                // 모든 버튼에서 active 클래스 제거
-                projectButtons.forEach(btn => btn.classList.remove('active'));
-                // 모든 패널 숨기기
-                projectPanels.forEach(panel => panel.style.display = 'none');
-                
-                // 클릭된 버튼 활성화
-                this.classList.add('active');
-                // 해당 패널 표시
-                const targetPanel = document.getElementById(`project-panel-${projectIndex}`);
-                if (targetPanel) {
-                    targetPanel.style.display = 'block';
-                }
-                
-                // 프로젝트 이미지 변경 (이미지가 있는 경우)
-                if (projectImages) {
-                    const projectImagesList = [
-                        'img/hycu-1.png',
-                        'img/urscope-1.png',
-                        'img/kmr-1.png',
-                        'img/corfa-1.png',
-                        'img/landing-1.png',
-                        'img/smartppt-1.png',
-                        'img/aidt-1.png',
-                        'img/iscream-1.png',
-                        'img/neungryul-1.png'
-                    ];
-                    
-                    if (projectImagesList[projectIndex]) {
-                        projectImages.src = projectImagesList[projectIndex];
-                        projectImages.alt = `프로젝트 ${parseInt(projectIndex) + 1} 미리보기`;
-                    }
-                }
-            });
-        });
-    }
-});
-
-// ===== SMOOTH SCROLLING =====
-document.addEventListener('DOMContentLoaded', function() {
-    const links = document.querySelectorAll('a[href^="#"]');
-    
-    links.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-            
-            if (targetSection) {
-                const offsetTop = targetSection.offsetTop - 80; // sticky nav 높이만큼 조정
-                
-                window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-});
-
-// ===== AOS INITIALIZATION =====
-document.addEventListener('DOMContentLoaded', function() {
-    if (typeof AOS !== 'undefined') {
-        AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: true,
-            offset: 100
-        });
-    }
-});
-
-// ===== FORM VALIDATION =====
-document.addEventListener('DOMContentLoaded', function() {
-    const contactForm = document.getElementById('contactForm');
-    
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // 간단한 폼 검증
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const subject = document.getElementById('subject').value.trim();
-            const message = document.getElementById('message').value.trim();
-            
-            if (!name || !email || !subject || !message) {
-                showSubmitStatus('모든 필드를 입력해주세요.', 'error');
-                return;
-            }
-            
-            if (!isValidEmail(email)) {
-                showSubmitStatus('올바른 이메일 주소를 입력해주세요.', 'error');
-                return;
-            }
-            
-            // 폼 제출 성공 시뮬레이션
-            showSubmitStatus('메시지가 성공적으로 전송되었습니다!', 'success');
-            contactForm.reset();
-        });
-    }
-    
-    function isValidEmail(email) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-    }
-    
-    function showSubmitStatus(message, type) {
-        const statusElement = document.getElementById('submit-status');
-        if (statusElement) {
-            statusElement.textContent = message;
-            statusElement.className = `submit-status ${type}`;
-            
-            setTimeout(() => {
-                statusElement.textContent = '';
-                statusElement.className = 'submit-status';
-            }, 5000);
-        }
-    }
-});
-
-// ===== SCROLL TO TOP =====
-document.addEventListener('DOMContentLoaded', function() {
-    // 스크롤 시 스크롤 인디케이터 표시/숨김
-    const scrollIndicator = document.querySelector('.hero-scroll-indicator');
-    
-    if (scrollIndicator) {
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 100) {
-                scrollIndicator.style.opacity = '0';
-            } else {
-                scrollIndicator.style.opacity = '1';
-            }
-        });
-    }
-});

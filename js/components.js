@@ -1,4 +1,4 @@
-// ===== COMPONENTS - ALL UI FUNCTIONALITY =====
+// ===== COMPONENTS - OPTIMIZED UI FUNCTIONALITY =====
 
 import { DOM_CACHE, throttle, debounce, smoothScrollTo, announce } from './utils.js';
 
@@ -20,6 +20,7 @@ export const projectData = [
     },
     {
         id: 2,
+        
         title: 'KMR(한국경영인증원) 프로젝트',
         description: '한국경영인증원 공식 웹사이트 제작',
         tags: ['HTML5', 'CSS3', 'JavaScript', 'jQuery'],
@@ -69,41 +70,48 @@ export const projectData = [
     }
 ];
 
+// ===== UTILITY FUNCTIONS =====
+const createElement = (tag, className, attributes = {}) => {
+    const element = document.createElement(tag);
+    if (className) element.className = className;
+    Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, value));
+    return element;
+};
+
+const updateElement = (element, updates = {}) => {
+    if (!element) return;
+    Object.entries(updates).forEach(([key, value]) => {
+        if (key === 'textContent' || key === 'innerHTML') {
+            element[key] = value;
+        } else if (key === 'style') {
+            Object.assign(element.style, value);
+        } else {
+            element.setAttribute(key, value);
+        }
+    });
+};
+
 // ===== FLOATING NAVIGATION =====
 export function initFloatingNavigation() {
     const floatingNav = DOM_CACHE.get('.floating-nav');
-    if (!floatingNav) {
-        console.warn('Floating navigation not found');
-        return;
-    }
+    if (!floatingNav) return;
     
     const navDots = floatingNav.querySelectorAll('.nav-dot');
     const sections = document.querySelectorAll('section[id]');
     
-    console.log('Floating nav found:', floatingNav);
-    console.log('Nav dots found:', navDots.length);
-    console.log('Sections found:', sections.length);
-    
     if (navDots.length === 0 || sections.length === 0) return;
     
-    // Handle navigation clicks
-    navDots.forEach(dot => {
-        // dot 자체가 링크입니다
-        dot.addEventListener('click', (e) => {
-            e.preventDefault();
-            
-            const targetId = dot.getAttribute('href').substring(1);
-            smoothScrollTo(targetId);
-            
-            // Update active state
-            navDots.forEach(otherDot => otherDot.classList.remove('active'));
-            dot.classList.add('active');
-            
-            console.log('Navigation clicked:', targetId); // 디버그
-        });
-    });
+    // Navigation click handler
+    const handleNavClick = (e) => {
+        e.preventDefault();
+        const targetId = e.currentTarget.getAttribute('href').substring(1);
+        smoothScrollTo(targetId);
+        
+        navDots.forEach(dot => dot.classList.remove('active'));
+        e.currentTarget.classList.add('active');
+    };
     
-    // Handle scroll detection
+    // Scroll detection handler
     const handleScroll = throttle(() => {
         const scrollPosition = window.pageYOffset;
         const windowHeight = window.innerHeight;
@@ -118,7 +126,6 @@ export function initFloatingNavigation() {
             const viewportMiddle = scrollPosition + (windowHeight / 2);
             
             const distance = Math.abs(sectionMiddle - viewportMiddle);
-            
             if (distance < minDistance) {
                 minDistance = distance;
                 activeSection = section;
@@ -127,9 +134,9 @@ export function initFloatingNavigation() {
         
         if (activeSection) {
             const activeSectionId = activeSection.getAttribute('id');
-            const correspondingDot = Array.from(navDots).find(dot => {
-                return dot.getAttribute('href') === `#${activeSectionId}`;
-            });
+            const correspondingDot = Array.from(navDots).find(dot => 
+                dot.getAttribute('href') === `#${activeSectionId}`
+            );
             
             if (correspondingDot) {
                 navDots.forEach(dot => dot.classList.remove('active'));
@@ -138,10 +145,10 @@ export function initFloatingNavigation() {
         }
     }, 100);
     
+    // Event listeners
+    navDots.forEach(dot => dot.addEventListener('click', handleNavClick));
     window.addEventListener('scroll', handleScroll);
     handleScroll();
-    
-    console.log('Floating navigation initialized');
 }
 
 // ===== PROJECTS =====
@@ -149,115 +156,91 @@ export function initProjects() {
     const projectButtons = document.querySelectorAll('.project-tabs-container .btn');
     const projectInfos = document.querySelectorAll('.project-info');
     
-    console.log('Project buttons found:', projectButtons.length);
-    console.log('Project infos found:', projectInfos.length);
-    
     if (projectButtons.length === 0) return;
     
-    projectButtons.forEach((button, index) => {
-        button.addEventListener('click', () => {
-            console.log('Project button clicked:', index);
-            
-            // Update button states
-            projectButtons.forEach((btn, i) => {
-                btn.classList.toggle('active', i === index);
-                btn.setAttribute('aria-selected', i === index);
+    const updateProjectDisplay = (index) => {
+        const project = projectData[index];
+        if (!project) return;
+        
+        const elements = {
+            image: document.querySelector('.project-image'),
+            title: document.querySelector('.project-title'),
+            desc: document.querySelector('.project-desc'),
+            tags: document.querySelector('.project-tags')
+        };
+        
+        // Update elements
+        if (elements.image) {
+            updateElement(elements.image, {
+                src: project.image,
+                alt: `${project.title} 미리보기`
             });
-            
-            // Update project info visibility
-            projectInfos.forEach((info, i) => {
-                if (i === index) {
-                    info.style.display = 'block';
-                    info.setAttribute('aria-hidden', 'false');
-                } else {
-                    info.style.display = 'none';
-                    info.setAttribute('aria-hidden', 'true');
-                }
-            });
-            
-            // Update project display
-            const project = projectData[index];
-            if (project) {
-                const projectImage = document.querySelector('.project-image');
-                const projectTitle = document.querySelector('.project-title');
-                const projectDesc = document.querySelector('.project-desc');
-                const projectTags = document.querySelector('.project-tags');
-                
-                if (projectImage) {
-                    projectImage.src = project.image;
-                    projectImage.alt = `${project.title} 미리보기`;
-                }
-                
-                if (projectTitle) {
-                    projectTitle.textContent = project.title;
-                }
-                
-                if (projectDesc) {
-                    projectDesc.textContent = project.description;
-                }
-                
-                if (projectTags) {
-                    projectTags.innerHTML = project.tags.map(tag => 
-                        `<span class="badge badge-tech">${tag}</span>`
-                    ).join('');
-                }
-            }
+        }
+        
+        if (elements.title) {
+            elements.title.textContent = project.title;
+        }
+        
+        if (elements.desc) {
+            elements.desc.textContent = project.description;
+        }
+        
+        if (elements.tags) {
+            elements.tags.innerHTML = project.tags.map(tag => 
+                `<span class="badge badge-tech">${tag}</span>`
+            ).join('');
+        }
+    };
+    
+    const handleProjectClick = (index) => {
+        // Update button states
+        projectButtons.forEach((btn, i) => {
+            btn.classList.toggle('active', i === index);
+            btn.setAttribute('aria-selected', i === index);
         });
+        
+        // Update project info visibility
+        projectInfos.forEach((info, i) => {
+            const isVisible = i === index;
+            info.style.display = isVisible ? 'block' : 'none';
+            info.setAttribute('aria-hidden', !isVisible);
+        });
+        
+        // Update project display
+        updateProjectDisplay(index);
+        
+        // Update progress bar
+        animateTabProgress(index, projectButtons.length);
+    };
+    
+    // Event listeners
+    projectButtons.forEach((button, index) => {
+        button.addEventListener('click', () => handleProjectClick(index));
     });
     
     // Initialize first project
     if (projectButtons.length > 0) {
-        projectButtons[0].click();
+        handleProjectClick(0);
     }
-    
-    // 탭 프로그레스 바 초기화
-    initTabProgressBar();
-    
-    console.log('Projects initialized');
 }
 
 // ===== TAB PROGRESS BAR =====
-function initTabProgressBar() {
+function animateTabProgress(activeIndex, totalTabs) {
     const progressFill = document.querySelector('.tab-progress-fill');
+    if (!progressFill) return;
     
-    if (!progressFill) {
-        console.warn('Tab progress fill not found');
-        return;
-    }
+    const progress = ((activeIndex + 1) / totalTabs) * 100;
     
-    // 탭 변경 시 프로그레스 바 애니메이션
-    function animateTabProgress(activeIndex, totalTabs) {
-        const progress = ((activeIndex + 1) / totalTabs) * 100;
-        
-        // 더 부드러운 애니메이션을 위한 개선된 설정
-        gsap.to(progressFill, {
-            transform: `translateX(${progress - 100}%)`,
-            duration: 0.8,
-            ease: "power3.out",
-            overwrite: "auto"
-        });
-        
-        // 프로그레스 바에 부드러운 색상 전환 효과 추가
-        gsap.to(progressFill, {
-            background: `linear-gradient(90deg, 
-                rgba(37, 99, 235, 0.9), 
-                rgba(147, 51, 234, 0.9)
-            )`,
-            duration: 0.6,
-            ease: "power2.out"
-        });
-    }
-    
-    // 프로젝트 버튼 클릭 시 프로그레스 바 업데이트
-    const projectButtons = document.querySelectorAll('.project-tabs-container .btn');
-    projectButtons.forEach((button, index) => {
-        button.addEventListener('click', () => {
-            animateTabProgress(index, projectButtons.length);
-        });
+    gsap.to(progressFill, {
+        transform: `translateX(${progress - 100}%)`,
+        background: `linear-gradient(90deg, 
+            rgba(5, 150, 105, 0.9), 
+            rgba(16, 185, 129, 0.9)
+        )`,
+        duration: 0.8,
+        ease: "power3.out",
+        overwrite: "auto"
     });
-    
-    // 초기 프로그레스 바 상태 설정
-    animateTabProgress(0, projectButtons.length);
 }
 
 // ===== PROJECT BUTTONS HORIZONTAL SCROLL =====
@@ -266,54 +249,46 @@ export function initProjectButtonsScroll() {
     const progressBar = document.querySelector('.tab-progress-bar');
     const progressFill = document.querySelector('.tab-progress-fill');
     
-    if (!scrollContainer) {
-        console.warn('Project tabs container not found');
-        return;
-    }
+    if (!scrollContainer) return;
 
-    // 프로그레스바 업데이트 함수 (부드러운 애니메이션 적용)
-    function updateProgressBar() {
+    const updateProgressBar = () => {
         if (!progressBar || !progressFill) return;
         
         const scrollLeft = scrollContainer.scrollLeft;
         const scrollWidth = scrollContainer.scrollWidth - scrollContainer.clientWidth;
         const progress = scrollWidth > 0 ? (scrollLeft / scrollWidth) * 100 : 0;
         
-        // GSAP를 사용한 부드러운 너비 애니메이션
         gsap.to(progressFill, {
             width: `${Math.max(0, Math.min(100, progress))}%`,
             duration: 0.4,
             ease: "power2.out",
             overwrite: "auto"
         });
-    }
+    };
 
-    // 스크롤 이벤트 리스너 (throttling 적용으로 부드러운 애니메이션)
+    // Scroll event with throttling
     let scrollTimeout;
     scrollContainer.addEventListener('scroll', () => {
         if (scrollTimeout) return;
-        
         scrollTimeout = setTimeout(() => {
             updateProgressBar();
             scrollTimeout = null;
-        }, 16); // 60fps에 맞춘 최적화
+        }, 16);
     });
 
-    // 마우스 휠 이벤트 (가로 스크롤)
+    // Mouse wheel horizontal scroll
     scrollContainer.addEventListener('wheel', (e) => {
         e.preventDefault();
-        const scrollAmount = e.deltaY * 2; // 스크롤 속도 조정
-        scrollContainer.scrollLeft += scrollAmount;
+        scrollContainer.scrollLeft += e.deltaY * 2;
     });
 
-    // 드래그 스크롤 구현
+    // Drag scroll implementation
     let isDragging = false;
     let startX = 0;
     let scrollLeft = 0;
 
-    // 마우스 다운
-    scrollContainer.addEventListener('mousedown', (e) => {
-        if (e.target.closest('.btn')) return; // 버튼 클릭은 제외
+    const handleDragStart = (e) => {
+        if (e.target.closest('.btn')) return;
         
         isDragging = true;
         startX = e.pageX;
@@ -321,20 +296,18 @@ export function initProjectButtonsScroll() {
         scrollContainer.style.cursor = 'grabbing';
         scrollContainer.style.userSelect = 'none';
         e.preventDefault();
-    });
+    };
 
-    // 마우스 무브
-    document.addEventListener('mousemove', (e) => {
+    const handleDragMove = (e) => {
         if (!isDragging) return;
         e.preventDefault();
         
         const x = e.pageX;
-        const walk = (startX - x) * 1.5; // 스크롤 속도 조정
+        const walk = (startX - x) * 1.5;
         scrollContainer.scrollLeft = scrollLeft + walk;
-    });
+    };
 
-    // 마우스 업 및 리브
-    const stopDragging = () => {
+    const handleDragEnd = () => {
         if (isDragging) {
             isDragging = false;
             scrollContainer.style.cursor = 'default';
@@ -342,10 +315,7 @@ export function initProjectButtonsScroll() {
         }
     };
 
-    document.addEventListener('mouseup', stopDragging);
-    scrollContainer.addEventListener('mouseleave', stopDragging);
-
-    // 터치 이벤트 (모바일)
+    // Touch events for mobile
     let touchStartX = 0;
     let touchScrollLeft = 0;
 
@@ -356,11 +326,11 @@ export function initProjectButtonsScroll() {
 
     scrollContainer.addEventListener('touchmove', (e) => {
         const touchX = e.touches[0].clientX;
-        const walk = (touchStartX - touchX) * 1.5; // 터치 스크롤 속도
+        const walk = (touchStartX - touchX) * 1.5;
         scrollContainer.scrollLeft = touchScrollLeft + walk;
     }, { passive: true });
 
-    // 프로그레스바 클릭으로 이동
+    // Progress bar click navigation
     if (progressBar) {
         progressBar.addEventListener('click', (e) => {
             const rect = progressBar.getBoundingClientRect();
@@ -377,37 +347,34 @@ export function initProjectButtonsScroll() {
         });
     }
 
-    // 초기 프로그레스바 설정 및 리사이즈 이벤트
-    updateProgressBar();
-    
-    window.addEventListener('resize', updateProgressBar);
+    // Event listeners
+    scrollContainer.addEventListener('mousedown', handleDragStart);
+    document.addEventListener('mousemove', handleDragMove);
+    document.addEventListener('mouseup', handleDragEnd);
+    scrollContainer.addEventListener('mouseleave', handleDragEnd);
 
-    console.log('Project buttons horizontal scroll initialized');
-    console.log('Scroll container:', scrollContainer);
-    console.log('Progress bar:', progressBar);
+    // Initialize
+    updateProgressBar();
+    window.addEventListener('resize', updateProgressBar);
 }
 
 // ===== IPAD SCROLL =====
 export function initIpadScroll() {
     const ipadContainer = DOM_CACHE.ipadContainer?.querySelector('.ipad-frame') || 
                           document.querySelector('.projects-ipad-container .ipad-frame');
-    const projectImageContainer = document.querySelector('.project-image-container');
     const projectImage = document.querySelector('.project-image');
     
-    if (!ipadContainer || !projectImageContainer || !projectImage) return;
+    if (!ipadContainer || !projectImage) return;
     
-    let scrollPosition = 0; // 0-100%
+    let scrollPosition = 0;
     let isDragging = false;
-    let touchStartY = 0;
     let lastTouchY = 0;
-    let touchVelocity = 0;
-    let lastTouchTime = 0;
     
-    function updateImagePosition() {
+    const updateImagePosition = () => {
         const objectPosition = `center ${scrollPosition}%`;
         projectImage.style.objectPosition = objectPosition;
         
-        // Visual feedback at bounds
+        // Visual feedback
         let filter = 'brightness(1.1) contrast(1.05)';
         if (scrollPosition <= 5 || scrollPosition >= 95) {
             filter += ' saturate(0.9)';
@@ -419,64 +386,43 @@ export function initIpadScroll() {
         const progressText = document.querySelector('.progress-text');
         
         if (progressFill) {
-            // GSAP를 사용한 더 부드러운 애니메이션
+            const targetGradient = scrollPosition <= 10 || scrollPosition >= 90 
+                ? 'linear-gradient(90deg, #ff6b6b, #feca57)'
+                : 'linear-gradient(90deg, #059669, #10B981, #34D399)';
+            
             gsap.to(progressFill, {
                 width: `${scrollPosition}%`,
+                background: targetGradient,
                 duration: 0.5,
                 ease: "power3.out",
                 overwrite: "auto"
             });
-            
-            // 프로그레스 바 색상 변경 (부드러운 전환)
-            const targetGradient = scrollPosition <= 10 || scrollPosition >= 90 
-                ? 'linear-gradient(90deg, #ff6b6b, #feca57)'
-                : 'linear-gradient(90deg, #2563EB, #9333EA, #F97316)';
-            
-            gsap.to(progressFill, {
-                background: targetGradient,
-                duration: 0.4,
-                ease: "power2.out"
-            });
         }
         
         if (progressText) {
-            // 텍스트 애니메이션 (더 부드럽게)
-            gsap.to(progressText, {
-                textContent: `${Math.round(scrollPosition)}%`,
-                duration: 0.4,
-                ease: "power2.out",
-                snap: { textContent: 1 },
-                overwrite: "auto"
-            });
-            
-            // 텍스트 색상 변경 (부드러운 전환)
             const targetColor = scrollPosition <= 10 || scrollPosition >= 90 
                 ? '#ff6b6b' 
                 : '#ffffff';
             
             gsap.to(progressText, {
+                textContent: `${Math.round(scrollPosition)}%`,
                 color: targetColor,
-                duration: 0.3,
-                ease: "power2.out"
+                duration: 0.4,
+                ease: "power2.out",
+                snap: { textContent: 1 },
+                overwrite: "auto"
             });
         }
         
-        // ARIA updates
         ipadContainer.setAttribute('aria-valuenow', Math.round(scrollPosition));
-    }
+    };
     
-    // Simplified scroll handling
-    let isMouseOverIpad = false;
-    
-    // Simple and reliable scroll handler
-    function handleScroll(e) {
+    const handleScroll = (e) => {
         e.preventDefault();
         e.stopPropagation();
         
-        console.log('Scroll event:', e.deltaY); // Debug log
-        
         const delta = e.deltaY;
-        const scrollStep = Math.abs(delta) * 0.15; // Increased sensitivity
+        const scrollStep = Math.abs(delta) * 0.15;
         
         if (delta > 0) {
             scrollPosition = Math.min(100, scrollPosition + scrollStep);
@@ -486,36 +432,15 @@ export function initIpadScroll() {
         
         updateImagePosition();
         return false;
-    }
+    };
     
-    // Simple mouse enter handler
-    function handleMouseEnter() {
-        isMouseOverIpad = true;
-        console.log('Mouse entered iPad');
-        
-        // 레이아웃 이동 방지: overflow 변경하지 않음
-    }
-    
-    // Simple mouse leave handler
-    function handleMouseLeave() {
-        isMouseOverIpad = false;
-        console.log('Mouse left iPad');
-        
-        // 아무것도 변경하지 않음
-    }
-    
-    // Simplified touch events
-    function handleTouchStart(e) {
+    const handleTouchStart = (e) => {
         e.preventDefault();
-        touchStartY = e.touches[0].clientY;
-        lastTouchY = touchStartY;
+        lastTouchY = e.touches[0].clientY;
         isDragging = true;
-        touchVelocity = 0;
-        lastTouchTime = Date.now();
-        console.log('Touch start');
-    }
+    };
     
-    function handleTouchMove(e) {
+    const handleTouchMove = (e) => {
         if (!isDragging) return;
         e.preventDefault();
         
@@ -527,91 +452,57 @@ export function initIpadScroll() {
         updateImagePosition();
         
         lastTouchY = currentY;
-    }
+    };
     
-    function handleTouchEnd() {
+    const handleTouchEnd = () => {
         isDragging = false;
-        console.log('Touch end');
-    }
+    };
     
-    // Keyboard navigation
-    function handleKeydown(e) {
+    const handleKeydown = (e) => {
         if (!ipadContainer.contains(document.activeElement)) return;
         
-        switch(e.key) {
-            case 'ArrowUp':
-                e.preventDefault();
-                scrollPosition = Math.max(0, scrollPosition - 5);
-                requestAnimationFrame(updateImagePosition);
-                break;
-            case 'ArrowDown':
-                e.preventDefault();
-                scrollPosition = Math.min(100, scrollPosition + 5);
-                requestAnimationFrame(updateImagePosition);
-                break;
-            case 'Home':
-                e.preventDefault();
-                scrollPosition = 0;
-                requestAnimationFrame(updateImagePosition);
-                break;
-            case 'End':
-                e.preventDefault();
-                scrollPosition = 100;
-                requestAnimationFrame(updateImagePosition);
-                break;
+        const keyActions = {
+            'ArrowUp': () => Math.max(0, scrollPosition - 5),
+            'ArrowDown': () => Math.min(100, scrollPosition + 5),
+            'Home': () => 0,
+            'End': () => 100
+        };
+        
+        const action = keyActions[e.key];
+        if (action) {
+            e.preventDefault();
+            scrollPosition = action();
+            requestAnimationFrame(updateImagePosition);
         }
-    }
+    };
     
-    // Simple event listeners - only on necessary elements
+    // Event listeners
     const ipadScreen = ipadContainer.querySelector('.ipad-screen');
-    
-    // Add events to iPad screen only
     if (ipadScreen) {
         ipadScreen.addEventListener('wheel', handleScroll, { passive: false });
         ipadScreen.addEventListener('touchstart', handleTouchStart, { passive: false });
         ipadScreen.addEventListener('touchmove', handleTouchMove, { passive: false });
         ipadScreen.addEventListener('touchend', handleTouchEnd, { passive: false });
-        
-        console.log('Event listeners added to iPad screen');
     }
     
-    // Mouse enter/leave on main container
-    ipadContainer.addEventListener('mouseenter', handleMouseEnter);
-    ipadContainer.addEventListener('mouseleave', handleMouseLeave);
-    
-    // Keyboard events on the main container
     ipadContainer.addEventListener('keydown', handleKeydown);
     
-    // Ensure progress bar doesn't block events
+    // Accessibility setup
     const progressBar = ipadContainer.querySelector('.ipad-progress-bar');
     if (progressBar) {
         progressBar.style.pointerEvents = 'none';
     }
     
-    // Setup accessibility
-    ipadContainer.setAttribute('tabindex', '0');
-    ipadContainer.setAttribute('role', 'slider');
-    ipadContainer.setAttribute('aria-label', '프로젝트 이미지 스크롤');
-    ipadContainer.setAttribute('aria-valuemin', '0');
-    ipadContainer.setAttribute('aria-valuemax', '100');
-    ipadContainer.setAttribute('aria-valuenow', '0');
+    updateElement(ipadContainer, {
+        tabindex: '0',
+        role: 'slider',
+        'aria-label': '프로젝트 이미지 스크롤',
+        'aria-valuemin': '0',
+        'aria-valuemax': '100',
+        'aria-valuenow': '0'
+    });
     
-    // Initialize
     updateImagePosition();
-    
-    console.log('iPad scroll initialized');
-    console.log('iPad container:', ipadContainer);
-    console.log('iPad screen:', ipadScreen);
-    console.log('Project image container:', projectImageContainer);
-    
-    // Test function for debugging
-    window.testIpadScroll = function() {
-        console.log('Current scroll position:', scrollPosition);
-        console.log('Mouse over iPad:', isMouseOverIpad);
-        scrollPosition = 50;
-        updateImagePosition();
-        console.log('Set scroll to 50%');
-    };
 }
 
 // ===== CONTACT FORM =====
@@ -621,8 +512,13 @@ export function initContactForm() {
     
     const inputs = form.querySelectorAll('input, textarea');
     
-    // Form validation
-    function validateField(field) {
+    const validationRules = {
+        email: (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) || '올바른 이메일 주소를 입력해주세요.',
+        phone: (value) => /^[0-9-+\s()]{10,}$/.test(value) || '올바른 전화번호를 입력해주세요.',
+        message: (value) => value.length >= 10 || '메시지는 최소 10자 이상 입력해주세요.'
+    };
+    
+    const validateField = (field) => {
         const value = field.value.trim();
         const fieldName = field.name;
         let isValid = true;
@@ -636,29 +532,12 @@ export function initContactForm() {
             errorMessage = `${getFieldLabel(field)}은(는) 필수 입력 항목입니다.`;
         }
         
-        // Email validation
-        if (fieldName === 'email' && value) {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(value)) {
+        // Specific field validation
+        if (value && validationRules[fieldName]) {
+            const result = validationRules[fieldName](value);
+            if (result !== true) {
                 isValid = false;
-                errorMessage = '올바른 이메일 주소를 입력해주세요.';
-            }
-        }
-        
-        // Phone validation
-        if (fieldName === 'phone' && value) {
-            const phoneRegex = /^[0-9-+\s()]{10,}$/;
-            if (!phoneRegex.test(value)) {
-                isValid = false;
-                errorMessage = '올바른 전화번호를 입력해주세요.';
-            }
-        }
-        
-        // Message length validation
-        if (fieldName === 'message' && value) {
-            if (value.length < 10) {
-                isValid = false;
-                errorMessage = '메시지는 최소 10자 이상 입력해주세요.';
+                errorMessage = result;
             }
         }
         
@@ -672,58 +551,44 @@ export function initContactForm() {
         }
         
         return isValid;
-    }
+    };
     
-    function getFieldLabel(field) {
+    const getFieldLabel = (field) => {
         const label = document.querySelector(`label[for="${field.id}"]`);
         return label ? label.textContent.replace('*', '').trim() : field.name;
-    }
+    };
     
-    function showFieldError(field, message) {
+    const showFieldError = (field, message) => {
         const fieldGroup = field.closest('.form-group');
         if (!fieldGroup) return;
         
         clearFieldError(field);
         
-        const feedback = document.createElement('div');
-        feedback.className = 'field-feedback error';
+        const feedback = createElement('div', 'field-feedback error', {
+            role: 'alert'
+        });
         feedback.textContent = message;
-        feedback.setAttribute('role', 'alert');
         
         fieldGroup.appendChild(feedback);
         field.setAttribute('aria-invalid', 'true');
-    }
+    };
     
-    function clearFieldError(field) {
+    const clearFieldError = (field) => {
         const fieldGroup = field.closest('.form-group');
         if (fieldGroup) {
             const feedback = fieldGroup.querySelector('.field-feedback');
             if (feedback) feedback.remove();
         }
         field.removeAttribute('aria-invalid');
-    }
+    };
     
-    // Event listeners
-    inputs.forEach(input => {
-        const debouncedValidation = debounce(() => validateField(input), 300);
-        input.addEventListener('input', debouncedValidation);
-        input.addEventListener('blur', () => validateField(input));
-        input.addEventListener('focus', () => clearFieldError(input));
-    });
-    
-    // Form submission
-    form.addEventListener('submit', async (e) => {
+    const handleFormSubmit = async (e) => {
         e.preventDefault();
         
         // Validate all fields
-        let isFormValid = true;
-        inputs.forEach(input => {
-            if (!validateField(input)) {
-                isFormValid = false;
-            }
-        });
+        const isValid = Array.from(inputs).every(input => validateField(input));
         
-        if (!isFormValid) {
+        if (!isValid) {
             announce('양식을 올바르게 작성해주세요.');
             const firstInvalid = form.querySelector('.invalid');
             if (firstInvalid) firstInvalid.focus();
@@ -733,8 +598,11 @@ export function initContactForm() {
         // Submit form
         const submitButton = form.querySelector('[type="submit"]');
         const originalText = submitButton.textContent;
-        submitButton.textContent = '전송 중...';
-        submitButton.disabled = true;
+        
+        updateElement(submitButton, {
+            textContent: '전송 중...',
+            disabled: 'true'
+        });
         
         try {
             await new Promise(resolve => setTimeout(resolve, 1500));
@@ -744,10 +612,20 @@ export function initContactForm() {
         } catch (error) {
             announce('전송 중 오류가 발생했습니다. 다시 시도해주세요.');
         } finally {
-            submitButton.textContent = originalText;
-            submitButton.disabled = false;
+            updateElement(submitButton, {
+                textContent: originalText,
+                disabled: 'false'
+            });
         }
+    };
+    
+    // Event listeners
+    inputs.forEach(input => {
+        const debouncedValidation = debounce(() => validateField(input), 300);
+        input.addEventListener('input', debouncedValidation);
+        input.addEventListener('blur', () => validateField(input));
+        input.addEventListener('focus', () => clearFieldError(input));
     });
     
-    console.log('Contact form initialized');
+    form.addEventListener('submit', handleFormSubmit);
 }
