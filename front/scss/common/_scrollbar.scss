@@ -180,6 +180,14 @@ html {
     height: 2.5rem;
     font-size: 1rem;
   }
+  
+  @include media-max(sm) {
+    bottom: 0.75rem;
+    right: 0.75rem;
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.9rem;
+  }
 }
 
 // Responsive adjustments
@@ -206,22 +214,4 @@ html {
   }
 }
 
-@include media-max(md) {
-  .scroll-to-top {
-    bottom: 0.75rem;
-    right: 0.75rem;
-    width: 2rem;
-    height: 2rem;
-    font-size: 0.9rem;
-  }
-}
-
-@include media-max(sm) {
-  .scroll-to-top {
-    bottom: 0.5rem;
-    right: 0.5rem;
-    width: 1.75rem;
-    height: 1.75rem;
-    font-size: 0.8rem;
-  }
-}
+// Responsive styles are now integrated into the component above

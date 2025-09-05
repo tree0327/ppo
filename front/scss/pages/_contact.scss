@@ -2,7 +2,7 @@
 
 .contact-section {
   padding: 6rem 0;
-  background: var(--surface);
+  background: #ffffff;
   
   @include media-max(lg) {
     padding: 4rem 0;
@@ -26,7 +26,7 @@
 
 // Contact info card
 .card-info {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 1.5rem;
@@ -159,9 +159,9 @@
 
 // Contact form card
 .card-form {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 1.5rem;
   padding: 2rem;
   

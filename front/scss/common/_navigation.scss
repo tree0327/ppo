@@ -29,6 +29,14 @@
   padding: 1rem 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
+  
+  @include media-max(md) {
+    padding: 0.75rem 1rem;
+  }
+  
+  @include media-max(sm) {
+    padding: 0.5rem 0.75rem;
+  }
 }
 
 .sticky-nav-logo {
@@ -36,6 +44,14 @@
   font-size: 1.2rem;
   font-weight: $font-weight-bold;
   color: var(--text-primary);
+  
+  @include media-max(md) {
+    font-size: 1rem;
+  }
+  
+  @include media-max(sm) {
+    font-size: 0.9rem;
+  }
 }
 
 .sticky-nav-toggle {
@@ -55,6 +71,16 @@
   
   &.active {
     transform: rotate(90deg);
+  }
+  
+  @include media-max(md) {
+    width: 2rem;
+    height: 2rem;
+  }
+  
+  @include media-max(sm) {
+    width: 1.75rem;
+    height: 1.75rem;
   }
 }
 
@@ -96,6 +122,14 @@
       transform: rotate(-45deg);
     }
   }
+  
+  @include media-max(md) {
+    width: 1.25rem;
+  }
+  
+  @include media-max(sm) {
+    width: 1rem;
+  }
 }
 
 .sticky-nav-menu {
@@ -136,6 +170,16 @@
   &.active {
     color: var(--primary);
     background: rgba(var(--primary), 0.1);
+  }
+  
+  @include media-max(md) {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  @include media-max(sm) {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.85rem;
   }
 }
 
@@ -261,50 +305,4 @@
 }
 
 // ===== RESPONSIVE ADJUSTMENTS =====
-@include media-max(md) {
-  .sticky-nav-container {
-    padding: 0.75rem 1rem;
-  }
-  
-  .sticky-nav-logo {
-    font-size: 1rem;
-  }
-  
-  .sticky-nav-toggle {
-    width: 2rem;
-    height: 2rem;
-  }
-  
-  .hamburger-icon {
-    width: 1.25rem;
-  }
-  
-  .sticky-nav-link {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
-  }
-}
-
-@include media-max(sm) {
-  .sticky-nav-container {
-    padding: 0.5rem 0.75rem;
-  }
-  
-  .sticky-nav-logo {
-    font-size: 0.9rem;
-  }
-  
-  .sticky-nav-toggle {
-    width: 1.75rem;
-    height: 1.75rem;
-  }
-  
-  .hamburger-icon {
-    width: 1rem;
-  }
-  
-  .sticky-nav-link {
-    padding: 0.4rem 0.75rem;
-    font-size: 0.85rem;
-  }
-}
+// Responsive styles are now integrated into individual components above

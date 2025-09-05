@@ -1,5 +1,77 @@
 // Portfolio Main Application
 
+// Live Coding Animation
+class LiveCodingAnimation {
+    constructor() {
+        this.typingElements = document.querySelectorAll('.typing-animation');
+        this.currentLine = 0;
+        this.isAnimating = false;
+        this.init();
+    }
+
+    init() {
+        if (this.typingElements.length === 0) return;
+        
+        // Reset all elements
+        this.typingElements.forEach((element, index) => {
+            element.style.width = '100%';
+            element.style.minHeight = '1.5rem';
+            element.style.animationDelay = `${index * 0.8}s`;
+            element.textContent = '';
+        });
+
+        // Start animation after a delay
+        setTimeout(() => {
+            this.startTyping();
+        }, 1000);
+    }
+
+    startTyping() {
+        this.isAnimating = true;
+        
+        this.typingElements.forEach((element, index) => {
+            const text = element.getAttribute('data-text');
+            if (!text) return;
+
+            setTimeout(() => {
+                this.typeText(element, text, () => {
+                    if (index === this.typingElements.length - 1) {
+                        this.isAnimating = false;
+                        this.restartAnimation();
+                    }
+                });
+            }, index * 800);
+        });
+    }
+
+    typeText(element, text, callback) {
+        element.textContent = '';
+        element.style.width = '100%';
+        element.style.borderRight = '2px solid var(--primary)';
+        element.style.minHeight = '1.5rem';
+        
+        let i = 0;
+        const typeInterval = setInterval(() => {
+            if (i < text.length) {
+                element.textContent += text.charAt(i);
+                i++;
+            } else {
+                clearInterval(typeInterval);
+                setTimeout(() => {
+                    element.style.borderRight = 'none';
+                    if (callback) callback();
+                }, 500);
+            }
+        }, 50);
+    }
+
+    restartAnimation() {
+        setTimeout(() => {
+            this.init();
+        }, 3000);
+    }
+}
+
 // Utility Functions
 const debounce = (func, wait) => {
     let timeout;
@@ -97,6 +169,9 @@ document.addEventListener('DOMContentLoaded', function() {
         initProjectButtonsScroll();
         initIpadScroll();
         initContactForm();
+        
+        // Initialize Live Coding Animation
+        new LiveCodingAnimation();
         
         // Initialize AOS if available
         if (typeof AOS !== 'undefined') {

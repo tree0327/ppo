@@ -5,17 +5,17 @@
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background: linear-gradient(135deg, var(--background) 0%, rgba(var(--primary), 0.05) 100%);
+  background: linear-gradient(135deg, #ffffff 0%, rgba(var(--primary), 0.1) 100%);
   overflow: hidden;
   
   @include media-max(md) {
     min-height: calc(100vh - 64px);
-    padding-top: 64px;
+    padding: 64px 0 2rem 0;
   }
   
   @include media-max(sm) {
     min-height: calc(100vh - 56px);
-    padding-top: 56px;
+    padding: 56px 0 1.5rem 0;
   }
 }
 
@@ -52,6 +52,7 @@
   align-items: center;
   position: relative;
   z-index: 2;
+  width: 100%;
   
   @include media-max(lg) {
     grid-template-columns: 1fr;
@@ -61,6 +62,12 @@
   
   @include media-max(md) {
     gap: 1.5rem;
+    padding: 0 1rem;
+  }
+  
+  @include media-max(sm) {
+    gap: 1rem;
+    padding: 0 0.75rem;
   }
 }
 
@@ -70,6 +77,10 @@
   @include media-max(md) {
     margin-bottom: 1.5rem;
   }
+  
+  @include media-max(sm) {
+    margin-bottom: 1rem;
+  }
 }
 
 .hero-title {
@@ -78,7 +89,7 @@
   font-weight: $font-weight-extrabold;
   line-height: 1.1;
   margin-bottom: 1.5rem;
-  color: var(--text-primary);
+  color: #1a1a1a;
   
   .title-line {
     display: block;
@@ -92,12 +103,13 @@
   }
   
   @include media-max(md) {
-    font-size: clamp(2rem, 6vw, 3.5rem);
+    font-size: clamp(1.8rem, 5vw, 3rem);
     margin-bottom: 1rem;
   }
   
   @include media-max(sm) {
-    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    font-size: clamp(1.4rem, 4vw, 2.2rem);
+    margin-bottom: 0.75rem;
   }
 }
 
@@ -110,7 +122,7 @@
 
 .hero-subtitle {
   font-size: clamp(1.1rem, 3vw, 1.5rem);
-  color: var(--text-secondary);
+  color: #6b7280;
   line-height: 1.6;
   margin-bottom: 0;
   opacity: 0;
@@ -118,11 +130,11 @@
   animation: slideUp 1s ease-out 0.4s forwards;
   
   @include media-max(md) {
-    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    font-size: clamp(0.9rem, 2.2vw, 1.1rem);
   }
   
   @include media-max(sm) {
-    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    font-size: clamp(0.8rem, 1.8vw, 1rem);
   }
 }
 
@@ -137,12 +149,14 @@
   @include media-max(md) {
     justify-content: center;
     margin-bottom: 2rem;
+    gap: 0.75rem;
   }
   
   @include media-max(sm) {
     flex-direction: column;
     align-items: center;
     gap: 0.75rem;
+    margin-bottom: 1.5rem;
   }
 }
 
@@ -188,7 +202,7 @@
 
 .scroll-text {
   font-size: 0.875rem;
-  color: var(--text-secondary);
+  color: #6b7280;
   font-weight: $font-weight-medium;
 }
 
@@ -203,11 +217,13 @@
   @include media-max(md) {
     grid-template-columns: repeat(4, 1fr);
     gap: 0.5rem;
+    margin-top: 1rem;
   }
   
   @include media-max(sm) {
     grid-template-columns: repeat(2, 1fr);
     gap: 0.75rem;
+    margin-top: 0.75rem;
   }
 }
 
@@ -216,14 +232,14 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.05);
   backdrop-filter: blur(10px);
   border-radius: 0.75rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   
   &:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.1);
     transform: translateY(-2px);
   }
   
@@ -251,26 +267,36 @@
 .feature-text {
   font-size: 0.875rem;
   font-weight: $font-weight-medium;
-  color: var(--text-primary);
+  color: #1a1a1a;
   
   @include media-max(md) {
     font-size: 0.75rem;
   }
 }
 
-// Code window
-.code-window {
-  background: rgba(0, 0, 0, 0.9);
+// Live Coding Terminal
+.live-coding-terminal {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 1rem;
   overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   opacity: 0;
   transform: translateX(50px);
   animation: slideIn 1s ease-out 0.5s forwards;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
   
   @include media-max(lg) {
     max-width: 500px;
     margin: 0 auto;
+  }
+  
+  @include media-max(md) {
+    max-width: 450px;
+  }
+  
+  @include media-max(sm) {
+    max-width: 350px;
   }
 }
 
@@ -281,56 +307,168 @@
   }
 }
 
-.code-header {
+.terminal-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1rem 1.5rem;
-  background: rgba(255, 255, 255, 0.1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.code-buttons {
+.terminal-buttons {
   display: flex;
   gap: 0.5rem;
 }
 
-.code-btn {
+.terminal-btn {
   width: 12px;
   height: 12px;
   border-radius: 50%;
   
-  &.code-btn-red { background: #ff5f56; }
-  &.code-btn-yellow { background: #ffbd2e; }
-  &.code-btn-green { background: #27ca3f; }
+  &.terminal-btn-red { background: #ff5f56; }
+  &.terminal-btn-yellow { background: #ffbd2e; }
+  &.terminal-btn-green { background: #27ca3f; }
 }
 
-.code-title {
+.terminal-title {
   font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.8);
-  font-family: $font-mont;
+  color: rgba(0, 0, 0, 0.7);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.terminal-body {
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.05);
+  min-height: 300px;
+  height: 300px;
+  overflow: hidden;
+  
+  @include media-max(sm) {
+    padding: 1rem;
+    min-height: 250px;
+    height: 250px;
+  }
+}
+
+.code-line {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  height: 1.5rem;
+  
+  @include media-max(sm) {
+    margin-bottom: 0.25rem;
+    height: 1.25rem;
+  }
+}
+
+.line-number {
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 0.875rem;
+  width: 2rem;
+  text-align: right;
+  margin-right: 1rem;
+  font-family: 'JetBrains Mono', monospace;
+  
+  @include media-max(sm) {
+    font-size: 0.75rem;
+    width: 1.5rem;
+    margin-right: 0.75rem;
+  }
 }
 
 .code-content {
-  padding: 1.5rem;
-  font-family: $font-mont;
+  color: #1a1a1a;
   font-size: 0.875rem;
-  line-height: 1.6;
+  line-height: 1.5;
+  font-family: 'JetBrains Mono', monospace;
+  flex: 1;
   
-  pre {
-    margin: 0;
-    background: none;
-    padding: 0;
+  @include media-max(sm) {
+    font-size: 0.75rem;
   }
+}
+
+.cursor-blink {
+  color: var(--primary);
+  font-weight: bold;
+  animation: blink 1s infinite;
+  margin-left: 0.25rem;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.typing-animation {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid var(--primary);
+  animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+  animation-delay: calc(var(--line-delay, 0) * 0.5s);
+  animation-fill-mode: forwards;
+  width: 0;
+  min-height: 1.5rem;
+  display: inline-block;
   
-  code {
-    color: #e6e6e6;
-    
-    .keyword { color: #ff79c6; }
-    .class { color: #8be9fd; }
-    .property { color: #50fa7b; }
-    .string { color: #f1fa8c; }
-    .method { color: #ffb86c; }
+  @include media-max(sm) {
+    min-height: 1.25rem;
+  }
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: var(--primary); }
+}
+
+.terminal-footer {
+  display: flex;
+  justify-content: center;
+  padding: 1rem 1.5rem;
+  background: rgba(0, 0, 0, 0.05);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.typing-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--primary);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.status-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  font-weight: $font-weight-medium;
+  color: var(--primary);
+  
+  @include media-max(sm) {
+    font-size: 0.75rem;
   }
 }
 
@@ -344,35 +482,13 @@
 }
 
 @include media-max(md) {
-  .hero-section {
-    padding: 2rem 0;
-  }
-  
-  .code-window {
+  .live-coding-terminal {
     margin-top: 2rem;
-  }
-  
-  .code-content {
-    padding: 1rem;
-    font-size: 0.75rem;
   }
 }
 
 @include media-max(sm) {
-  .hero-section {
-    padding: 1rem 0;
-  }
-  
-  .code-window {
+  .live-coding-terminal {
     margin-top: 1.5rem;
-  }
-  
-  .code-header {
-    padding: 0.75rem 1rem;
-  }
-  
-  .code-content {
-    padding: 0.75rem;
-    font-size: 0.7rem;
   }
 }

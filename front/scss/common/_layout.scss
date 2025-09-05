@@ -38,6 +38,14 @@ body.sitemap-open{
 
 .section-container {
     @include section-container(1200px, 2rem);
+    
+    @include media-max(md) {
+        padding: 0 1rem;
+    }
+    
+    @include media-max(sm) {
+        padding: 0 0.75rem;
+    }
 }
 
 // header

@@ -2,7 +2,7 @@
 
 .about-section {
   padding: 6rem 0;
-  background: var(--surface);
+  background: #f8f9fa;
   
   @include media-max(lg) {
     padding: 4rem 0;
@@ -105,11 +105,11 @@
   margin-bottom: 0.5rem;
   
   @include media-max(md) {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
   
   @include media-max(sm) {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
   }
 }
 
