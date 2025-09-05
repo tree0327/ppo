@@ -1,0 +1,457 @@
+// ===== PROJECTS SECTION =====
+
+.projects-section {
+  @include section-padding(6rem, 6rem);
+  background: var(--background);
+}
+
+.projects-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  
+  @include media-max(md) {
+    gap: 2rem;
+  }
+}
+
+// Project tabs
+.project-tabs {
+  margin-bottom: 2rem;
+}
+
+.project-tab-list {
+  position: relative;
+}
+
+.project-tabs-container {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding: 1rem 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  
+  @include media-max(md) {
+    gap: 0.75rem;
+  }
+  
+  @include media-max(sm) {
+    gap: 0.5rem;
+  }
+}
+
+// Project-specific button styles
+.project-tabs-container .btn {
+  min-width: 160px;
+  height: 60px;
+  padding: 1rem 1.5rem;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+  
+  .btn-text {
+    font-size: 1rem;
+    line-height: 1.3;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  @include media-max(md) {
+    min-width: 140px;
+    height: 55px;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+    
+    .btn-text {
+      font-size: 0.9rem;
+    }
+  }
+  
+  @include media-max(sm) {
+    min-width: 120px;
+    height: 50px;
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+    
+    .btn-text {
+      font-size: 0.8rem;
+    }
+  }
+}
+
+.tab-progress-bar {
+  position: relative;
+  height: 4px;
+  background: rgba(5, 150, 105, 0.1);
+  border-radius: 2px;
+  margin-top: 1rem;
+  overflow: hidden;
+}
+
+.tab-progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, rgba(5, 150, 105, 0.9), rgba(16, 185, 129, 0.9));
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+// Project content
+.projects-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+  
+  @include media-max(lg) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.projects-sidebar {
+  @include media-max(lg) {
+    order: 2;
+  }
+}
+
+.project-info {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-5px);
+  }
+  
+  @include media-max(md) {
+    padding: 1.5rem;
+    border-radius: 1rem;
+  }
+  
+  @include media-max(sm) {
+    padding: 1rem;
+  }
+}
+
+.project-title {
+  font-family: $font-mont;
+  font-size: 1.5rem;
+  font-weight: $font-weight-bold;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  
+  @include media-max(md) {
+    font-size: 1.25rem;
+  }
+  
+  @include media-max(sm) {
+    font-size: 1.1rem;
+  }
+}
+
+.project-desc {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  
+  @include media-max(md) {
+    font-size: 0.9rem;
+  }
+  
+  @include media-max(sm) {
+    font-size: 0.85rem;
+  }
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.badge-tech {
+  background: rgba(var(--primary), 0.1);
+  color: var(--primary);
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.8rem;
+  font-weight: $font-weight-medium;
+  border: 1px solid rgba(var(--primary), 0.2);
+  
+  @include media-max(sm) {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+  }
+}
+
+.project-actions {
+  display: flex;
+  gap: 1rem;
+  
+  @include media-max(sm) {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
+
+// iPad container
+.projects-ipad-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  @include media-max(lg) {
+    order: 1;
+  }
+}
+
+.ipad-frame {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 3/4;
+  background: linear-gradient(135deg, #2c3e50, #34495e);
+  border-radius: 2rem;
+  padding: 1rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+  }
+  
+  @include media-max(md) {
+    max-width: 400px;
+    border-radius: 1.5rem;
+    padding: 0.75rem;
+  }
+  
+  @include media-max(sm) {
+    max-width: 350px;
+    border-radius: 1rem;
+    padding: 0.5rem;
+  }
+}
+
+.ipad-screen {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  border-radius: 1rem;
+  overflow: hidden;
+  position: relative;
+  
+  @include media-max(md) {
+    border-radius: 0.75rem;
+  }
+  
+  @include media-max(sm) {
+    border-radius: 0.5rem;
+  }
+}
+
+.ipad-content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.project-image-container {
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 0%;
+  transition: all 0.3s ease;
+}
+
+.ipad-progress-bar {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  
+  @include media-max(md) {
+    bottom: 0.75rem;
+    gap: 0.4rem;
+  }
+  
+  @include media-max(sm) {
+    bottom: 0.5rem;
+    gap: 0.3rem;
+  }
+}
+
+// Home button style progress bar
+.progress-track {
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  
+  @include media-max(md) {
+    width: 50px;
+    height: 50px;
+  }
+  
+  @include media-max(sm) {
+    width: 40px;
+    height: 40px;
+  }
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    
+    @include media-max(md) {
+      width: 6px;
+      height: 6px;
+    }
+    
+    @include media-max(sm) {
+      width: 5px;
+      height: 5px;
+    }
+  }
+}
+
+.progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, var(--primary) 0deg, var(--primary) 0deg, transparent 0deg);
+  transition: background 0.5s ease;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 50%;
+    
+    @include media-max(md) {
+      top: 3px;
+      left: 3px;
+      right: 3px;
+      bottom: 3px;
+    }
+    
+    @include media-max(sm) {
+      top: 2px;
+      left: 2px;
+      right: 2px;
+      bottom: 2px;
+    }
+  }
+}
+
+.progress-text {
+  font-family: $font-mont;
+  font-size: 0.7rem;
+  font-weight: $font-weight-bold;
+  color: white;
+  text-align: center;
+  // background: rgba(0, 0, 0, 0.6);
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.5rem;
+  backdrop-filter: blur(10px);
+  
+  @include media-max(sm) {
+    font-size: 0.6rem;
+    padding: 0.15rem 0.4rem;
+  }
+}
+
+// Responsive adjustments
+@include media-max(lg) {
+  .projects-content {
+    .projects-sidebar {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+}
+
+@include media-max(md) {
+  .project-tabs-container {
+    padding: 0.75rem 0;
+  }
+  
+  .tab-progress-bar {
+    margin-top: 0.75rem;
+  }
+}
+
+@include media-max(sm) {
+  .projects-section {
+    padding: 2rem 0;
+  }
+  
+  .projects-layout {
+    gap: 1.5rem;
+  }
+  
+  .project-tabs {
+    margin-bottom: 1.5rem;
+  }
+  
+  .project-tabs-container {
+    padding: 0.5rem 0;
+  }
+  
+  .tab-progress-bar {
+    margin-top: 0.5rem;
+  }
+}

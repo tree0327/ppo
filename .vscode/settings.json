@@ -1,89 +1,21 @@
 {
-  "cSpell.enabled": true,
-  "cSpell.language": "en,ko",
-  "cSpell.version": "0.2",
-  "cSpell.ignorePaths": [
-    "package-lock.json",
-    "node_modules/**",
-    ".git/**",
-    "css/**/*.map",
-    "**/*.css.map",
-    "**/*.min.css",
-    "**/*.min.js",
-    ".sass-cache/**"
-  ],
-  "cSpell.ignoreWords": [
-    "scss",
-    "gsap",
-    "aos",
-    "beige",
-    "backdrop",
-    "webkit",
-    "moz",
-    "ms",
-    "aria",
-    "tabindex",
-    "novalidate",
-    "aria-labelledby",
-    "aria-describedby",
-    "aria-required",
-    "aria-live",
-    "aria-hidden",
-    "aria-selected",
-    "aria-controls",
-    "aria-grabbed",
-    "role",
-    "listitem",
-    "tablist",
-    "tabpanel",
-    "progressbar",
-    "status",
-    "alert",
-    "polite",
-    "contentinfo",
-    "Pretendard"
-  ],
-  "cSpell.ignoreRegExpList": [
-    "/\\*.*?\\*/",
-    "//.*",
-    "data-.*",
-    "aria-.*"
-  ],
-  "files.exclude": {
-    "**/.sass-cache": true,
-    "**/*.css.map": true
-  },
-  "search.exclude": {
-    "**/.sass-cache": true,
-    "**/*.css.map": true
-  },
-  "liveSassCompile.settings.formats": [
-    {
-      "format": "expanded",
-      "extensionName": ".css",
-      "savePath": "/scss"
-    }
-  ],
-  "liveSassCompile.settings.autoprefix": true,
-  "liveSassCompile.settings.generateMap": false,
-  "liveSassCompile.settings.excludeList": [
-    "/**/node_modules/**"
-  ],
-  "liveSassCompile.settings.includeItems": [
-    "/scss/style.scss"
-  ],
-  "liveSassCompile.settings.showOutputWindowOn": "Information",
-  "liveSassCompile.settings.watchOnLaunch": true,
-  "cSpell.words": [
-    "AIDT",
-    "Corfa",
-    "efefef",
-    "fbasic",
-    "HYCU",
-    "iscream",
-    "mmath",
-    "neungryul",
-    "smartppt",
-    "URSCOPE"
-  ]
+    "liveServer.settings.port": 5503,
+    "liveSassCompile.settings.generateMap": false,
+    "liveSassCompile.settings.formats": [
+        {
+            "format": "expanded",
+            "extensionName": ".css",
+            "savePath": "~/../css"
+        },
+        {
+            "format": "compressed",
+            "extensionName": ".min.css",
+            "savePath": "~/../css"
+        }
+    ],
+    "htmlhint.options": {
+        "title-require": false,
+        "id-unique":true,
+        "tag-pair":true,
+    },
 }

@@ -1,0 +1,193 @@
+// ===== PROCESS SECTION =====
+
+.process-section {
+  padding: 6rem 0;
+  background: var(--surface);
+  
+  @include media-max(lg) {
+    padding: 4rem 0;
+  }
+  
+  @include media-max(md) {
+    padding: 3rem 0;
+  }
+}
+
+.process-timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 2rem;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--primary), var(--secondary));
+    
+    @include media-max(md) {
+      left: 1.5rem;
+    }
+    
+    @include media-max(sm) {
+      left: 1rem;
+    }
+  }
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 4rem;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+  
+  @include media-max(md) {
+    margin-bottom: 3rem;
+  }
+  
+  @include media-max(sm) {
+    margin-bottom: 2rem;
+  }
+}
+
+.timeline-marker {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.marker-icon {
+  width: 4rem;
+  height: 4rem;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: white;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 10px 20px rgba(var(--primary), 0.3);
+  
+  @include media-max(md) {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.25rem;
+  }
+  
+  @include media-max(sm) {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1rem;
+  }
+}
+
+.marker-line {
+  position: absolute;
+  left: 2rem;
+  top: 50%;
+  width: 2rem;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), transparent);
+  
+  @include media-max(md) {
+    left: 1.5rem;
+    width: 1.5rem;
+  }
+  
+  @include media-max(sm) {
+    left: 1rem;
+    width: 1rem;
+  }
+}
+
+.timeline-content {
+  margin-left: 6rem;
+  
+  @include media-max(md) {
+    margin-left: 4.5rem;
+  }
+  
+  @include media-max(sm) {
+    margin-left: 3.5rem;
+  }
+}
+
+.timeline-title {
+  font-family: $font-mont;
+  font-size: 1.5rem;
+  font-weight: $font-weight-bold;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  
+  @include media-max(md) {
+    font-size: 1.25rem;
+  }
+  
+  @include media-max(sm) {
+    font-size: 1.1rem;
+  }
+}
+
+.timeline-desc {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  
+  @include media-max(md) {
+    font-size: 0.9rem;
+  }
+  
+  @include media-max(sm) {
+    font-size: 0.85rem;
+  }
+}
+
+.timeline-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.detail-item {
+  background: rgba(var(--primary), 0.1);
+  color: var(--primary);
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.8rem;
+  font-weight: $font-weight-medium;
+  border: 1px solid rgba(var(--primary), 0.2);
+  
+  @include media-max(sm) {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+  }
+}
+
+// Responsive adjustments
+@include media-max(md) {
+  .process-timeline {
+    &::before {
+      left: 1.5rem;
+    }
+  }
+}
+
+@include media-max(sm) {
+  .process-section {
+    padding: 2rem 0;
+  }
+  
+  .process-timeline {
+    &::before {
+      left: 1rem;
+    }
+  }
+}
