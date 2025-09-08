@@ -12,10 +12,10 @@
   --gray: #EFEFEF;
   --secondary: #F9F2ED;
   --gutters-margin: -12px;
-  --background: #ffffff;
-  --surface: #f8f9fa;
-  --text-primary: #1a1a1a;
-  --text-secondary: #6b7280;
+  --background: #0a0a0a;
+  --surface: #1a1a1a;
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0a0;
   --accent: #10b981;
 }
 
@@ -85,24 +85,24 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #000000;
+  color: var(--text-primary);
   font-weight: 600;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 p, span, div {
-  color: #1a1a1a;
+  color: var(--text-primary);
   line-height: 1.6;
 }
 
 .section-title {
-  color: #000000;
+  color: var(--text-primary);
   font-weight: 700;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .section-subtitle {
-  color: #6b7280;
+  color: var(--text-secondary);
   font-weight: 500;
 }
 
@@ -3217,7 +3217,7 @@ html {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background: linear-gradient(135deg, #ffffff 0%, rgba(5, 150, 105, 0.1) 100%);
+  background: linear-gradient(135deg, #ffffff 0%, rgba(var(--primary), 0.1) 100%);
   overflow: hidden;
 }
 @media (max-width: 767.98px) {
@@ -3309,7 +3309,7 @@ html {
   font-weight: 800;
   line-height: 1.1;
   margin-bottom: 1.5rem;
-  color: #000000;
+  color: #1a1a1a;
 }
 .hero-title .title-line {
   display: block;
@@ -3747,7 +3747,7 @@ html {
 }
 .about-section {
   padding: 6rem 0;
-  background: #ffffff;
+  background: #f8f9fa;
 }
 @media (max-width: 991.98px) {
   .about-section {
@@ -4506,7 +4506,7 @@ html {
 }
 .process-section {
   padding: 6rem 0;
-  background: #ffffff;
+  background: var(--surface);
 }
 @media (max-width: 991.98px) {
   .process-section {
