@@ -286,18 +286,8 @@
   animation: slideIn 1s ease-out 0.5s forwards;
   font-family: 'JetBrains Mono', 'Fira Code', monospace;
   
-  @include media-max(lg) {
-    max-width: 500px;
-    margin: 0 auto;
-  }
-  
-  @include media-max(md) {
-    max-width: 450px;
-  }
-  
-  @include media-max(sm) {
-    max-width: 350px;
-  }
+  width: 100% !important;
+  height: 400px !important;
 }
 
 @keyframes slideIn {
@@ -340,14 +330,16 @@
 .terminal-body {
   padding: 1.5rem;
   background: rgba(0, 0, 0, 0.05);
-  min-height: 300px;
   height: 300px;
+  min-height: 300px;
+  max-height: 300px;
   overflow: hidden;
   
   @include media-max(sm) {
     padding: 1rem;
-    min-height: 250px;
-    height: 250px;
+    height: 300px;
+    min-height: 300px;
+    max-height: 300px;
   }
 }
 

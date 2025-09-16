@@ -71,8 +71,6 @@
                     <li><a href="#hero" class="sticky-nav-link">Home</a></li>
                     <li><a href="#about" class="sticky-nav-link">About</a></li>
                     <li><a href="#projects" class="sticky-nav-link">Projects</a></li>
-                    <li><a href="#process" class="sticky-nav-link">Process</a></li>
-                    <li><a href="#skills" class="sticky-nav-link">Skills</a></li>
                     <li><a href="#contact" class="sticky-nav-link">Contact</a></li>
                 </ul>
             </div>
@@ -90,12 +88,6 @@
                 <li><a href="#projects" class="nav-dot" data-section="projects" aria-label="프로젝트 섹션으로 이동">
                     <span class="dot-label">Projects</span>
                 </a></li>
-                <li><a href="#process" class="nav-dot" data-section="process" aria-label="프로세스 섹션으로 이동">
-                    <span class="dot-label">Process</span>
-                </a></li>
-                <li><a href="#skills" class="nav-dot" data-section="skills" aria-label="기술 섹션으로 이동">
-                    <span class="dot-label">Skills</span>
-                </a></li>
                 <li><a href="#contact" class="nav-dot" data-section="contact" aria-label="연락처 섹션으로 이동">
                     <span class="dot-label">Contact</span>
                 </a></li>
@@ -103,7 +95,7 @@
         </nav>
         
         <!-- Main Content -->
-        <main id="main-content">
+        <main id="ct">
             <!-- Hero Section -->
             <section id="hero" class="hero-section" aria-labelledby="hero-title">
                 <div class="hero-background">
@@ -140,28 +132,10 @@
                                 <span class="scroll-text">스크롤하여 더 알아보기</span>
                             </div>
                             
-                            <div class="hero-features">
-                                <div class="feature-item">
-                                    <div class="feature-icon">🎨</div>
-                                    <div class="feature-text">시맨틱 마크업</div>
-                                </div>
-                                <div class="feature-item">
-                                    <div class="feature-icon">⚡</div>
-                                    <div class="feature-text">반응형 웹</div>
-                                </div>
-                                <div class="feature-item">
-                                    <div class="feature-icon">📱</div>
-                                    <div class="feature-text">크로스브라우저</div>
-                                </div>
-                                <div class="feature-item">
-                                    <div class="feature-icon">🔒</div>
-                                    <div class="feature-text">접근성 준수</div>
-                                </div>
-                            </div>
                         </div>
                         
                         <div class="grid-item" data-aos="fade-left" data-aos-delay="300">
-                            <div class="live-coding-terminal">
+                            <div class="live-coding-terminal d-none">
                                 <div class="terminal-header">
                                     <div class="terminal-buttons">
                                         <span class="terminal-btn terminal-btn-red"></span>
@@ -251,7 +225,6 @@
             <section id="about" class="about-section" aria-labelledby="about-title">
                 <div class="section-container">
                     <header class="section-header" data-aos="fade-up">
-                        <span class="section-number">02</span>
                         <h2 id="about-title" class="section-title">About Me</h2>
                         <p class="section-subtitle">사용자 중심의 웹사이트를 만드는 웹 퍼블리셔</p>
                     </header>
@@ -275,7 +248,7 @@
                                     </div>
                                     <div class="stat-item">
                                         <div class="stat-number">2025.09</div>
-                                        <div class="stat-label">종료예정</div>
+                                        <div class="stat-label">종료일</div>
                                     </div>
                                 </div>
                             </div>
@@ -299,7 +272,6 @@
             <section id="projects" class="projects-section" aria-labelledby="projects-title">
                 <div class="section-container">
                     <header class="section-header" data-aos="fade-up">
-                        <span class="section-number">03</span>
                         <h2 id="projects-title" class="section-title">Projects</h2>
                         <p class="section-subtitle">웹 퍼블리싱으로 구현한 프로젝트들을 소개합니다</p>
                     </header>
@@ -357,14 +329,14 @@
                                         <span class="badge badge-tech">반응형 웹</span>
                                     </div>
                                     <div class="project-actions">
-                                        <a href="#" class="btn btn-primary" aria-label="프로젝트 보기">
-                                            <span class="btn-icon" aria-hidden="true">👁️</span>
-                                            <span class="btn-text">프로젝트 보기</span>
+                                        <a href="#" class="btn btn-primary" aria-label="프로젝트 바로가기">
+                                            <span class="btn-icon" aria-hidden="true">🔗</span>
+                                            <span class="btn-text">바로가기</span>
                                         </a>
-                                        <a href="#" class="btn btn-secondary" aria-label="GitHub 저장소">
-                                            <span class="btn-icon" aria-hidden="true">📁</span>
-                                            <span class="btn-text">GitHub</span>
-                                        </a>
+                                        <button class="btn btn-secondary" data-toggle="modal" data-target="#projectModal" data-project="hycu" aria-label="프로젝트 자세히 보기">
+                                            <span class="btn-icon" aria-hidden="true">📋</span>
+                                            <span class="btn-text">자세히 보기</span>
+                                        </button>
                                     </div>
                                 </div>
                                 
@@ -378,14 +350,14 @@
                                         <span class="badge badge-tech">Bootstrap</span>
                                     </div>
                                     <div class="project-actions">
-                                        <a href="#" class="btn btn-primary" aria-label="프로젝트 보기">
-                                            <span class="btn-icon" aria-hidden="true">👁️</span>
-                                            <span class="btn-text">프로젝트 보기</span>
+                                        <a href="#" class="btn btn-primary" aria-label="프로젝트 바로가기">
+                                            <span class="btn-icon" aria-hidden="true">🔗</span>
+                                            <span class="btn-text">바로가기</span>
                                         </a>
-                                        <a href="#" class="btn btn-secondary" aria-label="GitHub 저장소">
-                                            <span class="btn-icon" aria-hidden="true">📁</span>
-                                            <span class="btn-text">GitHub</span>
-                                        </a>
+                                        <button class="btn btn-secondary" data-toggle="modal" data-target="#projectModal" data-project="urscope" aria-label="프로젝트 자세히 보기">
+                                            <span class="btn-icon" aria-hidden="true">📋</span>
+                                            <span class="btn-text">자세히 보기</span>
+                                        </button>
                                     </div>
                                 </div>
                                 
@@ -399,14 +371,14 @@
                                         <span class="badge badge-tech">jQuery</span>
                                     </div>
                                     <div class="project-actions">
-                                        <a href="#" class="btn btn-primary" aria-label="프로젝트 보기">
-                                            <span class="btn-icon" aria-hidden="true">👁️</span>
-                                            <span class="btn-text">프로젝트 보기</span>
+                                        <a href="#" class="btn btn-primary" aria-label="프로젝트 바로가기">
+                                            <span class="btn-icon" aria-hidden="true">🔗</span>
+                                            <span class="btn-text">바로가기</span>
                                         </a>
-                                        <a href="#" class="btn btn-secondary" aria-label="GitHub 저장소">
-                                            <span class="btn-icon" aria-hidden="true">📁</span>
-                                            <span class="btn-text">GitHub</span>
-                                        </a>
+                                        <button class="btn btn-secondary" data-toggle="modal" data-target="#projectModal" data-project="kmr" aria-label="프로젝트 자세히 보기">
+                                            <span class="btn-icon" aria-hidden="true">📋</span>
+                                            <span class="btn-text">자세히 보기</span>
+                                        </button>
                                     </div>
                                 </div>
                                 
@@ -420,14 +392,14 @@
                                         <span class="badge badge-tech">반응형 웹</span>
                                     </div>
                                     <div class="project-actions">
-                                        <a href="#" class="btn btn-primary" aria-label="프로젝트 보기">
-                                            <span class="btn-icon" aria-hidden="true">👁️</span>
-                                            <span class="btn-text">프로젝트 보기</span>
+                                        <a href="#" class="btn btn-primary" aria-label="프로젝트 바로가기">
+                                            <span class="btn-icon" aria-hidden="true">🔗</span>
+                                            <span class="btn-text">바로가기</span>
                                         </a>
-                                        <a href="#" class="btn btn-secondary" aria-label="GitHub 저장소">
-                                            <span class="btn-icon" aria-hidden="true">📁</span>
-                                            <span class="btn-text">GitHub</span>
-                                        </a>
+                                        <button class="btn btn-secondary" data-toggle="modal" data-target="#projectModal" data-project="corfa" aria-label="프로젝트 자세히 보기">
+                                            <span class="btn-icon" aria-hidden="true">📋</span>
+                                            <span class="btn-text">자세히 보기</span>
+                                        </button>
                                     </div>
                                 </div>
                                 
@@ -441,14 +413,14 @@
                                         <span class="badge badge-tech">GSAP</span>
                                     </div>
                                     <div class="project-actions">
-                                        <a href="#" class="btn btn-primary" aria-label="프로젝트 보기">
-                                            <span class="btn-icon" aria-hidden="true">👁️</span>
-                                            <span class="btn-text">프로젝트 보기</span>
+                                        <a href="#" class="btn btn-primary" aria-label="프로젝트 바로가기">
+                                            <span class="btn-icon" aria-hidden="true">🔗</span>
+                                            <span class="btn-text">바로가기</span>
                                         </a>
-                                        <a href="#" class="btn btn-secondary" aria-label="GitHub 저장소">
-                                            <span class="btn-icon" aria-hidden="true">📁</span>
-                                            <span class="btn-text">GitHub</span>
-                                        </a>
+                                        <button class="btn btn-secondary" data-toggle="modal" data-target="#projectModal" data-project="landing" aria-label="프로젝트 자세히 보기">
+                                            <span class="btn-icon" aria-hidden="true">📋</span>
+                                            <span class="btn-text">자세히 보기</span>
+                                        </button>
                                     </div>
                                 </div>
                                 
@@ -462,14 +434,14 @@
                                         <span class="badge badge-tech">교육 콘텐츠</span>
                                     </div>
                                     <div class="project-actions">
-                                        <a href="#" class="btn btn-primary" aria-label="프로젝트 보기">
-                                            <span class="btn-icon" aria-hidden="true">👁️</span>
-                                            <span class="btn-text">프로젝트 보기</span>
+                                        <a href="#" class="btn btn-primary" aria-label="프로젝트 바로가기">
+                                            <span class="btn-icon" aria-hidden="true">🔗</span>
+                                            <span class="btn-text">바로가기</span>
                                         </a>
-                                        <a href="#" class="btn btn-secondary" aria-label="GitHub 저장소">
-                                            <span class="btn-icon" aria-hidden="true">📁</span>
-                                            <span class="btn-text">GitHub</span>
-                                        </a>
+                                        <button class="btn btn-secondary" data-toggle="modal" data-target="#projectModal" data-project="smartppt" aria-label="프로젝트 자세히 보기">
+                                            <span class="btn-icon" aria-hidden="true">📋</span>
+                                            <span class="btn-text">자세히 보기</span>
+                                        </button>
                                     </div>
                                 </div>
                                 
@@ -483,14 +455,14 @@
                                         <span class="badge badge-tech">교육 게임</span>
                                     </div>
                                     <div class="project-actions">
-                                        <a href="#" class="btn btn-primary" aria-label="프로젝트 보기">
-                                            <span class="btn-icon" aria-hidden="true">👁️</span>
-                                            <span class="btn-text">프로젝트 보기</span>
+                                        <a href="#" class="btn btn-primary" aria-label="프로젝트 바로가기">
+                                            <span class="btn-icon" aria-hidden="true">🔗</span>
+                                            <span class="btn-text">바로가기</span>
                                         </a>
-                                        <a href="#" class="btn btn-secondary" aria-label="GitHub 저장소">
-                                            <span class="btn-icon" aria-hidden="true">📁</span>
-                                            <span class="btn-text">GitHub</span>
-                                        </a>
+                                        <button class="btn btn-secondary" data-toggle="modal" data-target="#projectModal" data-project="aidt" aria-label="프로젝트 자세히 보기">
+                                            <span class="btn-icon" aria-hidden="true">📋</span>
+                                            <span class="btn-text">자세히 보기</span>
+                                        </button>
                                     </div>
                                 </div>
                                 
@@ -504,14 +476,14 @@
                                         <span class="badge badge-tech">멀티미디어</span>
                                     </div>
                                     <div class="project-actions">
-                                        <a href="#" class="btn btn-primary" aria-label="프로젝트 보기">
-                                            <span class="btn-icon" aria-hidden="true">👁️</span>
-                                            <span class="btn-text">프로젝트 보기</span>
+                                        <a href="#" class="btn btn-primary" aria-label="프로젝트 바로가기">
+                                            <span class="btn-icon" aria-hidden="true">🔗</span>
+                                            <span class="btn-text">바로가기</span>
                                         </a>
-                                        <a href="#" class="btn btn-secondary" aria-label="GitHub 저장소">
-                                            <span class="btn-icon" aria-hidden="true">📁</span>
-                                            <span class="btn-text">GitHub</span>
-                                        </a>
+                                        <button class="btn btn-secondary" data-toggle="modal" data-target="#projectModal" data-project="iscream" aria-label="프로젝트 자세히 보기">
+                                            <span class="btn-icon" aria-hidden="true">📋</span>
+                                            <span class="btn-text">자세히 보기</span>
+                                        </button>
                                     </div>
                                 </div>
                                 
@@ -525,14 +497,14 @@
                                         <span class="badge badge-tech">교육 콘텐츠</span>
                                     </div>
                                     <div class="project-actions">
-                                        <a href="#" class="btn btn-primary" aria-label="프로젝트 보기">
-                                            <span class="btn-icon" aria-hidden="true">👁️</span>
-                                            <span class="btn-text">프로젝트 보기</span>
+                                        <a href="#" class="btn btn-primary" aria-label="프로젝트 바로가기">
+                                            <span class="btn-icon" aria-hidden="true">🔗</span>
+                                            <span class="btn-text">바로가기</span>
                                         </a>
-                                        <a href="#" class="btn btn-secondary" aria-label="GitHub 저장소">
-                                            <span class="btn-icon" aria-hidden="true">📁</span>
-                                            <span class="btn-text">GitHub</span>
-                                        </a>
+                                        <button class="btn btn-secondary" data-toggle="modal" data-target="#projectModal" data-project="mmath" aria-label="프로젝트 자세히 보기">
+                                            <span class="btn-icon" aria-hidden="true">📋</span>
+                                            <span class="btn-text">자세히 보기</span>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -560,226 +532,28 @@
                 </div>
             </section>
 
-            <!-- Process Section -->
-            <section id="process" class="process-section" aria-labelledby="process-title">
-                <div class="section-container">
-                    <header class="section-header" data-aos="fade-up">
-                        <span class="section-number">04</span>
-                        <h2 id="process-title" class="section-title">Work Process</h2>
-                        <p class="section-subtitle">웹 퍼블리싱 작업 과정을 따라가보세요</p>
-                    </header>
-                    <div class="process-timeline" role="list" aria-label="창작 프로세스 타임라인">
-                        <div class="timeline-item" data-aos="fade-right" role="listitem">
-                            <div class="timeline-marker">
-                                <div class="marker-icon" aria-hidden="true">💡</div>
-                                <div class="marker-line" aria-hidden="true"></div>
-                            </div>
-                            <div class="timeline-content">
-                                <h3 class="timeline-title">Analysis</h3>
-                                <p class="timeline-desc">디자인 시안을 분석하고 웹 구현 방안을 구상합니다</p>
-                                <div class="timeline-details" role="list" aria-label="분석 단계 세부사항">
-                                    <span class="detail-item" role="listitem">디자인 분석</span>
-                                    <span class="detail-item" role="listitem">기능 분석</span>
-                                    <span class="detail-item" role="listitem">구현 계획</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="timeline-item" data-aos="fade-left" data-aos-delay="200" role="listitem">
-                            <div class="timeline-marker">
-                                <div class="marker-icon" aria-hidden="true">🎨</div>
-                                <div class="marker-line" aria-hidden="true"></div>
-                            </div>
-                            <div class="timeline-content">
-                                <h3 class="timeline-title">Markup</h3>
-                                <p class="timeline-desc">시맨틱한 HTML 구조와 접근성을 고려한 마크업을 작성합니다</p>
-                                <div class="timeline-details" role="list" aria-label="마크업 단계 세부사항">
-                                    <span class="detail-item" role="listitem">HTML 구조</span>
-                                    <span class="detail-item" role="listitem">시맨틱 태그</span>
-                                    <span class="detail-item" role="listitem">접근성</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="timeline-item" data-aos="fade-right" data-aos-delay="400" role="listitem">
-                            <div class="timeline-marker">
-                                <div class="marker-icon" aria-hidden="true">⚡</div>
-                                <div class="marker-line" aria-hidden="true"></div>
-                            </div>
-                            <div class="timeline-content">
-                                <h3 class="timeline-title">Styling</h3>
-                                <p class="timeline-desc">CSS를 활용하여 반응형이고 사용자 친화적인 스타일을 구현합니다</p>
-                                <div class="timeline-details" role="list" aria-label="스타일링 단계 세부사항">
-                                    <span class="detail-item" role="listitem">CSS 작성</span>
-                                    <span class="detail-item" role="listitem">반응형</span>
-                                    <span class="detail-item" role="listitem">크로스브라우저</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="timeline-item" data-aos="fade-left" data-aos-delay="600" role="listitem">
-                            <div class="timeline-marker">
-                                <div class="marker-icon" aria-hidden="true">🚀</div>
-                                <div class="marker-line" aria-hidden="true"></div>
-                            </div>
-                            <div class="timeline-content">
-                                <h3 class="timeline-title">Testing</h3>
-                                <p class="timeline-desc">다양한 환경에서 테스트하고 최종 검수를 통해 완성도를 높입니다</p>
-                                <div class="timeline-details" role="list" aria-label="테스트 단계 세부사항">
-                                    <span class="detail-item" role="listitem">기능 테스트</span>
-                                    <span class="detail-item" role="listitem">호환성 테스트</span>
-                                    <span class="detail-item" role="listitem">최종 검수</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
 
-            <!-- Skills Section -->
-            <section id="skills" class="skills-section" aria-labelledby="skills-title">
+            <!-- CTA Section (Contact) -->
+            <section id="contact" class="cta-section" aria-labelledby="cta-title">
                 <div class="section-container">
                     <header class="section-header" data-aos="fade-up">
-                        <span class="section-number">05</span>
-                        <h2 id="skills-title" class="section-title">Technical Skills</h2>
-                        <p class="section-subtitle">웹 퍼블리싱 전문 기술</p>
-                    </header>
-                    <div class="skills-grid" role="list" aria-label="기술 스킬 카테고리">
-                        <article class="skill-category skill-category-frontend" data-aos="fade-up" role="listitem">
-                            <header class="category-header">
-                                <div class="category-icon" aria-hidden="true">🎨</div>
-                                <h3 class="category-title">Web Publishing</h3>
-                                <p class="category-desc">웹사이트 구현을 위한 핵심 기술</p>
+                        <h2 id="cta-title" class="section-title">Let's Work Together</h2>
+                        <p class="section-subtitle">프로젝트 문의는 아래 정보로 연락해주세요</p>
                             </header>
-                            <div class="category-skills" role="list" aria-label="웹 퍼블리싱 기술 목록">
-                                <div class="skill-item" role="listitem">
-                                    <div class="skill-info">
-                                        <div class="skill-name">HTML5</div>
-                                        <div class="skill-level">Expert</div>
-                                    </div>
-                                </div>
-                                <div class="skill-item" role="listitem">
-                                    <div class="skill-info">
-                                        <div class="skill-name">CSS3</div>
-                                        <div class="skill-level">Expert</div>
-                                    </div>
-                                </div>
-                                <div class="skill-item" role="listitem">
-                                    <div class="skill-info">
-                                        <div class="skill-name">JavaScript</div>
-                                        <div class="skill-level">Advanced</div>
-                                    </div>
-                                </div>
-                                <div class="skill-item" role="listitem">
-                                    <div class="skill-info">
-                                        <div class="skill-name">jQuery</div>
-                                        <div class="skill-level">Advanced</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-                        
-                        <article class="skill-category skill-category-tools" data-aos="fade-up" data-aos-delay="200" role="listitem">
-                            <header class="category-header">
-                                <div class="category-icon" aria-hidden="true">🛠️</div>
-                                <h3 class="category-title">Design & Tools</h3>
-                                <p class="category-desc">디자인과 개발을 위한 도구들</p>
-                            </header>
-                            <div class="category-skills" role="list" aria-label="디자인 및 개발 도구 목록">
-                                <div class="skill-item" role="listitem">
-                                    <div class="skill-info">
-                                        <div class="skill-name">Photoshop</div>
-                                        <div class="skill-level">Advanced</div>
-                                    </div>
-                                </div>
-                                <div class="skill-item" role="listitem">
-                                    <div class="skill-info">
-                                        <div class="skill-name">Figma</div>
-                                        <div class="skill-level">Intermediate</div>
-                                    </div>
-                                </div>
-                                <div class="skill-item" role="listitem">
-                                    <div class="skill-info">
-                                        <div class="skill-name">SourceTree</div>
-                                        <div class="skill-level">Intermediate</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-                        
-                    </div>
-                </div>
-            </section>
-
-            <!-- Contact Section -->
-            <section id="contact" class="contact-section" aria-labelledby="contact-title">
-                <div class="section-container">
-                    <header class="section-header" data-aos="fade-up">
-                        <span class="section-number">06</span>
-                        <h2 id="contact-title" class="section-title">Get In Touch</h2>
-                        <p class="section-subtitle">함께 웹사이트를 만들어보세요</p>
-                    </header>
-                    <div class="contact-layout">
-                        <div class="grid-item">
-                            <div class="card card-info">
-                                <div class="card-body">
-                                    <h3 class="card-title">연락처 정보</h3>
-                                    <div class="info-list" role="list" aria-label="연락처 정보 목록">
-                                        <div class="info-item" role="listitem">
-                                            <div class="info-icon" aria-hidden="true">📧</div>
-                                            <div class="info-content">
-                                                <div class="info-label">Email</div>
-                                                <div class="info-value">00ekqls00@naver.com</div>
-                                            </div>
-                                        </div>
-                                        <div class="info-item" role="listitem">
-                                            <div class="info-icon" aria-hidden="true">📱</div>
-                                            <div class="info-content">
-                                                <div class="info-label">Phone</div>
-                                                <div class="info-value">010-3946-3634</div>
-                                            </div>
-                                        </div>
-                                        <div class="info-item" role="listitem">
-                                            <div class="info-icon" aria-hidden="true">📍</div>
-                                            <div class="info-content">
-                                                <div class="info-label">Location</div>
-                                                <div class="info-value">서울, 대한민국</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="grid-item">
-                            <div class="card card-form">
-                                <div class="card-body">
-                                    <h3 class="card-title">메시지 보내기</h3>
-                                    <form id="contactForm" class="contact-form" novalidate aria-labelledby="contact-form-title">
-                                        <div class="form-group">
-                                            <label for="name" class="form-label">이름 <span class="required" aria-label="필수 입력 항목">*</span></label>
-                                            <input type="text" id="name" name="name" class="form-input" placeholder="홍길동" required aria-describedby="name-error" aria-required="true">
-                                            <div id="name-error" class="error-message" role="alert" aria-live="polite"></div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="email" class="form-label">이메일 <span class="required" aria-label="필수 입력 항목">*</span></label>
-                                            <input type="email" id="email" name="email" class="form-input" placeholder="hello@example.com" required aria-describedby="email-error" aria-required="true">
-                                            <div id="email-error" class="error-message" role="alert" aria-live="polite"></div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="subject" class="form-label">제목 <span class="required" aria-label="필수 입력 항목">*</span></label>
-                                            <input type="text" id="subject" name="subject" class="form-input" placeholder="프로젝트 문의" required aria-describedby="subject-error" aria-required="true">
-                                            <div id="subject-error" class="error-message" role="alert" aria-live="polite"></div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="message" class="form-label">메시지 <span class="required" aria-label="필수 입력 항목">*</span></label>
-                                            <textarea id="message" name="message" class="form-textarea" placeholder="프로젝트에 대해 자세히 설명해주세요..." required aria-describedby="message-error" aria-required="true" rows="5"></textarea>
-                                            <div id="message-error" class="error-message" role="alert" aria-live="polite"></div>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary" aria-describedby="submit-status">
-                                            <span class="btn-text">메시지 보내기</span>
-                                            <span class="btn-icon" aria-hidden="true">📤</span>
-                                        </button>
-                                        <div id="submit-status" class="submit-status" role="status" aria-live="polite"></div>
-                                    </form>
-                                </div>
+                    
+                    <div class="cta-card" data-aos="fade-up">
+                        <div class="cta-items">
+                            <a href="mailto:00ekqls00@naver.com" class="cta-item" aria-label="이메일로 문의하기">
+                                <span class="cta-icon">📧</span>
+                                <span class="cta-text">00ekqls00@naver.com</span>
+                            </a>
+                            <a href="tel:01039463634" class="cta-item" aria-label="전화로 문의하기">
+                                <span class="cta-icon">📱</span>
+                                <span class="cta-text">010-3946-3634</span>
+                            </a>
+                            <div class="cta-item" aria-label="위치">
+                                <span class="cta-icon">📍</span>
+                                <span class="cta-text">서울, 대한민국</span>
                             </div>
                         </div>
                     </div>
@@ -788,7 +562,7 @@
         </main>
 
         <!-- Footer -->
-        <footer class="footer" role="contentinfo">
+        <footer class="ft" role="contentinfo">
             <div class="footer-container">
                 <div class="footer-content">
                     <div class="footer-logo">
@@ -806,8 +580,6 @@
                             <li><a href="#hero" class="footer-link">Home</a></li>
                             <li><a href="#about" class="footer-link">About</a></li>
                             <li><a href="#projects" class="footer-link">Projects</a></li>
-                            <li><a href="#process" class="footer-link">Process</a></li>
-                            <li><a href="#skills" class="footer-link">Skills</a></li>
                             <li><a href="#contact" class="footer-link">Contact</a></li>
                         </ul>
                     </div>
@@ -836,7 +608,27 @@
         </footer>
     </div>
 
+    <!-- Project Detail Modal -->
+    <div class="modal fade" id="projectModal" tabindex="-1" role="dialog" aria-labelledby="projectModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="projectModalLabel">프로젝트 상세 정보</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        ✕
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="projectModalContent">
+                        <!-- 프로젝트별 상세 내용이 여기에 들어갑니다 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Scripts -->
+    <script src="./front/js/jquery-3.7.1.min.js"></script>
     <script src="./front/js/bootstrap.bundle.min.js"></script>
     <script src="./front/js/aos.js"></script>
     <script src="./front/js/swiper-bundle.min.js"></script>

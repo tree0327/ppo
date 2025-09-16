@@ -248,9 +248,10 @@
   }
   
   @include media-max(sm) {
-    max-width: 280px;
+    max-width: calc(100% - 0.75rem);
     border-radius: 1rem;
     padding: 0.5rem;
+    aspect-ratio: 3/4.2;
   }
 }
 
@@ -268,6 +269,7 @@
   
   @include media-max(sm) {
     border-radius: 0.5rem;
+    overflow: hidden;
   }
 }
 
@@ -281,9 +283,17 @@
   width: 100%;
   height: 100%;
   cursor: grab;
+  overflow: hidden;
   
   &:active {
     cursor: grabbing;
+  }
+  
+  @include media-max(sm) {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 100%;
   }
 }
 

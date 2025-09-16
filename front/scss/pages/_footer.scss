@@ -1,6 +1,6 @@
 // ===== FOOTER SECTION =====
 
-.footer {
+.ft {
   background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
   color: white;
   padding: 4rem 0 2rem;
@@ -211,7 +211,7 @@
 }
 
 @include media-max(sm) {
-  .footer {
+  .ft {
     padding: 1.5rem 0 1rem;
   }
   

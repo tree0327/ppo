@@ -14,7 +14,6 @@ class LiveCodingAnimation {
         
         // Reset all elements
         this.typingElements.forEach((element, index) => {
-            element.style.width = '100%';
             element.style.minHeight = '1.5rem';
             element.style.animationDelay = `${index * 0.8}s`;
             element.textContent = '';
@@ -46,7 +45,6 @@ class LiveCodingAnimation {
 
     typeText(element, text, callback) {
         element.textContent = '';
-        element.style.width = '100%';
         element.style.borderRight = '2px solid var(--primary)';
         element.style.minHeight = '1.5rem';
         
@@ -169,6 +167,7 @@ document.addEventListener('DOMContentLoaded', function() {
         initProjectButtonsScroll();
         initIpadScroll();
         initContactForm();
+        initProjectModals();
         
         // Initialize Live Coding Animation
         new LiveCodingAnimation();
