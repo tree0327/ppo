@@ -1,125 +1,176 @@
 // ===== CONTACT SECTION =====
 
-.contact-section {
-  padding: 6rem 0;
-  background: #ffffff;
+.cta-section {
+  padding: 8rem 0;
+  background: linear-gradient(135deg, #ffffff 0%, rgba(5, 150, 105, 0.02) 100%);
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, 
+                rgba(5, 150, 105, 0.03) 0%, 
+                transparent 70%);
+    pointer-events: none;
+  }
   
   @include media-max(lg) {
-    padding: 4rem 0;
+    padding: 6rem 0;
   }
   
   @include media-max(md) {
-    padding: 3rem 0;
+    padding: 4rem 0;
   }
 
   @include media-max(sm) {
-    padding: 2rem 0;
+    padding: 3rem 0;
+  }
+  
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    position: relative;
+    z-index: 1;
+    
+    @include media-max(md) {
+      margin-bottom: 3rem;
+    }
+    
+    @include media-max(sm) {
+      margin-bottom: 2rem;
+    }
+  }
+  
+  .section-title {
+    font-family: $font-mont;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: $font-weight-bold;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    
+    @include media-max(md) {
+      font-size: clamp(2rem, 4vw, 3rem);
+    }
+    
+    @include media-max(sm) {
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    }
+  }
+  
+  .section-subtitle {
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    color: var(--text-secondary);
+    margin: 0;
+    
+    @include media-max(md) {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+    }
+    
+    @include media-max(sm) {
+      font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+    }
   }
 }
 
-.contact-content {
-  max-width: 800px;
+.cta-card {
+  max-width: 900px;
   margin: 0 auto;
-}
-
-.contact-card {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 2rem;
-  padding: 3rem;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.9);
-    transform: translateY(-5px);
-  }
+  border: 1px solid rgba(5, 150, 105, 0.1);
+  border-radius: 2.5rem;
+  padding: 4rem;
+  box-shadow: 0 20px 60px rgba(5, 150, 105, 0.1);
+  position: relative;
+  z-index: 1;
 
   @include media-max(md) {
+    padding: 3rem;
+    border-radius: 2rem;
+  }
+
+  @include media-max(sm) {
     padding: 2rem;
     border-radius: 1.5rem;
   }
-
-  @include media-max(sm) {
-    padding: 1.5rem;
-    border-radius: 1rem;
-  }
 }
 
-.contact-info-grid {
+.cta-items {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin-bottom: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
 
   @include media-max(md) {
     grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  @include media-max(sm) {
     gap: 1.5rem;
   }
 }
 
-.contact-item {
+.cta-item {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  padding: 1.5rem;
-  background: rgba(var(--primary), 0.05);
-  border-radius: 1rem;
+  gap: 1.5rem;
+  padding: 2rem;
+  background: rgba(5, 150, 105, 0.03);
+  border: 1px solid rgba(5, 150, 105, 0.1);
+  border-radius: 1.5rem;
+  text-decoration: none;
+  color: inherit;
   transition: all 0.3s ease;
 
   &:hover {
-    background: rgba(var(--primary), 0.1);
-    transform: translateY(-2px);
+    background: rgba(5, 150, 105, 0.06);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(5, 150, 105, 0.15);
+    color: inherit;
+    text-decoration: none;
   }
 
   @include media-max(sm) {
-    padding: 1rem;
-    gap: 0.75rem;
+    padding: 1.5rem;
+    gap: 1rem;
   }
 }
 
-.contact-icon {
-  font-size: 2rem;
-  width: 3rem;
-  height: 3rem;
+.cta-icon {
+  font-size: 2.5rem;
+  width: 4rem;
+  height: 4rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(var(--primary), 0.1);
+  background: rgba(5, 150, 105, 0.1);
   border-radius: 50%;
   flex-shrink: 0;
 
   @include media-max(sm) {
-    width: 2.5rem;
-    height: 2.5rem;
-    font-size: 1.5rem;
+    width: 3rem;
+    height: 3rem;
+    font-size: 2rem;
   }
 }
 
-.contact-details {
-  flex: 1;
-}
-
-.contact-label {
+.cta-text {
   font-family: $font-mont;
-  font-size: 1rem;
-  font-weight: $font-weight-semibold;
-  color: var(--text-secondary);
-  margin: 0 0 0.25rem 0;
-
-  @include media-max(sm) {
-    font-size: 0.9rem;
-  }
-}
-
-.contact-value {
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   font-weight: $font-weight-semibold;
   color: var(--text-primary);
   margin: 0;
 
+  @include media-max(md) {
+    font-size: 1.2rem;
+  }
+
   @include media-max(sm) {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 }
 
@@ -160,36 +211,18 @@
       backdrop-filter: blur(4px);
     }
   }
-  
-  // Ensure modal container doesn't exceed viewport
-  &.modal.show {
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-    
-    @include media-max(sm) {
-      align-items: center;
-      padding-top: 0;
-    }
-  }
 
   .modal-dialog {
+    width: 100%;
+    height: 100%;
     margin: 0;
-    max-width: 900px;
-    max-height: 85vh;
-    height: auto;
     display: flex;
-    flex-direction: column;
-    
-    @include media-max(lg) {
-      max-width: calc(100% - 2rem);
-      max-height: 90vh;
-    }
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
     
     @include media-max(sm) {
-      max-width: calc(100% - 2rem);
-      max-height: 85vh;
-      height: 85vh;
+      padding: 0.5rem;
     }
   }
 
@@ -203,10 +236,17 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    max-height: 100%;
+    max-width: 900px;
+    max-height: 70vh;
+    width: 100%;
+    
+    @include media-max(lg) {
+      max-width: calc(100% - 2rem);
+    }
     
     @include media-max(sm) {
       border-radius: 1rem;
+      max-width: calc(100% - 1rem);
     }
   }
 
@@ -275,10 +315,12 @@
     padding: 2rem 2.5rem 2rem 2rem;
     background: var(--background);
     flex: 1;
-    overflow-y: auto;
+    overflow: auto;
+    max-height: calc(70vh - 120px); // 헤더와 푸터 공간 제외
     
     @include media-max(sm) {
       padding: 1.25rem 1.5rem 1.25rem 1.25rem;
+      max-height: calc(70vh - 100px);
     }
   }
 }
