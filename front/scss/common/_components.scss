@@ -688,16 +688,6 @@ sup.text-primary{
 }
 
 // modal
-.modal-dialog{
-	max-width: 1080px;
-	&.modal-sm{
-		max-width: 450px;
-	}
-	&.modal-md{
-		max-width: 750px;
-	}
-}
-
 .modal-content{
 	padding: rem(32px);
 	border: 0;

@@ -77,14 +77,8 @@
 }
 
 .cta-card {
-  max-width: 900px;
   margin: 0 auto;
-  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(5, 150, 105, 0.1);
-  border-radius: 2.5rem;
-  padding: 4rem;
-  box-shadow: 0 20px 60px rgba(5, 150, 105, 0.1);
   position: relative;
   z-index: 1;
 
@@ -101,7 +95,7 @@
 
 .cta-items {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 2.5rem;
 
   @include media-max(md) {
@@ -119,9 +113,7 @@
   align-items: center;
   gap: 1.5rem;
   padding: 2rem;
-  background: rgba(5, 150, 105, 0.03);
-  border: 1px solid rgba(5, 150, 105, 0.1);
-  border-radius: 1.5rem;
+  background: rgba(255, 255, 255, 0.95);
   text-decoration: none;
   color: inherit;
   transition: all 0.3s ease;
@@ -220,6 +212,7 @@
     align-items: center;
     justify-content: center;
     padding: 1rem;
+    max-width: none;
     
     @include media-max(sm) {
       padding: 0.5rem;
