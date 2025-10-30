@@ -2116,20 +2116,6 @@ body:has(.topbanner.visible):not(.is-scroll) #sitemap {
   }
 }
 
-#ct {
-  padding-bottom: 200px;
-}
-@media (max-width: 1199.98px) {
-  #ct {
-    padding-bottom: 150px;
-  }
-}
-@media (max-width: 575.98px) {
-  #ct {
-    padding-bottom: 80px;
-  }
-}
-
 .sub-top {
   padding: 5.5555555556rem 0;
 }
@@ -3988,7 +3974,7 @@ html {
 .projects-layout {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 1.5rem;
 }
 @media (max-width: 767.98px) {
   .projects-layout {
@@ -4113,7 +4099,7 @@ html {
 .project-info {
   background: transparent;
   padding: 0;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -4229,7 +4215,6 @@ html {
   color: var(--text-secondary);
   font-weight: 500;
   margin: 0;
-  max-width: 600px;
 }
 @media (max-width: 767.98px) {
   .project-guide-text {
@@ -4476,7 +4461,7 @@ html {
     padding: 2rem 0;
   }
   .projects-layout {
-    gap: 1.5rem;
+    gap: 1rem;
   }
   .project-tabs {
     margin-bottom: 1.5rem;
@@ -4489,7 +4474,7 @@ html {
   }
 }
 .cta-section {
-  padding: 8rem 0;
+  padding: 5rem 0;
   background: linear-gradient(135deg, #ffffff 0%, rgba(5, 150, 105, 0.02) 100%);
   position: relative;
 }

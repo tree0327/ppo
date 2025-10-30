@@ -866,18 +866,18 @@ body.sitemap-open{
 }
 
 // ct
-#ct{
-    // padding-top: var(--hd);
-    padding-bottom: 200px;
+// #ct{
+//     // padding-top: var(--hd);
+//     padding-bottom: 200px;
 
-    @include media-max(xl){
-        padding-bottom: 150px;
-    }
+//     @include media-max(xl){
+//         padding-bottom: 150px;
+//     }
 
-    @include media-max(sm){
-        padding-bottom: 80px;
-    }
-}
+//     @include media-max(sm){
+//         padding-bottom: 80px;
+//     }
+// }
 
 .sub-top{
     padding: rem(100px) 0;

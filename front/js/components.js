@@ -201,7 +201,7 @@ function initProjects() {
         // Update project info visibility
         projectInfos.forEach((info, i) => {
             const isVisible = i === index;
-            info.style.display = isVisible ? 'block' : 'none';
+            info.style.display = isVisible ? 'flex' : 'none';
             info.setAttribute('aria-hidden', !isVisible);
         });
         
